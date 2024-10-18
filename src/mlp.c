@@ -116,11 +116,73 @@ char decode(int code){
     }
 }
 
+TrainingSet * createTrainingSet(char **names, int name_count){
+    
+    TrainingSet * training_set = malloc(sizeof(TrainingSet));
+
+    training_set->size = 0;
+
+    for (int i = 0; i < name_count; i++){
+        training_set->size+= strlen(names[i]) +1;
+    }
+
+    training_set->X = (char*)malloc(training_set->size * BLOCK_SIZE * sizeof(char));
+    training_set->Y = (char*)malloc(training_set->size * sizeof(char));
+
+
+    // assume block size = 3
+    // X = ["...", "..e", ".em","emm", "mma" ]
+    // Y = ['e', 'm', 'm', 'a', '.']
+
+    char x_padding[BLOCK_SIZE];
+    for (int i = 0; i < BLOCK_SIZE; i++){
+        x_padding[i] = '.';
+    } 
+    char *name = NULL;
+    int ts_idx = 0;
+
+    for (int n_idx = 0; n_idx < name_count; n_idx++){
+        name = names[n_idx];
+        int name_len = strlen(name);
+        strcpy((training_set->X) + (ts_idx * BLOCK_SIZE), x_padding);
+        for (int c_idx = 0; c_idx < name_len +1; c_idx++){
+            char c = name[c_idx];
+            if (c != '\0'){
+                training_set->Y[ts_idx] = name[c_idx];
+            }
+            else {
+                training_set->Y[ts_idx] = '.';
+            }
+            // [...]
+            // [.....e]
+            // [.....e.em]
+            ts_idx++;
+            for (int x_idx = 0; x_idx < BLOCK_SIZE - 1; x_idx++){
+                training_set->X[ts_idx * BLOCK_SIZE + x_idx] =
+                    training_set->X[(ts_idx - 1) * BLOCK_SIZE + x_idx + 1];
+                }
+            training_set->X[(ts_idx * BLOCK_SIZE) + BLOCK_SIZE - 1 ] = c;
+        }
+    }
+
+    return training_set;
+}
+
+
 
 int main()
 {
     char ** names = NULL;
     int count = readNames(&names, "/home/patrick/coding/mlp/training/names.txt");
     printf("\n%d names loaded\n", count);
+    TrainingSet * trainingSet = createTrainingSet(names, count);
+    for (int i = 0; i < 50; i++){
+        for (int j = 0; j < BLOCK_SIZE; j++){
+            printf("%c",trainingSet->X[i * BLOCK_SIZE + j]);
+        }
+        printf(" --> %c", trainingSet->Y[i]);
+        printf("\n");
+    }
+
     return 0;
 }
