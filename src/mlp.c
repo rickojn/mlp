@@ -169,20 +169,26 @@ TrainingSet * createTrainingSet(char **names, int name_count){
 }
 
 
+void print_training_set(TrainingSet * training_set, size_t number_samples){
+    for (int i = 0; i < number_samples; i++)
+    {
+        for (int j = 0; j < BLOCK_SIZE; j++)
+        {
+            printf("%c", training_set->X[i * BLOCK_SIZE + j]);
+        }
+        printf(" --> %c", training_set->Y[i]);
+        printf("\n");
+    }
+}
+
 
 int main()
 {
     char ** names = NULL;
     int count = readNames(&names, "/home/patrick/coding/mlp/training/names.txt");
     printf("\n%d names loaded\n", count);
-    TrainingSet * trainingSet = createTrainingSet(names, count);
-    for (int i = 0; i < 50; i++){
-        for (int j = 0; j < BLOCK_SIZE; j++){
-            printf("%c",trainingSet->X[i * BLOCK_SIZE + j]);
-        }
-        printf(" --> %c", trainingSet->Y[i]);
-        printf("\n");
-    }
+    TrainingSet * training_set = createTrainingSet(names, count);
+    print_training_set(training_set, 32);
 
     return 0;
 }
