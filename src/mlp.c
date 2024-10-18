@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include "../headers/mlp_types.h"
+#include "../headers/custard_flow.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -139,17 +140,6 @@ TrainingSet * createTrainingSet(char **names, int name_count){
 }
 
 
-void print_training_set(TrainingSet * training_set, size_t number_samples){
-    for (int i = 0; i < number_samples; i++)
-    {
-        for (int j = 0; j < BLOCK_SIZE; j++)
-        {
-            printf("%c", training_set->X[i * BLOCK_SIZE + j]);
-        }
-        printf(" --> %c", training_set->Y[i]);
-        printf("\n");
-    }
-}
 
 
 int main()
