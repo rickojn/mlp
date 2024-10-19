@@ -97,7 +97,7 @@ TrainingSet * createTrainingSet(char **names, int name_count){
         training_set->size+= strlen(names[i]) +1;
     }
 
-    training_set->X = (char*)malloc(training_set->size * BLOCK_SIZE * sizeof(char));
+    training_set->X = (char*)malloc(training_set->size * SIZE_BLOCK * sizeof(char));
     training_set->Y = (char*)malloc(training_set->size * sizeof(char));
 
 
@@ -105,8 +105,8 @@ TrainingSet * createTrainingSet(char **names, int name_count){
     // X = ["...", "..e", ".em","emm", "mma" ]
     // Y = ['e', 'm', 'm', 'a', '.']
 
-    char x_padding[BLOCK_SIZE];
-    for (int i = 0; i < BLOCK_SIZE; i++){
+    char x_padding[SIZE_BLOCK];
+    for (int i = 0; i < SIZE_BLOCK; i++){
         x_padding[i] = '.';
     } 
     char *name = NULL;
@@ -115,7 +115,7 @@ TrainingSet * createTrainingSet(char **names, int name_count){
     for (int n_idx = 0; n_idx < name_count; n_idx++){
         name = names[n_idx];
         int name_len = strlen(name);
-        strcpy((training_set->X) + (ts_idx * BLOCK_SIZE), x_padding);
+        strcpy((training_set->X) + (ts_idx * SIZE_BLOCK), x_padding);
         for (int c_idx = 0; c_idx < name_len +1; c_idx++){
             char c = name[c_idx];
             if (c != '\0'){
@@ -128,11 +128,11 @@ TrainingSet * createTrainingSet(char **names, int name_count){
             // [.....e]
             // [.....e.em]
             ts_idx++;
-            for (int x_idx = 0; x_idx < BLOCK_SIZE - 1; x_idx++){
-                training_set->X[ts_idx * BLOCK_SIZE + x_idx] =
-                    training_set->X[(ts_idx - 1) * BLOCK_SIZE + x_idx + 1];
+            for (int x_idx = 0; x_idx < SIZE_BLOCK - 1; x_idx++){
+                training_set->X[ts_idx * SIZE_BLOCK + x_idx] =
+                    training_set->X[(ts_idx - 1) * SIZE_BLOCK + x_idx + 1];
                 }
-            training_set->X[(ts_idx * BLOCK_SIZE) + BLOCK_SIZE - 1 ] = c;
+            training_set->X[(ts_idx * SIZE_BLOCK) + SIZE_BLOCK - 1 ] = c;
         }
     }
 
@@ -140,15 +140,44 @@ TrainingSet * createTrainingSet(char **names, int name_count){
 }
 
 
+void create_model(MLP * model, size_t size_batch){    
+    size_t size_model_params_memory = SIZE_VOCAB * DIM_EMBEDDINGS
+    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
+    + SIZE_HIDDEN * SIZE_VOCAB; 
+
+    size_t size_model_activations = SIZE_BATCH * (SIZE_BLOCK * DIM_EMBEDDINGS
+    + SIZE_HIDDEN
+    + SIZE_VOCAB * 2);
+
+    size_t size_model_gradients = SIZE_BATCH * (SIZE_VOCAB * DIM_EMBEDDINGS
+    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
+    + SIZE_HIDDEN * SIZE_VOCAB);
+
+    size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
+
+
+    model->size_batch = size_batch;
+    model->parameters.layer_hidden.size_input = SIZE_BLOCK * DIM_EMBEDDINGS;
+    model->parameters.layer_hidden.size_output = SIZE_HIDDEN;
+    model->parameters.layer_output.size_input = SIZE_HIDDEN;
+    model->parameters.layer_output.size_output = SIZE_VOCAB;
+}
+
+
 
 
 int main()
 {
+    // read in names file
     char ** names = NULL;
     int count = readNames(&names, "/home/patrick/coding/mlp/training/names.txt");
     printf("\n%d names loaded\n", count);
+    // create training set from names array
     TrainingSet * training_set = createTrainingSet(names, count);
     print_training_set(training_set, 32);
+
+    // create model
+
 
     return 0;
 }
