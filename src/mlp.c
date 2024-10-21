@@ -105,13 +105,10 @@ void create_model(MLP * model, size_t size_batch){
     float * memory_model = calloc(size_model_memory, sizeof(float));
 
     model->parameters.table_embedding = memory_model;
+    model->parameters.layer_hidden = memory_model + SIZE_VOCAB * DIM_EMBEDDINGS;
 
 
     model->size_batch = size_batch;
-    model->parameters.layer_hidden.size_input = SIZE_BLOCK * DIM_EMBEDDINGS;
-    model->parameters.layer_hidden.size_output = SIZE_HIDDEN;
-    model->parameters.layer_output.size_input = SIZE_HIDDEN;
-    model->parameters.layer_output.size_output = SIZE_VOCAB;
 }
 
 

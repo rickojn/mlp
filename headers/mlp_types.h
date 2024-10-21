@@ -25,17 +25,12 @@ typedef struct
     char * Y; // label e.g "a", "."
 } TrainingSet;
 
-typedef struct 
-{
-    size_t size_input, size_output;
-    float * weights, biases;
-} Layer;
 
 typedef struct 
 {
     float * table_embedding;
-    Layer layer_hidden;
-    Layer layer_output;
+    float * layer_hidden;
+    float * layer_output;
 } Parameters;
 
 typedef struct
