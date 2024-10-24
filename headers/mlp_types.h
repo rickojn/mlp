@@ -35,18 +35,19 @@ typedef struct
 
 typedef struct
 {
-    float * activations_hidden;
-    float * activations_output;
-    float * activations_probs;
+    float * input;
+    float * hidden;
+    float * output;
+    float * probs;
 
 } Activations;
 
 
 typedef struct 
 {
-  float * grads_embeddings;
-  float * grads_hidden;
-  float * grads_output;  
+  float * embeddings;
+  float * hidden;
+  float * output;  
 } Gradients;
 
 
@@ -55,6 +56,7 @@ typedef struct
     size_t size_batch;
     Parameters parameters;
     Activations activations;
+    Gradients gradients;
 } MLP;
 
 

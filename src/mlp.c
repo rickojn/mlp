@@ -93,7 +93,7 @@ void create_model(MLP * model, size_t size_batch){
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
     + SIZE_HIDDEN * SIZE_VOCAB; 
 
-    size_t size_model_activations = SIZE_BATCH * (SIZE_BLOCK * DIM_EMBEDDINGS
+    size_t size_model_activations = size_batch * (SIZE_BLOCK * DIM_EMBEDDINGS
     + SIZE_HIDDEN
     + SIZE_VOCAB * 2);
 
@@ -107,7 +107,18 @@ void create_model(MLP * model, size_t size_batch){
     model->parameters.table_embedding = model_memory;
     model->parameters.layer_hidden = model_memory + SIZE_VOCAB * DIM_EMBEDDINGS;
     model->parameters.layer_output= model->parameters.layer_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
+    
+    model->activations.input = model->parameters.layer_output + SIZE_HIDDEN * SIZE_VOCAB;
+    model->activations.hidden = model->activations.input 
+    + SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
+    model->activations.output = model->activations.hidden
+    + size_batch * SIZE_HIDDEN;
+    model->activations.probs = model->activations.output
+    + size_batch * SIZE_VOCAB;
 
+    model->gradients.embeddings = model->activations.probs + size_batch * SIZE_VOCAB;
+    model->gradients.hidden = model->gradients.embeddings + size_batch * SIZE_VOCAB * DIM_EMBEDDINGS;
+    model->gradients.output = model->gradients.hidden + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
 
     model->size_batch = size_batch;
 }
@@ -126,7 +137,9 @@ int main()
     print_training_set(training_set, 32);
 
     // create model
-
-
+    printf("\ncreating model ...\n");
+    MLP model;
+    create_model(&model, SIZE_BATCH);
+    printf("\n... model created.\n");
     return 0;
 }
