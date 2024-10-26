@@ -29,7 +29,7 @@
                 "-g",
                 "-o",           // Specify the output file
                 "${workspaceFolder}/debug/mlp", // Output path and executable name
-                "${workspaceFolder}/src/mlp.c", // Path to the source C file
+                "${workspaceFolder}/src/*.c", // Path to the source C file
                 "-lm",
             ],
             "group": {
