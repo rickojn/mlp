@@ -166,6 +166,8 @@ int main()
 
     print_embeddings(&model);
     model_forward(&model, training_set);
+
+    print_token_embeddings(&model, training_set);
     
     return 0;
 }
