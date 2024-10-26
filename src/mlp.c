@@ -164,6 +164,7 @@ int main()
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
 
+    print_embeddings(&model);
     model_forward(&model, training_set);
     
     return 0;

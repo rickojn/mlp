@@ -97,3 +97,17 @@ int encode(char c)
     }
 }
 
+
+void print_embeddings(MLP * model){
+    printf("\n.\t");
+    printf("%f\t", model->parameters.table_embedding[0]);
+    printf("%f\n", model->parameters.table_embedding[1]);
+    for (size_t idx_vocab = 0; idx_vocab < SIZE_VOCAB - 1; idx_vocab++){
+        printf("\n%c \t", 'a' + idx_vocab);
+        for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
+            printf("%f\t", model->parameters.table_embedding[(idx_vocab + 1) * DIM_EMBEDDINGS + idx_embed_dim]);
+        }
+        printf("\n");
+    }
+}
+
