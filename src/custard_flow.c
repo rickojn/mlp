@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 #include "../headers/mlp_types.h"
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 void print_training_set(TrainingSet * training_set, size_t number_samples){
     for (int i = 0; i < number_samples; i++)
@@ -68,3 +73,27 @@ int readNames(char ***names, char *filename){
     return count;
 
 }
+
+float generate_normal_random_number()
+{
+    // 2 uniformly distributed random numbers between 0 and 1
+    float u1 = ((float)rand() / RAND_MAX);
+    float u2 = ((float)rand() / RAND_MAX);
+
+    // use Box-Muller to return a normally distributed number
+    return sqrt(-2.0 * log(u1)) * cos(2.0 * M_PI * u2);
+}
+
+
+int encode(char c)
+{
+    if (c == '.')
+    {
+        return 0;
+    }
+    else
+    {
+        return c - 'a' + 1;
+    }
+}
+

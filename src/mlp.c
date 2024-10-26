@@ -17,14 +17,6 @@
 
 
 
-int encode(char c){
-    if (c=='.'){
-        return 0;
-    }
-    else {
-        return c- 'a' + 1;
-    }
-}
 
 char decode(int code){
     if (code == 0){
@@ -123,8 +115,33 @@ void create_model(MLP * model, size_t size_batch){
     model->size_batch = size_batch;
 }
 
+void initialise_model(MLP *model)
+{
+    size_t size_params = SIZE_VOCAB * DIM_EMBEDDINGS
+    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
+    + SIZE_HIDDEN * SIZE_VOCAB;
+
+    srand(42);
+
+    for (int i = 0; i < size_params; i++)
+    {
+        *(model->parameters.table_embedding + i) = generate_normal_random_number();
+    }
+}
 
 
+void embed_tokens(MLP * model, TrainingSet * training_set ){
+    for (size_t idx_token = 0; idx_token < training_set->size; idx_token++){
+        for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
+            model->activations.input[idx_token * DIM_EMBEDDINGS + idx_embed_dim] = 
+            model->parameters.table_embedding[encode(training_set->X[idx_token]) + idx_embed_dim];
+        }        
+    }
+}
+
+void model_forward(MLP * model, TrainingSet * training_set ){ // need to change params
+    embed_tokens(model, training_set);
+}
 
 int main()
 {
@@ -139,7 +156,15 @@ int main()
     // create model
     printf("\ncreating model ...\n");
     MLP model;
-    create_model(&model, SIZE_BATCH);
+    create_model(&model, training_set->size);
     printf("\n... model created.\n");
+    
+    // initialise model
+    printf("\ninitialising model ....\n");
+    initialise_model(&model);
+    printf("\nmodel initialised ....\n");
+
+    model_forward(&model, training_set);
+    
     return 0;
 }
