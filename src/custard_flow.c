@@ -112,7 +112,7 @@ void print_embeddings(MLP * model){
 }
 
 void print_token_embeddings(MLP * model, TrainingSet * training_set){
-    for (size_t idx_block = 0; idx_block < training_set->size/SIZE_BLOCK; idx_block++){
-        printf("\nblock %ld\n", idx_block);
+    for (size_t idx_sample = 0; idx_sample < training_set->size; idx_sample++){
+        printf("\nsample %ld:\n", idx_sample);
     }
 }

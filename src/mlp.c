@@ -147,7 +147,7 @@ int main()
 {
     // read in names file
     char ** names = NULL;
-    int count = readNames(&names, "/home/patrick/coding/mlp/training/names.txt");
+    int count = readNames(&names, "/home/patrick/coding/mlp/training/names5.txt");
     printf("\n%d names loaded\n", count);
     // create training set from names array
     TrainingSet * training_set = createTrainingSet(names, count);
