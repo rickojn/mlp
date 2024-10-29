@@ -112,12 +112,18 @@ void print_embeddings(MLP * model){
 }
 
 void print_token_embeddings(MLP * model, TrainingSet * training_set){
+    printf("\nsample[1][0] and embedding: %c\t [%f, %f]\n", training_set->X[3],
+    model->activations.input[6], model->activations.input[7]);
+    printf("\nsample[1][1] and embedding: %c\t [%f, %f]\n", training_set->X[4],
+    model->activations.input[8], model->activations.input[9]);
+    printf("\nsample[1][2] and embedding: %c\t [%f, %f]\n", training_set->X[5],
+    model->activations.input[10], model->activations.input[11]);
     for (size_t idx_sample = 0; idx_sample < training_set->size; idx_sample++){
         printf("\nsample %ld:\n", idx_sample);
         for (int idx_char = 0; idx_char < SIZE_BLOCK; idx_char++){
             printf("%c\t", training_set->X[idx_sample * SIZE_BLOCK + idx_char]);
             for (int idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
-                printf("%f\t", model->activations.input[idx_sample * SIZE_BLOCK + idx_char * DIM_EMBEDDINGS + idx_dim]);
+                printf("%f\t", model->activations.input[idx_sample * SIZE_BLOCK * DIM_EMBEDDINGS + idx_char + idx_dim]);
             }
         }
     }
