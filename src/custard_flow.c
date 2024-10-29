@@ -118,6 +118,8 @@ void print_token_embeddings(MLP * model, TrainingSet * training_set){
     model->activations.input[8], model->activations.input[9]);
     printf("\nsample[1][2] and embedding: %c\t [%f, %f]\n", training_set->X[5],
     model->activations.input[10], model->activations.input[11]);
+    printf("\nsample[10][2] and embedding: %c\t [%f, %f]\n", training_set->X[33],
+    model->activations.input[66], model->activations.input[66]);
     for (size_t idx_sample = 0; idx_sample < training_set->size; idx_sample++){
         printf("\nsample %ld:\n", idx_sample);
         for (int idx_char = 0; idx_char < SIZE_BLOCK; idx_char++){

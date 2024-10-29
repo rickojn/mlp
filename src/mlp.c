@@ -131,12 +131,16 @@ void initialise_model(MLP *model)
 
 
 void embed_tokens(MLP * model, TrainingSet * training_set ){
-    for (size_t idx_token = 0; idx_token < training_set->size; idx_token++){
+    for (size_t idx_token = 0; idx_token < training_set->size * SIZE_BLOCK; idx_token++){
         for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
             size_t idx_activation_input = idx_token * DIM_EMBEDDINGS + idx_embed_dim;
             int code_char = encode(training_set->X[idx_token]);
             model->activations.input[idx_activation_input] = 
             model->parameters.table_embedding[code_char * DIM_EMBEDDINGS + idx_embed_dim];
+            if (idx_token == 33){
+                printf("\nsample[10][2] and embedding in embedding: %c\t [%f, %f]\n", training_set->X[33],
+                       model->activations.input[66], model->activations.input[66]);
+            }
         }        
     }
 }
