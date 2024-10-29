@@ -133,8 +133,10 @@ void initialise_model(MLP *model)
 void embed_tokens(MLP * model, TrainingSet * training_set ){
     for (size_t idx_token = 0; idx_token < training_set->size; idx_token++){
         for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
-            model->activations.input[idx_token * DIM_EMBEDDINGS + idx_embed_dim] = 
-            model->parameters.table_embedding[encode(training_set->X[idx_token]) + idx_embed_dim];
+            size_t idx_activation_input = idx_token * DIM_EMBEDDINGS + idx_embed_dim;
+            int code_char = encode(training_set->X[idx_token]);
+            model->activations.input[idx_activation_input] = 
+            model->parameters.table_embedding[code_char + idx_embed_dim];
         }        
     }
 }
