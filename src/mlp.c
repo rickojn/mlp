@@ -137,10 +137,6 @@ void embed_tokens(MLP * model, TrainingSet * training_set ){
             int code_char = encode(training_set->X[idx_token]);
             model->activations.input[idx_activation_input] = 
             model->parameters.table_embedding[code_char * DIM_EMBEDDINGS + idx_embed_dim];
-            if (idx_token == 33){
-                printf("\nsample[10][2] and embedding in embedding: %c\t [%f, %f]\n", training_set->X[33],
-                       model->activations.input[66], model->activations.input[66]);
-            }
         }        
     }
 }
@@ -171,10 +167,8 @@ int main()
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
 
-    print_embeddings(&model);
     model_forward(&model, training_set);
 
-    print_token_embeddings(&model, training_set);
     
     return 0;
 }
