@@ -141,8 +141,51 @@ void embed_tokens(MLP * model, TrainingSet * training_set ){
     }
 }
 
+/*
+
+a b c  X  p q r
+d e f     s t u
+          v w x
+
+=  (a*p + b*s + c*v), (a*q + b*t + c*w), (a*r + b*u + c*x)
+   (d*p + e*s + f*v), (d*q + e*t + f*w), (d*r + e*u + f*x)
+
+*/
+
+void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsigned int size_cols_inputs_rows_weights,
+                      float * matrix_weights, unsigned int size_cols_weights, float * matrix_output)
+{
+    clock_t begin, end;
+    double time_spent;
+
+    // Record the beginning time
+    begin = clock();
+    #pragma omp parallel for collapse(2)
+    for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
+        for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
+            matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] = 0.0;
+            for (size_t k = 0; k < size_cols_inputs_rows_weights; k++){
+                matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] +=
+                matrix_inputs[(idx_row_input * size_cols_inputs_rows_weights) + k]
+                * matrix_weights[(idx_col_weight * size_cols_inputs_rows_weights) + k];
+            }
+        }
+    }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+    printf("\nTime spent: %.2lf seconds\n", time_spent);
+
+}
+
 void model_forward(MLP * model, TrainingSet * training_set ){ // need to change params
+    printf("\nembedding tokens ...\t");
     embed_tokens(model, training_set);
+    printf("tokens embedded ...\n");
+    printf("linear processing of embeddings ...\t");
+    mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, model->parameters.layer_hidden,
+    SIZE_HIDDEN, model->activations.hidden);
+    printf("embeddings processed linearly ...\n");
 }
 
 int main()
