@@ -178,6 +178,15 @@ void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsi
 
 }
 
+void tanh_forward(float * matrix_input, float * matrix_output, size_t size_cols, size_t size_rows){
+    for (size_t idx_row = 0; idx_row < size_rows; idx_row++){
+        for (size_t idx_col = 0; idx_col < size_cols; idx_col++){
+            size_t idx_activation = idx_row * size_cols + idx_col;
+            matrix_output[idx_activation] = tanh(matrix_input[idx_activation]);
+        }
+    }
+}
+
 void model_forward(MLP * model, TrainingSet * training_set ){ // need to change params
     printf("\nembedding tokens ...\t");
     embed_tokens(model, training_set);
@@ -186,6 +195,7 @@ void model_forward(MLP * model, TrainingSet * training_set ){ // need to change 
     mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, model->parameters.layer_hidden,
     SIZE_HIDDEN, model->activations.hidden);
     printf("embeddings processed linearly ...\n");
+    tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, SIZE_BATCH);
 }
 
 int main()
