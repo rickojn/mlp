@@ -163,7 +163,7 @@ void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsi
 
     // Record the beginning time
     begin = clock();
-    #pragma omp parallel for collapse(2)
+    // #pragma omp parallel for collapse(2)
     for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
         for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
             if (matrix_biases != NULL){
@@ -206,6 +206,9 @@ void model_forward(MLP * model, TrainingSet * training_set ){ // need to change 
     SIZE_HIDDEN, model->activations.hidden);
     printf("embeddings processed linearly ...\n");
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, SIZE_BATCH);
+    printf("apply out layer ...\n");
+    mat_mul_forward(model->activations.hidden, SIZE_BATCH, SIZE_HIDDEN, model->parameters.weights_output, 
+    model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
 }
 
 int main()
