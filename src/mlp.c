@@ -196,6 +196,35 @@ void tanh_forward(float * matrix_input, float * matrix_output, size_t size_cols,
     }
 }
 
+void softmax_forward(float * logits, float * probs, size_t size_batch){
+    //exp logits:
+    for (int i = 0; i < size_batch; i++){
+        // each logits & probs row
+
+        // find the max logit
+        float max_logit = logits[i * SIZE_VOCAB];
+
+        for (int j = 0; j < SIZE_VOCAB; j++){
+            if (logits[(i * SIZE_VOCAB) + j] > max_logit){
+                max_logit = logits[(i * SIZE_VOCAB) + j];
+            }
+        }
+
+        // exponentiate logits and accumulate softmax denominator
+        float softmax_denominator = 0.0;
+        for (int j = 0; j < SIZE_VOCAB; j++){
+            probs[(i * SIZE_VOCAB) + j] = exp(logits[(i * SIZE_VOCAB) + j] - max_logit);
+            softmax_denominator += probs[(i * SIZE_VOCAB) + j];
+        }
+        // normalise exponentiated logits:
+        for (int j = 0; j < SIZE_VOCAB; j++){
+            probs[(i * SIZE_VOCAB) + j] = probs[(i * SIZE_VOCAB) + j] / softmax_denominator;
+        }
+
+    }
+
+}
+
 void model_forward(MLP * model, TrainingSet * training_set ){ // need to change params
     printf("\nembedding tokens ...\t");
     embed_tokens(model, training_set);
