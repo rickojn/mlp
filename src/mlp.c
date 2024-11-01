@@ -238,6 +238,7 @@ void model_forward(MLP * model, TrainingSet * training_set ){ // need to change 
     printf("apply out layer ...\n");
     mat_mul_forward(model->activations.hidden, SIZE_BATCH, SIZE_HIDDEN, model->parameters.weights_output, 
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
+    softmax_forward(model->activations.output, model->activations.probs, SIZE_BATCH);
 }
 
 int main()
