@@ -166,7 +166,13 @@ void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsi
     #pragma omp parallel for collapse(2)
     for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
         for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
-            matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] = 0.0;
+            if (matrix_biases != NULL){
+                matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] = 
+                    matrix_biases[idx_row_input * size_cols_inputs_rows_weights + idx_col_weight];
+            }
+            else {
+                matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] = 0.0;
+            }
             for (size_t k = 0; k < size_cols_inputs_rows_weights; k++){
                 matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] +=
                 matrix_inputs[(idx_row_input * size_cols_inputs_rows_weights) + k]
