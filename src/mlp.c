@@ -156,7 +156,7 @@ d e f     s t u
 */
 
 void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsigned int size_cols_inputs_rows_weights,
-                      float * matrix_weights, unsigned int size_cols_weights, float * matrix_output)
+                      float * matrix_weights, float * matrix_biases, unsigned int size_cols_weights, float * matrix_output)
 {
     clock_t begin, end;
     double time_spent;
@@ -195,7 +195,8 @@ void model_forward(MLP * model, TrainingSet * training_set ){ // need to change 
     embed_tokens(model, training_set);
     printf("tokens embedded ...\n");
     printf("linear processing of embeddings ...\t");
-    mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, model->parameters.weights_hidden,
+    mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, 
+        model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
     printf("embeddings processed linearly ...\n");
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, SIZE_BATCH);
