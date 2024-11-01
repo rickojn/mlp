@@ -29,8 +29,10 @@ typedef struct
 typedef struct 
 {
     float * table_embedding;
-    float * layer_hidden;
-    float * layer_output;
+    float * weights_hidden;
+    float * biases_hidden;
+    float * weights_output;
+    float * biases_output;
 } Parameters;
 
 typedef struct

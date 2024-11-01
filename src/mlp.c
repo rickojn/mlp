@@ -81,9 +81,11 @@ TrainingSet * createTrainingSet(char **names, int name_count){
 
 
 void create_model(MLP * model, size_t size_batch){    
-    size_t size_model_params_memory = SIZE_VOCAB * DIM_EMBEDDINGS
-    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
-    + SIZE_HIDDEN * SIZE_VOCAB; 
+    size_t size_model_params_memory = SIZE_VOCAB * DIM_EMBEDDINGS // embedding table
+    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN // hidden weights
+    + SIZE_HIDDEN // hidden biases
+    + SIZE_HIDDEN * SIZE_VOCAB // output weights
+    + SIZE_VOCAB; // output biases
 
     size_t size_model_activations = size_batch * (SIZE_BLOCK * DIM_EMBEDDINGS
     + SIZE_HIDDEN
@@ -97,10 +99,11 @@ void create_model(MLP * model, size_t size_batch){
     float * model_memory = calloc(size_model_memory, sizeof(float));
 
     model->parameters.table_embedding = model_memory;
-    model->parameters.layer_hidden = model_memory + SIZE_VOCAB * DIM_EMBEDDINGS;
-    model->parameters.layer_output= model->parameters.layer_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
-    
-    model->activations.input = model->parameters.layer_output + SIZE_HIDDEN * SIZE_VOCAB;
+    model->parameters.weights_hidden = model_memory + SIZE_VOCAB * DIM_EMBEDDINGS;
+    model->parameters.biases_hidden = model->parameters.weights_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
+    model->parameters.weights_output = model->parameters.weights_hidden + SIZE_HIDDEN;    
+    model->parameters.biases_output = model->parameters.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
+    model->activations.input = model->parameters.weights_output + SIZE_VOCAB;
     model->activations.hidden = model->activations.input 
     + SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
     model->activations.output = model->activations.hidden
@@ -192,7 +195,7 @@ void model_forward(MLP * model, TrainingSet * training_set ){ // need to change 
     embed_tokens(model, training_set);
     printf("tokens embedded ...\n");
     printf("linear processing of embeddings ...\t");
-    mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, model->parameters.layer_hidden,
+    mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, model->parameters.weights_hidden,
     SIZE_HIDDEN, model->activations.hidden);
     printf("embeddings processed linearly ...\n");
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, SIZE_BATCH);
