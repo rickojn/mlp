@@ -269,7 +269,7 @@ int main()
     create_model(&model, training_set->size);
     printf("\n... model created.\n");
     
-    // initialise model
+    // initialise model 
     printf("\ninitialising model ....\n");
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
