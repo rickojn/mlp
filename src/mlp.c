@@ -241,6 +241,17 @@ void model_forward(MLP * model, TrainingSet * training_set ){ // need to change 
     softmax_forward(model->activations.output, model->activations.probs, SIZE_BATCH);
 }
 
+float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
+    float batch_loss = 0.0;
+    float label_idx;
+    for (int i = 0; i < size_batch; i++){
+        label_idx = (i * SIZE_VOCAB) + encode(labels[i]);
+        float predicted_prob_correct_label = probs[(i * SIZE_VOCAB) + encode(labels[i])];
+         batch_loss += log(probs[(i * SIZE_VOCAB) + encode(labels[i])]) * -1;
+    }
+    return batch_loss/size_batch;
+}
+
 int main()
 {
     // read in names file
@@ -264,7 +275,6 @@ int main()
     printf("\nmodel initialised ....\n");
 
     model_forward(&model, training_set);
-
-    
+    printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, SIZE_BATCH));
     return 0;
 }
