@@ -252,6 +252,10 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     return batch_loss/size_batch;
 }
 
+void model_backwards(MLP * model, TrainingSet * training_set){
+    printf("\n model backwards\n");
+}
+
 int main()
 {
     // read in names file
@@ -276,5 +280,6 @@ int main()
 
     model_forward(&model, training_set);
     printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, SIZE_BATCH));
+    model_backwards(&model, training_set);
     return 0;
 }
