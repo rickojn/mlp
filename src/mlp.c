@@ -80,7 +80,7 @@ TrainingSet * createTrainingSet(char **names, int name_count){
 }
 
 
-void create_model(MLP * model, size_t size_batch){    
+void create_model(Model * model, size_t size_batch){    
     size_t size_model_params_memory = SIZE_VOCAB * DIM_EMBEDDINGS // embedding table
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN // hidden weights
     + SIZE_HIDDEN // hidden biases
@@ -118,7 +118,7 @@ void create_model(MLP * model, size_t size_batch){
     model->size_batch = size_batch;
 }
 
-void initialise_model(MLP *model)
+void initialise_model(Model *model)
 {
     size_t size_params = SIZE_VOCAB * DIM_EMBEDDINGS
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
@@ -133,7 +133,7 @@ void initialise_model(MLP *model)
 }
 
 
-void embed_tokens(MLP * model, TrainingSet * training_set ){
+void embed_tokens(Model * model, TrainingSet * training_set ){
     for (size_t idx_token = 0; idx_token < training_set->size * SIZE_BLOCK; idx_token++){
         for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
             size_t idx_activation_input = idx_token * DIM_EMBEDDINGS + idx_embed_dim;
@@ -225,7 +225,7 @@ void softmax_forward(float * logits, float * probs, size_t size_batch){
 
 }
 
-void model_forward(MLP * model, TrainingSet * training_set ){ // need to change params
+void model_forward(Model * model, TrainingSet * training_set ){ // need to change params
     printf("\nembedding tokens ...\t");
     embed_tokens(model, training_set);
     printf("tokens embedded ...\n");
@@ -252,7 +252,7 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     return batch_loss/size_batch;
 }
 
-void model_backwards(MLP * model, TrainingSet * training_set){
+void model_backwards(Model * model, TrainingSet * training_set){
     printf("\n model backwards\n");
 }
 
@@ -269,7 +269,7 @@ int main()
 
     // create model
     printf("\ncreating model ...\n");
-    MLP model;
+    Model model;
     create_model(&model, training_set->size);
     printf("\n... model created.\n");
     

@@ -59,7 +59,7 @@ typedef struct
     Parameters parameters;
     Activations activations;
     Gradients gradients;
-} MLP;
+} Model;
 
 
 #endif // STRUCTS_H

@@ -98,7 +98,7 @@ int encode(char c)
 }
 
 
-void print_embeddings(MLP * model){
+void print_embeddings(Model * model){
     printf("\n.\t");
     printf("%f\t", model->parameters.table_embedding[0]);
     printf("%f\n", model->parameters.table_embedding[1]);
@@ -111,7 +111,7 @@ void print_embeddings(MLP * model){
     }
 }
 
-void print_token_embeddings(MLP * model, TrainingSet * training_set){
+void print_token_embeddings(Model * model, TrainingSet * training_set){
     printf("\nsample[1][0] and embedding: %c\t [%f, %f]\n", training_set->X[3],
     model->activations.input[6], model->activations.input[7]);
     printf("\nsample[1][1] and embedding: %c\t [%f, %f]\n", training_set->X[4],
