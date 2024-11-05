@@ -18,6 +18,7 @@
 
 
 
+
 char decode(int code){
     if (code == 0){
         return '.';
@@ -252,7 +253,44 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     return batch_loss/size_batch;
 }
 
+void loss_softmax_backward(char * labels, float * probs, float * grads_logit, int batch_size){
+    for (int idx_batch = 0; idx_batch < batch_size; idx_batch++){
+        for (int idx_vocab = 0; idx_vocab < SIZE_VOCAB; idx_vocab++){
+            float label = 0.0;
+            if (idx_vocab == encode(labels[idx_batch])){
+                label = 1;
+            }
+            printf("idx_batch = %d\n", idx_batch);
+            printf("grads_logit address = %x\n", grads_logit);
+            size_t idx_grad = idx_batch * SIZE_VOCAB + idx_vocab;
+            grads_logit[idx_grad] = probs[idx_grad] - label;
+            int idx_logit = (idx_batch * SIZE_VOCAB) + idx_vocab;
+            float prob = probs[idx_logit];
+            float logit_grad = grads_logit[idx_logit];
+            int r = 0;
+        }
+    }
+}
+
+
+void mat_mul_backward(float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_weights,
+                      float * matrix_weights, size_t size_cols_weights, float * matrix_activations,
+                      float * grads_weights){
+                        for (size_t idx_batch_row = 0; idx_batch_row < size_rows_inputs; idx_batch_row++){
+                            for (size_t idx_logit = 0; idx_logit < size_cols_inputs_rows_weights; idx_logit++){
+                                for (size_t idx_weight = 0; idx_weight < size_cols_inputs_rows_weights; idx_weight++){
+                                    size_t offset_grad_weight = idx_batch_row * size_cols_inputs_rows_weights * size_cols_weights
+                                    + idx_logit * size_cols_inputs_rows_weights + idx_weight;
+                                    size_t offset_input = idx_batch_row * size_cols_inputs_rows_weights +
+                                    idx_weight;
+                                    grads_weights[offset_grad_weight] = matrix_inputs[offset_input];
+                                }
+                            }
+                        }
+}
+
 void model_backwards(Model * model, TrainingSet * training_set){
+    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.output, model->size_batch);
     printf("\n model backwards\n");
 }
 
