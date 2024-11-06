@@ -247,7 +247,6 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float label_idx;
     for (int i = 0; i < size_batch; i++){
         label_idx = (i * SIZE_VOCAB) + encode(labels[i]);
-        float predicted_prob_correct_label = probs[(i * SIZE_VOCAB) + encode(labels[i])];
          batch_loss += log(probs[(i * SIZE_VOCAB) + encode(labels[i])]) * -1;
     }
     return batch_loss/size_batch;
