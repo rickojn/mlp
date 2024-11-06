@@ -92,7 +92,7 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_HIDDEN
     + SIZE_VOCAB * 2);
 
-    size_t size_model_gradients = SIZE_BATCH * (SIZE_VOCAB * DIM_EMBEDDINGS
+    size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
     + SIZE_HIDDEN * SIZE_VOCAB);
 
@@ -260,14 +260,11 @@ void loss_softmax_backward(char * labels, float * probs, float * grads_logit, in
             if (idx_vocab == encode(labels[idx_batch])){
                 label = 1;
             }
-            printf("idx_batch = %d\n", idx_batch);
-            printf("grads_logit address = %x\n", grads_logit);
             size_t idx_grad = idx_batch * SIZE_VOCAB + idx_vocab;
             grads_logit[idx_grad] = probs[idx_grad] - label;
             int idx_logit = (idx_batch * SIZE_VOCAB) + idx_vocab;
             float prob = probs[idx_logit];
             float logit_grad = grads_logit[idx_logit];
-            int r = 0;
         }
     }
 }
