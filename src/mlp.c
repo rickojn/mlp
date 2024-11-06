@@ -244,9 +244,7 @@ void model_forward(Model * model, TrainingSet * training_set ){ // need to chang
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float batch_loss = 0.0;
-    float label_idx;
     for (int i = 0; i < size_batch; i++){
-        label_idx = (i * SIZE_VOCAB) + encode(labels[i]);
          batch_loss += log(probs[(i * SIZE_VOCAB) + encode(labels[i])]) * -1;
     }
     return batch_loss/size_batch;
@@ -261,9 +259,6 @@ void loss_softmax_backward(char * labels, float * probs, float * grads_logit, in
             }
             size_t idx_grad = idx_batch * SIZE_VOCAB + idx_vocab;
             grads_logit[idx_grad] = probs[idx_grad] - label;
-            int idx_logit = (idx_batch * SIZE_VOCAB) + idx_vocab;
-            float prob = probs[idx_logit];
-            float logit_grad = grads_logit[idx_logit];
         }
     }
 }
