@@ -310,5 +310,13 @@ int main()
     model_forward(&model, training_set);
     printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, SIZE_BATCH));
     model_backwards(&model, training_set);
+
+    for (size_t i = 0; i < count; i++){
+        free(names[i]);
+    }
+    free(names);
+    free(training_set->X);
+    free(training_set->Y);
+    free(training_set);
     return 0;
 }
