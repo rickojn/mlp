@@ -53,14 +53,14 @@ TrainingSet * createTrainingSet(char **names, int name_count){
     char *name = NULL;
     int ts_idx = 0;
 
-    for (int n_idx = 0; n_idx < name_count; n_idx++){
-        name = names[n_idx];
+    for (int idx_name = 0; idx_name < name_count; idx_name++){
+        name = names[idx_name];
         int name_len = strlen(name);
         strcpy((training_set->X) + (ts_idx * SIZE_BLOCK), x_padding);
-        for (int c_idx = 0; c_idx < name_len +1; c_idx++){
-            char c = name[c_idx];
-            if (c != '\0'){
-                training_set->Y[ts_idx] = name[c_idx];
+        for (int idx_char = 0; idx_char < name_len +1; idx_char++){
+            char character = name[idx_char];
+            if (character != '\0'){
+                training_set->Y[ts_idx] = name[idx_char];
             }
             else {
                 training_set->Y[ts_idx] = '.';
@@ -73,7 +73,7 @@ TrainingSet * createTrainingSet(char **names, int name_count){
                 training_set->X[ts_idx * SIZE_BLOCK + x_idx] =
                     training_set->X[(ts_idx - 1) * SIZE_BLOCK + x_idx + 1];
                 }
-            training_set->X[(ts_idx * SIZE_BLOCK) + SIZE_BLOCK - 1 ] = c;
+            training_set->X[(ts_idx * SIZE_BLOCK) + SIZE_BLOCK - 1 ] = character;
         }
     }
 
