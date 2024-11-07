@@ -318,5 +318,6 @@ int main()
     free(training_set->X);
     free(training_set->Y);
     free(training_set);
+    free(model.parameters.table_embedding);
     return 0;
 }
