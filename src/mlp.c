@@ -51,29 +51,33 @@ TrainingSet * createTrainingSet(char **names, int name_count){
         x_padding[i] = '.';
     } 
     char *name = NULL;
-    int ts_idx = 0;
+    int idx_training_sample = 0;
 
     for (int idx_name = 0; idx_name < name_count; idx_name++){
         name = names[idx_name];
         int name_len = strlen(name);
-        strcpy((training_set->X) + (ts_idx * SIZE_BLOCK), x_padding);
-        for (int idx_char = 0; idx_char < name_len +1; idx_char++){
-            char character = name[idx_char];
+        strcpy((training_set->X) + (idx_training_sample * SIZE_BLOCK), x_padding);
+        for (int idx_char_in_name = 0; idx_char_in_name < name_len +1; idx_char_in_name++){
+            char character = name[idx_char_in_name];
             if (character != '\0'){
-                training_set->Y[ts_idx] = name[idx_char];
+                training_set->Y[idx_training_sample] = character;
             }
             else {
-                training_set->Y[ts_idx] = '.';
+                training_set->Y[idx_training_sample] = '.';
             }
             // [...]
             // [.....e]
             // [.....e.em]
-            ts_idx++;
-            for (int x_idx = 0; x_idx < SIZE_BLOCK - 1; x_idx++){
-                training_set->X[ts_idx * SIZE_BLOCK + x_idx] =
-                    training_set->X[(ts_idx - 1) * SIZE_BLOCK + x_idx + 1];
+            if (idx_training_sample != 0)
+            {
+                for (int x_idx = 0; x_idx < SIZE_BLOCK - 1; x_idx++)
+                {
+                    training_set->X[idx_training_sample * SIZE_BLOCK + x_idx] =
+                        training_set->X[(idx_training_sample - 1) * SIZE_BLOCK + x_idx + 1];
                 }
-            training_set->X[(ts_idx * SIZE_BLOCK) + SIZE_BLOCK - 1 ] = character;
+                training_set->X[(idx_training_sample * SIZE_BLOCK) + SIZE_BLOCK - 1] = name[idx_char_in_name - 1];
+            }
+            idx_training_sample++;
         }
     }
 
