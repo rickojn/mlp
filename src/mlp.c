@@ -312,7 +312,7 @@ int main()
     printf("\nmodel initialised ....\n");
 
     model_forward(&model, training_set);
-    printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, SIZE_BATCH));
+    printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     model_backwards(&model, training_set);
 
     for (size_t i = 0; i < count; i++){
