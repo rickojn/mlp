@@ -298,7 +298,7 @@ int main()
     printf("\n%d names loaded\n", count);
     // create training set from names array
     TrainingSet * training_set = createTrainingSet(names, count);
-    print_training_set(training_set, 32);
+    print_training_set(training_set, training_set->size);
 
     // create model
     printf("\ncreating model ...\n");
