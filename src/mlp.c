@@ -235,20 +235,21 @@ void model_forward(Model * model, TrainingSet * training_set ){ // need to chang
     embed_tokens(model, training_set);
     printf("tokens embedded ...\n");
     printf("linear processing of embeddings ...\t");
-    mat_mul_forward(model->activations.input, SIZE_BATCH, DIM_EMBEDDINGS * SIZE_BLOCK, 
+    mat_mul_forward(model->activations.input, model->size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
         model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
     printf("embeddings processed linearly ...\n");
-    tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, SIZE_BATCH);
+    tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, model->size_batch);
     printf("apply out layer ...\n");
-    mat_mul_forward(model->activations.hidden, SIZE_BATCH, SIZE_HIDDEN, model->parameters.weights_output, 
+    mat_mul_forward(model->activations.hidden, model->size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
-    softmax_forward(model->activations.output, model->activations.probs, SIZE_BATCH);
+    softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float batch_loss = 0.0;
-    for (int i = 0; i < size_batch; i++){
+    // for (int i = 0; i < size_batch; i++){
+    for (int i = 0; i < 32; i++){
          batch_loss += log(probs[(i * SIZE_VOCAB) + encode(labels[i])]) * -1;
     }
     return batch_loss/size_batch;
@@ -298,7 +299,6 @@ int main()
     printf("\n%d names loaded\n", count);
     // create training set from names array
     TrainingSet * training_set = createTrainingSet(names, count);
-    print_training_set(training_set, training_set->size);
 
     // create model
     printf("\ncreating model ...\n");
