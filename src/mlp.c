@@ -68,7 +68,7 @@ TrainingSet * createTrainingSet(char **names, int name_count){
             // [...]
             // [.....e]
             // [.....e.em]
-            if (idx_training_sample != 0)
+            if (idx_char_in_name != 0)
             {
                 for (int x_idx = 0; x_idx < SIZE_BLOCK - 1; x_idx++)
                 {
