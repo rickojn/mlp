@@ -247,10 +247,7 @@ void model_forward(Model * model, TrainingSet * training_set ){ // need to chang
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
-    printf("\nreal batch size = %zu\n", size_batch);
     float batch_loss = 0.0;
-    // size_batch = 220000;
-    printf("\nused batch size = %zu\n", size_batch);
     for (int i = 0; i < size_batch; i++){
          batch_loss += log(probs[(i * SIZE_VOCAB) + encode(labels[i])]) * -1;
     }
