@@ -268,6 +268,15 @@ void loss_softmax_backward(char * labels, float * probs, float * grads_logit, in
 }
 
 
+void tanh_backward(float * inputs, float * outputs, size_t size_cols, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        for (size_t idx_input = 0; idx_input < size_cols; idx_input++){
+            size_t offset_grad = idx_batch * size_cols + idx_input;
+            outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]),2);
+        }
+    }
+}
+
 void mat_mul_backward(float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_weights,
                       float * matrix_weights, size_t size_cols_weights, float * matrix_activations,
                       float * grads_weights){
@@ -285,8 +294,9 @@ void mat_mul_backward(float * matrix_inputs, size_t size_rows_inputs, size_t siz
 }
 
 void model_backwards(Model * model, TrainingSet * training_set){
-    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.output, model->size_batch);
     printf("\n model backwards\n");
+    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.output, model->size_batch);
+    tanh_backward(model->activations.hidden, model->gradients.hidden, SIZE_HIDDEN, training_set->size);
 }
 
 int main()
