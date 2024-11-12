@@ -296,7 +296,8 @@ void mat_mul_backward(float * matrix_inputs, size_t size_rows_inputs, size_t siz
 void model_backwards(Model * model, TrainingSet * training_set){
     printf("\n model backwards\n");
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.output, model->size_batch);
-    tanh_backward(model->activations.hidden, model->gradients.hidden, SIZE_HIDDEN, training_set->size);
+    mat_mul_backward(model->activations.hidden, model->size_batch, SIZE_HIDDEN, model->parameters.weights_output, SIZE_VOCAB,
+        model->activations.output, model->gradients.output);
 }
 
 int main()
@@ -329,6 +330,7 @@ int main()
     }
     free(names);
     free(training_set->X);
+    printf("\nfreed training set->X\n");
     free(training_set->Y);
     free(training_set);
     free(model.parameters.table_embedding);
