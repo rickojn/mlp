@@ -329,8 +329,9 @@ int main()
         free(names[i]);
     }
     free(names);
+    printf("\nfreed names\n");
     free(training_set->X);
-    printf("\nfreed training set->X\n");
+    printf("\nfreed trainingset->X\n");
     free(training_set->Y);
     free(training_set);
     free(model.parameters.table_embedding);
