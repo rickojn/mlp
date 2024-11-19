@@ -44,13 +44,18 @@ typedef struct
 
 } Activations;
 
-
+/*
+Embedding table 27 x 2.  
+*/
 typedef struct 
 {
-  float * weights_embeddings;
-  float * weights_hidden;
-  //float * inputs_output;
+  float * pre_activations_output;
   float * weights_output;  
+  float * activations_hidden;
+  float * pre_activations_hidden;
+  float * weights_hidden;
+  float * activations_embeddings;
+  float * weights_embeddings;
 } Gradients;
 
 

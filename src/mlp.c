@@ -96,9 +96,9 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_HIDDEN
     + SIZE_VOCAB * 2);
 
-    size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS
-    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
-    + SIZE_HIDDEN * SIZE_VOCAB);
+    size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings
+    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden
+    + SIZE_HIDDEN * SIZE_VOCAB + SIZE_HIDDEN); // output
 
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
     float * model_memory = calloc(size_model_memory, sizeof(float));
