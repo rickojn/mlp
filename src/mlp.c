@@ -116,9 +116,9 @@ void create_model(Model * model, size_t size_batch){
     model->activations.probs = model->activations.output
     + size_batch * SIZE_VOCAB;
 
-    model->gradients.embeddings = model->activations.probs + size_batch * SIZE_VOCAB;
-    model->gradients.hidden = model->gradients.embeddings + size_batch * SIZE_VOCAB * DIM_EMBEDDINGS;
-    model->gradients.output = model->gradients.hidden + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
+    model->gradients.weights_embeddings = model->activations.probs + size_batch * SIZE_VOCAB;
+    model->gradients.weights_hidden = model->gradients.weights_embeddings + size_batch * SIZE_VOCAB * DIM_EMBEDDINGS;
+    model->gradients.weights_output = model->gradients.weights_hidden + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
 
     model->size_batch = size_batch;
 }
@@ -277,27 +277,13 @@ void tanh_backward(float * inputs, float * outputs, size_t size_cols, size_t siz
     }
 }
 
-void mat_mul_backward(float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_weights,
-                      float * matrix_weights, size_t size_cols_weights, float * matrix_activations,
-                      float * grads_weights){
-                        for (size_t idx_batch_row = 0; idx_batch_row < size_rows_inputs; idx_batch_row++){
-                            for (size_t idx_logit = 0; idx_logit < size_cols_inputs_rows_weights; idx_logit++){
-                                for (size_t idx_weight = 0; idx_weight < size_cols_inputs_rows_weights; idx_weight++){
-                                    size_t offset_grad_weight = idx_batch_row * size_cols_inputs_rows_weights * size_cols_weights
-                                    + idx_logit * size_cols_inputs_rows_weights + idx_weight;
-                                    size_t offset_input = idx_batch_row * size_cols_inputs_rows_weights +
-                                    idx_weight;
-                                    grads_weights[offset_grad_weight] = matrix_inputs[offset_input];
-                                }
-                            }
-                        }
-}
+
+
+
 
 void model_backwards(Model * model, TrainingSet * training_set){
     printf("\n model backwards\n");
-    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.output, model->size_batch);
-    mat_mul_backward(model->activations.hidden, model->size_batch, SIZE_HIDDEN, model->parameters.weights_output, SIZE_VOCAB,
-        model->activations.output, model->gradients.output);
+    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.weights_output, model->size_batch);
 }
 
 int main()

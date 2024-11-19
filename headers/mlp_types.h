@@ -47,9 +47,10 @@ typedef struct
 
 typedef struct 
 {
-  float * embeddings;
-  float * hidden;
-  float * output;  
+  float * weights_embeddings;
+  float * weights_hidden;
+  //float * inputs_output;
+  float * weights_output;  
 } Gradients;
 
 
