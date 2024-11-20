@@ -96,9 +96,12 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_HIDDEN
     + SIZE_VOCAB * 2);
 
-    size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings
-    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden
-    + SIZE_HIDDEN * SIZE_VOCAB + SIZE_HIDDEN); // output
+    size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
+    + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
+    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden weights
+    + SIZE_HIDDEN * 2 // hidden pre-activations and activations
+    + SIZE_HIDDEN * SIZE_VOCAB + SIZE_HIDDEN // output weights
+    + SIZE_VOCAB); // output pre-activations
 
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
     float * model_memory = calloc(size_model_memory, sizeof(float));
@@ -116,9 +119,15 @@ void create_model(Model * model, size_t size_batch){
     model->activations.probs = model->activations.output
     + size_batch * SIZE_VOCAB;
 
-    model->gradients.weights_embeddings = model->activations.probs + size_batch * SIZE_VOCAB;
-    model->gradients.weights_hidden = model->gradients.weights_embeddings + size_batch * SIZE_VOCAB * DIM_EMBEDDINGS;
-    model->gradients.weights_output = model->gradients.weights_hidden + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
+    model->gradients.pre_activations_output = model->activations.probs + size_batch * SIZE_VOCAB;
+    model->gradients.weights_output = model->gradients.pre_activations_output + size_batch * SIZE_VOCAB;
+    model->gradients.activations_hidden = model->gradients.weights_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.pre_activations_hidden = model->gradients.activations_hidden + size_batch * SIZE_HIDDEN;
+    model->gradients.weights_hidden = model->gradients.pre_activations_hidden + size_batch * SIZE_HIDDEN;
+    model->gradients.activations_embeddings = model->gradients.weights_hidden + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.weights_embeddings = model->gradients.activations_embeddings + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS;
+
+
 
     model->size_batch = size_batch;
 }
