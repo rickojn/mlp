@@ -290,9 +290,11 @@ void matmul_backward(const float * grads_z, float * grads_w, const float * input
                      size_t size_batch, size_t size_pre_act_grads, size_t size_inputs ){ 
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_col_weight = 0; idx_col_weight < size_pre_act_grads; idx_col_weight++){
-            float grad_z = grads_z[idx_col_weight];
+            float grad_z = grads_z[idx_batch * size_pre_act_grads + idx_col_weight];
             for (size_t idx_row_weight = 0; idx_row_weight < size_inputs; idx_row_weight++){
-                grads_w[idx_batch * size_batch + idx_col_weight * size_inputs + idx_row_weight] = grad_z;
+            float input = inputs[idx_batch * size_inputs + idx_row_weight];
+                grads_w[idx_batch * size_pre_act_grads + idx_col_weight * size_inputs + idx_row_weight] =
+                grad_z * input;
             }
         }
     }
@@ -304,7 +306,9 @@ void matmul_backward(const float * grads_z, float * grads_w, const float * input
 
 void model_backwards(Model * model, TrainingSet * training_set){
     printf("\n model backwards\n");
-    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.weights_output, model->size_batch);
+    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
+    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->activations.hidden,
+    training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
 }
 
 int main()
