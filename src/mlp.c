@@ -172,11 +172,6 @@ d e f     s t u
 void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsigned int size_cols_inputs_rows_weights,
                       float * matrix_weights, float * matrix_biases, unsigned int size_cols_weights, float * matrix_output)
 {
-    clock_t begin, end;
-    double time_spent;
-
-    // Record the beginning time
-    begin = clock();
     // #pragma omp parallel for collapse(2)
     for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
         for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
@@ -194,11 +189,6 @@ void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsi
             }
         }
     }
-    end = clock();
-    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-
-    printf("\nTime spent: %.2lf seconds\n", time_spent);
-
 }
 
 void tanh_forward(float * matrix_input, float * matrix_output, size_t size_cols, size_t size_rows){
@@ -240,19 +230,19 @@ void softmax_forward(float * logits, float * probs, size_t size_batch){
 }
 
 void model_forward(Model * model, TrainingSet * training_set ){ // need to change params
-    printf("\nembedding tokens ...\t");
+    printf("\nforward pass ...\t");
+    clock_t begin = clock();
     embed_tokens(model, training_set);
-    printf("tokens embedded ...\n");
-    printf("linear processing of embeddings ...\t");
     mat_mul_forward(model->activations.input, model->size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
         model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
-    printf("embeddings processed linearly ...\n");
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, model->size_batch);
-    printf("apply out layer ...\n");
     mat_mul_forward(model->activations.hidden, model->size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
     softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
+    clock_t end = clock();
+    double time_spent = (end - begin)/CLOCKS_PER_SEC;
+    printf("\t ... took %2lf seconds", time_spent);
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
@@ -305,10 +295,16 @@ void matmul_backward(const float * grads_z, float * grads_w, const float * input
 
 
 void model_backwards(Model * model, TrainingSet * training_set){
-    printf("\n model backwards\n");
+    printf("\n backwards pass ...");
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
     matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->activations.hidden,
     training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\t ... took %2lf seconds.\n", time_spent);
 }
 
 int main()
@@ -340,9 +336,7 @@ int main()
         free(names[i]);
     }
     free(names);
-    printf("\nfreed names\n");
     free(training_set->X);
-    printf("\nfreed trainingset->X\n");
     free(training_set->Y);
     free(training_set);
     free(model.parameters.table_embedding);
