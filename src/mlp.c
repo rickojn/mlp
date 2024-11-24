@@ -284,10 +284,9 @@ void matmul_backward(const float * grads_z, float * grads_w, const float * input
             for (size_t idx_row_weight = 0; idx_row_weight < size_inputs; idx_row_weight++){
                 float input = inputs[idx_batch * size_inputs + idx_row_weight];
                 float weight = weights[idx_col_weight * size_pre_act_grads + idx_col_weight];
-                grads_w[idx_batch * size_pre_act_grads + idx_col_weight * size_inputs + idx_row_weight] =
-                grad_z * input;
-                grads_input[idx_batch * size_pre_act_grads + idx_col_weight * size_inputs + idx_row_weight] =
-                grad_z * weight;
+                size_t offset_grad_w = idx_batch * size_pre_act_grads + idx_col_weight * size_inputs + idx_row_weight;
+                grads_w[offset_grad_w] = grad_z * input;
+                grads_input[offset_grad_w] = grad_z * weight;
             }
         }
     }
