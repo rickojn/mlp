@@ -99,8 +99,10 @@ void create_model(Model * model, size_t size_batch){
     size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
     + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden weights
+    + SIZE_HIDDEN // hidden biases
     + SIZE_HIDDEN * 2 // hidden pre-activations and activations
     + SIZE_HIDDEN * SIZE_VOCAB + SIZE_HIDDEN // output weights
+    + SIZE_VOCAB //output biases
     + SIZE_VOCAB); // output pre-activations
 
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
@@ -121,10 +123,13 @@ void create_model(Model * model, size_t size_batch){
 
     model->gradients.pre_activations_output = model->activations.probs + size_batch * SIZE_VOCAB;
     model->gradients.weights_output = model->gradients.pre_activations_output + size_batch * SIZE_VOCAB;
-    model->gradients.activations_hidden = model->gradients.weights_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    // bias pointer
+    model->gradients.biases_output = model->gradients.weights_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.activations_hidden = model->gradients.biases_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
     model->gradients.pre_activations_hidden = model->gradients.activations_hidden + size_batch * SIZE_HIDDEN;
     model->gradients.weights_hidden = model->gradients.pre_activations_hidden + size_batch * SIZE_HIDDEN;
-    model->gradients.activations_embeddings = model->gradients.weights_hidden + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.biases_hidden = model->gradients.weights_hidden + size_batch * SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS;
+    model->gradients.activations_embeddings = model->gradients.biases_hidden + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
     model->gradients.weights_embeddings = model->gradients.activations_embeddings + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS;
 
 
@@ -276,11 +281,15 @@ void tanh_backward(float * inputs, float * outputs, size_t size_cols, size_t siz
     }
 }
 
-void matmul_backward(const float * grads_z, float * grads_w, const float * inputs, const float * weights, 
-                     float * grads_input, size_t size_batch, size_t size_pre_act_grads, size_t size_inputs ){ 
+void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, const float * inputs, const float * weights, 
+                     float * grads_input, size_t size_batch, size_t size_pre_act_grads, size_t size_inputs){ 
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_col_weight = 0; idx_col_weight < size_pre_act_grads; idx_col_weight++){
-            float grad_z = grads_z[idx_batch * size_pre_act_grads + idx_col_weight];
+            size_t offset_grad_z = idx_batch * size_pre_act_grads + idx_col_weight;
+            float grad_z = grads_z[offset_grad_z];
+            if (grads_b){
+                grads_b[offset_grad_z] = grad_z;
+            }
             for (size_t idx_row_weight = 0; idx_row_weight < size_inputs; idx_row_weight++){
                 float input = inputs[idx_batch * size_inputs + idx_row_weight];
                 float weight = weights[idx_col_weight * size_pre_act_grads + idx_col_weight];
@@ -290,8 +299,6 @@ void matmul_backward(const float * grads_z, float * grads_w, const float * input
             }
         }
     }
-
-    
 }
 
 
@@ -304,9 +311,14 @@ void model_backwards(Model * model, TrainingSet * training_set){
     double time_spent;
     begin = clock();
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
-    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->activations.hidden,
-    model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
+    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_hidden,
+     model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
+    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_VOCAB, training_set->size);
+    matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
+    model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,
+    SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
     end = clock();
+
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("\t ... took %2lf seconds.\n", time_spent);
 }

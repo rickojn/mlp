@@ -44,16 +44,15 @@ typedef struct
 
 } Activations;
 
-/*
-Embedding table 27 x 2.  
-*/
 typedef struct 
 {
   float * pre_activations_output;
   float * weights_output;  
+  float * biases_output;
   float * activations_hidden;
   float * pre_activations_hidden;
   float * weights_hidden;
+  float * biases_hidden; // need to update create model
   float * activations_embeddings;
   float * weights_embeddings;
 } Gradients;
