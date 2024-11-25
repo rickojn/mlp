@@ -125,11 +125,11 @@ void create_model(Model * model, size_t size_batch){
     model->gradients.weights_output = model->gradients.pre_activations_output + size_batch * SIZE_VOCAB;
     // bias pointer
     model->gradients.biases_output = model->gradients.weights_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
-    model->gradients.activations_hidden = model->gradients.biases_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.activations_hidden = model->gradients.biases_output + size_batch * SIZE_VOCAB;
     model->gradients.pre_activations_hidden = model->gradients.activations_hidden + size_batch * SIZE_HIDDEN;
     model->gradients.weights_hidden = model->gradients.pre_activations_hidden + size_batch * SIZE_HIDDEN;
     model->gradients.biases_hidden = model->gradients.weights_hidden + size_batch * SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS;
-    model->gradients.activations_embeddings = model->gradients.biases_hidden + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.activations_embeddings = model->gradients.biases_hidden + size_batch * SIZE_HIDDEN;
     model->gradients.weights_embeddings = model->gradients.activations_embeddings + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS;
 
 
