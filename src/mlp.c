@@ -302,7 +302,12 @@ void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, co
 }
 
 
-
+void embedding_backwards(float * embedding_activations, float * grads_w, char * inputs, size_t size_activations, 
+size_t  size_grads_w, size_t size_inputs){
+    for (size_t idx_input =0; idx_input < size_inputs; idx_input++ ){
+        
+    }
+}
 
 
 void model_backwards(Model * model, TrainingSet * training_set){
