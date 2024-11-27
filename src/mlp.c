@@ -330,6 +330,8 @@ void model_backwards(Model * model, TrainingSet * training_set){
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
     model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,
     SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
+    embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
+    DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK, training_set->size);
     end = clock();
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
