@@ -152,11 +152,11 @@ void initialise_model(Model *model)
 }
 
 
-void embed_tokens(Model * model, TrainingSet * training_set ){
-    for (size_t idx_token = 0; idx_token < training_set->size * SIZE_BLOCK; idx_token++){
+void embed_tokens(Model * model, char * tokens, size_t size_batch){
+    for (size_t idx_token = 0; idx_token < size_batch * SIZE_BLOCK; idx_token++){
         for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
             size_t idx_activation_input = idx_token * DIM_EMBEDDINGS + idx_embed_dim;
-            int code_char = encode(training_set->X[idx_token]);
+            int code_char = encode(tokens[idx_token]);
             model->activations.input[idx_activation_input] = 
             model->parameters.table_embedding[code_char * DIM_EMBEDDINGS + idx_embed_dim];
         }        
@@ -234,10 +234,10 @@ void softmax_forward(float * logits, float * probs, size_t size_batch){
 
 }
 
-void model_forward(Model * model, TrainingSet * training_set ){ // need to change params
+void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     printf("\nforward pass ...\t");
     clock_t begin = clock();
-    embed_tokens(model, training_set);
+    embed_tokens(model, tokens, size_batch);
     mat_mul_forward(model->activations.input, model->size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
         model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
@@ -338,6 +338,42 @@ void model_backwards(Model * model, TrainingSet * training_set){
     printf("\t ... took %2lf seconds.\n", time_spent);
 }
 
+
+int sample_from_multinomial(float* probabilities, int size) {
+    float r = ((float) rand() / (RAND_MAX));
+    float cumulative_probability = 0.0;
+
+    for (int i = 0; i < size; i++) {
+        cumulative_probability += probabilities[i];
+        if (r < cumulative_probability) {
+            return i;
+        }
+    }
+    return size - 1; // Return the last index if none is selected (to handle rounding errors)
+}
+
+void generate(Model *model, int number_of_names){
+    printf("\n\nGenerating names....\n\n");
+    for (int i = 0; i < number_of_names; i++){
+        char input_tokens[SIZE_BLOCK];
+        for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
+            input_tokens[idx_token] = '.';
+        }
+        model_forward(model, input_tokens, 1);
+        char predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));
+        while (predicted_char != '.'){
+            printf("%c", predicted_char);
+            for (size_t idx_token = 0; idx_token < SIZE_BLOCK - 1; idx_token++){
+                input_tokens[idx_token] = input_tokens[idx_token + 1];
+            }
+            input_tokens[SIZE_BLOCK - 1] = predicted_char;
+            model_forward(model, input_tokens, 1);
+            predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));            
+        }
+         printf("\n");
+    }
+}
+
 int main()
 {
     // read in names file
@@ -359,7 +395,11 @@ int main()
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
 
-    model_forward(&model, training_set);
+    // generate
+
+    generate(&model, 5);
+
+    model_forward(&model, training_set->X, training_set->size);
     printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     model_backwards(&model, training_set);
 
