@@ -131,3 +131,36 @@ void print_token_embeddings(Model * model, TrainingSet * training_set){
     }
     printf("\n");
 }
+
+void print_model(Model * model){
+    printf("\nembedding table:\n");
+    for (int idx_token = 0; idx_token < SIZE_VOCAB -1; idx_token++){
+        printf("token %c:\t", idx_token + 'a');
+        printf("embedding: %f \t %f \n", model->parameters.table_embedding[idx_token * 2], model->parameters.table_embedding[idx_token * 2 + 1]);
+    }
+
+    printf("\nhidden layer: \n");
+    for (size_t idx_neuron = 0; idx_neuron < SIZE_HIDDEN; idx_neuron++){
+        printf("neuron %zu, biase %f", idx_neuron, model->parameters.biases_hidden[idx_neuron]);
+        printf("\n");
+        for (size_t idx_neural_weight = 0; idx_neural_weight < SIZE_BLOCK * DIM_EMBEDDINGS; idx_neural_weight++){
+            size_t offset_weight = idx_neuron * DIM_EMBEDDINGS * SIZE_BLOCK + idx_neural_weight;
+            printf("\tWeight %zu: %f  ", idx_neural_weight, model->parameters.weights_hidden[offset_weight]);
+        }
+        printf("\n");
+    }
+
+    printf("\noutput layer: \n");
+    for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
+        printf("neuron %zu, biase %f", idx_neuron, model->parameters.biases_output[idx_neuron]);
+        printf("\n");
+        for (size_t idx_neural_weight = 0; idx_neural_weight < SIZE_HIDDEN; idx_neural_weight++){
+            size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_neural_weight;
+            printf("\tWeight %zu: %f  ", idx_neural_weight, model->parameters.weights_hidden[offset_weight]);
+        }
+        printf("\n");
+    }
+
+
+
+}

@@ -149,6 +149,9 @@ void initialise_model(Model *model)
     {
         *(model->parameters.table_embedding + i) = generate_normal_random_number();
     }
+    //debug
+    model->parameters.table_embedding[8] = 1.0;
+    model->parameters.table_embedding[9] = 1.0;
 }
 
 
@@ -235,19 +238,21 @@ void softmax_forward(float * logits, float * probs, size_t size_batch){
 }
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
-    printf("\nforward pass ...\t");
     clock_t begin = clock();
     embed_tokens(model, tokens, size_batch);
-    mat_mul_forward(model->activations.input, model->size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
+    mat_mul_forward(model->activations.input, size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
         model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, model->size_batch);
-    mat_mul_forward(model->activations.hidden, model->size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
+    mat_mul_forward(model->activations.hidden, size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
     softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
+    //debug
+    for (int i = 0; i < SIZE_VOCAB; i++){
+        printf("%d: %f\t%f\n", i, model->activations.probs[i], model->activations.output[i]);
+    }
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
-    printf("\t ... took %2lf seconds", time_spent);
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
@@ -356,19 +361,24 @@ void generate(Model *model, int number_of_names){
     printf("\n\nGenerating names....\n\n");
     for (int i = 0; i < number_of_names; i++){
         char input_tokens[SIZE_BLOCK];
+        char * rocal = "tot";
         for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
-            input_tokens[idx_token] = '.';
+            input_tokens[idx_token] = rocal[idx_token];
         }
         model_forward(model, input_tokens, 1);
         char predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));
+        int x = 0;
         while (predicted_char != '.'){
+            // printf("printf here!!!!! \n");
             printf("%c", predicted_char);
+            fflush(stdout);
             for (size_t idx_token = 0; idx_token < SIZE_BLOCK - 1; idx_token++){
                 input_tokens[idx_token] = input_tokens[idx_token + 1];
             }
             input_tokens[SIZE_BLOCK - 1] = predicted_char;
             model_forward(model, input_tokens, 1);
             predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));            
+            x++;
         }
          printf("\n");
     }
@@ -394,10 +404,11 @@ int main()
     printf("\ninitialising model ....\n");
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
+    print_model(&model);
 
     // generate
 
-    generate(&model, 5);
+    generate(&model, 1);
 
     model_forward(&model, training_set->X, training_set->size);
     printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
