@@ -1,37 +1,5 @@
 
-5 names loaded
-... --> e
-..e --> m
-.em --> m
-emm --> a
-mma --> .
-... --> o
-..o --> l
-.ol --> i
-oli --> v
-liv --> i
-ivi --> a
-via --> .
-... --> a
-..a --> v
-.av --> a
-ava --> .
-... --> i
-..i --> s
-.is --> a
-isa --> b
-sab --> e
-abe --> l
-bel --> l
-ell --> a
-lla --> .
-... --> s
-..s --> o
-.so --> p
-sop --> h
-oph --> i
-phi --> a
-hia --> .
+32032 names loaded
 
 creating model ...
 
@@ -41,121 +9,108 @@ initialising model ....
 
 model initialised ....
 
-.	-1.255212	-0.760357
+embedding table:
+token a:	embedding: -1.255212 	 -0.760357 
+token b:	embedding: -0.001434 	 0.622350 
+token c:	embedding: 1.529260 	 0.136996 
+token d:	embedding: 0.996038 	 0.141729 
+token e:	embedding: 1.000000 	 1.000000 
+token f:	embedding: 0.037315 	 -1.247397 
+token g:	embedding: -0.991119 	 -0.548901 
+token h:	embedding: -0.583988 	 0.770801 
+token i:	embedding: 0.414911 	 1.210563 
+token j:	embedding: 1.340327 	 -0.180978 
+token k:	embedding: -0.246805 	 0.185108 
+token l:	embedding: -0.924544 	 -0.115292 
+token m:	embedding: -0.328892 	 1.351889 
+token n:	embedding: 0.060967 	 -0.748838 
+token o:	embedding: 0.734800 	 0.157078 
+token p:	embedding: -0.014591 	 -0.168911 
+token q:	embedding: 0.573566 	 -0.634222 
+token r:	embedding: 0.279987 	 0.316312 
+token s:	embedding: 0.210182 	 -1.367247 
+token t:	embedding: 0.167800 	 -1.738395 
+token u:	embedding: -0.699830 	 -1.131888 
+token v:	embedding: 1.506419 	 -0.416576 
+token w:	embedding: 1.603918 	 0.512526 
+token x:	embedding: -1.455196 	 -0.700985 
+token y:	embedding: -0.201957 	 0.563913 
+token z:	embedding: -0.154251 	 0.167294 
 
-a 	-0.001434	0.622350	
+hidden layer: 
+neuron 0, biase -1.434344
+	Weight 0: 1.401056  	Weight 1: 1.285370  	Weight 2: -0.785712  	Weight 3: -0.357636  	Weight 4: -0.886988  	Weight 5: -0.845176  
+neuron 1, biase 1.828953
+	Weight 0: 1.064521  	Weight 1: -0.888139  	Weight 2: 1.093395  	Weight 3: -0.166528  	Weight 4: 0.020835  	Weight 5: -1.346003  
+neuron 2, biase 0.252519
+	Weight 0: 0.645188  	Weight 1: -0.997780  	Weight 2: -1.185204  	Weight 3: -1.460315  	Weight 4: 0.269924  	Weight 5: 0.169804  
+neuron 3, biase 2.201767
+	Weight 0: -0.525205  	Weight 1: -1.130088  	Weight 2: -0.544979  	Weight 3: -2.094253  	Weight 4: -0.711469  	Weight 5: 0.945395  
+neuron 4, biase 0.515867
+	Weight 0: 0.737009  	Weight 1: 1.121023  	Weight 2: 0.118201  	Weight 3: -0.812705  	Weight 4: 0.336737  	Weight 5: 0.066318  
+neuron 5, biase -1.083521
+	Weight 0: 1.011019  	Weight 1: -0.140313  	Weight 2: -1.221859  	Weight 3: 1.149952  	Weight 4: 2.010082  	Weight 5: 0.606351  
+neuron 6, biase -0.937929
+	Weight 0: -0.881180  	Weight 1: -0.306995  	Weight 2: 1.212062  	Weight 3: 0.085401  	Weight 4: 0.305004  	Weight 5: 0.296429  
+neuron 7, biase 0.687547
+	Weight 0: 0.506341  	Weight 1: -0.184361  	Weight 2: 2.171918  	Weight 3: -0.240370  	Weight 4: 0.323443  	Weight 5: 1.822134  
+neuron 8, biase -0.379913
+	Weight 0: -0.711226  	Weight 1: -0.326136  	Weight 2: -0.308517  	Weight 3: -0.166042  	Weight 4: -0.670244  	Weight 5: 0.866334  
+neuron 9, biase 0.072262
+	Weight 0: 1.260227  	Weight 1: -0.316979  	Weight 2: -1.884780  	Weight 3: 1.494976  	Weight 4: -0.221942  	Weight 5: -0.721507  
 
-b 	1.529260	0.136996	
-
-c 	0.996038	0.141729	
-
-d 	-2.124576	-0.045193	
-
-e 	0.037315	-1.247397	
-
-f 	-0.991119	-0.548901	
-
-g 	-0.583988	0.770801	
-
-h 	0.414911	1.210563	
-
-i 	1.340327	-0.180978	
-
-j 	-0.246805	0.185108	
-
-k 	-0.924544	-0.115292	
-
-l 	-0.328892	1.351889	
-
-m 	0.060967	-0.748838	
-
-n 	0.734800	0.157078	
-
-o 	-0.014591	-0.168911	
-
-p 	0.573566	-0.634222	
-
-q 	0.279987	0.316312	
-
-r 	0.210182	-1.367247	
-
-s 	0.167800	-1.738395	
-
-t 	-0.699830	-1.131888	
-
-u 	1.506419	-0.416576	
-
-v 	1.603918	0.512526	
-
-w 	-1.455196	-0.700985	
-
-x 	-0.201957	0.563913	
-
-y 	-0.154251	0.167294	
-
-z 	0.158440	-0.560132	
-
-sample 0:
-.	-1.255212	-0.760357	.	-1.255212	-0.760357	.	-1.255212	-0.760357	
-sample 1:
-.	-0.760357	-1.255212	.	-0.760357	-1.255212	e	-0.760357	-1.255212	
-sample 2:
-.	-1.255212	-0.760357	e	-1.255212	-0.760357	m	0.136996	0.996038	
-sample 3:
-e	-0.760357	0.136996	m	0.996038	-1.255212	m	-0.760357	0.136996	
-sample 4:
-m	-1.255212	-0.760357	m	0.136996	0.996038	a	-0.548901	-0.583988	
-sample 5:
-.	0.996038	-0.548901	.	-0.583988	0.136996	.	0.996038	-0.548901	
-sample 6:
-.	0.136996	0.996038	.	-0.548901	-0.583988	o	-0.548901	-0.583988	
-sample 7:
-.	-0.583988	-0.548901	o	-0.583988	-0.548901	l	-0.583988	-0.548901	
-sample 8:
-o	-0.548901	-0.583988	l	-0.548901	-0.583988	i	-0.760357	-0.001434	
-sample 9:
-l	-0.583988	-0.760357	i	-0.001434	-1.255212	v	-0.760357	-1.255212	
-sample 10:
-i	-1.255212	-0.760357	v	-1.255212	-0.760357	i	-1.255212	-0.760357	
-sample 11:
-v	-0.760357	-1.255212	i	-0.760357	-1.255212	a	-0.760357	-1.255212	
-sample 12:
-.	-1.255212	-0.760357	.	-1.255212	-0.760357	.	0.770801	0.414911	
-sample 13:
-.	-0.760357	0.770801	.	0.414911	-1.255212	a	-0.760357	0.770801	
-sample 14:
-.	-1.255212	-0.760357	a	0.770801	0.414911	v	-0.991119	-0.548901	
-sample 15:
-a	0.414911	-0.991119	v	-0.548901	0.770801	a	0.414911	-0.991119	
-sample 16:
-.	0.770801	0.414911	.	-0.991119	-0.548901	.	-0.045193	0.037315	
-sample 17:
-.	-0.548901	-0.045193	.	0.037315	-0.991119	i	-0.548901	-0.045193	
-sample 18:
-.	-0.991119	-0.548901	i	-0.045193	0.037315	s	-0.924544	-0.115292	
-sample 19:
-i	0.037315	-0.924544	s	-0.115292	-0.045193	a	0.037315	-0.924544	
-sample 20:
-s	-0.045193	0.037315	a	-0.924544	-0.115292	b	0.000000	0.000000	
-sample 21:
-a	-0.115292	0.000000	b	0.000000	0.000000	e	0.000000	0.000000	
-sample 22:
-b	0.000000	0.000000	e	0.000000	0.000000	l	0.000000	0.000000	
-sample 23:
-e	0.000000	0.000000	l	0.000000	0.000000	l	0.000000	0.000000	
-sample 24:
-l	0.000000	0.000000	l	0.000000	0.000000	a	0.000000	0.000000	
-sample 25:
-.	0.000000	0.000000	.	0.000000	0.000000	.	0.000000	0.000000	
-sample 26:
-.	0.000000	0.000000	.	0.000000	0.000000	s	0.000000	0.000000	
-sample 27:
-.	0.000000	0.000000	s	0.000000	0.000000	o	0.000000	0.000000	
-sample 28:
-s	0.000000	0.000000	o	0.000000	0.000000	p	0.000000	0.000000	
-sample 29:
-o	0.000000	0.000000	p	0.000000	0.000000	h	0.000000	0.000000	
-sample 30:
-p	0.000000	0.000000	h	0.000000	0.000000	i	0.000000	0.000000	
-sample 31:
-h	0.000000	0.000000	i	0.000000	0.000000	a	0.000000	0.000000	
+output layer: 
+neuron 0, biase 0.430568
+	Weight 0: 1.401056  	Weight 1: 1.285370  	Weight 2: -0.785712  	Weight 3: -0.357636  	Weight 4: -0.886988  	Weight 5: -0.845176  	Weight 6: 1.064521  	Weight 7: -0.888139  	Weight 8: 1.093395  	Weight 9: -0.166528  
+neuron 1, biase 0.433181
+	Weight 0: 0.020835  	Weight 1: -1.346003  	Weight 2: 0.645188  	Weight 3: -0.997780  	Weight 4: -1.185204  	Weight 5: -1.460315  	Weight 6: 0.269924  	Weight 7: 0.169804  	Weight 8: -0.525205  	Weight 9: -1.130088  
+neuron 2, biase -2.322653
+	Weight 0: -0.544979  	Weight 1: -2.094253  	Weight 2: -0.711469  	Weight 3: 0.945395  	Weight 4: 0.737009  	Weight 5: 1.121023  	Weight 6: 0.118201  	Weight 7: -0.812705  	Weight 8: 0.336737  	Weight 9: 0.066318  
+neuron 3, biase 0.378829
+	Weight 0: 1.011019  	Weight 1: -0.140313  	Weight 2: -1.221859  	Weight 3: 1.149952  	Weight 4: 2.010082  	Weight 5: 0.606351  	Weight 6: -0.881180  	Weight 7: -0.306995  	Weight 8: 1.212062  	Weight 9: 0.085401  
+neuron 4, biase -0.213407
+	Weight 0: 0.305004  	Weight 1: 0.296429  	Weight 2: 0.506341  	Weight 3: -0.184361  	Weight 4: 2.171918  	Weight 5: -0.240370  	Weight 6: 0.323443  	Weight 7: 1.822134  	Weight 8: -0.711226  	Weight 9: -0.326136  
+neuron 5, biase 0.276238
+	Weight 0: -0.308517  	Weight 1: -0.166042  	Weight 2: -0.670244  	Weight 3: 0.866334  	Weight 4: 1.260227  	Weight 5: -0.316979  	Weight 6: -1.884780  	Weight 7: 1.494976  	Weight 8: -0.221942  	Weight 9: -0.721507  
+neuron 6, biase -0.691034
+	Weight 0: -1.434344  	Weight 1: 1.828953  	Weight 2: 0.252519  	Weight 3: 2.201767  	Weight 4: 0.515867  	Weight 5: -1.083521  	Weight 6: -0.937929  	Weight 7: 0.687547  	Weight 8: -0.379913  	Weight 9: 0.072262  
+neuron 7, biase -1.684704
+	Weight 0: -0.791601  	Weight 1: -1.127912  	Weight 2: -1.611072  	Weight 3: -1.136246  	Weight 4: 0.415895  	Weight 5: 0.844703  	Weight 6: -0.139872  	Weight 7: 1.554206  	Weight 8: -0.561256  	Weight 9: -0.160283  
+neuron 8, biase 0.128837
+	Weight 0: -1.580371  	Weight 1: -0.585098  	Weight 2: -0.438365  	Weight 3: -0.233442  	Weight 4: -0.240277  	Weight 5: -0.355504  	Weight 6: -1.619212  	Weight 7: -0.017373  	Weight 8: -1.541887  	Weight 9: 0.574854  
+neuron 9, biase -0.678626
+	Weight 0: 1.297744  	Weight 1: 1.950112  	Weight 2: -1.345488  	Weight 3: 0.999757  	Weight 4: 0.748973  	Weight 5: 1.823971  	Weight 6: 1.132600  	Weight 7: -0.803995  	Weight 8: 0.492266  	Weight 9: -1.909576  
+neuron 10, biase -0.370388
+	Weight 0: 0.790654  	Weight 1: 0.138790  	Weight 2: 1.167754  	Weight 3: -1.817742  	Weight 4: 1.512173  	Weight 5: -0.407529  	Weight 6: -1.400921  	Weight 7: -0.712980  	Weight 8: -0.149360  	Weight 9: 0.761817  
+neuron 11, biase 0.480500
+	Weight 0: -0.602904  	Weight 1: -0.086834  	Weight 2: -1.242613  	Weight 3: 0.903604  	Weight 4: 0.101186  	Weight 5: -0.512299  	Weight 6: -0.625805  	Weight 7: 0.138636  	Weight 8: -1.109504  	Weight 9: 0.282454  
+neuron 12, biase -1.376498
+	Weight 0: 0.056608  	Weight 1: -1.053077  	Weight 2: 0.144908  	Weight 3: 0.190984  	Weight 4: 0.097991  	Weight 5: -0.255418  	Weight 6: -0.671502  	Weight 7: 0.258305  	Weight 8: -1.564381  	Weight 9: -1.377126  
+neuron 13, biase 0.153238
+	Weight 0: -1.131779  	Weight 1: 1.290395  	Weight 2: -0.229409  	Weight 3: -0.609879  	Weight 4: 0.388618  	Weight 5: 0.319835  	Weight 6: 1.327492  	Weight 7: -0.203601  	Weight 8: 0.099702  	Weight 9: 1.103994  
+neuron 14, biase -2.738979
+	Weight 0: 0.272957  	Weight 1: -0.569522  	Weight 2: 0.250916  	Weight 3: -0.153038  	Weight 4: -1.165569  	Weight 5: 0.594301  	Weight 6: -1.583302  	Weight 7: -1.594276  	Weight 8: -0.787425  	Weight 9: -2.568210  
+neuron 15, biase 0.121666
+	Weight 0: -1.015947  	Weight 1: 0.999599  	Weight 2: -0.906630  	Weight 3: -0.724726  	Weight 4: -1.863187  	Weight 5: 0.514850  	Weight 6: -0.700172  	Weight 7: 0.101394  	Weight 8: 0.140262  	Weight 9: 0.174786  
+neuron 16, biase -1.513945
+	Weight 0: -0.419213  	Weight 1: 0.874953  	Weight 2: -0.301453  	Weight 3: -1.448215  	Weight 4: -0.836008  	Weight 5: -0.168917  	Weight 6: -0.628025  	Weight 7: -0.178941  	Weight 8: 0.595762  	Weight 9: 0.294367  
+neuron 17, biase -0.506319
+	Weight 0: 0.093193  	Weight 1: 1.366385  	Weight 2: 0.030194  	Weight 3: 0.643726  	Weight 4: -0.084878  	Weight 5: 0.240357  	Weight 6: -0.523589  	Weight 7: -0.706114  	Weight 8: 2.258368  	Weight 9: 0.263787  
+neuron 18, biase -0.280845
+	Weight 0: 0.066104  	Weight 1: 0.183227  	Weight 2: -1.650218  	Weight 3: 1.158436  	Weight 4: -0.978437  	Weight 5: 1.685701  	Weight 6: 1.380880  	Weight 7: -1.262969  	Weight 8: -0.276463  	Weight 9: 0.758170  
+neuron 19, biase 0.494146
+	Weight 0: 2.960164  	Weight 1: -0.306254  	Weight 2: -1.059603  	Weight 3: -1.905508  	Weight 4: 1.061559  	Weight 5: 0.702586  	Weight 6: -0.604332  	Weight 7: 2.152076  	Weight 8: -2.227125  	Weight 9: -1.552583  
+neuron 20, biase -0.482299
+	Weight 0: 2.426695  	Weight 1: 0.175831  	Weight 2: 1.623059  	Weight 3: 0.559686  	Weight 4: 0.044148  	Weight 5: -0.059545  	Weight 6: -1.296626  	Weight 7: 0.502827  	Weight 8: -0.139156  	Weight 9: -1.510235  
+neuron 21, biase -0.334433
+	Weight 0: 0.880725  	Weight 1: -1.420588  	Weight 2: -1.193803  	Weight 3: -1.119485  	Weight 4: -2.117899  	Weight 5: 2.010357  	Weight 6: 0.634659  	Weight 7: 1.630748  	Weight 8: 0.283898  	Weight 9: -1.089462  
+neuron 22, biase 0.254024
+	Weight 0: 1.543249  	Weight 1: -0.887867  	Weight 2: 0.525086  	Weight 3: -1.251901  	Weight 4: 0.088847  	Weight 5: 2.967423  	Weight 6: -0.548628  	Weight 7: 0.517027  	Weight 8: 0.517889  	Weight 9: 0.426007  
+neuron 23, biase -2.123065
+	Weight 0: 0.247631  	Weight 1: -0.544844  	Weight 2: 0.739298  	Weight 3: -0.756329  	Weight 4: -1.877311  	Weight 5: -1.256021  	Weight 6: -0.061610  	Weight 7: 2.298721  	Weight 8: -1.058076  	Weight 9: 1.230531  
+neuron 24, biase -0.556852
+	Weight 0: -1.622874  	Weight 1: 2.363889  	Weight 2: -0.428781  	Weight 3: -1.129612  	Weight 4: 0.320858  	Weight 5: -1.129800  	Weight 6: -0.486047  	Weight 7: -0.180059  	Weight 8: -0.396992  	Weight 9: -0.249278  
+neuron 25, biase 1.586020
+	Weight 0: -0.260908  	Weight 1: 0.205591  	Weight 2: 2.475261  	Weight 3: -1.675121  	Weight 4: -1.148009  	Weight 5: -0.011012  	Weight 6: -1.627278  	Weight 7: 0.470648  	Weight 8: 1.060771  	Weight 9: 1.173973  
+neuron 26, biase -1.403032
+	Weight 0: 0.872427  	Weight 1: -0.357923  	Weight 2: -0.806155  	Weight 3: -0.128332  	Weight 4: -0.845300  	Weight 5: -1.128491  	Weight 6: 0.092375  	Weight 7: 1.037722  	Weight 8: -1.494021  	Weight 9: -0.256332  

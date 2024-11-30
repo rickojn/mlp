@@ -181,19 +181,28 @@ void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsi
                       float * matrix_weights, float * matrix_biases, unsigned int size_cols_weights, float * matrix_output)
 {
     // #pragma omp parallel for collapse(2)
+    // RECODE THIS!!!!!!!!!
+    /*
+    batch = 5
+    size_rows_inputs = 5
+
+    for output layer: 10 inputs from hidden, 27 outputs, 27 biases, 270 weights
+    size_cols_inputs_rows_weights = 10
+    size_cols_weights = 27
+
+    */
     for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
         for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
+            size_t offset_neural_activation = idx_row_input * size_cols_inputs_rows_weights + idx_col_weight;
             if (matrix_biases != NULL){
-                matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] = 
-                    matrix_biases[idx_row_input * size_cols_inputs_rows_weights + idx_col_weight];
+                matrix_output[offset_neural_activation] = matrix_biases[idx_col_weight];
             }
             else {
-                matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] = 0.0;
+                matrix_output[offset_neural_activation] = 0.0;
             }
-            for (size_t k = 0; k < size_cols_inputs_rows_weights; k++){
-                matrix_output[(idx_row_input * size_cols_inputs_rows_weights) + idx_col_weight] +=
-                matrix_inputs[(idx_row_input * size_cols_inputs_rows_weights) + k]
-                * matrix_weights[(idx_col_weight * size_cols_inputs_rows_weights) + k];
+            for (size_t idx_row_weight = 0; idx_row_weight < size_cols_inputs_rows_weights; idx_row_weight++){
+                matrix_output[offset_neural_activation] += matrix_inputs[(idx_row_input * size_cols_inputs_rows_weights) + idx_row_weight]
+                * matrix_weights[(idx_col_weight * size_cols_inputs_rows_weights) + idx_row_weight];
             }
         }
     }
@@ -405,6 +414,7 @@ int main()
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
     print_model(&model);
+    
 
     // generate
 
