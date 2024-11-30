@@ -175,25 +175,23 @@ d e f     s t u
 =  (a*p + b*s + c*v), (a*q + b*t + c*w), (a*r + b*u + c*x)
    (d*p + e*s + f*v), (d*q + e*t + f*w), (d*r + e*u + f*x)
 
+    batch = 2
+    size_rows_inputs = 2
+
+    ???????????for single layer: 3 inputs from hidden, 27 outputs, 27 biases, 270 weights
+    size_cols_inputs_rows_weights = 10
+    size_cols_weights = 2
+
+
 */
 
-void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsigned int size_cols_inputs_rows_weights,
-                      float * matrix_weights, float * matrix_biases, unsigned int size_cols_weights, float * matrix_output)
+void mat_mul_forward( float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_weights,
+                      float * matrix_weights, float * matrix_biases, size_t size_cols_weights, float * matrix_output)
 {
     // #pragma omp parallel for collapse(2)
-    // RECODE THIS!!!!!!!!!
-    /*
-    batch = 5
-    size_rows_inputs = 5
-
-    for output layer: 10 inputs from hidden, 27 outputs, 27 biases, 270 weights
-    size_cols_inputs_rows_weights = 10
-    size_cols_weights = 27
-
-    */
     for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
         for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
-            size_t offset_neural_activation = idx_row_input * size_cols_inputs_rows_weights + idx_col_weight;
+            size_t offset_neural_activation = idx_row_input * size_cols_weights + idx_col_weight;
             if (matrix_biases != NULL){
                 matrix_output[offset_neural_activation] = matrix_biases[idx_col_weight];
             }
@@ -201,8 +199,9 @@ void mat_mul_forward( float * matrix_inputs, unsigned int size_rows_inputs, unsi
                 matrix_output[offset_neural_activation] = 0.0;
             }
             for (size_t idx_row_weight = 0; idx_row_weight < size_cols_inputs_rows_weights; idx_row_weight++){
-                matrix_output[offset_neural_activation] += matrix_inputs[(idx_row_input * size_cols_inputs_rows_weights) + idx_row_weight]
-                * matrix_weights[(idx_col_weight * size_cols_inputs_rows_weights) + idx_row_weight];
+                size_t offset_factor = idx_row_input * size_cols_inputs_rows_weights + idx_row_weight;
+                matrix_output[offset_neural_activation] += matrix_inputs[offset_factor]
+                  * matrix_weights[offset_factor];
             }
         }
     }
@@ -257,9 +256,9 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
     softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
     //debug
-    for (int i = 0; i < SIZE_VOCAB; i++){
-        printf("%d: %f\t%f\n", i, model->activations.probs[i], model->activations.output[i]);
-    }
+    // for (int i = 0; i < SIZE_VOCAB; i++){
+    //     printf("%d: %f\t%f\n", i, model->activations.probs[i], model->activations.output[i]);
+    // }
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
@@ -370,15 +369,13 @@ void generate(Model *model, int number_of_names){
     printf("\n\nGenerating names....\n\n");
     for (int i = 0; i < number_of_names; i++){
         char input_tokens[SIZE_BLOCK];
-        char * rocal = "tot";
         for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
-            input_tokens[idx_token] = rocal[idx_token];
+            input_tokens[idx_token] = '.';
         }
         model_forward(model, input_tokens, 1);
         char predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));
         int x = 0;
         while (predicted_char != '.'){
-            // printf("printf here!!!!! \n");
             printf("%c", predicted_char);
             fflush(stdout);
             for (size_t idx_token = 0; idx_token < SIZE_BLOCK - 1; idx_token++){
@@ -413,12 +410,12 @@ int main()
     printf("\ninitialising model ....\n");
     initialise_model(&model);
     printf("\nmodel initialised ....\n");
-    print_model(&model);
+    // print_model(&model);
     
 
     // generate
 
-    generate(&model, 1);
+    generate(&model, 5);
 
     model_forward(&model, training_set->X, training_set->size);
     printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
