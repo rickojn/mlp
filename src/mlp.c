@@ -149,9 +149,6 @@ void initialise_model(Model *model)
     {
         *(model->parameters.table_embedding + i) = generate_normal_random_number();
     }
-    //debug
-    model->parameters.table_embedding[8] = 1.0;
-    model->parameters.table_embedding[9] = 1.0;
 }
 
 
@@ -174,14 +171,6 @@ d e f     s t u
 
 =  (a*p + b*s + c*v), (a*q + b*t + c*w), (a*r + b*u + c*x)
    (d*p + e*s + f*v), (d*q + e*t + f*w), (d*r + e*u + f*x)
-
-    batch = 2
-    size_rows_inputs = 2
-
-    ???????????for single layer: 3 inputs from hidden, 27 outputs, 27 biases, 270 weights
-    size_cols_inputs_rows_weights = 10
-    size_cols_weights = 2
-
 
 */
 
@@ -255,10 +244,6 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     mat_mul_forward(model->activations.hidden, size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
     softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
-    //debug
-    // for (int i = 0; i < SIZE_VOCAB; i++){
-    //     printf("%d: %f\t%f\n", i, model->activations.probs[i], model->activations.output[i]);
-    // }
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
@@ -374,7 +359,6 @@ void generate(Model *model, int number_of_names){
         }
         model_forward(model, input_tokens, 1);
         char predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));
-        int x = 0;
         while (predicted_char != '.'){
             printf("%c", predicted_char);
             fflush(stdout);
@@ -384,7 +368,6 @@ void generate(Model *model, int number_of_names){
             input_tokens[SIZE_BLOCK - 1] = predicted_char;
             model_forward(model, input_tokens, 1);
             predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));            
-            x++;
         }
          printf("\n");
     }
