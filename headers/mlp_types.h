@@ -5,7 +5,7 @@
 
 #define SIZE_VOCAB 27
 #define SIZE_BLOCK 3
-#define SIZE_HIDDEN 10
+#define SIZE_HIDDEN 100
 #define INITIAL_SIZE 1000 // Initial number of strings
 #define MAX_LENGTH 256  // Maximum length of each string
 #define NUM_EPOCHS 10000

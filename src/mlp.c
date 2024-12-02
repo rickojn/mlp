@@ -384,7 +384,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     + SIZE_VOCAB //output biases
     + SIZE_VOCAB);
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
-    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_hidden,
+    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
      model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
     tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_VOCAB, training_set->size);
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
@@ -397,6 +397,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("\t ... took %2lf seconds.\n", time_spent);
+    printf("\n output bias grad: %f\n", model->gradients.biases_output[0]);
 }
 
 
