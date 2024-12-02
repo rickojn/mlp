@@ -347,6 +347,26 @@ void update_weights(Model * model, size_t size_batchs){
         delta_hidden /= size_batchs;
         model->parameters.weights_hidden[idx_hidden_weight] -= delta_hidden * LEARNING_RATE;        
     }
+
+    float delta_output_bias = 0;
+    for (size_t idx_output_bias = 0; idx_output_bias < SIZE_VOCAB; idx_output_bias++){
+        for (size_t idx_batch = 0; idx_batch < size_batchs; idx_batch++){
+            size_t offset_grad = idx_batch * SIZE_VOCAB + idx_output_bias;
+            delta_output_bias += model->gradients.biases_output[offset_grad];
+        }
+        delta_output_bias /= size_batchs;
+        model->parameters.biases_output[idx_output_bias] -= delta_output_bias * LEARNING_RATE;
+    }
+
+    for (size_t idx_output_weight = 0; idx_output_weight < SIZE_VOCAB * SIZE_HIDDEN; idx_output_weight++){
+        float delta_output_weight = 0;
+        for (size_t idx_batch = 0; idx_batch < size_batchs; idx_batch++){
+            size_t offset_grad = idx_batch * SIZE_BATCH * SIZE_HIDDEN + idx_output_weight;
+            delta_output_weight += model->gradients.weights_output[offset_grad];
+        }
+        delta_output_weight /= size_batchs;
+        model->parameters.weights_output[idx_output_weight] -= delta_output_weight * LEARNING_RATE;
+    }
 }
 
 
