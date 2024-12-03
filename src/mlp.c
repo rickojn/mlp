@@ -236,11 +236,22 @@ void softmax_forward(float * logits, float * probs, size_t size_batch){
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     clock_t begin = clock();
+        float before_emb = model->parameters.biases_output[0];
+    printf("\nbias before emb: %f", before_emb);
+
     embed_tokens(model, tokens, size_batch);
+            float after_emb = model->parameters.biases_output[0];
+    printf("\nbias after emb: %f", after_emb);
+
     mat_mul_forward(model->activations.input, size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
         model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
+                float after_mm_hidden = model->parameters.biases_output[0];
+    printf("\nbias after mm hidden: %f", after_mm_hidden);
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, model->size_batch);
+        float before_w = model->parameters.biases_output[0];
+    printf("\nbias after tanh: %f\n", before_w);
+
     mat_mul_forward(model->activations.hidden, size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
     model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
     softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
@@ -372,6 +383,9 @@ void update_weights(Model * model, size_t size_batchs){
 
 void model_backwards(Model * model, TrainingSet * training_set){
     printf("\n backwards pass ...");
+    float before_w1 = model->parameters.biases_output[0];
+    printf("\nbias before bp: %f", before_w1);
+
     clock_t begin, end;
     double time_spent;
     begin = clock();
@@ -392,11 +406,18 @@ void model_backwards(Model * model, TrainingSet * training_set){
     SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
     embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
     DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK, training_set->size);
+
+    float before_w = model->parameters.biases_output[0];
+    printf("\nbias before update: %f", before_w);
+
     update_weights(model, training_set->size);
     end = clock();
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("\t ... took %2lf seconds.\n", time_spent);
+    // printf("\t ... took %2lf seconds.\n", time_spent);
+    float after_w = model->parameters.biases_output[0];
+    printf("\nbias after update: %f", after_w);
+
     printf("\n output bias grad: %f\n", model->gradients.biases_output[0]);
 }
 
@@ -465,13 +486,18 @@ int main()
 
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
+        float before_w =model.parameters.biases_output[0];
+        printf("\nbias before training fp: %f", before_w);
         model_forward(&model, training_set->X, training_set->size);
+        float after_fp = model.parameters.biases_output[0];
+    printf("\nbias after fp: %f", after_fp);
+
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
     }
 
     // generate after training
-    generate(&model, 5);
+    // generate(&model, 5);
 
     for (size_t i = 0; i < count; i++){
         free(names[i]);
