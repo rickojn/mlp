@@ -111,7 +111,7 @@ void create_model(Model * model, size_t size_batch){
     model->parameters.table_embedding = model_memory;
     model->parameters.weights_hidden = model_memory + SIZE_VOCAB * DIM_EMBEDDINGS;
     model->parameters.biases_hidden = model->parameters.weights_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
-    model->parameters.weights_output = model->parameters.weights_hidden + SIZE_HIDDEN;    
+    model->parameters.weights_output = model->parameters.biases_hidden + SIZE_HIDDEN;    
     model->parameters.biases_output = model->parameters.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
     model->activations.input = model->parameters.weights_output + SIZE_VOCAB;
     model->activations.hidden = model->activations.input 
@@ -174,21 +174,32 @@ d e f     s t u
 
 */
 
-void mat_mul_forward( float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_weights,
-                      float * matrix_weights, float * matrix_biases, size_t size_cols_weights, float * matrix_output)
+/*
+
+xxx   x  yyyyy
+xxx      yyyyy
+         yyyyy
+
+zzzz
+zzzz
+
+*/
+
+void mat_mul_forward(const float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_neurons,
+                     const float * matrix_weights, const float * matrix_biases, size_t size_neurons, float * matrix_output)
 {
     // #pragma omp parallel for collapse(2)
     for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
-        for (size_t idx_col_weight = 0; idx_col_weight < size_cols_weights; idx_col_weight++){
-            size_t offset_neural_activation = idx_row_input * size_cols_weights + idx_col_weight;
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_neural_activation = idx_row_input * size_neurons + idx_neuron;
             if (matrix_biases != NULL){
-                matrix_output[offset_neural_activation] = matrix_biases[idx_col_weight];
+                matrix_output[offset_neural_activation] = matrix_biases[idx_neuron];
             }
             else {
                 matrix_output[offset_neural_activation] = 0.0;
             }
-            for (size_t idx_row_weight = 0; idx_row_weight < size_cols_inputs_rows_weights; idx_row_weight++){
-                size_t offset_factor = idx_row_input * size_cols_inputs_rows_weights + idx_row_weight;
+            for (size_t idx_row_weight = 0; idx_row_weight < size_cols_inputs_rows_neurons; idx_row_weight++){
+                size_t offset_factor = idx_neuron * size_cols_inputs_rows_neurons + idx_row_weight;
                 matrix_output[offset_neural_activation] += matrix_inputs[offset_factor]
                   * matrix_weights[offset_factor];
             }
@@ -482,7 +493,7 @@ int main()
     
 
     // generate
-    generate(&model, 5);
+    // generate(&model, 5);
 
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
