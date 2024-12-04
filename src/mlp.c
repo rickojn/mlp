@@ -113,7 +113,8 @@ void create_model(Model * model, size_t size_batch){
     model->parameters.biases_hidden = model->parameters.weights_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
     model->parameters.weights_output = model->parameters.biases_hidden + SIZE_HIDDEN;    
     model->parameters.biases_output = model->parameters.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
-    model->activations.input = model->parameters.weights_output + SIZE_VOCAB;
+    
+    model->activations.input = model->parameters.biases_output + SIZE_VOCAB;
     model->activations.hidden = model->activations.input 
     + SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
     model->activations.output = model->activations.hidden
