@@ -139,8 +139,10 @@ void create_model(Model * model, size_t size_batch){
 
 void initialise_model(Model *model)
 {
-    size_t size_params = SIZE_VOCAB * DIM_EMBEDDINGS
+    size_t size_params = SIZE_VOCAB * DIM_EMBEDDINGS 
+    + SIZE_HIDDEN
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN
+    + SIZE_VOCAB
     + SIZE_HIDDEN * SIZE_VOCAB;
 
     srand(42);
@@ -249,16 +251,19 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     clock_t begin = clock();
         float before_emb = model->parameters.biases_output[0];
     printf("\nbias before emb: %f", before_emb);
+    printf("\n&act before emb: %p", model->activations.hidden);
 
     embed_tokens(model, tokens, size_batch);
             float after_emb = model->parameters.biases_output[0];
     printf("\nbias after emb: %f", after_emb);
+    printf("\n&act after emb: %p", model->activations.hidden);
 
     mat_mul_forward(model->activations.input, size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
         model->parameters.weights_hidden, model->parameters.biases_hidden,
     SIZE_HIDDEN, model->activations.hidden);
-                float after_mm_hidden = model->parameters.biases_output[0];
+    float after_mm_hidden = model->parameters.biases_output[0];
     printf("\nbias after mm hidden: %f", after_mm_hidden);
+    printf("\n&act after mm hidden: %p", model->activations.hidden);
     tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, model->size_batch);
         float before_w = model->parameters.biases_output[0];
     printf("\nbias after tanh: %f\n", before_w);
