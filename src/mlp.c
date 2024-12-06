@@ -297,21 +297,22 @@ void tanh_backward(float * inputs, float * outputs, size_t size_cols, size_t siz
     }
 }
 
-void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, const float * inputs, const float * weights, 
-                     float * grads_input, size_t size_batch, size_t size_pre_act_grads, size_t size_inputs){ 
+void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, const float * input_activations, const float * weights, 
+                     float * grads_input_activations, size_t size_batch, size_t size_neurons, size_t size_input_activations){ 
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-        for (size_t idx_col_weight = 0; idx_col_weight < size_pre_act_grads; idx_col_weight++){
-            size_t offset_grad_z = idx_batch * size_pre_act_grads + idx_col_weight;
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_grad_z = idx_batch * size_neurons + idx_neuron;
             float grad_z = grads_z[offset_grad_z];
             if (grads_b){
                 grads_b[offset_grad_z] = grad_z;
             }
-            for (size_t idx_row_weight = 0; idx_row_weight < size_inputs; idx_row_weight++){
-                float input = inputs[idx_batch * size_inputs + idx_row_weight];
-                float weight = weights[idx_col_weight * size_pre_act_grads + idx_col_weight];
-                size_t offset_grad_w = idx_batch * size_pre_act_grads + idx_col_weight * size_inputs + idx_row_weight;
-                grads_w[offset_grad_w] = grad_z * input;
-                grads_input[offset_grad_w] = grad_z * weight;
+            for (size_t idx_weight = 0; idx_weight < size_input_activations; idx_weight++){
+                size_t offset_input_activation_grad = size_batch * size_input_activations + idx_weight; 
+                float input_activation = input_activations[idx_weight];
+                float weight = weights[idx_weight];
+                size_t offset_grad_w = idx_batch * size_neurons * size_input_activations + idx_neuron * size_neurons + idx_weight;
+                grads_w[offset_grad_w] = grad_z * input_activation;
+                grads_input_activations[offset_grad_w] = grad_z * weight;
             }
         }
     }
