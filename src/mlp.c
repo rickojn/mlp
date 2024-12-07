@@ -297,6 +297,21 @@ void tanh_backward(float * inputs, float * outputs, size_t size_cols, size_t siz
     }
 }
 
+/*
+x1 x2 x3
+*
+w1 w2  w3  w4
+w5 w6  w7  w8
+w9 w10 w11 w12
+=
+z1 z2 z3 z4
+
+z1 = x1.w1 + x2.w5 + x3.w9
+z2 = x1.w2 + x2.w6 + x3.w10
+
+
+*/
+
 void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, const float * input_activations, const float * weights, 
                      float * grads_input_activations, size_t size_batch, size_t size_neurons, size_t size_input_activations){ 
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
