@@ -528,6 +528,7 @@ int main()
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         model_forward(&model, training_set->X, training_set->size);
+        print_model(&model);
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
     }
