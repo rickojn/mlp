@@ -306,8 +306,27 @@ w9 w10 w11 w12
 =
 z1 z2 z3 z4
 
-z1 = x1.w1 + x2.w5 + x3.w9
-z2 = x1.w2 + x2.w6 + x3.w10
+z1 = x1 * w1 + x2 * w5 + x3 * w9
+z2 = x1 * w2 + x2 * w6 + x3 * w10
+z3 = x1 * w3 + x2 * w7 + x3 * w11
+z2 = x1 * w4 + x8 * w6 + x3 * w12
+
+L = y1 * SM(z1) + y2 * SM(z2) + y3 * SM(z3) + y4 * SM(z4)
+
+
+dL/w6 = dL/dz1 * dz1/dw6 + dL/z2 * dz2/dw6 + dL/z3 * dz3/dw6  + dL/z4 * dz4/dw6
+
+dL/z1 = SM(z1) - y1
+dL/z2 = SM(z2) - y2
+
+dz1/dw6 = 0
+dz2/dw6 = x2
+
+dL/dw6 = DL/dz2 * dz2/dw6 + DL
+dL/d
+
+dz2/dx2 = w6
+dz1/dx2 = w5
 
 
 */
@@ -323,11 +342,12 @@ void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, co
             }
             for (size_t idx_weight = 0; idx_weight < size_input_activations; idx_weight++){
                 size_t offset_input_activation_grad = size_batch * size_input_activations + idx_weight; 
-                float input_activation = input_activations[idx_weight];
-                float weight = weights[idx_weight];
+                float input_activation = input_activations[offset_input_activation_grad];
+                size_t offset_weight = size_neurons * idx_neuron + idx_weight;
+                float weight = weights[offset_weight];
                 size_t offset_grad_w = idx_batch * size_neurons * size_input_activations + idx_neuron * size_neurons + idx_weight;
                 grads_w[offset_grad_w] = grad_z * input_activation;
-                grads_input_activations[offset_grad_w] = grad_z * weight;
+                grads_input_activations[offset_input_activation_grad] += grad_z * weight;
             }
         }
     }
