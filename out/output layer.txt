@@ -3,7 +3,8 @@ neuron 0, biase -0.503131
 	Weight 0: 1.401056  	Weight 1: 1.285370  	Weight 2: -0.785712  	Weight 3: -0.357636  	Weight 4: -0.886988  	Weight 5: -0.845176  	Weight 6: 1.064521  	Weight 7: -0.888139  	Weight 8: 1.093395  	Weight 9: -0.166528  
 neuron 1, biase -0.294959
 	Weight 0: 0.020835  	Weight 1: -1.346003  	Weight 2: 0.645188  	Weight 3: -0.997780  	Weight 4: -1.185204  	Weight 5: -1.460315  	Weight 6: 0.269924  	Weight 7: 0.169804  	Weight 8: -0.525205  	Weight 9: -1.130088  
-
+neuron 2, biase -0.556093
+	Weight 0: -0.544979  	Weight 1: -2.094253  	Weight 2: -0.711469  	Weight 3: 0.945395  	Weight 4: 0.737009  	Weight 5: 1.121023  	Weight 6: 0.118201  	Weight 7: -0.812705  	Weight 8: 0.336737  	Weight 9: 0.066318  
 
 
 output layer: 
@@ -11,3 +12,5 @@ neuron 0, biase -0.568386
 	Weight 0: 1.445688  	Weight 1: 1.324774  	Weight 2: -0.756454  	Weight 3: -0.393359  	Weight 4: -0.921480  	Weight 5: -0.895608  	Weight 6: 1.039326  	Weight 7: -0.908485  	Weight 8: 1.072729  	Weight 9: -0.189799  
 neuron 1, biase -0.350533
 	Weight 0: 0.071380  	Weight 1: -1.301380  	Weight 2: 0.678322  	Weight 3: -1.038235  	Weight 4: -1.224266  	Weight 5: -1.517427  	Weight 6: 0.232309  	Weight 7: 0.149926  	Weight 8: -0.559278  	Weight 9: -1.144506  
+neuron 2, biase -0.500055
+	Weight 0: -0.482766  	Weight 1: -2.039327  	Weight 2: -0.670686  	Weight 3: 0.895600  	Weight 4: 0.688929  	Weight 5: 1.050725  	Weight 6: 0.114774  	Weight 7: -0.812822  	Weight 8: 0.336431  	Weight 9: 0.066026  

@@ -101,7 +101,7 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden weights
     + SIZE_HIDDEN // hidden biases
     + SIZE_HIDDEN * 2 // hidden pre-activations and activations
-    + SIZE_HIDDEN * SIZE_VOCAB + SIZE_HIDDEN // output weights
+    + SIZE_HIDDEN * SIZE_VOCAB // output weights
     + SIZE_VOCAB //output biases
     + SIZE_VOCAB); // output pre-activations
 
