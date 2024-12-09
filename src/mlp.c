@@ -429,14 +429,15 @@ void model_backwards(Model * model, TrainingSet * training_set){
     clock_t begin, end;
     double time_spent;
     begin = clock();
-    memset(model->gradients.activations_embeddings, 0, SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
+    memset(model->gradients.activations_embeddings, 0, training_set->size * ( SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
     + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden weights
     + SIZE_HIDDEN // hidden biases
     + SIZE_HIDDEN * 2 // hidden pre-activations and activations
-    + SIZE_HIDDEN * SIZE_VOCAB + SIZE_HIDDEN // output weights
+    + SIZE_HIDDEN * SIZE_VOCAB // output weights
     + SIZE_VOCAB //output biases
-    + SIZE_VOCAB);
+    + SIZE_VOCAB)
+    );
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
     printf("\nout bias [0] = %f\n", model->parameters.biases_output[0]);
     for (int i = 0; i < training_set->size; i++){
