@@ -107,8 +107,13 @@ void create_model(Model * model, size_t size_batch){
 
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
     float * model_memory = calloc(size_model_memory, sizeof(float));
-
+    size_t * meta = (size_t *)model_memory - 1;
+    size_t mem_size = *meta;
+    printf("\nsize been allocated for model memory: %zu\n", mem_size);
     model->parameters.table_embedding = model_memory;
+    meta = (size_t *)model->parameters.table_embedding - 1;
+    mem_size = *meta;
+    printf("\n size been allocated: %zu\n", mem_size);
     model->parameters.weights_hidden = model_memory + SIZE_VOCAB * DIM_EMBEDDINGS;
     model->parameters.biases_hidden = model->parameters.weights_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
     model->parameters.weights_output = model->parameters.biases_hidden + SIZE_HIDDEN;    
@@ -429,7 +434,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     clock_t begin, end;
     double time_spent;
     begin = clock();
-    memset(model->gradients.activations_embeddings, 0, training_set->size * ( SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
+    memset(model->gradients.pre_activations_output, 0, training_set->size * ( SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
     + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
     + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden weights
     + SIZE_HIDDEN // hidden biases
@@ -529,7 +534,7 @@ int main()
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         model_forward(&model, training_set->X, training_set->size);
-        print_model(&model);
+        // print_model(&model);
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
     }
@@ -544,6 +549,10 @@ int main()
     free(training_set->X);
     free(training_set->Y);
     free(training_set);
+    size_t * meta = (size_t *)model.parameters.table_embedding - 1;
+    size_t mem_size = *meta;
+
+    printf("\n size to be freed: %zu\n", mem_size);
     free(model.parameters.table_embedding);
     return 0;
 }
