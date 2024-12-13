@@ -10,6 +10,16 @@ initialising model ....
 model initialised ....
 
 batch 0:
+hidden activation [0]: -0.819780
+hidden activation [1]: -0.723752
+hidden activation [2]: -0.537403
+hidden activation [3]: 0.656148
+hidden activation [4]: 0.633543
+hidden activation [5]: 0.926311
+hidden activation [6]: -0.110986
+hidden activation [7]: 0.596404
+hidden activation [8]: -0.362632
+hidden activation [9]: 0.072137
 logit [0]: 3.262755	prob[0]:0.301398
 logit [1]: 2.778700	prob[1]:0.185746
 logit [2]: -2.801892	prob[2]:0.000700
@@ -37,8 +47,17 @@ logit [23]: 2.385759	prob[23]:0.125391
 logit [24]: -0.077140	prob[24]:0.010682
 logit [25]: -0.793030	prob[25]:0.005221
 logit [26]: 1.529243	prob[26]:0.053246
-logit [1]: 2.778700	probs [1]: 0.185746	sum of probs: 1.000000
 batch 1:
+hidden activation [0]: -0.819780
+hidden activation [1]: -0.723752
+hidden activation [2]: -0.537403
+hidden activation [3]: 0.656148
+hidden activation [4]: 0.633543
+hidden activation [5]: 0.964395
+hidden activation [6]: -0.972100
+hidden activation [7]: 0.960336
+hidden activation [8]: -0.109271
+hidden activation [9]: 0.072137
 logit [0]: 3.262755	prob[0]:0.000004
 logit [1]: 2.778700	prob[1]:0.000003
 logit [2]: -2.801892	prob[2]:0.000000
@@ -66,8 +85,17 @@ logit [23]: 2.385759	prob[23]:0.000002
 logit [24]: -0.077140	prob[24]:0.000000
 logit [25]: -0.793030	prob[25]:0.000000
 logit [26]: 1.529243	prob[26]:0.000001
-logit [1]: 2.778700	probs [1]: 0.000003	sum of probs: 1.000000
 batch 2:
+hidden activation [0]: -0.819780
+hidden activation [1]: -0.723752
+hidden activation [2]: -0.537403
+hidden activation [3]: 0.656148
+hidden activation [4]: 0.633543
+hidden activation [5]: 0.964395
+hidden activation [6]: -0.972100
+hidden activation [7]: 0.999589
+hidden activation [8]: 0.852896
+hidden activation [9]: 0.994104
 logit [0]: 3.262755	prob[0]:0.000000
 logit [1]: 2.778700	prob[1]:0.000000
 logit [2]: -2.801892	prob[2]:0.000000
@@ -95,8 +123,17 @@ logit [23]: 2.385759	prob[23]:0.000000
 logit [24]: -0.077140	prob[24]:0.000000
 logit [25]: -0.793030	prob[25]:0.000000
 logit [26]: 1.529243	prob[26]:0.000000
-logit [1]: 2.778700	probs [1]: 0.000000	sum of probs: 1.000000
 batch 3:
+hidden activation [0]: -0.819780
+hidden activation [1]: -0.723752
+hidden activation [2]: -0.537403
+hidden activation [3]: 0.656148
+hidden activation [4]: 0.633543
+hidden activation [5]: 0.964395
+hidden activation [6]: -0.972100
+hidden activation [7]: 0.999589
+hidden activation [8]: 0.852896
+hidden activation [9]: 1.000000
 logit [0]: 3.262755	prob[0]:0.000000
 logit [1]: 2.778700	prob[1]:0.000000
 logit [2]: -2.801892	prob[2]:0.000000
@@ -124,8 +161,17 @@ logit [23]: 2.385759	prob[23]:0.000000
 logit [24]: -0.077140	prob[24]:0.000000
 logit [25]: -0.793030	prob[25]:0.000000
 logit [26]: 1.529243	prob[26]:0.000000
-logit [1]: 2.778700	probs [1]: 0.000000	sum of probs: 1.000000
 batch 4:
+hidden activation [0]: -0.819780
+hidden activation [1]: -0.723752
+hidden activation [2]: -0.537403
+hidden activation [3]: 0.656148
+hidden activation [4]: 0.633543
+hidden activation [5]: 0.964395
+hidden activation [6]: -0.972100
+hidden activation [7]: 0.999589
+hidden activation [8]: 0.852896
+hidden activation [9]: 1.000000
 logit [0]: 3.262755	prob[0]:0.000000
 logit [1]: 2.778700	prob[1]:0.000000
 logit [2]: -2.801892	prob[2]:0.000000
@@ -153,157 +199,6 @@ logit [23]: 2.385759	prob[23]:0.000000
 logit [24]: -0.077140	prob[24]:0.000000
 logit [25]: -0.793030	prob[25]:0.000000
 logit [26]: 1.529243	prob[26]:0.000000
-logit [1]: 2.778700	probs [1]: 0.000000	sum of probs: 1.000000
-
-
-loss = inf
-
- backwards pass ...
-batch 0:
-logit [0]: 2.812194	prob[0]:0.000000
-logit [1]: 0.122342	prob[1]:0.000000
-logit [2]: -1.565270	prob[2]:0.000000
-logit [3]: -2.263944	prob[3]:0.000000
-logit [4]: 2.200370	prob[4]:0.000000
-logit [5]: -2.677386	prob[5]:0.000000
-logit [6]: 5.450155	prob[6]:0.000000
-logit [7]: -3.038330	prob[7]:0.000000
-logit [8]: 18.464790	prob[8]:0.000000
-logit [9]: -2.565163	prob[9]:0.000000
-logit [10]: 3.349260	prob[10]:0.000000
-logit [11]: -203.005173	prob[11]:0.000000
-logit [12]: 4.754306	prob[12]:0.000000
-logit [13]: -11.979961	prob[13]:0.000000
-logit [14]: 1797.440063	prob[14]:1.000000
-logit [15]: 3.864984	prob[15]:0.000000
-logit [16]: -268.815002	prob[16]:0.000000
-logit [17]: -1065.082275	prob[17]:0.000000
-logit [18]: -0.923203	prob[18]:0.000000
-logit [19]: 1.549409	prob[19]:0.000000
-logit [20]: 0.939274	prob[20]:0.000000
-logit [21]: -1.607941	prob[21]:0.000000
-logit [22]: -0.705251	prob[22]:0.000000
-logit [23]: 2.383254	prob[23]:0.000000
-logit [24]: -0.441215	prob[24]:0.000000
-logit [25]: -0.793134	prob[25]:0.000000
-logit [26]: 1.528178	prob[26]:0.000000
-logit [1]: 0.122342	probs [1]: 0.000000	sum of probs: 1.000000
-batch 1:
-logit [0]: 2.812194	prob[0]:0.000000
-logit [1]: 0.122342	prob[1]:0.000000
-logit [2]: -1.565270	prob[2]:0.000000
-logit [3]: -2.263944	prob[3]:0.000000
-logit [4]: 2.200370	prob[4]:0.000000
-logit [5]: -29.098263	prob[5]:0.000000
-logit [6]: 303.106232	prob[6]:0.000000
-logit [7]: -3.135303	prob[7]:0.000000
-logit [8]: -274.956146	prob[8]:0.000000
-logit [9]: -2.565163	prob[9]:0.000000
-logit [10]: 3.349260	prob[10]:0.000000
-logit [11]: -203.005173	prob[11]:0.000000
-logit [12]: 4.754306	prob[12]:0.000000
-logit [13]: -11.979961	prob[13]:0.000000
-logit [14]: 1797.440063	prob[14]:1.000000
-logit [15]: 3.864984	prob[15]:0.000000
-logit [16]: -268.815002	prob[16]:0.000000
-logit [17]: -1065.082275	prob[17]:0.000000
-logit [18]: -0.923203	prob[18]:0.000000
-logit [19]: 1.549409	prob[19]:0.000000
-logit [20]: 0.939274	prob[20]:0.000000
-logit [21]: -1.607941	prob[21]:0.000000
-logit [22]: -0.705251	prob[22]:0.000000
-logit [23]: 2.383254	prob[23]:0.000000
-logit [24]: -0.441215	prob[24]:0.000000
-logit [25]: -0.793134	prob[25]:0.000000
-logit [26]: 1.528178	prob[26]:0.000000
-logit [1]: 0.122342	probs [1]: 0.000000	sum of probs: 1.000000
-batch 2:
-logit [0]: 2.812194	prob[0]:0.000000
-logit [1]: 0.122342	prob[1]:0.000000
-logit [2]: -1.565270	prob[2]:0.000000
-logit [3]: -2.263944	prob[3]:0.000000
-logit [4]: 2.200370	prob[4]:0.000000
-logit [5]: -29.098263	prob[5]:0.000000
-logit [6]: 303.106232	prob[6]:0.000000
-logit [7]: -3.135303	prob[7]:0.000000
-logit [8]: -348.610077	prob[8]:0.000000
-logit [9]: 2854.553955	prob[9]:0.000000
-logit [10]: -1.759961	prob[10]:0.000000
-logit [11]: 10500.824219	prob[11]:1.000000
-logit [12]: 4.754306	prob[12]:0.000000
-logit [13]: -11.979961	prob[13]:0.000000
-logit [14]: 1797.440063	prob[14]:0.000000
-logit [15]: 3.864984	prob[15]:0.000000
-logit [16]: -268.815002	prob[16]:0.000000
-logit [17]: -1065.082275	prob[17]:0.000000
-logit [18]: -0.923203	prob[18]:0.000000
-logit [19]: 1.549409	prob[19]:0.000000
-logit [20]: 0.939274	prob[20]:0.000000
-logit [21]: -1.607941	prob[21]:0.000000
-logit [22]: -0.705251	prob[22]:0.000000
-logit [23]: 2.383254	prob[23]:0.000000
-logit [24]: -0.441215	prob[24]:0.000000
-logit [25]: -0.793134	prob[25]:0.000000
-logit [26]: 1.528178	prob[26]:0.000000
-logit [1]: 0.122342	probs [1]: 0.000000	sum of probs: 1.000000
-batch 3:
-logit [0]: 2.812194	prob[0]:0.000000
-logit [1]: 0.122342	prob[1]:0.000000
-logit [2]: -1.565270	prob[2]:0.000000
-logit [3]: -2.263944	prob[3]:0.000000
-logit [4]: 2.200370	prob[4]:0.000000
-logit [5]: -29.098263	prob[5]:0.000000
-logit [6]: 303.106232	prob[6]:0.000000
-logit [7]: -3.135303	prob[7]:0.000000
-logit [8]: -348.610077	prob[8]:0.000000
-logit [9]: 2854.553955	prob[9]:0.000000
-logit [10]: -1.759961	prob[10]:0.000000
-logit [11]: 21245.492188	prob[11]:1.000000
-logit [12]: -580.987549	prob[12]:0.000000
-logit [13]: 719.494812	prob[13]:0.000000
-logit [14]: -71404.375000	prob[14]:0.000000
-logit [15]: 3.864984	prob[15]:0.000000
-logit [16]: -268.815002	prob[16]:0.000000
-logit [17]: -1065.082275	prob[17]:0.000000
-logit [18]: -0.923203	prob[18]:0.000000
-logit [19]: 1.549409	prob[19]:0.000000
-logit [20]: 0.939274	prob[20]:0.000000
-logit [21]: -1.607941	prob[21]:0.000000
-logit [22]: -0.705251	prob[22]:0.000000
-logit [23]: 2.383254	prob[23]:0.000000
-logit [24]: -0.441215	prob[24]:0.000000
-logit [25]: -0.793134	prob[25]:0.000000
-logit [26]: 1.528178	prob[26]:0.000000
-logit [1]: 0.122342	probs [1]: 0.000000	sum of probs: 1.000000
-batch 4:
-logit [0]: 2.812194	prob[0]:0.000000
-logit [1]: 0.122342	prob[1]:0.000000
-logit [2]: -1.565270	prob[2]:0.000000
-logit [3]: -2.263944	prob[3]:0.000000
-logit [4]: 2.200370	prob[4]:0.000000
-logit [5]: -29.098263	prob[5]:0.000000
-logit [6]: 303.106232	prob[6]:0.000000
-logit [7]: -3.135303	prob[7]:0.000000
-logit [8]: -348.610077	prob[8]:0.000000
-logit [9]: 2854.553955	prob[9]:0.000000
-logit [10]: -1.759961	prob[10]:0.000000
-logit [11]: 21245.492188	prob[11]:0.000000
-logit [12]: -580.987549	prob[12]:0.000000
-logit [13]: 719.494812	prob[13]:0.000000
-logit [14]: -168005.203125	prob[14]:0.000000
-logit [15]: 2.014764	prob[15]:0.000000
-logit [16]: 32706.000000	prob[16]:1.000000
-logit [17]: -10832.082031	prob[17]:0.000000
-logit [18]: -0.923203	prob[18]:0.000000
-logit [19]: 1.549409	prob[19]:0.000000
-logit [20]: 0.939274	prob[20]:0.000000
-logit [21]: -1.607941	prob[21]:0.000000
-logit [22]: -0.705251	prob[22]:0.000000
-logit [23]: 2.383254	prob[23]:0.000000
-logit [24]: -0.441215	prob[24]:0.000000
-logit [25]: -0.793134	prob[25]:0.000000
-logit [26]: 1.528178	prob[26]:0.000000
-logit [1]: 0.122342	probs [1]: 0.000000	sum of probs: 1.000000
 
 
 loss = inf

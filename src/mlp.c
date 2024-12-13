@@ -522,20 +522,18 @@ int main()
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
-        // for (int i = 0; i < training_set->size; i++){
-        //     printf("logit [1] batch %d: %f\n", i, model.activations.output[i * SIZE_VOCAB + 1]);
-        //     printf("prob [1] batch %d: %f\n", i, model.activations.probs[i * SIZE_VOCAB + 1]);
-        // }
         for (int i = 0; i < training_set->size; i++){
             printf("batch %d:\n", i);
+            for (int j = 0; j <SIZE_HIDDEN; j++){
+                printf("hidden activation [%d]: %f\n",j, model.activations.hidden[i * SIZE_HIDDEN + j]);
+            }
+
             float sum_probs = 0;
             for (int j = 0; j <SIZE_VOCAB; j++){
                 sum_probs += model.activations.probs[i * SIZE_VOCAB + j];
                 printf("logit [%d]: %f\tprob[%d]:%f\n",j, model.activations.output[i *SIZE_VOCAB + j],
                 j, model.activations.probs[i * SIZE_VOCAB + j]);
             }
-            printf("logit [1]: %f\tprobs [1]: %f\tsum of probs: %f\n", model.activations.output[i * SIZE_VOCAB + 1], 
-            model.activations.probs[i * SIZE_VOCAB + 1], sum_probs);
         }
         printf("\n");
         // print_model(&model);
