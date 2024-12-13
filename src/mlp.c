@@ -107,13 +107,7 @@ void create_model(Model * model, size_t size_batch){
 
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
     float * model_memory = calloc(size_model_memory, sizeof(float));
-    size_t * meta = (size_t *)model_memory - 1;
-    size_t mem_size = *meta;
-    printf("\nsize been allocated for model memory: %zu\n", mem_size);
     model->parameters.table_embedding = model_memory;
-    meta = (size_t *)model->parameters.table_embedding - 1;
-    mem_size = *meta;
-    printf("\n size been allocated: %zu\n", mem_size);
     model->parameters.weights_hidden = model_memory + SIZE_VOCAB * DIM_EMBEDDINGS;
     model->parameters.biases_hidden = model->parameters.weights_hidden + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN;
     model->parameters.weights_output = model->parameters.biases_hidden + SIZE_HIDDEN;    
@@ -444,10 +438,6 @@ void model_backwards(Model * model, TrainingSet * training_set){
     + SIZE_VOCAB)
     );
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
-    printf("\nout bias [0] = %f\n", model->parameters.biases_output[0]);
-    for (int i = 0; i < training_set->size; i++){
-        printf("output grad [0] batch %d = %f\n", i, model->gradients.biases_output[i * SIZE_VOCAB]);
-    }
     matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
      model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
     tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_VOCAB, training_set->size);
@@ -463,9 +453,6 @@ void model_backwards(Model * model, TrainingSet * training_set){
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     // printf("\t ... took %2lf seconds.\n", time_spent);
     float after_w = model->parameters.biases_output[0];
-    printf("\nbias after update: %f", after_w);
-
-    printf("\n output bias grad: %f\n", model->gradients.biases_output[0]);
 }
 
 
@@ -534,6 +521,23 @@ int main()
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         model_forward(&model, training_set->X, training_set->size);
+        printf("\n");
+        // for (int i = 0; i < training_set->size; i++){
+        //     printf("logit [1] batch %d: %f\n", i, model.activations.output[i * SIZE_VOCAB + 1]);
+        //     printf("prob [1] batch %d: %f\n", i, model.activations.probs[i * SIZE_VOCAB + 1]);
+        // }
+        for (int i = 0; i < training_set->size; i++){
+            printf("batch %d:\n", i);
+            float sum_probs = 0;
+            for (int j = 0; j <SIZE_VOCAB; j++){
+                sum_probs += model.activations.probs[i * SIZE_VOCAB + j];
+                printf("logit [%d]: %f\tprob[%d]:%f\n",j, model.activations.output[i *SIZE_VOCAB + j],
+                j, model.activations.probs[i * SIZE_VOCAB + j]);
+            }
+            printf("logit [1]: %f\tprobs [1]: %f\tsum of probs: %f\n", model.activations.output[i * SIZE_VOCAB + 1], 
+            model.activations.probs[i * SIZE_VOCAB + 1], sum_probs);
+        }
+        printf("\n");
         // print_model(&model);
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
@@ -549,10 +553,6 @@ int main()
     free(training_set->X);
     free(training_set->Y);
     free(training_set);
-    size_t * meta = (size_t *)model.parameters.table_embedding - 1;
-    size_t mem_size = *meta;
-
-    printf("\n size to be freed: %zu\n", mem_size);
     free(model.parameters.table_embedding);
     return 0;
 }
