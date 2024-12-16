@@ -187,22 +187,22 @@ zzzz
 
 */
 
-void mat_mul_forward(const float * matrix_inputs, size_t size_rows_inputs, size_t size_cols_inputs_rows_neurons,
+void mat_mul_forward(const float * matrix_inputs, size_t size_batch, size_t size_inputs,
                      const float * matrix_weights, const float * matrix_biases, size_t size_neurons, float * matrix_output)
 {
     // #pragma omp parallel for collapse(2)
-    for (size_t idx_row_input = 0; idx_row_input < size_rows_inputs; idx_row_input++ ){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++ ){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-            size_t offset_neural_activation = idx_row_input * size_neurons + idx_neuron;
+            size_t offset_neural_activation = idx_batch * size_neurons + idx_neuron;
             if (matrix_biases != NULL){
                 matrix_output[offset_neural_activation] = matrix_biases[idx_neuron];
             }
             else {
                 matrix_output[offset_neural_activation] = 0.0;
             }
-            for (size_t idx_row_weight = 0; idx_row_weight < size_cols_inputs_rows_neurons; idx_row_weight++){
-                size_t offset_weight_factor = idx_neuron * size_cols_inputs_rows_neurons + idx_row_weight;
-                size_t offset_input_factor = idx_row_input * size_cols_inputs_rows_neurons + idx_row_weight;
+            for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
+                size_t offset_weight_factor = idx_neuron * size_inputs + idx_weight;
+                size_t offset_input_factor = idx_batch * size_inputs + idx_weight;
                 matrix_output[offset_neural_activation] += matrix_inputs[offset_weight_factor]
                   * matrix_weights[offset_input_factor];
             }
@@ -210,38 +210,39 @@ void mat_mul_forward(const float * matrix_inputs, size_t size_rows_inputs, size_
     }
 }
 
-void tanh_forward(float * matrix_input, float * matrix_output, size_t size_cols, size_t size_rows){
-    for (size_t idx_row = 0; idx_row < size_rows; idx_row++){
-        for (size_t idx_col = 0; idx_col < size_cols; idx_col++){
-            size_t idx_activation = idx_row * size_cols + idx_col;
-            matrix_output[idx_activation] = tanh(matrix_input[idx_activation]);
+void tanh_forward(float * matrix_input, float * matrix_output, size_t size_activations, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        for (size_t idx_activation = 0; idx_activation < size_activations; idx_activation++){
+            size_t offset_activation = idx_batch * size_activations + idx_activation;
+            matrix_output[offset_activation] = tanh(matrix_input[offset_activation]);
         }
     }
 }
 
 void softmax_forward(float * logits, float * probs, size_t size_batch){
     //exp logits:
-    for (int i = 0; i < size_batch; i++){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         // each logits & probs row
 
         // find the max logit
-        float max_logit = logits[i * SIZE_VOCAB];
+        float max_logit = logits[idx_batch * SIZE_VOCAB];
 
-        for (int j = 0; j < SIZE_VOCAB; j++){
-            if (logits[(i * SIZE_VOCAB) + j] > max_logit){
-                max_logit = logits[(i * SIZE_VOCAB) + j];
+        for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
+            size_t offset_logit = idx_batch * SIZE_VOCAB + idx_logit;
+            if (logits[offset_logit] > max_logit){
+                max_logit = logits[offset_logit];
             }
         }
 
         // exponentiate logits and accumulate softmax denominator
         float softmax_denominator = 0.0;
         for (int j = 0; j < SIZE_VOCAB; j++){
-            probs[(i * SIZE_VOCAB) + j] = exp(logits[(i * SIZE_VOCAB) + j] - max_logit);
-            softmax_denominator += probs[(i * SIZE_VOCAB) + j];
+            probs[(idx_batch * SIZE_VOCAB) + j] = exp(logits[(idx_batch * SIZE_VOCAB) + j] - max_logit);
+            softmax_denominator += probs[(idx_batch * SIZE_VOCAB) + j];
         }
         // normalise exponentiated logits:
         for (int j = 0; j < SIZE_VOCAB; j++){
-            probs[(i * SIZE_VOCAB) + j] = probs[(i * SIZE_VOCAB) + j] / softmax_denominator;
+            probs[(idx_batch * SIZE_VOCAB) + j] = probs[(idx_batch * SIZE_VOCAB) + j] / softmax_denominator;
         }
 
     }
