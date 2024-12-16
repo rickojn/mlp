@@ -201,9 +201,10 @@ void mat_mul_forward(const float * matrix_inputs, size_t size_rows_inputs, size_
                 matrix_output[offset_neural_activation] = 0.0;
             }
             for (size_t idx_row_weight = 0; idx_row_weight < size_cols_inputs_rows_neurons; idx_row_weight++){
-                size_t offset_factor = idx_neuron * size_cols_inputs_rows_neurons + idx_row_weight;
-                matrix_output[offset_neural_activation] += matrix_inputs[offset_factor]
-                  * matrix_weights[offset_factor];
+                size_t offset_weight_factor = idx_neuron * size_cols_inputs_rows_neurons + idx_row_weight;
+                size_t offset_input_factor = idx_row_input * size_cols_inputs_rows_neurons + idx_row_weight;
+                matrix_output[offset_neural_activation] += matrix_inputs[offset_weight_factor]
+                  * matrix_weights[offset_input_factor];
             }
         }
     }
