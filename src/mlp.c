@@ -269,8 +269,10 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float batch_loss = 0.0;
-    for (int i = 0; i < size_batch; i++){
-         batch_loss += log(probs[(i * SIZE_VOCAB) + encode(labels[i])]) * -1;
+    for (int idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
+        float prob = probs[offset_predicted_prob_for_expected_token];
+        batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
     }
     return batch_loss/size_batch;
 }
@@ -426,7 +428,7 @@ void update_weights(Model * model, size_t size_batchs){
 
 
 void model_backwards(Model * model, TrainingSet * training_set){
-    printf("\n backwards pass ...");
+    printf("\n backwards pass ...\n");
     clock_t begin, end;
     double time_spent;
     begin = clock();
@@ -525,19 +527,11 @@ int main()
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
         for (int i = 0; i < training_set->size; i++){
-            printf("batch %d:\n", i);
-            for (int j = 0; j <SIZE_HIDDEN; j++){
-                printf("hidden activation [%d]: %f\n",j, model.activations.hidden[i * SIZE_HIDDEN + j]);
-            }
-
-            float sum_probs = 0;
-            for (int j = 0; j <SIZE_VOCAB; j++){
-                sum_probs += model.activations.probs[i * SIZE_VOCAB + j];
-                printf("logit [%d]: %f\tprob[%d]:%f\n",j, model.activations.output[i *SIZE_VOCAB + j],
-                j, model.activations.probs[i * SIZE_VOCAB + j]);
-            }
+            printf("batch %d: prob[1] = %f\t", i, model.activations.probs[i * SIZE_VOCAB + 1]);
         }
         printf("\n");
+        // print_model(&model);
+
         // print_model(&model);
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
