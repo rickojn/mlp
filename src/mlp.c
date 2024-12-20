@@ -526,10 +526,20 @@ int main()
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
+        for (int i = 0; i < SIZE_VOCAB; i++){
+            printf("batch 2 logit[%d]: %f\t", i, model.activations.output[2 * SIZE_VOCAB + i]);
+        }
+        printf("\n");
+        printf("\n");
+        printf("\n");
         for (int i = 0; i < training_set->size; i++){
             printf("batch %d: prob[1] = %f\t", i, model.activations.probs[i * SIZE_VOCAB + 1]);
         }
         printf("\n");
+        // print_model(&model);
+        printf("\n");
+        printf("\n");
+        // print_model(&model);
         // print_model(&model);
 
         // print_model(&model);
