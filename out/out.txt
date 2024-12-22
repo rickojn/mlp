@@ -9,8 +9,182 @@ initialising model ....
 
 model initialised ....
 
-batch 0: prob[1] = 0.067626	batch 1: prob[1] = 0.138126	batch 2: prob[1] = 0.000000	batch 3: prob[1] = 0.000000	batch 4: prob[1] = 0.000000	
 
-loss = 35.824883
+
+
+
+prob [1] = 0.009352
+
+prob [28] = 0.020894
+
+prob [55] = 0.000938
+
+prob [82] = 0.146109
+
+prob [108] = 0.098591
+
+loss = 3.950452
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.009452
+
+prob [28] = 0.019036
+
+prob [55] = 0.000677
+
+prob [82] = 0.092617
+
+prob [108] = 0.048019
+
+loss = 4.267343
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.009143
+
+prob [28] = 0.019074
+
+prob [55] = 0.002655
+
+prob [82] = 0.046632
+
+prob [108] = 0.041739
+
+loss = 4.165482
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.008827
+
+prob [28] = 0.029376
+
+prob [55] = 0.005300
+
+prob [82] = 0.012806
+
+prob [108] = 0.026740
+
+loss = 4.295419
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.008766
+
+prob [28] = 0.018140
+
+prob [55] = 0.004865
+
+prob [82] = 0.003819
+
+prob [108] = 0.018924
+
+loss = 4.721472
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.008879
+
+prob [28] = 0.001645
+
+prob [55] = 0.004303
+
+prob [82] = 0.002867
+
+prob [108] = 0.020944
+
+loss = 5.260591
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.009315
+
+prob [28] = 0.001090
+
+prob [55] = 0.003034
+
+prob [82] = 0.002067
+
+prob [108] = 0.022493
+
+loss = 5.454402
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.009945
+
+prob [28] = 0.001064
+
+prob [55] = 0.001324
+
+prob [82] = 0.001219
+
+prob [108] = 0.018376
+
+loss = 5.757961
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.010870
+
+prob [28] = 0.001079
+
+prob [55] = 0.000791
+
+prob [82] = 0.000462
+
+prob [108] = 0.009671
+
+loss = 6.162767
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.012145
+
+prob [28] = 0.001102
+
+prob [55] = 0.000637
+
+prob [82] = 0.000037
+
+prob [108] = 0.001572
+
+loss = 7.045987
 
  backwards pass ...

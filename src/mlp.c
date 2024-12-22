@@ -272,6 +272,7 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     for (int idx_batch = 0; idx_batch < size_batch; idx_batch++){
         size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
         float prob = probs[offset_predicted_prob_for_expected_token];
+        printf("\nprob [%d] = %f\n", offset_predicted_prob_for_expected_token, prob);
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
     }
     return batch_loss/size_batch;
@@ -530,10 +531,6 @@ int main()
         
         printf("\n");
         printf("\n");
-        // print_model(&model);
-        // print_model(&model);
-
-        // print_model(&model);
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
     }
