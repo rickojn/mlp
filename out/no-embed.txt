@@ -1,0 +1,190 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+
+
+
+
+prob [1] = 0.009352
+
+prob [28] = 0.020894
+
+prob [55] = 0.000938
+
+prob [82] = 0.146109
+
+prob [108] = 0.098591
+
+loss = 3.950452
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.008774
+
+prob [28] = 0.017192
+
+prob [55] = 0.000573
+
+prob [82] = 0.092995
+
+prob [108] = 0.062057
+
+loss = 4.283734
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.007623
+
+prob [28] = 0.012854
+
+prob [55] = 0.002168
+
+prob [82] = 0.038545
+
+prob [108] = 0.059457
+
+loss = 4.288644
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.006940
+
+prob [28] = 0.021970
+
+prob [55] = 0.005330
+
+prob [82] = 0.009575
+
+prob [108] = 0.035440
+
+loss = 4.402280
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.006591
+
+prob [28] = 0.012989
+
+prob [55] = 0.004934
+
+prob [82] = 0.002917
+
+prob [108] = 0.024676
+
+loss = 4.843221
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.006823
+
+prob [28] = 0.001472
+
+prob [55] = 0.004108
+
+prob [82] = 0.002013
+
+prob [108] = 0.025127
+
+loss = 5.379025
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.010458
+
+prob [28] = 0.001053
+
+prob [55] = 0.002252
+
+prob [82] = 0.001472
+
+prob [108] = 0.023193
+
+loss = 5.559498
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.026789
+
+prob [28] = 0.000963
+
+prob [55] = 0.000974
+
+prob [82] = 0.001004
+
+prob [108] = 0.018562
+
+loss = 5.678182
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.041199
+
+prob [28] = 0.000881
+
+prob [55] = 0.000712
+
+prob [82] = 0.000474
+
+prob [108] = 0.011046
+
+loss = 5.926056
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.048855
+
+prob [28] = 0.000820
+
+prob [55] = 0.000541
+
+prob [82] = 0.000061
+
+prob [108] = 0.002504
+
+loss = 6.667427
+
+ backwards pass ...

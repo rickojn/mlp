@@ -442,15 +442,15 @@ void model_backwards(Model * model, TrainingSet * training_set){
     + SIZE_VOCAB //output biases
     + SIZE_VOCAB)
     );
-    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
-    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
-     model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
+    //loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
+    //matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
+     //model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
     tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_VOCAB, training_set->size);
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
     model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,
     SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
     embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
-    DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK, training_set->size);
+     DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK, training_set->size);
 
     update_weights(model, training_set->size);
     end = clock();
