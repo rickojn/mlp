@@ -196,6 +196,9 @@ void mat_mul_forward(const float * matrix_inputs, size_t size_batch, size_t size
             size_t offset_neural_activation = idx_batch * size_neurons + idx_neuron;
             if (matrix_biases != NULL){
                 matrix_output[offset_neural_activation] = matrix_biases[idx_neuron];
+                if (idx_neuron == 8 && idx_batch == 2){
+                    printf("\nbias = %f  act = %f\n", matrix_output[offset_neural_activation], matrix_biases[idx_neuron]);
+                }
             }
             else {
                 matrix_output[offset_neural_activation] = 0.0;
@@ -203,8 +206,12 @@ void mat_mul_forward(const float * matrix_inputs, size_t size_batch, size_t size
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_weight_factor = idx_neuron * size_inputs + idx_weight;
                 size_t offset_input_factor = idx_batch * size_inputs + idx_weight;
-                matrix_output[offset_neural_activation] += matrix_inputs[offset_weight_factor]
-                  * matrix_weights[offset_input_factor];
+                matrix_output[offset_neural_activation] += matrix_inputs[offset_input_factor]
+                  * matrix_weights[offset_weight_factor];
+                  if (idx_neuron == 8 && idx_batch == 2){
+                    printf("\n\n input [%d] = %f\t weight [%d] = %f\n", idx_weight, matrix_inputs[offset_neural_activation],
+                    idx_weight, matrix_weights[offset_input_factor]);
+                  }
             }
         }
     }
@@ -527,16 +534,22 @@ int main()
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
         for (int i = 0; i < SIZE_VOCAB; i++){
-            printf("batch 2 logit[%d]: %f\t", i, model.activations.output[2 * SIZE_VOCAB + i]);
+            printf("batch 2 logit[%d]: %f\n", i, model.activations.output[2 * SIZE_VOCAB + i]);
         }
         printf("\n");
         printf("\n");
         printf("\n");
         for (int i = 0; i < training_set->size; i++){
-            printf("batch %d: prob[1] = %f\t", i, model.activations.probs[i * SIZE_VOCAB + 1]);
+            printf("batch %d: prob[1] = %f\t prob[11] = %f\t prob[8] = %f\n", 
+            i, model.activations.probs[i * SIZE_VOCAB + 1], model.activations.probs[i * SIZE_VOCAB + 11],
+            model.activations.probs[i * SIZE_VOCAB + 8]);
         }
         printf("\n");
         // print_model(&model);
+        for (int i = 0; i < SIZE_HIDDEN; i++){
+            printf("batch 2 hidden act [%d] = %f, output n8 w[%d] = %f\n", 
+            i, model.activations.hidden[2 * SIZE_HIDDEN + i],i, model.parameters.weights_output[8 * SIZE_HIDDEN + i] );
+        }
         printf("\n");
         printf("\n");
         // print_model(&model);
