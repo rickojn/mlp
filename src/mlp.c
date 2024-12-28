@@ -349,7 +349,7 @@ void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, co
                 float input_activation = input_activations[offset_input_activation_grad];
                 size_t offset_weight = size_neurons * idx_neuron + idx_weight;
                 float weight = weights[offset_weight];
-                size_t offset_grad_w = idx_batch * size_neurons * size_input_activations + idx_neuron * size_neurons + idx_weight;
+                size_t offset_grad_w = idx_batch * size_neurons * size_input_activations + idx_neuron * size_input_activations + idx_weight;
                 grads_w[offset_grad_w] = grad_z * input_activation;
                 grads_input_activations[offset_input_activation_grad] += grad_z * weight;
             }
@@ -442,9 +442,9 @@ void model_backwards(Model * model, TrainingSet * training_set){
     + SIZE_VOCAB //output biases
     + SIZE_VOCAB)
     );
-    //loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
-    //matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
-     //model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
+    loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
+    matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
+    model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
     tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_VOCAB, training_set->size);
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
     model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,

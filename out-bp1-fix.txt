@@ -1,0 +1,46 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+
+
+
+
+prob [1] = 0.009352
+
+prob [28] = 0.020894
+
+prob [55] = 0.000938
+
+prob [82] = 0.146109
+
+prob [108] = 0.098591
+
+loss = 3.950452
+
+ backwards pass ...
+
+
+
+
+
+prob [1] = 0.013268
+
+prob [28] = 0.021923
+
+prob [55] = 0.001128
+
+prob [82] = 0.108560
+
+prob [108] = 0.039230
+
+loss = 4.077758
+
+ backwards pass ...
