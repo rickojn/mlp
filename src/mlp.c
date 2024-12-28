@@ -345,7 +345,7 @@ void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, co
                 grads_b[offset_grad_z] = grad_z;
             }
             for (size_t idx_weight = 0; idx_weight < size_input_activations; idx_weight++){
-                size_t offset_input_activation_grad = size_batch * size_input_activations + idx_weight; 
+                size_t offset_input_activation_grad = idx_batch * size_input_activations + idx_weight; 
                 float input_activation = input_activations[offset_input_activation_grad];
                 size_t offset_weight = size_neurons * idx_neuron + idx_weight;
                 float weight = weights[offset_weight];
