@@ -285,18 +285,22 @@ void loss_softmax_backward(char * labels, float * probs, float * grads_logit, in
             if (idx_vocab == encode(labels[idx_batch])){
                 label = 1;
             }
-            size_t idx_grad = idx_batch * SIZE_VOCAB + idx_vocab;
-            grads_logit[idx_grad] = probs[idx_grad] - label;
+            size_t offset_grad_logit = idx_batch * SIZE_VOCAB + idx_vocab;
+            grads_logit[offset_grad_logit] = probs[offset_grad_logit] - label;
         }
     }
 }
 
-
-void tanh_backward(float * inputs, float * outputs, size_t size_cols, size_t size_batch){
+/*
+dLoss/dZ = dLoss/dAct * dAct/dZ 
+dAct/dZ = 1 - tanh2(Z)
+*/
+void tanh_backward(const float * activations, float * grads_pre_activations, const float * grads_activations,
+ size_t size_neurons, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-        for (size_t idx_input = 0; idx_input < size_cols; idx_input++){
-            size_t offset_grad = idx_batch * size_cols + idx_input;
-            outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]),2);
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_grad = idx_batch * size_neurons + idx_neuron;
+            grads_pre_activations[offset_grad] = grads_activations[offset_grad] * (1 - pow(tanh(activations[offset_grad]),2));
         }
     }
 }
@@ -445,13 +449,12 @@ void model_backwards(Model * model, TrainingSet * training_set){
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
     matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
     model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
-    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_VOCAB, training_set->size);
+    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, model->gradients.activations_hidden, SIZE_VOCAB, training_set->size);
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
     model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,
     SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
     embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
      DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK, training_set->size);
-
     update_weights(model, training_set->size);
     end = clock();
 
@@ -525,8 +528,8 @@ int main()
 
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
+        printf("\nepoch %d \n", idx_epoch);
         model_forward(&model, training_set->X, training_set->size);
-        printf("\n");
         printf("\n");
         
         printf("\n");
