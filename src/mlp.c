@@ -362,7 +362,22 @@ void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, co
     }
 }
 
+/*
+A => w1,w2
+B => w3,w4
+c => w4,w5
+d => w6,w7
+e => w8,w9
+f =>  w10,w11
 
+
+Cab => w4,w5,w1,w2,w3,w4
+
+
+Dw4/dw1 = 0
+Dw4/dw4 = 1
+
+*/
 void embedding_backwards(float * grads_z, float * grads_w, const char * inputs, size_t size_activations, 
 size_t  size_grads_w, size_t size_inputs, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
