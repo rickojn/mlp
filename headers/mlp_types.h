@@ -3,12 +3,12 @@
 #endif
 
 
-#define SIZE_VOCAB 27
-#define SIZE_BLOCK 3
-#define SIZE_HIDDEN 10
+#define SIZE_VOCAB 2
+#define SIZE_BLOCK 1
+#define SIZE_HIDDEN 5
 #define INITIAL_SIZE 1000 // Initial number of strings
 #define MAX_LENGTH 256  // Maximum length of each string
-#define NUM_EPOCHS 500
+#define NUM_EPOCHS 50000
 #define LEARNING_RATE 0.1
 #define DIM_EMBEDDINGS 2
 #define SIZE_BATCH 32
@@ -38,6 +38,7 @@ typedef struct
 typedef struct
 {
     float * input;
+    float * pre_hidden;
     float * hidden;
     float * output;
     float * probs;

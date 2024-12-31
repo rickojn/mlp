@@ -93,7 +93,7 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_VOCAB; // output biases
 
     size_t size_model_activations = size_batch * (SIZE_BLOCK * DIM_EMBEDDINGS
-    + SIZE_HIDDEN * 2
+    + SIZE_HIDDEN
     + SIZE_VOCAB * 2);
 
     size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
@@ -114,9 +114,8 @@ void create_model(Model * model, size_t size_batch){
     model->parameters.biases_output = model->parameters.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
 
     model->activations.input = model->parameters.biases_output + SIZE_VOCAB;
-    model->activations.pre_hidden = model->activations.input + SIZE_VOCAB * SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
-    model->activations.hidden = model->activations.pre_hidden 
-    + SIZE_HIDDEN * size_batch;
+    model->activations.hidden = model->activations.input 
+    + SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
     model->activations.output = model->activations.hidden
     + size_batch * SIZE_HIDDEN;
     model->activations.probs = model->activations.output
@@ -296,12 +295,12 @@ void loss_softmax_backward(char * labels, float * probs, float * grads_logit, in
 dLoss/dZ = dLoss/dAct * dAct/dZ 
 dAct/dZ = 1 - tanh2(Z)
 */
-void tanh_backward(const float * activations, float * grads_pre_activations, const float * grads_activations, const float * pre_activations,
+void tanh_backward(const float * activations, float * grads_pre_activations, const float * grads_activations,
  size_t size_neurons, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             size_t offset_grad = idx_batch * size_neurons + idx_neuron;
-            grads_pre_activations[offset_grad] = grads_activations[offset_grad] * (1 - pow(tanh(pre_activations[offset_grad]),2));
+            grads_pre_activations[offset_grad] = grads_activations[offset_grad] * (1 - pow(tanh(activations[offset_grad]),2));
         }
     }
 }
@@ -450,8 +449,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
     matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
     model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
-    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, model->gradients.activations_hidden,
-     model->activations.pre_hidden, SIZE_VOCAB, training_set->size);
+    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, model->gradients.activations_hidden, SIZE_VOCAB, training_set->size);
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
     model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,
     SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);

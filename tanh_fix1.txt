@@ -1,0 +1,6510 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+epoch 0 
+
+
+
+
+prob [1] = 0.505903
+
+prob [2] = 0.156947
+
+loss = 1.266628
+
+ backwards pass ...
+
+epoch 1 
+
+
+
+
+prob [1] = 0.553150
+
+prob [2] = 0.150604
+
+loss = 1.242614
+
+ backwards pass ...
+
+epoch 2 
+
+
+
+
+prob [1] = 0.581122
+
+prob [2] = 0.146709
+
+loss = 1.231050
+
+ backwards pass ...
+
+epoch 3 
+
+
+
+
+prob [1] = 0.596332
+
+prob [2] = 0.144892
+
+loss = 1.224360
+
+ backwards pass ...
+
+epoch 4 
+
+
+
+
+prob [1] = 0.604191
+
+prob [2] = 0.145091
+
+loss = 1.217131
+
+ backwards pass ...
+
+epoch 5 
+
+
+
+
+prob [1] = 0.608939
+
+prob [2] = 0.147543
+
+loss = 1.204836
+
+ backwards pass ...
+
+epoch 6 
+
+
+
+
+prob [1] = 0.613654
+
+prob [2] = 0.152798
+
+loss = 1.183482
+
+ backwards pass ...
+
+epoch 7 
+
+
+
+
+prob [1] = 0.620131
+
+prob [2] = 0.161734
+
+loss = 1.149813
+
+ backwards pass ...
+
+epoch 8 
+
+
+
+
+prob [1] = 0.628870
+
+prob [2] = 0.175573
+
+loss = 1.101764
+
+ backwards pass ...
+
+epoch 9 
+
+
+
+
+prob [1] = 0.639329
+
+prob [2] = 0.195806
+
+loss = 1.038983
+
+ backwards pass ...
+
+epoch 10 
+
+
+
+
+prob [1] = 0.650392
+
+prob [2] = 0.223884
+
+loss = 0.963404
+
+ backwards pass ...
+
+epoch 11 
+
+
+
+
+prob [1] = 0.660834
+
+prob [2] = 0.260469
+
+loss = 0.879761
+
+ backwards pass ...
+
+epoch 12 
+
+
+
+
+prob [1] = 0.669627
+
+prob [2] = 0.304283
+
+loss = 0.795416
+
+ backwards pass ...
+
+epoch 13 
+
+
+
+
+prob [1] = 0.676051
+
+prob [2] = 0.351311
+
+loss = 0.718785
+
+ backwards pass ...
+
+epoch 14 
+
+
+
+
+prob [1] = 0.679689
+
+prob [2] = 0.395655
+
+loss = 0.656666
+
+ backwards pass ...
+
+epoch 15 
+
+
+
+
+prob [1] = 0.680425
+
+prob [2] = 0.432003
+
+loss = 0.612180
+
+ backwards pass ...
+
+epoch 16 
+
+
+
+
+prob [1] = 0.678511
+
+prob [2] = 0.457691
+
+loss = 0.584708
+
+ backwards pass ...
+
+epoch 17 
+
+
+
+
+prob [1] = 0.674644
+
+prob [2] = 0.472814
+
+loss = 0.571312
+
+ backwards pass ...
+
+epoch 18 
+
+
+
+
+prob [1] = 0.669975
+
+prob [2] = 0.478994
+
+loss = 0.568290
+
+ backwards pass ...
+
+epoch 19 
+
+
+
+
+prob [1] = 0.665935
+
+prob [2] = 0.478173
+
+loss = 0.572173
+
+ backwards pass ...
+
+epoch 20 
+
+
+
+
+prob [1] = 0.663902
+
+prob [2] = 0.472010
+
+loss = 0.580188
+
+ backwards pass ...
+
+epoch 21 
+
+
+
+
+prob [1] = 0.664844
+
+prob [2] = 0.461793
+
+loss = 0.590421
+
+ backwards pass ...
+
+epoch 22 
+
+
+
+
+prob [1] = 0.669093
+
+prob [2] = 0.448555
+
+loss = 0.601778
+
+ backwards pass ...
+
+epoch 23 
+
+
+
+
+prob [1] = 0.676365
+
+prob [2] = 0.433192
+
+loss = 0.613798
+
+ backwards pass ...
+
+epoch 24 
+
+
+
+
+prob [1] = 0.685952
+
+prob [2] = 0.416517
+
+loss = 0.626387
+
+ backwards pass ...
+
+epoch 25 
+
+
+
+
+prob [1] = 0.696991
+
+prob [2] = 0.399247
+
+loss = 0.639579
+
+ backwards pass ...
+
+epoch 26 
+
+
+
+
+prob [1] = 0.708673
+
+prob [2] = 0.381976
+
+loss = 0.653379
+
+ backwards pass ...
+
+epoch 27 
+
+
+
+
+prob [1] = 0.720366
+
+prob [2] = 0.365155
+
+loss = 0.667714
+
+ backwards pass ...
+
+epoch 28 
+
+
+
+
+prob [1] = 0.731637
+
+prob [2] = 0.349093
+
+loss = 0.682444
+
+ backwards pass ...
+
+epoch 29 
+
+
+
+
+prob [1] = 0.742233
+
+prob [2] = 0.333972
+
+loss = 0.697395
+
+ backwards pass ...
+
+epoch 30 
+
+
+
+
+prob [1] = 0.752033
+
+prob [2] = 0.319879
+
+loss = 0.712394
+
+ backwards pass ...
+
+epoch 31 
+
+
+
+
+prob [1] = 0.761007
+
+prob [2] = 0.306829
+
+loss = 0.727289
+
+ backwards pass ...
+
+epoch 32 
+
+
+
+
+prob [1] = 0.769180
+
+prob [2] = 0.294790
+
+loss = 0.741961
+
+ backwards pass ...
+
+epoch 33 
+
+
+
+
+prob [1] = 0.776603
+
+prob [2] = 0.283707
+
+loss = 0.756320
+
+ backwards pass ...
+
+epoch 34 
+
+
+
+
+prob [1] = 0.783343
+
+prob [2] = 0.273506
+
+loss = 0.770308
+
+ backwards pass ...
+
+epoch 35 
+
+
+
+
+prob [1] = 0.789466
+
+prob [2] = 0.264114
+
+loss = 0.783887
+
+ backwards pass ...
+
+epoch 36 
+
+
+
+
+prob [1] = 0.795038
+
+prob [2] = 0.255456
+
+loss = 0.797035
+
+ backwards pass ...
+
+epoch 37 
+
+
+
+
+prob [1] = 0.800120
+
+prob [2] = 0.247463
+
+loss = 0.809744
+
+ backwards pass ...
+
+epoch 38 
+
+
+
+
+prob [1] = 0.804763
+
+prob [2] = 0.240072
+
+loss = 0.822011
+
+ backwards pass ...
+
+epoch 39 
+
+
+
+
+prob [1] = 0.809017
+
+prob [2] = 0.233226
+
+loss = 0.833841
+
+ backwards pass ...
+
+epoch 40 
+
+
+
+
+prob [1] = 0.812921
+
+prob [2] = 0.226876
+
+loss = 0.845238
+
+ backwards pass ...
+
+epoch 41 
+
+
+
+
+prob [1] = 0.816511
+
+prob [2] = 0.220976
+
+loss = 0.856209
+
+ backwards pass ...
+
+epoch 42 
+
+
+
+
+prob [1] = 0.819819
+
+prob [2] = 0.215488
+
+loss = 0.866762
+
+ backwards pass ...
+
+epoch 43 
+
+
+
+
+prob [1] = 0.822872
+
+prob [2] = 0.210377
+
+loss = 0.876904
+
+ backwards pass ...
+
+epoch 44 
+
+
+
+
+prob [1] = 0.825692
+
+prob [2] = 0.205615
+
+loss = 0.886642
+
+ backwards pass ...
+
+epoch 45 
+
+
+
+
+prob [1] = 0.828300
+
+prob [2] = 0.201174
+
+loss = 0.895983
+
+ backwards pass ...
+
+epoch 46 
+
+
+
+
+prob [1] = 0.830714
+
+prob [2] = 0.197030
+
+loss = 0.904934
+
+ backwards pass ...
+
+epoch 47 
+
+
+
+
+prob [1] = 0.832949
+
+prob [2] = 0.193164
+
+loss = 0.913500
+
+ backwards pass ...
+
+epoch 48 
+
+
+
+
+prob [1] = 0.835020
+
+prob [2] = 0.189555
+
+loss = 0.921689
+
+ backwards pass ...
+
+epoch 49 
+
+
+
+
+prob [1] = 0.836938
+
+prob [2] = 0.186187
+
+loss = 0.929505
+
+ backwards pass ...
+
+epoch 50 
+
+
+
+
+prob [1] = 0.838714
+
+prob [2] = 0.183045
+
+loss = 0.936956
+
+ backwards pass ...
+
+epoch 51 
+
+
+
+
+prob [1] = 0.840359
+
+prob [2] = 0.180114
+
+loss = 0.944046
+
+ backwards pass ...
+
+epoch 52 
+
+
+
+
+prob [1] = 0.841880
+
+prob [2] = 0.177382
+
+loss = 0.950785
+
+ backwards pass ...
+
+epoch 53 
+
+
+
+
+prob [1] = 0.843286
+
+prob [2] = 0.174837
+
+loss = 0.957177
+
+ backwards pass ...
+
+epoch 54 
+
+
+
+
+prob [1] = 0.844583
+
+prob [2] = 0.172467
+
+loss = 0.963230
+
+ backwards pass ...
+
+epoch 55 
+
+
+
+
+prob [1] = 0.845779
+
+prob [2] = 0.170264
+
+loss = 0.968952
+
+ backwards pass ...
+
+epoch 56 
+
+
+
+
+prob [1] = 0.846880
+
+prob [2] = 0.168216
+
+loss = 0.974351
+
+ backwards pass ...
+
+epoch 57 
+
+
+
+
+prob [1] = 0.847892
+
+prob [2] = 0.166315
+
+loss = 0.979436
+
+ backwards pass ...
+
+epoch 58 
+
+
+
+
+prob [1] = 0.848818
+
+prob [2] = 0.164553
+
+loss = 0.984215
+
+ backwards pass ...
+
+epoch 59 
+
+
+
+
+prob [1] = 0.849666
+
+prob [2] = 0.162922
+
+loss = 0.988698
+
+ backwards pass ...
+
+epoch 60 
+
+
+
+
+prob [1] = 0.850438
+
+prob [2] = 0.161414
+
+loss = 0.992895
+
+ backwards pass ...
+
+epoch 61 
+
+
+
+
+prob [1] = 0.851140
+
+prob [2] = 0.160021
+
+loss = 0.996814
+
+ backwards pass ...
+
+epoch 62 
+
+
+
+
+prob [1] = 0.851776
+
+prob [2] = 0.158738
+
+loss = 1.000467
+
+ backwards pass ...
+
+epoch 63 
+
+
+
+
+prob [1] = 0.852349
+
+prob [2] = 0.157557
+
+loss = 1.003865
+
+ backwards pass ...
+
+epoch 64 
+
+
+
+
+prob [1] = 0.852863
+
+prob [2] = 0.156472
+
+loss = 1.007017
+
+ backwards pass ...
+
+epoch 65 
+
+
+
+
+prob [1] = 0.853322
+
+prob [2] = 0.155478
+
+loss = 1.009933
+
+ backwards pass ...
+
+epoch 66 
+
+
+
+
+prob [1] = 0.853730
+
+prob [2] = 0.154569
+
+loss = 1.012627
+
+ backwards pass ...
+
+epoch 67 
+
+
+
+
+prob [1] = 0.854088
+
+prob [2] = 0.153740
+
+loss = 1.015106
+
+ backwards pass ...
+
+epoch 68 
+
+
+
+
+prob [1] = 0.854402
+
+prob [2] = 0.152985
+
+loss = 1.017383
+
+ backwards pass ...
+
+epoch 69 
+
+
+
+
+prob [1] = 0.854672
+
+prob [2] = 0.152301
+
+loss = 1.019468
+
+ backwards pass ...
+
+epoch 70 
+
+
+
+
+prob [1] = 0.854903
+
+prob [2] = 0.151681
+
+loss = 1.021371
+
+ backwards pass ...
+
+epoch 71 
+
+
+
+
+prob [1] = 0.855097
+
+prob [2] = 0.151123
+
+loss = 1.023102
+
+ backwards pass ...
+
+epoch 72 
+
+
+
+
+prob [1] = 0.855256
+
+prob [2] = 0.150621
+
+loss = 1.024672
+
+ backwards pass ...
+
+epoch 73 
+
+
+
+
+prob [1] = 0.855382
+
+prob [2] = 0.150173
+
+loss = 1.026088
+
+ backwards pass ...
+
+epoch 74 
+
+
+
+
+prob [1] = 0.855480
+
+prob [2] = 0.149773
+
+loss = 1.027363
+
+ backwards pass ...
+
+epoch 75 
+
+
+
+
+prob [1] = 0.855549
+
+prob [2] = 0.149420
+
+loss = 1.028503
+
+ backwards pass ...
+
+epoch 76 
+
+
+
+
+prob [1] = 0.855592
+
+prob [2] = 0.149110
+
+loss = 1.029518
+
+ backwards pass ...
+
+epoch 77 
+
+
+
+
+prob [1] = 0.855613
+
+prob [2] = 0.148839
+
+loss = 1.030415
+
+ backwards pass ...
+
+epoch 78 
+
+
+
+
+prob [1] = 0.855611
+
+prob [2] = 0.148604
+
+loss = 1.031204
+
+ backwards pass ...
+
+epoch 79 
+
+
+
+
+prob [1] = 0.855589
+
+prob [2] = 0.148404
+
+loss = 1.031891
+
+ backwards pass ...
+
+epoch 80 
+
+
+
+
+prob [1] = 0.855548
+
+prob [2] = 0.148235
+
+loss = 1.032483
+
+ backwards pass ...
+
+epoch 81 
+
+
+
+
+prob [1] = 0.855491
+
+prob [2] = 0.148096
+
+loss = 1.032987
+
+ backwards pass ...
+
+epoch 82 
+
+
+
+
+prob [1] = 0.855418
+
+prob [2] = 0.147983
+
+loss = 1.033410
+
+ backwards pass ...
+
+epoch 83 
+
+
+
+
+prob [1] = 0.855331
+
+prob [2] = 0.147896
+
+loss = 1.033757
+
+ backwards pass ...
+
+epoch 84 
+
+
+
+
+prob [1] = 0.855231
+
+prob [2] = 0.147831
+
+loss = 1.034034
+
+ backwards pass ...
+
+epoch 85 
+
+
+
+
+prob [1] = 0.855119
+
+prob [2] = 0.147788
+
+loss = 1.034246
+
+ backwards pass ...
+
+epoch 86 
+
+
+
+
+prob [1] = 0.854996
+
+prob [2] = 0.147764
+
+loss = 1.034398
+
+ backwards pass ...
+
+epoch 87 
+
+
+
+
+prob [1] = 0.854863
+
+prob [2] = 0.147759
+
+loss = 1.034494
+
+ backwards pass ...
+
+epoch 88 
+
+
+
+
+prob [1] = 0.854721
+
+prob [2] = 0.147770
+
+loss = 1.034539
+
+ backwards pass ...
+
+epoch 89 
+
+
+
+
+prob [1] = 0.854571
+
+prob [2] = 0.147797
+
+loss = 1.034536
+
+ backwards pass ...
+
+epoch 90 
+
+
+
+
+prob [1] = 0.854413
+
+prob [2] = 0.147838
+
+loss = 1.034489
+
+ backwards pass ...
+
+epoch 91 
+
+
+
+
+prob [1] = 0.854249
+
+prob [2] = 0.147893
+
+loss = 1.034400
+
+ backwards pass ...
+
+epoch 92 
+
+
+
+
+prob [1] = 0.854077
+
+prob [2] = 0.147960
+
+loss = 1.034274
+
+ backwards pass ...
+
+epoch 93 
+
+
+
+
+prob [1] = 0.853900
+
+prob [2] = 0.148039
+
+loss = 1.034111
+
+ backwards pass ...
+
+epoch 94 
+
+
+
+
+prob [1] = 0.853717
+
+prob [2] = 0.148128
+
+loss = 1.033915
+
+ backwards pass ...
+
+epoch 95 
+
+
+
+
+prob [1] = 0.853529
+
+prob [2] = 0.148229
+
+loss = 1.033688
+
+ backwards pass ...
+
+epoch 96 
+
+
+
+
+prob [1] = 0.853335
+
+prob [2] = 0.148338
+
+loss = 1.033431
+
+ backwards pass ...
+
+epoch 97 
+
+
+
+
+prob [1] = 0.853137
+
+prob [2] = 0.148457
+
+loss = 1.033146
+
+ backwards pass ...
+
+epoch 98 
+
+
+
+
+prob [1] = 0.852934
+
+prob [2] = 0.148586
+
+loss = 1.032834
+
+ backwards pass ...
+
+epoch 99 
+
+
+
+
+prob [1] = 0.852726
+
+prob [2] = 0.148722
+
+loss = 1.032495
+
+ backwards pass ...
+
+epoch 100 
+
+
+
+
+prob [1] = 0.852514
+
+prob [2] = 0.148867
+
+loss = 1.032132
+
+ backwards pass ...
+
+epoch 101 
+
+
+
+
+prob [1] = 0.852297
+
+prob [2] = 0.149021
+
+loss = 1.031745
+
+ backwards pass ...
+
+epoch 102 
+
+
+
+
+prob [1] = 0.852075
+
+prob [2] = 0.149183
+
+loss = 1.031333
+
+ backwards pass ...
+
+epoch 103 
+
+
+
+
+prob [1] = 0.851847
+
+prob [2] = 0.149353
+
+loss = 1.030897
+
+ backwards pass ...
+
+epoch 104 
+
+
+
+
+prob [1] = 0.851614
+
+prob [2] = 0.149531
+
+loss = 1.030437
+
+ backwards pass ...
+
+epoch 105 
+
+
+
+
+prob [1] = 0.851376
+
+prob [2] = 0.149718
+
+loss = 1.029952
+
+ backwards pass ...
+
+epoch 106 
+
+
+
+
+prob [1] = 0.851132
+
+prob [2] = 0.149913
+
+loss = 1.029443
+
+ backwards pass ...
+
+epoch 107 
+
+
+
+
+prob [1] = 0.850881
+
+prob [2] = 0.150118
+
+loss = 1.028909
+
+ backwards pass ...
+
+epoch 108 
+
+
+
+
+prob [1] = 0.850622
+
+prob [2] = 0.150332
+
+loss = 1.028348
+
+ backwards pass ...
+
+epoch 109 
+
+
+
+
+prob [1] = 0.850357
+
+prob [2] = 0.150556
+
+loss = 1.027760
+
+ backwards pass ...
+
+epoch 110 
+
+
+
+
+prob [1] = 0.850082
+
+prob [2] = 0.150790
+
+loss = 1.027143
+
+ backwards pass ...
+
+epoch 111 
+
+
+
+
+prob [1] = 0.849799
+
+prob [2] = 0.151036
+
+loss = 1.026497
+
+ backwards pass ...
+
+epoch 112 
+
+
+
+
+prob [1] = 0.849506
+
+prob [2] = 0.151293
+
+loss = 1.025818
+
+ backwards pass ...
+
+epoch 113 
+
+
+
+
+prob [1] = 0.849202
+
+prob [2] = 0.151563
+
+loss = 1.025105
+
+ backwards pass ...
+
+epoch 114 
+
+
+
+
+prob [1] = 0.848886
+
+prob [2] = 0.151847
+
+loss = 1.024356
+
+ backwards pass ...
+
+epoch 115 
+
+
+
+
+prob [1] = 0.848557
+
+prob [2] = 0.152145
+
+loss = 1.023569
+
+ backwards pass ...
+
+epoch 116 
+
+
+
+
+prob [1] = 0.848214
+
+prob [2] = 0.152459
+
+loss = 1.022740
+
+ backwards pass ...
+
+epoch 117 
+
+
+
+
+prob [1] = 0.847855
+
+prob [2] = 0.152790
+
+loss = 1.021867
+
+ backwards pass ...
+
+epoch 118 
+
+
+
+
+prob [1] = 0.847480
+
+prob [2] = 0.153140
+
+loss = 1.020945
+
+ backwards pass ...
+
+epoch 119 
+
+
+
+
+prob [1] = 0.847085
+
+prob [2] = 0.153510
+
+loss = 1.019972
+
+ backwards pass ...
+
+epoch 120 
+
+
+
+
+prob [1] = 0.846670
+
+prob [2] = 0.153902
+
+loss = 1.018943
+
+ backwards pass ...
+
+epoch 121 
+
+
+
+
+prob [1] = 0.846232
+
+prob [2] = 0.154317
+
+loss = 1.017853
+
+ backwards pass ...
+
+epoch 122 
+
+
+
+
+prob [1] = 0.845769
+
+prob [2] = 0.154759
+
+loss = 1.016698
+
+ backwards pass ...
+
+epoch 123 
+
+
+
+
+prob [1] = 0.845279
+
+prob [2] = 0.155229
+
+loss = 1.015472
+
+ backwards pass ...
+
+epoch 124 
+
+
+
+
+prob [1] = 0.844759
+
+prob [2] = 0.155730
+
+loss = 1.014168
+
+ backwards pass ...
+
+epoch 125 
+
+
+
+
+prob [1] = 0.844206
+
+prob [2] = 0.156265
+
+loss = 1.012781
+
+ backwards pass ...
+
+epoch 126 
+
+
+
+
+prob [1] = 0.843617
+
+prob [2] = 0.156837
+
+loss = 1.011302
+
+ backwards pass ...
+
+epoch 127 
+
+
+
+
+prob [1] = 0.842987
+
+prob [2] = 0.157450
+
+loss = 1.009725
+
+ backwards pass ...
+
+epoch 128 
+
+
+
+
+prob [1] = 0.842314
+
+prob [2] = 0.158108
+
+loss = 1.008040
+
+ backwards pass ...
+
+epoch 129 
+
+
+
+
+prob [1] = 0.841593
+
+prob [2] = 0.158815
+
+loss = 1.006237
+
+ backwards pass ...
+
+epoch 130 
+
+
+
+
+prob [1] = 0.840818
+
+prob [2] = 0.159576
+
+loss = 1.004306
+
+ backwards pass ...
+
+epoch 131 
+
+
+
+
+prob [1] = 0.839985
+
+prob [2] = 0.160397
+
+loss = 1.002237
+
+ backwards pass ...
+
+epoch 132 
+
+
+
+
+prob [1] = 0.839086
+
+prob [2] = 0.161284
+
+loss = 1.000015
+
+ backwards pass ...
+
+epoch 133 
+
+
+
+
+prob [1] = 0.838115
+
+prob [2] = 0.162244
+
+loss = 0.997628
+
+ backwards pass ...
+
+epoch 134 
+
+
+
+
+prob [1] = 0.837065
+
+prob [2] = 0.163283
+
+loss = 0.995061
+
+ backwards pass ...
+
+epoch 135 
+
+
+
+
+prob [1] = 0.835926
+
+prob [2] = 0.164412
+
+loss = 0.992297
+
+ backwards pass ...
+
+epoch 136 
+
+
+
+
+prob [1] = 0.834690
+
+prob [2] = 0.165640
+
+loss = 0.989318
+
+ backwards pass ...
+
+epoch 137 
+
+
+
+
+prob [1] = 0.833344
+
+prob [2] = 0.166977
+
+loss = 0.986105
+
+ backwards pass ...
+
+epoch 138 
+
+
+
+
+prob [1] = 0.831878
+
+prob [2] = 0.168435
+
+loss = 0.982637
+
+ backwards pass ...
+
+epoch 139 
+
+
+
+
+prob [1] = 0.830277
+
+prob [2] = 0.170029
+
+loss = 0.978891
+
+ backwards pass ...
+
+epoch 140 
+
+
+
+
+prob [1] = 0.828525
+
+prob [2] = 0.171774
+
+loss = 0.974842
+
+ backwards pass ...
+
+epoch 141 
+
+
+
+
+prob [1] = 0.826606
+
+prob [2] = 0.173687
+
+loss = 0.970465
+
+ backwards pass ...
+
+epoch 142 
+
+
+
+
+prob [1] = 0.824500
+
+prob [2] = 0.175788
+
+loss = 0.965728
+
+ backwards pass ...
+
+epoch 143 
+
+
+
+
+prob [1] = 0.822184
+
+prob [2] = 0.178099
+
+loss = 0.960604
+
+ backwards pass ...
+
+epoch 144 
+
+
+
+
+prob [1] = 0.819633
+
+prob [2] = 0.180645
+
+loss = 0.955059
+
+ backwards pass ...
+
+epoch 145 
+
+
+
+
+prob [1] = 0.816819
+
+prob [2] = 0.183456
+
+loss = 0.949059
+
+ backwards pass ...
+
+epoch 146 
+
+
+
+
+prob [1] = 0.813709
+
+prob [2] = 0.186563
+
+loss = 0.942570
+
+ backwards pass ...
+
+epoch 147 
+
+
+
+
+prob [1] = 0.810266
+
+prob [2] = 0.190003
+
+loss = 0.935555
+
+ backwards pass ...
+
+epoch 148 
+
+
+
+
+prob [1] = 0.806450
+
+prob [2] = 0.193817
+
+loss = 0.927978
+
+ backwards pass ...
+
+epoch 149 
+
+
+
+
+prob [1] = 0.802214
+
+prob [2] = 0.198052
+
+loss = 0.919804
+
+ backwards pass ...
+
+epoch 150 
+
+
+
+
+prob [1] = 0.797505
+
+prob [2] = 0.202760
+
+loss = 0.911000
+
+ backwards pass ...
+
+epoch 151 
+
+
+
+
+prob [1] = 0.792264
+
+prob [2] = 0.208000
+
+loss = 0.901539
+
+ backwards pass ...
+
+epoch 152 
+
+
+
+
+prob [1] = 0.786426
+
+prob [2] = 0.213838
+
+loss = 0.891397
+
+ backwards pass ...
+
+epoch 153 
+
+
+
+
+prob [1] = 0.779920
+
+prob [2] = 0.220344
+
+loss = 0.880564
+
+ backwards pass ...
+
+epoch 154 
+
+
+
+
+prob [1] = 0.772666
+
+prob [2] = 0.227599
+
+loss = 0.869038
+
+ backwards pass ...
+
+epoch 155 
+
+
+
+
+prob [1] = 0.764580
+
+prob [2] = 0.235686
+
+loss = 0.856842
+
+ backwards pass ...
+
+epoch 156 
+
+
+
+
+prob [1] = 0.755575
+
+prob [2] = 0.244693
+
+loss = 0.844014
+
+ backwards pass ...
+
+epoch 157 
+
+
+
+
+prob [1] = 0.745563
+
+prob [2] = 0.254706
+
+loss = 0.830631
+
+ backwards pass ...
+
+epoch 158 
+
+
+
+
+prob [1] = 0.734461
+
+prob [2] = 0.265809
+
+loss = 0.816798
+
+ backwards pass ...
+
+epoch 159 
+
+
+
+
+prob [1] = 0.722200
+
+prob [2] = 0.278070
+
+loss = 0.802667
+
+ backwards pass ...
+
+epoch 160 
+
+
+
+
+prob [1] = 0.708738
+
+prob [2] = 0.291533
+
+loss = 0.788436
+
+ backwards pass ...
+
+epoch 161 
+
+
+
+
+prob [1] = 0.694071
+
+prob [2] = 0.306199
+
+loss = 0.774351
+
+ backwards pass ...
+
+epoch 162 
+
+
+
+
+prob [1] = 0.678263
+
+prob [2] = 0.322004
+
+loss = 0.760706
+
+ backwards pass ...
+
+epoch 163 
+
+
+
+
+prob [1] = 0.661467
+
+prob [2] = 0.338796
+
+loss = 0.747826
+
+ backwards pass ...
+
+epoch 164 
+
+
+
+
+prob [1] = 0.643955
+
+prob [2] = 0.356301
+
+loss = 0.736053
+
+ backwards pass ...
+
+epoch 165 
+
+
+
+
+prob [1] = 0.626152
+
+prob [2] = 0.374095
+
+loss = 0.725704
+
+ backwards pass ...
+
+epoch 166 
+
+
+
+
+prob [1] = 0.608650
+
+prob [2] = 0.391585
+
+loss = 0.717033
+
+ backwards pass ...
+
+epoch 167 
+
+
+
+
+prob [1] = 0.592222
+
+prob [2] = 0.407998
+
+loss = 0.710183
+
+ backwards pass ...
+
+epoch 168 
+
+
+
+
+prob [1] = 0.577793
+
+prob [2] = 0.422410
+
+loss = 0.705159
+
+ backwards pass ...
+
+epoch 169 
+
+
+
+
+prob [1] = 0.566381
+
+prob [2] = 0.433803
+
+loss = 0.701826
+
+ backwards pass ...
+
+epoch 170 
+
+
+
+
+prob [1] = 0.558997
+
+prob [2] = 0.441168
+
+loss = 0.699970
+
+ backwards pass ...
+
+epoch 171 
+
+
+
+
+prob [1] = 0.556500
+
+prob [2] = 0.443646
+
+loss = 0.699408
+
+ backwards pass ...
+
+epoch 172 
+
+
+
+
+prob [1] = 0.559440
+
+prob [2] = 0.440687
+
+loss = 0.700119
+
+ backwards pass ...
+
+epoch 173 
+
+
+
+
+prob [1] = 0.567915
+
+prob [2] = 0.432196
+
+loss = 0.702330
+
+ backwards pass ...
+
+epoch 174 
+
+
+
+
+prob [1] = 0.581485
+
+prob [2] = 0.418610
+
+loss = 0.706492
+
+ backwards pass ...
+
+epoch 175 
+
+
+
+
+prob [1] = 0.599204
+
+prob [2] = 0.400879
+
+loss = 0.713124
+
+ backwards pass ...
+
+epoch 176 
+
+
+
+
+prob [1] = 0.619764
+
+prob [2] = 0.380309
+
+loss = 0.722595
+
+ backwards pass ...
+
+epoch 177 
+
+
+
+
+prob [1] = 0.641735
+
+prob [2] = 0.358329
+
+loss = 0.734943
+
+ backwards pass ...
+
+epoch 178 
+
+
+
+
+prob [1] = 0.663808
+
+prob [2] = 0.336248
+
+loss = 0.749834
+
+ backwards pass ...
+
+epoch 179 
+
+
+
+
+prob [1] = 0.684964
+
+prob [2] = 0.315086
+
+loss = 0.766649
+
+ backwards pass ...
+
+epoch 180 
+
+
+
+
+prob [1] = 0.704538
+
+prob [2] = 0.295507
+
+loss = 0.784638
+
+ backwards pass ...
+
+epoch 181 
+
+
+
+
+prob [1] = 0.722190
+
+prob [2] = 0.277851
+
+loss = 0.803069
+
+ backwards pass ...
+
+epoch 182 
+
+
+
+
+prob [1] = 0.737828
+
+prob [2] = 0.262210
+
+loss = 0.821328
+
+ backwards pass ...
+
+epoch 183 
+
+
+
+
+prob [1] = 0.751522
+
+prob [2] = 0.248512
+
+loss = 0.838959
+
+ backwards pass ...
+
+epoch 184 
+
+
+
+
+prob [1] = 0.763435
+
+prob [2] = 0.236597
+
+loss = 0.855663
+
+ backwards pass ...
+
+epoch 185 
+
+
+
+
+prob [1] = 0.773765
+
+prob [2] = 0.226264
+
+loss = 0.871270
+
+ backwards pass ...
+
+epoch 186 
+
+
+
+
+prob [1] = 0.782719
+
+prob [2] = 0.217308
+
+loss = 0.885711
+
+ backwards pass ...
+
+epoch 187 
+
+
+
+
+prob [1] = 0.790489
+
+prob [2] = 0.209536
+
+loss = 0.898982
+
+ backwards pass ...
+
+epoch 188 
+
+
+
+
+prob [1] = 0.797248
+
+prob [2] = 0.202775
+
+loss = 0.911123
+
+ backwards pass ...
+
+epoch 189 
+
+
+
+
+prob [1] = 0.803145
+
+prob [2] = 0.196877
+
+loss = 0.922198
+
+ backwards pass ...
+
+epoch 190 
+
+
+
+
+prob [1] = 0.808307
+
+prob [2] = 0.191714
+
+loss = 0.932283
+
+ backwards pass ...
+
+epoch 191 
+
+
+
+
+prob [1] = 0.812841
+
+prob [2] = 0.187178
+
+loss = 0.941458
+
+ backwards pass ...
+
+epoch 192 
+
+
+
+
+prob [1] = 0.816838
+
+prob [2] = 0.183180
+
+loss = 0.949801
+
+ backwards pass ...
+
+epoch 193 
+
+
+
+
+prob [1] = 0.820373
+
+prob [2] = 0.179644
+
+loss = 0.957387
+
+ backwards pass ...
+
+epoch 194 
+
+
+
+
+prob [1] = 0.823507
+
+prob [2] = 0.176508
+
+loss = 0.964285
+
+ backwards pass ...
+
+epoch 195 
+
+
+
+
+prob [1] = 0.826295
+
+prob [2] = 0.173719
+
+loss = 0.970558
+
+ backwards pass ...
+
+epoch 196 
+
+
+
+
+prob [1] = 0.828781
+
+prob [2] = 0.171233
+
+loss = 0.976266
+
+ backwards pass ...
+
+epoch 197 
+
+
+
+
+prob [1] = 0.831003
+
+prob [2] = 0.169010
+
+loss = 0.981460
+
+ backwards pass ...
+
+epoch 198 
+
+
+
+
+prob [1] = 0.832994
+
+prob [2] = 0.167019
+
+loss = 0.986189
+
+ backwards pass ...
+
+epoch 199 
+
+
+
+
+prob [1] = 0.834780
+
+prob [2] = 0.165232
+
+loss = 0.990496
+
+ backwards pass ...
+
+epoch 200 
+
+
+
+
+prob [1] = 0.836385
+
+prob [2] = 0.163626
+
+loss = 0.994419
+
+ backwards pass ...
+
+epoch 201 
+
+
+
+
+prob [1] = 0.837830
+
+prob [2] = 0.162180
+
+loss = 0.997994
+
+ backwards pass ...
+
+epoch 202 
+
+
+
+
+prob [1] = 0.839134
+
+prob [2] = 0.160876
+
+loss = 1.001253
+
+ backwards pass ...
+
+epoch 203 
+
+
+
+
+prob [1] = 0.840311
+
+prob [2] = 0.159699
+
+loss = 1.004225
+
+ backwards pass ...
+
+epoch 204 
+
+
+
+
+prob [1] = 0.841374
+
+prob [2] = 0.158635
+
+loss = 1.006935
+
+ backwards pass ...
+
+epoch 205 
+
+
+
+
+prob [1] = 0.842337
+
+prob [2] = 0.157672
+
+loss = 1.009408
+
+ backwards pass ...
+
+epoch 206 
+
+
+
+
+prob [1] = 0.843208
+
+prob [2] = 0.156800
+
+loss = 1.011664
+
+ backwards pass ...
+
+epoch 207 
+
+
+
+
+prob [1] = 0.843998
+
+prob [2] = 0.156009
+
+loss = 1.013723
+
+ backwards pass ...
+
+epoch 208 
+
+
+
+
+prob [1] = 0.844715
+
+prob [2] = 0.155292
+
+loss = 1.015602
+
+ backwards pass ...
+
+epoch 209 
+
+
+
+
+prob [1] = 0.845366
+
+prob [2] = 0.154641
+
+loss = 1.017318
+
+ backwards pass ...
+
+epoch 210 
+
+
+
+
+prob [1] = 0.845957
+
+prob [2] = 0.154049
+
+loss = 1.018885
+
+ backwards pass ...
+
+epoch 211 
+
+
+
+
+prob [1] = 0.846495
+
+prob [2] = 0.153511
+
+loss = 1.020316
+
+ backwards pass ...
+
+epoch 212 
+
+
+
+
+prob [1] = 0.846984
+
+prob [2] = 0.153022
+
+loss = 1.021623
+
+ backwards pass ...
+
+epoch 213 
+
+
+
+
+prob [1] = 0.847429
+
+prob [2] = 0.152577
+
+loss = 1.022818
+
+ backwards pass ...
+
+epoch 214 
+
+
+
+
+prob [1] = 0.847834
+
+prob [2] = 0.152172
+
+loss = 1.023909
+
+ backwards pass ...
+
+epoch 215 
+
+
+
+
+prob [1] = 0.848203
+
+prob [2] = 0.151802
+
+loss = 1.024906
+
+ backwards pass ...
+
+epoch 216 
+
+
+
+
+prob [1] = 0.848539
+
+prob [2] = 0.151466
+
+loss = 1.025817
+
+ backwards pass ...
+
+epoch 217 
+
+
+
+
+prob [1] = 0.848845
+
+prob [2] = 0.151159
+
+loss = 1.026650
+
+ backwards pass ...
+
+epoch 218 
+
+
+
+
+prob [1] = 0.849125
+
+prob [2] = 0.150880
+
+loss = 1.027411
+
+ backwards pass ...
+
+epoch 219 
+
+
+
+
+prob [1] = 0.849379
+
+prob [2] = 0.150625
+
+loss = 1.028107
+
+ backwards pass ...
+
+epoch 220 
+
+
+
+
+prob [1] = 0.849612
+
+prob [2] = 0.150392
+
+loss = 1.028743
+
+ backwards pass ...
+
+epoch 221 
+
+
+
+
+prob [1] = 0.849824
+
+prob [2] = 0.150180
+
+loss = 1.029324
+
+ backwards pass ...
+
+epoch 222 
+
+
+
+
+prob [1] = 0.850017
+
+prob [2] = 0.149986
+
+loss = 1.029856
+
+ backwards pass ...
+
+epoch 223 
+
+
+
+
+prob [1] = 0.850194
+
+prob [2] = 0.149809
+
+loss = 1.030342
+
+ backwards pass ...
+
+epoch 224 
+
+
+
+
+prob [1] = 0.850356
+
+prob [2] = 0.149648
+
+loss = 1.030786
+
+ backwards pass ...
+
+epoch 225 
+
+
+
+
+prob [1] = 0.850503
+
+prob [2] = 0.149500
+
+loss = 1.031192
+
+ backwards pass ...
+
+epoch 226 
+
+
+
+
+prob [1] = 0.850637
+
+prob [2] = 0.149365
+
+loss = 1.031564
+
+ backwards pass ...
+
+epoch 227 
+
+
+
+
+prob [1] = 0.850760
+
+prob [2] = 0.149243
+
+loss = 1.031904
+
+ backwards pass ...
+
+epoch 228 
+
+
+
+
+prob [1] = 0.850873
+
+prob [2] = 0.149130
+
+loss = 1.032215
+
+ backwards pass ...
+
+epoch 229 
+
+
+
+
+prob [1] = 0.850975
+
+prob [2] = 0.149027
+
+loss = 1.032499
+
+ backwards pass ...
+
+epoch 230 
+
+
+
+
+prob [1] = 0.851069
+
+prob [2] = 0.148933
+
+loss = 1.032759
+
+ backwards pass ...
+
+epoch 231 
+
+
+
+
+prob [1] = 0.851155
+
+prob [2] = 0.148848
+
+loss = 1.032997
+
+ backwards pass ...
+
+epoch 232 
+
+
+
+
+prob [1] = 0.851233
+
+prob [2] = 0.148769
+
+loss = 1.033214
+
+ backwards pass ...
+
+epoch 233 
+
+
+
+
+prob [1] = 0.851304
+
+prob [2] = 0.148698
+
+loss = 1.033413
+
+ backwards pass ...
+
+epoch 234 
+
+
+
+
+prob [1] = 0.851370
+
+prob [2] = 0.148632
+
+loss = 1.033595
+
+ backwards pass ...
+
+epoch 235 
+
+
+
+
+prob [1] = 0.851430
+
+prob [2] = 0.148572
+
+loss = 1.033762
+
+ backwards pass ...
+
+epoch 236 
+
+
+
+
+prob [1] = 0.851485
+
+prob [2] = 0.148517
+
+loss = 1.033914
+
+ backwards pass ...
+
+epoch 237 
+
+
+
+
+prob [1] = 0.851535
+
+prob [2] = 0.148467
+
+loss = 1.034054
+
+ backwards pass ...
+
+epoch 238 
+
+
+
+
+prob [1] = 0.851580
+
+prob [2] = 0.148421
+
+loss = 1.034181
+
+ backwards pass ...
+
+epoch 239 
+
+
+
+
+prob [1] = 0.851622
+
+prob [2] = 0.148380
+
+loss = 1.034297
+
+ backwards pass ...
+
+epoch 240 
+
+
+
+
+prob [1] = 0.851660
+
+prob [2] = 0.148341
+
+loss = 1.034404
+
+ backwards pass ...
+
+epoch 241 
+
+
+
+
+prob [1] = 0.851695
+
+prob [2] = 0.148306
+
+loss = 1.034502
+
+ backwards pass ...
+
+epoch 242 
+
+
+
+
+prob [1] = 0.851727
+
+prob [2] = 0.148274
+
+loss = 1.034590
+
+ backwards pass ...
+
+epoch 243 
+
+
+
+
+prob [1] = 0.851756
+
+prob [2] = 0.148245
+
+loss = 1.034672
+
+ backwards pass ...
+
+epoch 244 
+
+
+
+
+prob [1] = 0.851783
+
+prob [2] = 0.148218
+
+loss = 1.034747
+
+ backwards pass ...
+
+epoch 245 
+
+
+
+
+prob [1] = 0.851807
+
+prob [2] = 0.148194
+
+loss = 1.034815
+
+ backwards pass ...
+
+epoch 246 
+
+
+
+
+prob [1] = 0.851830
+
+prob [2] = 0.148171
+
+loss = 1.034878
+
+ backwards pass ...
+
+epoch 247 
+
+
+
+
+prob [1] = 0.851850
+
+prob [2] = 0.148151
+
+loss = 1.034935
+
+ backwards pass ...
+
+epoch 248 
+
+
+
+
+prob [1] = 0.851869
+
+prob [2] = 0.148132
+
+loss = 1.034987
+
+ backwards pass ...
+
+epoch 249 
+
+
+
+
+prob [1] = 0.851886
+
+prob [2] = 0.148115
+
+loss = 1.035035
+
+ backwards pass ...
+
+epoch 250 
+
+
+
+
+prob [1] = 0.851902
+
+prob [2] = 0.148099
+
+loss = 1.035079
+
+ backwards pass ...
+
+epoch 251 
+
+
+
+
+prob [1] = 0.851916
+
+prob [2] = 0.148085
+
+loss = 1.035119
+
+ backwards pass ...
+
+epoch 252 
+
+
+
+
+prob [1] = 0.851929
+
+prob [2] = 0.148072
+
+loss = 1.035156
+
+ backwards pass ...
+
+epoch 253 
+
+
+
+
+prob [1] = 0.851941
+
+prob [2] = 0.148060
+
+loss = 1.035189
+
+ backwards pass ...
+
+epoch 254 
+
+
+
+
+prob [1] = 0.851952
+
+prob [2] = 0.148049
+
+loss = 1.035220
+
+ backwards pass ...
+
+epoch 255 
+
+
+
+
+prob [1] = 0.851962
+
+prob [2] = 0.148039
+
+loss = 1.035248
+
+ backwards pass ...
+
+epoch 256 
+
+
+
+
+prob [1] = 0.851971
+
+prob [2] = 0.148030
+
+loss = 1.035273
+
+ backwards pass ...
+
+epoch 257 
+
+
+
+
+prob [1] = 0.851980
+
+prob [2] = 0.148021
+
+loss = 1.035297
+
+ backwards pass ...
+
+epoch 258 
+
+
+
+
+prob [1] = 0.851987
+
+prob [2] = 0.148013
+
+loss = 1.035318
+
+ backwards pass ...
+
+epoch 259 
+
+
+
+
+prob [1] = 0.851994
+
+prob [2] = 0.148006
+
+loss = 1.035338
+
+ backwards pass ...
+
+epoch 260 
+
+
+
+
+prob [1] = 0.852001
+
+prob [2] = 0.148000
+
+loss = 1.035356
+
+ backwards pass ...
+
+epoch 261 
+
+
+
+
+prob [1] = 0.852007
+
+prob [2] = 0.147994
+
+loss = 1.035373
+
+ backwards pass ...
+
+epoch 262 
+
+
+
+
+prob [1] = 0.852012
+
+prob [2] = 0.147989
+
+loss = 1.035388
+
+ backwards pass ...
+
+epoch 263 
+
+
+
+
+prob [1] = 0.852017
+
+prob [2] = 0.147984
+
+loss = 1.035402
+
+ backwards pass ...
+
+epoch 264 
+
+
+
+
+prob [1] = 0.852021
+
+prob [2] = 0.147979
+
+loss = 1.035414
+
+ backwards pass ...
+
+epoch 265 
+
+
+
+
+prob [1] = 0.852025
+
+prob [2] = 0.147975
+
+loss = 1.035425
+
+ backwards pass ...
+
+epoch 266 
+
+
+
+
+prob [1] = 0.852029
+
+prob [2] = 0.147971
+
+loss = 1.035437
+
+ backwards pass ...
+
+epoch 267 
+
+
+
+
+prob [1] = 0.852033
+
+prob [2] = 0.147968
+
+loss = 1.035446
+
+ backwards pass ...
+
+epoch 268 
+
+
+
+
+prob [1] = 0.852036
+
+prob [2] = 0.147965
+
+loss = 1.035455
+
+ backwards pass ...
+
+epoch 269 
+
+
+
+
+prob [1] = 0.852039
+
+prob [2] = 0.147962
+
+loss = 1.035463
+
+ backwards pass ...
+
+epoch 270 
+
+
+
+
+prob [1] = 0.852041
+
+prob [2] = 0.147959
+
+loss = 1.035470
+
+ backwards pass ...
+
+epoch 271 
+
+
+
+
+prob [1] = 0.852044
+
+prob [2] = 0.147956
+
+loss = 1.035477
+
+ backwards pass ...
+
+epoch 272 
+
+
+
+
+prob [1] = 0.852046
+
+prob [2] = 0.147954
+
+loss = 1.035484
+
+ backwards pass ...
+
+epoch 273 
+
+
+
+
+prob [1] = 0.852048
+
+prob [2] = 0.147952
+
+loss = 1.035489
+
+ backwards pass ...
+
+epoch 274 
+
+
+
+
+prob [1] = 0.852050
+
+prob [2] = 0.147950
+
+loss = 1.035494
+
+ backwards pass ...
+
+epoch 275 
+
+
+
+
+prob [1] = 0.852052
+
+prob [2] = 0.147949
+
+loss = 1.035499
+
+ backwards pass ...
+
+epoch 276 
+
+
+
+
+prob [1] = 0.852053
+
+prob [2] = 0.147947
+
+loss = 1.035503
+
+ backwards pass ...
+
+epoch 277 
+
+
+
+
+prob [1] = 0.852055
+
+prob [2] = 0.147945
+
+loss = 1.035508
+
+ backwards pass ...
+
+epoch 278 
+
+
+
+
+prob [1] = 0.852056
+
+prob [2] = 0.147944
+
+loss = 1.035511
+
+ backwards pass ...
+
+epoch 279 
+
+
+
+
+prob [1] = 0.852057
+
+prob [2] = 0.147943
+
+loss = 1.035514
+
+ backwards pass ...
+
+epoch 280 
+
+
+
+
+prob [1] = 0.852058
+
+prob [2] = 0.147942
+
+loss = 1.035517
+
+ backwards pass ...
+
+epoch 281 
+
+
+
+
+prob [1] = 0.852059
+
+prob [2] = 0.147941
+
+loss = 1.035520
+
+ backwards pass ...
+
+epoch 282 
+
+
+
+
+prob [1] = 0.852060
+
+prob [2] = 0.147940
+
+loss = 1.035523
+
+ backwards pass ...
+
+epoch 283 
+
+
+
+
+prob [1] = 0.852061
+
+prob [2] = 0.147939
+
+loss = 1.035525
+
+ backwards pass ...
+
+epoch 284 
+
+
+
+
+prob [1] = 0.852062
+
+prob [2] = 0.147939
+
+loss = 1.035527
+
+ backwards pass ...
+
+epoch 285 
+
+
+
+
+prob [1] = 0.852062
+
+prob [2] = 0.147938
+
+loss = 1.035530
+
+ backwards pass ...
+
+epoch 286 
+
+
+
+
+prob [1] = 0.852063
+
+prob [2] = 0.147937
+
+loss = 1.035532
+
+ backwards pass ...
+
+epoch 287 
+
+
+
+
+prob [1] = 0.852064
+
+prob [2] = 0.147936
+
+loss = 1.035534
+
+ backwards pass ...
+
+epoch 288 
+
+
+
+
+prob [1] = 0.852064
+
+prob [2] = 0.147936
+
+loss = 1.035535
+
+ backwards pass ...
+
+epoch 289 
+
+
+
+
+prob [1] = 0.852065
+
+prob [2] = 0.147935
+
+loss = 1.035536
+
+ backwards pass ...
+
+epoch 290 
+
+
+
+
+prob [1] = 0.852065
+
+prob [2] = 0.147935
+
+loss = 1.035537
+
+ backwards pass ...
+
+epoch 291 
+
+
+
+
+prob [1] = 0.852065
+
+prob [2] = 0.147935
+
+loss = 1.035537
+
+ backwards pass ...
+
+epoch 292 
+
+
+
+
+prob [1] = 0.852065
+
+prob [2] = 0.147935
+
+loss = 1.035538
+
+ backwards pass ...
+
+epoch 293 
+
+
+
+
+prob [1] = 0.852066
+
+prob [2] = 0.147934
+
+loss = 1.035539
+
+ backwards pass ...
+
+epoch 294 
+
+
+
+
+prob [1] = 0.852066
+
+prob [2] = 0.147934
+
+loss = 1.035540
+
+ backwards pass ...
+
+epoch 295 
+
+
+
+
+prob [1] = 0.852066
+
+prob [2] = 0.147934
+
+loss = 1.035540
+
+ backwards pass ...
+
+epoch 296 
+
+
+
+
+prob [1] = 0.852066
+
+prob [2] = 0.147934
+
+loss = 1.035541
+
+ backwards pass ...
+
+epoch 297 
+
+
+
+
+prob [1] = 0.852067
+
+prob [2] = 0.147933
+
+loss = 1.035542
+
+ backwards pass ...
+
+epoch 298 
+
+
+
+
+prob [1] = 0.852067
+
+prob [2] = 0.147933
+
+loss = 1.035543
+
+ backwards pass ...
+
+epoch 299 
+
+
+
+
+prob [1] = 0.852067
+
+prob [2] = 0.147933
+
+loss = 1.035544
+
+ backwards pass ...
+
+epoch 300 
+
+
+
+
+prob [1] = 0.852068
+
+prob [2] = 0.147932
+
+loss = 1.035544
+
+ backwards pass ...
+
+epoch 301 
+
+
+
+
+prob [1] = 0.852068
+
+prob [2] = 0.147932
+
+loss = 1.035545
+
+ backwards pass ...
+
+epoch 302 
+
+
+
+
+prob [1] = 0.852068
+
+prob [2] = 0.147932
+
+loss = 1.035546
+
+ backwards pass ...
+
+epoch 303 
+
+
+
+
+prob [1] = 0.852068
+
+prob [2] = 0.147932
+
+loss = 1.035546
+
+ backwards pass ...
+
+epoch 304 
+
+
+
+
+prob [1] = 0.852068
+
+prob [2] = 0.147932
+
+loss = 1.035547
+
+ backwards pass ...
+
+epoch 305 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035547
+
+ backwards pass ...
+
+epoch 306 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035548
+
+ backwards pass ...
+
+epoch 307 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035548
+
+ backwards pass ...
+
+epoch 308 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035548
+
+ backwards pass ...
+
+epoch 309 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035548
+
+ backwards pass ...
+
+epoch 310 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035548
+
+ backwards pass ...
+
+epoch 311 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035548
+
+ backwards pass ...
+
+epoch 312 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035549
+
+ backwards pass ...
+
+epoch 313 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035549
+
+ backwards pass ...
+
+epoch 314 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035549
+
+ backwards pass ...
+
+epoch 315 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035549
+
+ backwards pass ...
+
+epoch 316 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035550
+
+ backwards pass ...
+
+epoch 317 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035550
+
+ backwards pass ...
+
+epoch 318 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035550
+
+ backwards pass ...
+
+epoch 319 
+
+
+
+
+prob [1] = 0.852069
+
+prob [2] = 0.147931
+
+loss = 1.035550
+
+ backwards pass ...
+
+epoch 320 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035550
+
+ backwards pass ...
+
+epoch 321 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035550
+
+ backwards pass ...
+
+epoch 322 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 323 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 324 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 325 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 326 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 327 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 328 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 329 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 330 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 331 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 332 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 333 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 334 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 335 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 336 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 337 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 338 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 339 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 340 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 341 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 342 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 343 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 344 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 345 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 346 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 347 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 348 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 349 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 350 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 351 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 352 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 353 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 354 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 355 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 356 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 357 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 358 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 359 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 360 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 361 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 362 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 363 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 364 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 365 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 366 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 367 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 368 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 369 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 370 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 371 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 372 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 373 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 374 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 375 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 376 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 377 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 378 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 379 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 380 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 381 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 382 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 383 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 384 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 385 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 386 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 387 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 388 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 389 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 390 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 391 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 392 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 393 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 394 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 395 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 396 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 397 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 398 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 399 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 400 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 401 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 402 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 403 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 404 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 405 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 406 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 407 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 408 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 409 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 410 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 411 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 412 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 413 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 414 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 415 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 416 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 417 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 418 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 419 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 420 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 421 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 422 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 423 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 424 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 425 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 426 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 427 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 428 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 429 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 430 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 431 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 432 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 433 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 434 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 435 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 436 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 437 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 438 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 439 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 440 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 441 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 442 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 443 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 444 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 445 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 446 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 447 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 448 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 449 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 450 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 451 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 452 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 453 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 454 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 455 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 456 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 457 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 458 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 459 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 460 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 461 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 462 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 463 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 464 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 465 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 466 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 467 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 468 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 469 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 470 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 471 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 472 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 473 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 474 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 475 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 476 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 477 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 478 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 479 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 480 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 481 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 482 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 483 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 484 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 485 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035554
+
+ backwards pass ...
+
+epoch 486 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 487 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 488 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 489 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 490 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 491 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 492 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 493 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 494 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 495 
+
+
+
+
+prob [1] = 0.852071
+
+prob [2] = 0.147929
+
+loss = 1.035553
+
+ backwards pass ...
+
+epoch 496 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 497 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035552
+
+ backwards pass ...
+
+epoch 498 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035551
+
+ backwards pass ...
+
+epoch 499 
+
+
+
+
+prob [1] = 0.852070
+
+prob [2] = 0.147930
+
+loss = 1.035550
+
+ backwards pass ...
