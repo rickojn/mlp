@@ -269,12 +269,25 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
+    static float prev_loss = 100;
     float batch_loss = 0.0;
     for (int idx_batch = 0; idx_batch < size_batch; idx_batch++){
         size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
         float prob = probs[offset_predicted_prob_for_expected_token];
-        printf("\nprob [%d] = %f\n", offset_predicted_prob_for_expected_token, prob);
+        //printf("\nprob [%d] = %f\n", offset_predicted_prob_for_expected_token, prob);
+        printf("\ncorrect index is %d\n", offset_predicted_prob_for_expected_token);
+        int offset_batch = idx_batch * SIZE_VOCAB;
+        printf("\nprob [%d] = %f\n", offset_batch,  probs[idx_batch * SIZE_VOCAB + 0]);
+        printf("\nprob [%d] = %f\n", offset_batch + 1,  probs[idx_batch * SIZE_VOCAB + 1]);
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
+    }
+    float loss = batch_loss/size_batch;
+    if (loss > prev_loss){
+        printf("\n new loss is greater: %f\n", loss);
+        exit(0);
+    }
+    else {
+        prev_loss = loss;
     }
     return batch_loss/size_batch;
 }
@@ -439,7 +452,7 @@ void update_weights(Model * model, size_t size_batchs){
     for (size_t idx_output_weight = 0; idx_output_weight < SIZE_VOCAB * SIZE_HIDDEN; idx_output_weight++){
         float delta_output_weight = 0;
         for (size_t idx_batch = 0; idx_batch < size_batchs; idx_batch++){
-            size_t offset_grad = idx_batch * SIZE_BATCH * SIZE_HIDDEN + idx_output_weight;
+            size_t offset_grad = idx_batch * size_batchs * SIZE_HIDDEN + idx_output_weight;
             delta_output_weight += model->gradients.weights_output[offset_grad];
         }
         delta_output_weight /= size_batchs;
