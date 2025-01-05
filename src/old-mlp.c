@@ -93,7 +93,7 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_VOCAB; // output biases
 
     size_t size_model_activations = size_batch * (SIZE_BLOCK * DIM_EMBEDDINGS
-    + SIZE_HIDDEN
+    + SIZE_HIDDEN * 2
     + SIZE_VOCAB * 2);
 
     size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
@@ -114,8 +114,9 @@ void create_model(Model * model, size_t size_batch){
     model->parameters.biases_output = model->parameters.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
 
     model->activations.input = model->parameters.biases_output + SIZE_VOCAB;
-    model->activations.hidden = model->activations.input 
-    + SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
+    model->activations.pre_hidden = model->activations.input + SIZE_VOCAB * SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
+    model->activations.hidden = model->activations.pre_hidden 
+    + SIZE_HIDDEN * size_batch;
     model->activations.output = model->activations.hidden
     + size_batch * SIZE_HIDDEN;
     model->activations.probs = model->activations.output
@@ -149,7 +150,8 @@ void initialise_model(Model *model)
 
     for (int i = 0; i < size_params; i++)
     {
-        *(model->parameters.table_embedding + i) = generate_normal_random_number();
+        //*(model->parameters.table_embedding + i) = generate_normal_random_number();
+        *(model->parameters.table_embedding + i) = 1.0;
     }
 }
 
@@ -268,12 +270,25 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
+    static float prev_loss = 100;
     float batch_loss = 0.0;
     for (int idx_batch = 0; idx_batch < size_batch; idx_batch++){
         size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
         float prob = probs[offset_predicted_prob_for_expected_token];
-        printf("\nprob [%d] = %f\n", offset_predicted_prob_for_expected_token, prob);
+        //printf("\nprob [%d] = %f\n", offset_predicted_prob_for_expected_token, prob);
+        printf("\ncorrect index is %d\n", offset_predicted_prob_for_expected_token);
+        int offset_batch = idx_batch * SIZE_VOCAB;
+        printf("\nprob [%d] = %f\n", offset_batch,  probs[idx_batch * SIZE_VOCAB + 0]);
+        printf("\nprob [%d] = %f\n", offset_batch + 1,  probs[idx_batch * SIZE_VOCAB + 1]);
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
+    }
+    float loss = batch_loss/size_batch;
+    if (loss > prev_loss){
+        printf("\n new loss is greater: %f\n", loss);
+        exit(0);
+    }
+    else {
+        prev_loss = loss;
     }
     return batch_loss/size_batch;
 }
@@ -295,12 +310,12 @@ void loss_softmax_backward(char * labels, float * probs, float * grads_logit, in
 dLoss/dZ = dLoss/dAct * dAct/dZ 
 dAct/dZ = 1 - tanh2(Z)
 */
-void tanh_backward(const float * activations, float * grads_pre_activations, const float * grads_activations,
+void tanh_backward(const float * activations, float * grads_pre_activations, const float * grads_activations, const float * pre_activations,
  size_t size_neurons, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             size_t offset_grad = idx_batch * size_neurons + idx_neuron;
-            grads_pre_activations[offset_grad] = grads_activations[offset_grad] * (1 - pow(tanh(activations[offset_grad]),2));
+            grads_pre_activations[offset_grad] = grads_activations[offset_grad] * (1 - pow(tanh(pre_activations[offset_grad]),2));
         }
     }
 }
@@ -361,16 +376,30 @@ void matmul_backward(const float * grads_z, float * grads_w, float * grads_b, co
     }
 }
 
+/*
+A => w1,w2
+B => w3,w4
+c => w4,w5
+d => w6,w7
+e => w8,w9
+f =>  w10,w11
 
+
+Cab => w4,w5,w1,w2,w3,w4
+
+
+Dw4/dw1 = 0
+Dw4/dw4 = 1
+
+*/
 void embedding_backwards(float * grads_z, float * grads_w, const char * inputs, size_t size_activations, 
 size_t  size_grads_w, size_t size_inputs, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){
             size_t offset_input = idx_batch * size_inputs + idx_input;
-            size_t offset_grad_w = idx_batch * size_grads_w + encode(inputs[offset_input]) * DIM_EMBEDDINGS;
-            size_t offset_grad_z = idx_batch * size_activations + idx_input * DIM_EMBEDDINGS;
+            size_t offset_grad = idx_batch * size_grads_w + encode(inputs[offset_input]) * DIM_EMBEDDINGS;
             for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
-                grads_w[offset_grad_w + idx_dim] = grads_z[offset_grad_z + idx_dim];
+                grads_w[offset_grad + idx_dim] = grads_z[offset_grad + idx_dim];
             }
         }
     }
@@ -423,10 +452,11 @@ void update_weights(Model * model, size_t size_batchs){
     for (size_t idx_output_weight = 0; idx_output_weight < SIZE_VOCAB * SIZE_HIDDEN; idx_output_weight++){
         float delta_output_weight = 0;
         for (size_t idx_batch = 0; idx_batch < size_batchs; idx_batch++){
-            size_t offset_grad = idx_batch * SIZE_BATCH * SIZE_HIDDEN + idx_output_weight;
+            size_t offset_grad = idx_batch * size_batchs * SIZE_HIDDEN * SIZE_VOCAB + idx_output_weight;
             delta_output_weight += model->gradients.weights_output[offset_grad];
         }
         delta_output_weight /= size_batchs;
+        printf("\n delta output = %f \n", delta_output_weight);
         model->parameters.weights_output[idx_output_weight] -= delta_output_weight * LEARNING_RATE;
     }
 }
@@ -449,7 +479,8 @@ void model_backwards(Model * model, TrainingSet * training_set){
     loss_softmax_backward(training_set->Y, model->activations.probs, model->gradients.pre_activations_output, model->size_batch);
     matmul_backward(model->gradients.pre_activations_output, model->gradients.weights_output, model->gradients.biases_output,
     model->activations.hidden, model->parameters.weights_output, model->gradients.activations_hidden, training_set->size, SIZE_VOCAB, SIZE_HIDDEN);
-    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, model->gradients.activations_hidden, SIZE_VOCAB, training_set->size);
+    tanh_backward(model->activations.hidden, model->gradients.pre_activations_hidden, model->gradients.activations_hidden,
+     model->activations.pre_hidden, SIZE_VOCAB, training_set->size);
     matmul_backward(model->gradients.pre_activations_hidden, model->gradients.weights_hidden, model->gradients.biases_hidden, 
     model->activations.input, model->parameters.weights_hidden, model->gradients.activations_embeddings, training_set->size,
     SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
@@ -531,6 +562,11 @@ int main()
         printf("\nepoch %d \n", idx_epoch);
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
+
+        for (int i = 0; i < 4; i++){
+          printf(""); 
+        }
+
         
         printf("\n");
         printf("\n");

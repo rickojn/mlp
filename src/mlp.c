@@ -189,82 +189,9 @@ zzzz
 
 */
 
-void mat_mul_forward(const float * matrix_inputs, size_t size_batch, size_t size_inputs,
-                     const float * matrix_weights, const float * matrix_biases, size_t size_neurons, float * matrix_output)
-{
-    // #pragma omp parallel for collapse(2)
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++ ){
-        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-            size_t offset_neural_activation = idx_batch * size_neurons + idx_neuron;
-            if (matrix_biases != NULL){
-                matrix_output[offset_neural_activation] = matrix_biases[idx_neuron];
-            }
-            else {
-                matrix_output[offset_neural_activation] = 0.0;
-            }
-            for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
-                size_t offset_weight_factor = idx_neuron * size_inputs + idx_weight;
-                size_t offset_input_factor = idx_batch * size_inputs + idx_weight;
-                matrix_output[offset_neural_activation] += matrix_inputs[offset_input_factor]
-                  * matrix_weights[offset_weight_factor];
-            }
-        }
-    }
-}
-
-void tanh_forward(float * matrix_input, float * matrix_output, size_t size_activations, size_t size_batch){
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-        for (size_t idx_activation = 0; idx_activation < size_activations; idx_activation++){
-            size_t offset_activation = idx_batch * size_activations + idx_activation;
-            matrix_output[offset_activation] = tanh(matrix_input[offset_activation]);
-        }
-    }
-}
-
-void softmax_forward(float * logits, float * probs, size_t size_batch){
-    //exp logits:
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-        // each logits & probs row
-
-        // find the max logit
-        float max_logit = logits[idx_batch * SIZE_VOCAB];
-
-        for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
-            size_t offset_logit = idx_batch * SIZE_VOCAB + idx_logit;
-            if (logits[offset_logit] > max_logit){
-                max_logit = logits[offset_logit];
-            }
-        }
-
-        // exponentiate logits and accumulate softmax denominator
-        float softmax_denominator = 0.0;
-        for (int j = 0; j < SIZE_VOCAB; j++){
-            probs[(idx_batch * SIZE_VOCAB) + j] = exp(logits[(idx_batch * SIZE_VOCAB) + j] - max_logit);
-            softmax_denominator += probs[(idx_batch * SIZE_VOCAB) + j];
-        }
-        // normalise exponentiated logits:
-        for (int j = 0; j < SIZE_VOCAB; j++){
-            probs[(idx_batch * SIZE_VOCAB) + j] = probs[(idx_batch * SIZE_VOCAB) + j] / softmax_denominator;
-        }
-
-    }
-
-}
-
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     clock_t begin = clock();
 
-    embed_tokens(model, tokens, size_batch);
-    mat_mul_forward(model->activations.input, size_batch, DIM_EMBEDDINGS * SIZE_BLOCK, 
-        model->parameters.weights_hidden, model->parameters.biases_hidden,
-    SIZE_HIDDEN, model->activations.hidden);
-    float after_mm_hidden = model->parameters.biases_output[0];
-    tanh_forward(model->activations.hidden, model->activations.hidden, SIZE_HIDDEN, model->size_batch);
-        float before_w = model->parameters.biases_output[0];
-
-    mat_mul_forward(model->activations.hidden, size_batch, SIZE_HIDDEN, model->parameters.weights_output, 
-    model->parameters.biases_output, SIZE_VOCAB, model->activations.output);
-    softmax_forward(model->activations.output, model->activations.probs, model->size_batch);
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
@@ -560,18 +487,12 @@ int main()
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         printf("\nepoch %d \n", idx_epoch);
-        model_forward(&model, training_set->X, training_set->size);
         printf("\n");
 
-        for (int i = 0; i < 4; i++){
-          printf(""); 
-        }
 
-        
         printf("\n");
         printf("\n");
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
-        model_backwards(&model, training_set);
     }
 
     // generate after training
