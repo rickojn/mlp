@@ -397,10 +397,9 @@ size_t  size_grads_w, size_t size_inputs, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){
             size_t offset_input = idx_batch * size_inputs + idx_input;
-            size_t offset_grad_w = idx_batch * size_grads_w + encode(inputs[offset_input]) * DIM_EMBEDDINGS;
-            size_t offset_grad_z = idx_batch * size_activations + idx_input * DIM_EMBEDDINGS;
+            size_t offset_grad = idx_batch * size_grads_w + encode(inputs[offset_input]) * DIM_EMBEDDINGS;
             for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
-                grads_w[offset_grad_w + idx_dim] = grads_z[offset_grad_z + idx_dim];
+                grads_w[offset_grad + idx_dim] = grads_z[offset_grad + idx_dim];
             }
         }
     }

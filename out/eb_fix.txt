@@ -1,0 +1,70 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+epoch 0 
+
+
+
+
+correct index is 1
+
+prob [0] = 0.500000
+
+prob [1] = 0.500000
+
+correct index is 2
+
+prob [2] = 0.500000
+
+prob [3] = 0.500000
+
+loss = 0.693147
+
+ backwards pass ...
+
+ delta output = 0.498764 
+
+ delta output = -0.001236 
+
+ delta output = -0.001236 
+
+ delta output = 0.498764 
+
+ delta output = 0.248764 
+
+ delta output = -0.248764 
+
+ delta output = -0.248764 
+
+ delta output = -0.248764 
+
+ delta output = -0.248764 
+
+ delta output = -0.248764 
+
+epoch 1 
+
+
+
+
+correct index is 1
+
+prob [0] = 0.438498
+
+prob [1] = 0.561503
+
+correct index is 2
+
+prob [2] = 0.438430
+
+prob [3] = 0.561570
+
+ new loss is greater: 0.700846
