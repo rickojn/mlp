@@ -155,15 +155,14 @@ void initialise_model(Model *model)
     }
 }
 
-
-void embed_tokens(Model * model, char * tokens, size_t size_batch){
-    for (size_t idx_token = 0; idx_token < size_batch * SIZE_BLOCK; idx_token++){
-        for (size_t idx_embed_dim = 0; idx_embed_dim < DIM_EMBEDDINGS; idx_embed_dim++){
-            size_t idx_activation_input = idx_token * DIM_EMBEDDINGS + idx_embed_dim;
-            int code_char = encode(tokens[idx_token]);
-            model->activations.input[idx_activation_input] = 
-            model->parameters.table_embedding[code_char * DIM_EMBEDDINGS + idx_embed_dim];
-        }        
+void embed_tokens(Model * model, TrainingSet * training_set){
+    for (size_t idx_batch = 0; idx_batch < training_set->size; idx_batch ++){
+        for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
+            size_t offset_embedding_activation = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS +idx_token;
+            size_t offset_token = idx_batch * SIZE_BLOCK + idx_token;
+            size_t idx_embedding = encode(training_set->X[offset_token]);
+            model->activations.input[offset_embedding_activation] = model->parameters.table_embedding[idx_embedding];
+        }
     }
 }
 
