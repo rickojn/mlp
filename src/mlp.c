@@ -155,12 +155,12 @@ void initialise_model(Model *model)
     }
 }
 
-void embed_tokens(Model * model, TrainingSet * training_set){
-    for (size_t idx_batch = 0; idx_batch < training_set->size; idx_batch ++){
+void embed_tokens(Model * model, char * tokens, size_t size_tokens){
+    for (size_t idx_batch = 0; idx_batch < size_tokens; idx_batch ++){
         for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
             size_t offset_embedding_activation = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS +idx_token;
             size_t offset_token = idx_batch * SIZE_BLOCK + idx_token;
-            size_t idx_embedding = encode(training_set->X[offset_token]);
+            size_t idx_embedding = encode(tokens[offset_token]);
             model->activations.input[offset_embedding_activation] = model->parameters.table_embedding[idx_embedding];
         }
     }
@@ -190,7 +190,7 @@ zzzz
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     clock_t begin = clock();
-
+    embed_tokens(model, tokens, model->size_batch);
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
