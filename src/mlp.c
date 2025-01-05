@@ -150,7 +150,8 @@ void initialise_model(Model *model)
 
     for (int i = 0; i < size_params; i++)
     {
-        *(model->parameters.table_embedding + i) = generate_normal_random_number();
+        //*(model->parameters.table_embedding + i) = generate_normal_random_number();
+        *(model->parameters.table_embedding + i) = 1.0;
     }
 }
 
@@ -452,10 +453,11 @@ void update_weights(Model * model, size_t size_batchs){
     for (size_t idx_output_weight = 0; idx_output_weight < SIZE_VOCAB * SIZE_HIDDEN; idx_output_weight++){
         float delta_output_weight = 0;
         for (size_t idx_batch = 0; idx_batch < size_batchs; idx_batch++){
-            size_t offset_grad = idx_batch * size_batchs * SIZE_HIDDEN + idx_output_weight;
+            size_t offset_grad = idx_batch * size_batchs * SIZE_HIDDEN * SIZE_VOCAB + idx_output_weight;
             delta_output_weight += model->gradients.weights_output[offset_grad];
         }
         delta_output_weight /= size_batchs;
+        printf("\n delta output = %f \n", delta_output_weight);
         model->parameters.weights_output[idx_output_weight] -= delta_output_weight * LEARNING_RATE;
     }
 }
@@ -561,6 +563,11 @@ int main()
         printf("\nepoch %d \n", idx_epoch);
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
+
+        for (int i = 0; i < 4; i++){
+          printf(""); 
+        }
+
         
         printf("\n");
         printf("\n");
