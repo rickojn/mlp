@@ -156,18 +156,16 @@ void initialise_model(Model *model)
 }
 
 void embed_tokens(Model * model, char * tokens, size_t size_tokens){
-    printf("\n embedding tokens: \n");
     for (size_t idx_batch = 0; idx_batch < size_tokens; idx_batch ++){
-        printf("batch %zu:\t", idx_batch);
         for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
             size_t offset_embedding_activation = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS +idx_token;
             size_t offset_token = idx_batch * SIZE_BLOCK + idx_token;
-            printf("%c\t", tokens[offset_token]);
             size_t idx_embedding = encode(tokens[offset_token]);
-            model->activations.input[offset_embedding_activation] = model->parameters.table_embedding[idx_embedding];
+            for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
+                model->activations.input[offset_embedding_activation + idx_dim] = model->parameters.table_embedding[idx_embedding + idx_dim];
+            }
         }
     }
-    fflush(stdout);
 }
 
 /*
@@ -191,6 +189,8 @@ zzzz
 zzzz
 
 */
+
+
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     clock_t begin = clock();
