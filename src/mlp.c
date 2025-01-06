@@ -190,7 +190,19 @@ zzzz
 
 */
 
+void matmul_forward(const float * inputs, const float * weights, const float * biases, float * outputs, 
+    size_t size_neurons, size_t size_inputs, size_t size_batch){
+        for (size_t idx_batch = 0; idx_batch <  size_batch; idx_batch++){
+            for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){                
+                // TBC
+                float output = 0;
+                for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
 
+                }
+            }
+        }
+}
+    
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     clock_t begin = clock();
