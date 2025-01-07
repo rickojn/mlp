@@ -191,15 +191,17 @@ zzzz
 */
 
 void matmul_forward(const float * inputs, const float * weights, const float * biases, float * outputs, 
-    size_t size_neurons, size_t size_inputs, size_t size_batch){
+    size_t size_outputs, size_t size_inputs, size_t size_batch){
         for (size_t idx_batch = 0; idx_batch <  size_batch; idx_batch++){
-            for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){                
-                // TBC
-                float output = 0;
-                for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-
+            for (size_t idx_neuron = 0; idx_neuron < size_outputs; idx_neuron++){
+                float pre_activation = biases ? biases[idx_neuron] : 0;
+                for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){
+                    size_t offset_input = idx_batch * size_inputs + idx_input;
+                    size_t offset_weight = idx_neuron * size_inputs + idx_input;
+                    pre_activation += inputs[offset_input] * weights[offset_weight];
                 }
-            }
+                size_t offset_output = idx_batch * size_outputs + idx_neuron;
+            }            
         }
 }
     
@@ -207,6 +209,8 @@ void matmul_forward(const float * inputs, const float * weights, const float * b
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
     clock_t begin = clock();
     embed_tokens(model, tokens, model->size_batch);
+    matmul_forward(model->activations.input, model->parameters.weights_hidden, model->parameters.biases_hidden,
+    model->activations.pre_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, size_batch);
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
