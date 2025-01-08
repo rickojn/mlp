@@ -221,6 +221,8 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     matmul_forward(model->activations.input, model->parameters.weights_hidden, model->parameters.biases_hidden,
     model->activations.pre_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, size_batch);
     tanh_foward(model->activations.pre_hidden, model->activations.hidden, SIZE_HIDDEN, size_batch);
+    matmul_forward(model->activations.hidden, model->parameters.weights_output, model->parameters.biases_output, model->activations.output,
+        SIZE_VOCAB, SIZE_HIDDEN, size_batch);
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
