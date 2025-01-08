@@ -204,6 +204,15 @@ void matmul_forward(const float * inputs, const float * weights, const float * b
             }            
         }
 }
+
+void tanh_foward(const float * pre_activations, float * activations, size_t size_neurons, size_t size_batch ){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_activation = idx_batch * size_neurons + idx_neuron;
+            activations[offset_activation] = tanh(pre_activations[offset_activation]);
+        }
+    }
+}
     
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
@@ -211,6 +220,7 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     embed_tokens(model, tokens, model->size_batch);
     matmul_forward(model->activations.input, model->parameters.weights_hidden, model->parameters.biases_hidden,
     model->activations.pre_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, size_batch);
+    tanh_foward(model->activations.pre_hidden, model->activations.hidden, SIZE_HIDDEN, size_batch);
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
