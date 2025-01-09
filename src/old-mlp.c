@@ -240,7 +240,7 @@ void softmax_forward(float * logits, float * probs, size_t size_batch){
         float softmax_denominator = 0.0;
         for (int j = 0; j < SIZE_VOCAB; j++){
             probs[(idx_batch * SIZE_VOCAB) + j] = exp(logits[(idx_batch * SIZE_VOCAB) + j] - max_logit);
-            softmax_denominator += probs[(idx_batch * SIZE_VOCAB) + j];
+            softmax_denominator += exp(probs[(idx_batch * SIZE_VOCAB) + j]);
         }
         // normalise exponentiated logits:
         for (int j = 0; j < SIZE_VOCAB; j++){
