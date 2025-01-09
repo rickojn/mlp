@@ -213,6 +213,33 @@ void tanh_foward(const float * pre_activations, float * activations, size_t size
         }
     }
 }
+
+
+void softmax_foward(const float * logits, float * probs, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        size_t offset_batch_start = idx_batch * SIZE_VOCAB;
+        float max_logit = logits[offset_batch_start];
+        for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
+            size_t offset_logit = offset_batch_start + idx_logit;
+            if (logits[offset_logit] > max_logit ){
+                max_logit = logits[offset_logit];
+            }
+        }
+
+        float denominator = 0;
+        for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
+            size_t offset_logit = offset_batch_start + idx_logit;
+            float exp_shifted_logit = exp(logits[offset_logit] - max_logit);
+            probs[offset_logit] = exp_shifted_logit;
+            denominator += exp_shifted_logit;
+        }
+
+        for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
+            size_t offset_logit = offset_batch_start + idx_logit;
+            probs[offset_logit] /= denominator;
+        }
+    }
+}
     
 
 void model_forward(Model * model, char * tokens, size_t size_batch ){ 
@@ -223,6 +250,7 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     tanh_foward(model->activations.pre_hidden, model->activations.hidden, SIZE_HIDDEN, size_batch);
     matmul_forward(model->activations.hidden, model->parameters.weights_output, model->parameters.biases_output, model->activations.output,
         SIZE_VOCAB, SIZE_HIDDEN, size_batch);
+    softmax_foward(model->activations.output, model->activations.probs, size_batch);
     clock_t end = clock();
     double time_spent = (end - begin)/CLOCKS_PER_SEC;
 }
