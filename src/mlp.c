@@ -289,11 +289,55 @@ void loss_softmax_backwards(const char * labels, float * grad_logits, const floa
     }
 }
 
+/*
+x1 x2 x3
+*
+w1 w2  w3  w4
+w5 w6  w7  w8
+w9 w10 w11 w12
+=
+z1 z2 z3 z4
 
-void matmul_backwards(const float * pre_activations, const float * weights, const float * inputs, float * grads_weights,
+z1 = x1 * w1 + x2 * w5 + x3 * w9
+z2 = x1 * w2 + x2 * w6 + x3 * w10
+z3 = x1 * w3 + x2 * w7 + x3 * w11
+z2 = x1 * w4 + x8 * w6 + x3 * w12
+
+L = y1 * SM(z1) + y2 * SM(z2) + y3 * SM(z3) + y4 * SM(z4)
+
+
+dL/w6 = dL/dz1 * dz1/dw6 + dL/z2 * dz2/dw6 + dL/z3 * dz3/dw6  + dL/z4 * dz4/dw6
+
+dL/z1 = SM(z1) - y1
+dL/z2 = SM(z2) - y2
+
+dz1/dw6 = 0
+dz2/dw6 = x2
+
+dL/dw6 = DL/dz2 * dz2/dw6 + DL
+dL/d
+
+dz2/dx2 = w6
+dz1/dx2 = w5
+
+
+*/
+
+
+
+void matmul_backwards(const float * grads_pre_activations, const float * weights, const float * inputs, float * grads_weights,
 float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inputs, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_batch_neuron = idx_batch * size_neurons + idx_neuron;
+            if (grads_biases){
+                grads_biases[offset_batch_neuron] = grads_pre_activations[offset_batch_neuron];
+            }
+            for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
+                size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
+                grads_weights[offset_batch_weight] = inputs[offset_batch_weight] * grads_pre_activations[offset_batch_neuron];
+                grads_inputs[offset_batch_weight] = weights[idx_weight];
+            }
         }
     }
 }
