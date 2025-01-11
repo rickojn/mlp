@@ -279,12 +279,33 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     return batch_loss/size_batch;
 }
 
+void loss_softmax_backwards(const char * labels, float * grad_logits, const float * probs, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch ++){
+        for (size_t idx_logit; idx_logit < SIZE_VOCAB; idx_logit++){
+            float label = idx_logit == encode(labels[idx_batch]) ? 1.0 : 0.0;
+            size_t offset_grad_logit = idx_batch * SIZE_VOCAB + idx_logit;
+            grad_logits[offset_grad_logit] = probs[offset_grad_logit] - label;
+        }
+    }
+}
+
+
+void matmul_backwards(const float * pre_activations, const float * weights, const float * inputs, float * grads_weights,
+float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inputs, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+        }
+    }
+}
+
+
 void model_backwards(Model * model, TrainingSet * training_set){
     printf("\n backwards pass ...\n");
     clock_t begin, end;
     double time_spent;
     begin = clock();
-   end = clock();
+    loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
+    end = clock();
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 }
