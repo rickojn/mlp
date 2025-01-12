@@ -336,7 +336,16 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
                 grads_weights[offset_batch_weight] = inputs[offset_batch_weight] * grads_pre_activations[offset_batch_neuron];
-                grads_inputs[offset_batch_weight] = weights[idx_weight];
+                grads_inputs[offset_batch_weight] = weights[idx_weight] * grads_pre_activations[offset_batch_neuron];
+            }
+        }
+    }
+}
+
+void update_weights(Model * model, size_t size_batch){
+    for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
+        for (size_t idx_weight = 0; idx_weight < SIZE_HIDDEN; idx_weight++){
+            for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
             }
         }
     }
@@ -348,7 +357,19 @@ void model_backwards(Model * model, TrainingSet * training_set){
     clock_t begin, end;
     double time_spent;
     begin = clock();
+    memset(model->gradients.pre_activations_output, 0, training_set->size * ( SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
+        + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
+        + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN  // hidden weights
+        + SIZE_HIDDEN // hidden biases
+        + SIZE_HIDDEN * 2 // hidden pre-activations and activations
+        + SIZE_HIDDEN * SIZE_VOCAB // output weights
+        + SIZE_VOCAB //output biases
+        + SIZE_VOCAB)
+        );
+
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
+    matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_hidden, model->activations.hidden, model->gradients.weights_output,
+    model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
     end = clock();
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
