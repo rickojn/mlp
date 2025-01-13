@@ -343,12 +343,18 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
 }
 
 void update_weights(Model * model, size_t size_batch){
+    float delta = 0.0;
     for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
-        for (size_t idx_weight = 0; idx_weight < SIZE_HIDDEN; idx_weight++){
-            for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-            }
+        for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+            size_t offset_bias_output = idx_batch * SIZE_VOCAB + idx_neuron;
+            delta += model->gradients.biases_output[offset_bias_output] * LEARNING_RATE;
         }
+        delta /= size_batch;
+        model->parameters.biases_output[idx_neuron] -= delta;
     }
+
+    delta = 0.0;
+    
 }
 
 
@@ -370,6 +376,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_hidden, model->activations.hidden, model->gradients.weights_output,
     model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
+    update_weights(model, training_set->size);
     end = clock();
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
@@ -443,6 +450,7 @@ int main()
         printf("\nepoch %d \n", idx_epoch);
         printf("\n");
         model_forward(&model, training_set->X, training_set->size);
+        model_backwards(&model, training_set);
 
 
         printf("\n");
