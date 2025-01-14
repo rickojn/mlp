@@ -379,9 +379,16 @@ void model_backwards(Model * model, TrainingSet * training_set){
         );
 
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
+    printf("\n before mm back:\n");
+    print_model(model);
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_hidden, model->activations.hidden, model->gradients.weights_output,
     model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
+    
     update_weights(model, training_set->size);
+
+    printf("\n after update weights:\n");
+    print_model(model);
+
     end = clock();
 
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;

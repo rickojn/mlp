@@ -152,7 +152,7 @@ void print_model(Model * model){
 
     printf("\noutput layer: \n");
     for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
-        printf("neuron %zu, biase %f", idx_neuron, model->parameters.biases_output[idx_neuron]);
+        printf("neuron %zu, bias %f", idx_neuron, model->parameters.biases_output[idx_neuron]);
         printf("\n");
         for (size_t idx_neural_weight = 0; idx_neural_weight < SIZE_HIDDEN; idx_neural_weight++){
             size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_neural_weight;

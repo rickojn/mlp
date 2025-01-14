@@ -12,6 +12,66 @@ model initialised ....
 epoch 0 
 
 
+ backwards pass ...
+
+ before mm back:
+
+embedding table:
+token a:	embedding: 1.000000 	 1.000000 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 3, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 4, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+
+ 2  330850389 
+
+ total delta = 0.000000 
+
+ weight [0] = 1.000000  delta = 0.000000 
+
+ 2592  330850389 
+
+ total delta = -0.000000 
+
+ weight [1] = 1.000000  delta = -0.000000 
+
+ after update weights:
+
+embedding table:
+token a:	embedding: 1.000000 	 1.000000 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 3, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 4, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+
 
 
 correct index is 1
@@ -28,43 +88,81 @@ prob [3] = 0.500000
 
 loss = 0.693147
 
- backwards pass ...
-
- delta output = 0.498764 
-
- delta output = -0.001236 
-
- delta output = -0.001236 
-
- delta output = 0.498764 
-
- delta output = 0.248764 
-
- delta output = -0.248764 
-
- delta output = -0.248764 
-
- delta output = -0.248764 
-
- delta output = -0.248764 
-
- delta output = -0.248764 
-
 epoch 1 
 
+
+ backwards pass ...
+
+ before mm back:
+
+embedding table:
+token a:	embedding: 1.000000 	 1.000000 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 3, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 4, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+
+ 2  330850389 
+
+ total delta = 0.000000 
+
+ weight [0] = 1.000000  delta = 0.000000 
+
+ 2592  330850389 
+
+ total delta = -0.000000 
+
+ weight [1] = 1.000000  delta = -0.000000 
+
+ after update weights:
+
+embedding table:
+token a:	embedding: 1.000000 	 1.000000 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 3, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 4, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
 
 
 
 correct index is 1
 
-prob [0] = 0.438498
+prob [0] = 0.500000
 
-prob [1] = 0.561503
+prob [1] = 0.500000
 
 correct index is 2
 
-prob [2] = 0.438498
+prob [2] = 0.500000
 
-prob [3] = 0.561503
+prob [3] = 0.500000
 
- new loss is greater: 0.700770
+loss = 0.693147
