@@ -280,8 +280,8 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
 }
 
 void loss_softmax_backwards(const char * labels, float * grad_logits, const float * probs, size_t size_batch){
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch ++){
-        for (size_t idx_logit; idx_logit < SIZE_VOCAB; idx_logit++){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
             float label = idx_logit == encode(labels[idx_batch]) ? 1.0 : 0.0;
             size_t offset_grad_logit = idx_batch * SIZE_VOCAB + idx_logit;
             grad_logits[offset_grad_logit] = probs[offset_grad_logit] - label;
@@ -345,11 +345,16 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
 void update_weights(Model * model, size_t size_batch){
     float delta = 0.0;
     for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
+        printf("\n");
         for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
             size_t offset_bias_output = idx_batch * SIZE_VOCAB + idx_neuron;
+            printf(" %d ",model->gradients.biases_output[offset_bias_output]);
             delta += model->gradients.biases_output[offset_bias_output] * LEARNING_RATE;
         }
+        printf("\n");
+        printf("\n total delta = %f \n", delta);
         delta /= size_batch;
+        printf("\n weight [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
         model->parameters.biases_output[idx_neuron] -= delta;
     }
 
