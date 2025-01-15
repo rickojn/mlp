@@ -284,6 +284,7 @@ void loss_softmax_backwards(const char * labels, float * grad_logits, const floa
         for (size_t idx_logit = 0; idx_logit < SIZE_VOCAB; idx_logit++){
             float label = idx_logit == encode(labels[idx_batch]) ? 1.0 : 0.0;
             size_t offset_grad_logit = idx_batch * SIZE_VOCAB + idx_logit;
+            float db_prob = probs[offset_grad_logit]; 
             grad_logits[offset_grad_logit] = probs[offset_grad_logit] - label;
         }
     }
@@ -331,6 +332,7 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             size_t offset_batch_neuron = idx_batch * size_neurons + idx_neuron;
             if (grads_biases){
+                float db_1 = grads_pre_activations[offset_batch_neuron];
                 grads_biases[offset_batch_neuron] = grads_pre_activations[offset_batch_neuron];
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
@@ -348,7 +350,7 @@ void update_weights(Model * model, size_t size_batch){
         printf("\n");
         for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
             size_t offset_bias_output = idx_batch * SIZE_VOCAB + idx_neuron;
-            printf(" %d ",model->gradients.biases_output[offset_bias_output]);
+            printf(" %f ",model->gradients.biases_output[offset_bias_output]);
             delta += model->gradients.biases_output[offset_bias_output] * LEARNING_RATE;
         }
         printf("\n");
@@ -359,6 +361,17 @@ void update_weights(Model * model, size_t size_batch){
     }
 
     delta = 0.0;
+    for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++ ){
+        for (size_t idx_weight = 0; idx_weight < SIZE_HIDDEN; idx_weight++){
+            for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+                size_t offset_batch_weight = idx_batch * SIZE_VOCAB * SIZE_HIDDEN + idx_neuron * SIZE_HIDDEN + idx_weight;
+                delta += model->gradients.weights_output[offset_batch_weight];
+            }
+            delta /= size_batch; 
+            size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_weight;
+            model->parameters.weights_output[offset_weight] -= delta * LEARNING_RATE;
+        }
+    }
     
 }
 
@@ -379,15 +392,15 @@ void model_backwards(Model * model, TrainingSet * training_set){
         );
 
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
-    printf("\n before mm back:\n");
-    print_model(model);
+    // printf("\n before mm back:\n");
+    // print_model(model);
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_hidden, model->activations.hidden, model->gradients.weights_output,
     model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
     
     update_weights(model, training_set->size);
 
-    printf("\n after update weights:\n");
-    print_model(model);
+    // printf("\n after update weights:\n");
+    // print_model(model);
 
     end = clock();
 
