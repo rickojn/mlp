@@ -8,7 +8,7 @@
 #define SIZE_HIDDEN 5
 #define INITIAL_SIZE 1000 // Initial number of strings
 #define MAX_LENGTH 256  // Maximum length of each string
-#define NUM_EPOCHS 2
+#define NUM_EPOCHS 1
 #define LEARNING_RATE 0.1
 #define DIM_EMBEDDINGS 2
 //#define SIZE_BATCH 32

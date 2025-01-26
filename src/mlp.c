@@ -201,6 +201,7 @@ void matmul_forward(const float * inputs, const float * weights, const float * b
                     pre_activation += inputs[offset_input] * weights[offset_weight];
                 }
                 size_t offset_output = idx_batch * size_outputs + idx_neuron;
+                outputs[offset_output] = pre_activation;
             }            
         }
 }
@@ -337,6 +338,9 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
+
+                float db_input = inputs[offset_batch_weight];
+                float db_grad  = grads_pre_activations[offset_batch_neuron];
                 grads_weights[offset_batch_weight] = inputs[offset_batch_weight] * grads_pre_activations[offset_batch_neuron];
                 grads_inputs[offset_batch_weight] = weights[idx_weight] * grads_pre_activations[offset_batch_neuron];
             }
@@ -360,9 +364,9 @@ void update_weights(Model * model, size_t size_batch){
         model->parameters.biases_output[idx_neuron] -= delta;
     }
 
-    delta = 0.0;
     for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++ ){
         for (size_t idx_weight = 0; idx_weight < SIZE_HIDDEN; idx_weight++){
+            delta = 0.0;
             for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
                 size_t offset_batch_weight = idx_batch * SIZE_VOCAB * SIZE_HIDDEN + idx_neuron * SIZE_HIDDEN + idx_weight;
                 delta += model->gradients.weights_output[offset_batch_weight];
@@ -394,7 +398,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
     // printf("\n before mm back:\n");
     // print_model(model);
-    matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_hidden, model->activations.hidden, model->gradients.weights_output,
+    matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_output, model->activations.hidden, model->gradients.weights_output,
     model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
     
     update_weights(model, training_set->size);
