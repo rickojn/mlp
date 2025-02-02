@@ -156,7 +156,7 @@ void print_model(Model * model){
         printf("\n");
         for (size_t idx_neural_weight = 0; idx_neural_weight < SIZE_HIDDEN; idx_neural_weight++){
             size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_neural_weight;
-            printf("\tWeight %zu: %f  ", idx_neural_weight, model->parameters.weights_hidden[offset_weight]);
+            printf("\tWeight %zu: %f  ", idx_neural_weight, model->parameters.weights_output[offset_weight]);
         }
         printf("\n");
     }

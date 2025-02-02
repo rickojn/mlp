@@ -373,7 +373,10 @@ void update_weights(Model * model, size_t size_batch){
             printf("\nweight delta = %f\n", delta);
             delta /= size_batch; 
             size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_weight;
+            float db_weight_before = model->parameters.weights_output[offset_weight];
             model->parameters.weights_output[offset_weight] -= delta * LEARNING_RATE;
+            float db_weight_after = model->parameters.weights_output[offset_weight];
+            int db = 0;
         }
     }
     
@@ -475,16 +478,21 @@ int main()
     // generate(&model, 5);
 
     //training loop
+    printf("\nmodel before training:\n");
+    print_model(&model);
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         printf("\nepoch %d \n", idx_epoch);
         printf("\n");
         model_forward(&model, training_set->X, training_set->size);
+        printf("\nloss before back = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
+        print_model(&model);
 
 
         printf("\n");
+        model_forward(&model, training_set->X, training_set->size);
         printf("\n");
-        printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
+        printf("\nloss after back = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     }
 
     // generate after training
