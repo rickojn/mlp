@@ -338,7 +338,6 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
-
                 float db_input = inputs[offset_batch_weight];
                 float db_grad  = grads_pre_activations[offset_batch_neuron];
                 grads_weights[offset_batch_weight] = inputs[offset_batch_weight] * grads_pre_activations[offset_batch_neuron];
@@ -360,7 +359,7 @@ void update_weights(Model * model, size_t size_batch){
         printf("\n");
         printf("\n total delta = %f \n", delta);
         delta /= size_batch;
-        printf("\n weight [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
+        printf("\n bias [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
         model->parameters.biases_output[idx_neuron] -= delta;
     }
 
@@ -371,6 +370,7 @@ void update_weights(Model * model, size_t size_batch){
                 size_t offset_batch_weight = idx_batch * SIZE_VOCAB * SIZE_HIDDEN + idx_neuron * SIZE_HIDDEN + idx_weight;
                 delta += model->gradients.weights_output[offset_batch_weight];
             }
+            printf("\nweight delta = %f\n", delta);
             delta /= size_batch; 
             size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_weight;
             model->parameters.weights_output[offset_weight] -= delta * LEARNING_RATE;
