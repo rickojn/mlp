@@ -353,6 +353,7 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
 
 void update_weights(Model * model, size_t size_batch){
     float delta = 0.0;
+    // update outputs
     for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
         printf("\n");
         for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
@@ -384,6 +385,53 @@ void update_weights(Model * model, size_t size_batch){
             int db = 0;
         }
     }
+
+    //update hidden layer
+    delta = 0.0;
+
+        for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
+        printf("\n");
+        for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+            size_t offset_bias_output = idx_batch * SIZE_VOCAB + idx_neuron;
+            printf(" %f ",model->gradients.biases_output[offset_bias_output]);
+            delta += model->gradients.biases_output[offset_bias_output] * LEARNING_RATE;
+        }
+        printf("\n");
+        printf("\n total delta = %f \n", delta);
+        delta /= size_batch;
+        printf("\n bias [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
+        model->parameters.biases_output[idx_neuron] -= delta;
+    }
+
+    for (size_t idx_neuron = 0; idx_neuron < SIZE_HIDDEN; idx_neuron++ ){
+        for (size_t idx_weight = 0; idx_weight < DIM_EMBEDDINGS * SIZE_BLOCK; idx_weight++){
+            delta = 0.0;
+            for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+                size_t offset_batch_weight = idx_batch * SIZE_VOCAB * SIZE_HIDDEN + idx_neuron * SIZE_HIDDEN + idx_weight;
+                // printf("\n neuron %zu, weight %zu batch %zu grad: %f\n", idx_neuron, idx_weight, idx_batch, model->gradients.weights_output[offset_batch_weight]);
+                delta += model->gradients.weights_hidden[offset_batch_weight];
+            }
+            // printf("\nweight delta[%zu] = %f\n", idx_weight, delta);
+            delta /= size_batch; 
+            size_t offset_weight = idx_neuron * SIZE_BLOCK * DIM_EMBEDDINGS + idx_weight;
+            // float db_weight_before = model->parameters.weights_output[offset_weight];
+            model->parameters.weights_hidden[offset_weight] -= delta * LEARNING_RATE;
+            // float db_weight_after = model->parameters.weights_output[offset_weight];
+            int db = 0;
+        }
+    }
+
+    // update embedding table
+    for (size_t idx_embedding_component = 0; idx_embedding_component < SIZE_VOCAB * DIM_EMBEDDINGS; idx_embedding_component++){
+        delta = 0.0;
+        for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+            size_t offset_embedding_gradient = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS + idx_embedding_component;
+            delta += model->gradients.weights_embeddings[offset_embedding_gradient];
+        }
+        delta /= size_batch;
+        model->parameters.table_embedding[idx_embedding_component] -= delta * LEARNING_RATE;
+    }
+
     
 }
 
