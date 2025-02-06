@@ -351,6 +351,16 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
     }
 }
 
+
+void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_grad = idx_batch * size_batch + idx_neuron;
+            outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]), 2);
+        }
+    }
+}
+
 void update_weights(Model * model, size_t size_batch){
     float delta = 0.0;
     // update outputs
