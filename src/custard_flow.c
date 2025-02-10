@@ -134,8 +134,8 @@ void print_token_embeddings(Model * model, TrainingSet * training_set){
 
 void print_model(Model * model){
     printf("\nembedding table:\n");
-    for (int idx_token = 0; idx_token < SIZE_VOCAB -1; idx_token++){
-        printf("token %c:\t", idx_token + 'a');
+    for (int idx_token = 0; idx_token < SIZE_VOCAB; idx_token++){
+        printf("token %d:\t", idx_token);
         printf("embedding: %f \t %f \n", model->parameters.table_embedding[idx_token * 2], model->parameters.table_embedding[idx_token * 2 + 1]);
     }
 

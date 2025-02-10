@@ -485,7 +485,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.probs, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
-    DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK, training_set->size);
+    DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
 
     update_weights(model, training_set->size);
 
