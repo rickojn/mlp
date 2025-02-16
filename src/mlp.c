@@ -309,6 +309,8 @@ z2 = x1 * w2 + x2 * w6 + x3 * w10
 z3 = x1 * w3 + x2 * w7 + x3 * w11
 z2 = x1 * w4 + x8 * w6 + x3 * w12
 
+d
+
 L = y1 * SM(z1) + y2 * SM(z2) + y3 * SM(z3) + y4 * SM(z4)
 
 
@@ -341,11 +343,13 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
                 grads_biases[offset_batch_neuron] = grads_pre_activations[offset_batch_neuron];
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
+                size_t offset_weight = idx_neuron * size_inputs + idx_weight;
                 size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
+                size_t offset_batch_input = idx_batch * size_inputs + idx_weight;
                 float db_input = inputs[offset_batch_weight];
                 float db_grad  = grads_pre_activations[offset_batch_neuron];
                 grads_weights[offset_batch_weight] = inputs[offset_batch_weight] * grads_pre_activations[offset_batch_neuron];
-                grads_inputs[offset_batch_weight] = weights[idx_weight] * grads_pre_activations[offset_batch_neuron]; //??
+                grads_inputs[offset_batch_input] += weights[offset_weight] * grads_pre_activations[offset_batch_neuron]; //??
             }
         }
     }
@@ -361,19 +365,26 @@ void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, 
     }
 }
 
+/*
+
+x1,x2, x3,x4
+
+*/
+
+
 void embedding_backwards(float * grads_z, float * grads_w, const char * inputs, size_t size_activations, 
-size_t  size_grads_w, size_t size_inputs, size_t size_batch){
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-        for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){
-            size_t offset_input = idx_batch * size_inputs + idx_input;
-            size_t offset_grad_w = idx_batch * size_grads_w + encode(inputs[offset_input]) * DIM_EMBEDDINGS;
-            size_t offset_grad_z = idx_batch * size_activations + idx_input * DIM_EMBEDDINGS;
-            for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
-                grads_w[offset_grad_w + idx_dim] = grads_z[offset_grad_z + idx_dim];
+    size_t  size_grads_w, size_t size_inputs, size_t size_batch){
+        for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+            for (size_t idx_input = 0; idx_input < size_inputs; idx_input++){
+                size_t offset_input = idx_batch * size_inputs + idx_input;
+                size_t offset_grad_w = idx_batch * size_grads_w + encode(inputs[offset_input]) * DIM_EMBEDDINGS;
+                size_t offset_grad_z = idx_batch * size_activations + idx_input * DIM_EMBEDDINGS;
+                for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
+                    grads_w[offset_grad_w + idx_dim] = grads_z[offset_grad_z + idx_dim];
+                }
             }
         }
     }
-}
 
 
 void update_weights(Model * model, size_t size_batch){
@@ -485,8 +496,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.probs, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
-    DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
-
+        DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     update_weights(model, training_set->size);
 
 
