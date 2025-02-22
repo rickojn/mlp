@@ -383,6 +383,7 @@ void embedding_backwards(const float * grad_activations, const char * input, flo
             size_t offset_input_token = idx_block * SIZE_BLOCK + idx_input_token;
             size_t offset_token_embedding = encode(input[offset_input_token]);
             for (size_t idx_embedding_element = 0; idx_embedding_element < DIM_EMBEDDINGS; idx_embedding_element++){
+                float db_grad = grad_activations[offset_input_token];
                 grad_embeddings[offset_input_token * DIM_EMBEDDINGS + idx_embedding_element] += grad_activations[offset_input_token];
             }
         }
@@ -496,8 +497,8 @@ void model_backwards(Model * model, TrainingSet * training_set){
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_output, model->activations.hidden, model->gradients.weights_output,
     model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
     tanh_backwards(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
-    matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.probs, model->gradients.weights_hidden,
-    model->gradients.biases_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
+    matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.input, model->gradients.weights_hidden,
+    model->gradients.biases_hidden, model->gradients.activations_embeddings, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->gradients.activations_embeddings, training_set->X, model->gradients.weights_embeddings, training_set->size);
     update_weights(model, training_set->size);
 
