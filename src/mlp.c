@@ -367,15 +367,24 @@ void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, 
 
 /*
 
-x1,x2, x3,x4
+.        .        .
+x11,x12, x13,x14, x15,x16
+.        .        e
+x21,x22, x23,x24, x25,x26
+
+
 
 */
 
 
-void embedding_backwards(const float * grad_activations, const char * input, float grad_embeddings, size_t size_batch){
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-        for (size_t idx_activation_embedding = 0; idx_activation_embedding < SIZE_BLOCK; idx_activation_embedding++){
-            size_t offset_embedding = encode(input[idx_batch]) * DIM_EMBEDDINGS;
+void embedding_backwards(const float * grad_activations, const char * input, float * grad_embeddings, size_t size_batch){
+    for (size_t idx_block = 0; idx_block < size_batch; idx_block++){
+        for (size_t idx_input_token = 0; idx_input_token < SIZE_BLOCK; idx_input_token++){
+            size_t offset_input_token = idx_block * SIZE_BLOCK + idx_input_token;
+            size_t offset_token_embedding = encode(input[offset_input_token]);
+            for (size_t idx_embedding_element = 0; idx_embedding_element < DIM_EMBEDDINGS; idx_embedding_element++){
+                grad_embeddings[offset_input_token * DIM_EMBEDDINGS + idx_embedding_element] += grad_activations[offset_input_token];
+            }
         }
     }
 }
@@ -489,8 +498,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     tanh_backwards(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.probs, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
-    embedding_backwards(model->activations.input, model->gradients.weights_embeddings, training_set->X, SIZE_BLOCK * DIM_EMBEDDINGS,
-        DIM_EMBEDDINGS * SIZE_VOCAB, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
+    embedding_backwards(model->gradients.activations_embeddings, training_set->X, model->gradients.weights_embeddings, training_set->size);
     update_weights(model, training_set->size);
 
 
