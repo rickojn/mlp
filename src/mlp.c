@@ -150,8 +150,8 @@ void initialise_model(Model *model)
 
     for (int i = 0; i < size_params; i++)
     {
-        //*(model->parameters.table_embedding + i) = generate_normal_random_number();
-        *(model->parameters.table_embedding + i) = 1.0;
+        *(model->parameters.table_embedding + i) = generate_normal_random_number();
+        // *(model->parameters.table_embedding + i) = 1.0;
     }
 }
 
