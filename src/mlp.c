@@ -346,9 +346,9 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
                 size_t offset_weight = idx_neuron * size_inputs + idx_weight;
                 size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
                 size_t offset_batch_input = idx_batch * size_inputs + idx_weight;
-                float db_input = inputs[offset_batch_weight];
+                float db_input = inputs[offset_batch_input];
                 float db_grad  = grads_pre_activations[offset_batch_neuron];
-                grads_weights[offset_batch_weight] = inputs[offset_batch_weight] * grads_pre_activations[offset_batch_neuron];
+                grads_weights[offset_batch_weight] = inputs[offset_batch_input] * grads_pre_activations[offset_batch_neuron];
                 grads_inputs[offset_batch_input] += weights[offset_weight] * grads_pre_activations[offset_batch_neuron]; //??
             }
         }
@@ -362,6 +362,8 @@ void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, 
             size_t offset_grad = idx_batch * size_batch + idx_neuron;
             float db_input = inputs[offset_grad];
             outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]), 2);
+            float db_grad = outputs[offset_grad];
+            int db = 0;
         }
     }
 }
