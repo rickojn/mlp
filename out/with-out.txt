@@ -1,0 +1,179 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+model before training:
+
+embedding table:
+token 0:	embedding: 1.000000 	 1.000000 
+token 1:	embedding: 1.000000 	 1.000000 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 3, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 4, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+
+epoch 0 
+
+
+logit 0: 5.975274 
+
+logit 1: 5.975274 
+
+logit 2: 5.975274 
+
+logit 3: 5.975274 
+
+correct index is 1
+
+prob [0] = 0.500000
+
+prob [1] = 0.500000
+
+correct index is 2
+
+prob [2] = 0.500000
+
+prob [3] = 0.500000
+
+loss before back = 0.693147
+
+ backwards pass ...
+
+ neuron 0, weight 0 batch 0 grad: 0.497527
+
+ neuron 0, weight 0 batch 1 grad: -2.987637
+
+weight delta[0] = -2.490109
+
+ neuron 0, weight 1 batch 0 grad: 0.497527
+
+ neuron 0, weight 1 batch 1 grad: -2.987637
+
+weight delta[1] = -2.490109
+
+ neuron 0, weight 2 batch 0 grad: 0.497527
+
+ neuron 0, weight 2 batch 1 grad: -2.987637
+
+weight delta[2] = -2.490109
+
+ neuron 0, weight 3 batch 0 grad: 0.497527
+
+ neuron 0, weight 3 batch 1 grad: -2.987637
+
+weight delta[3] = -2.490109
+
+ neuron 0, weight 4 batch 0 grad: 0.497527
+
+ neuron 0, weight 4 batch 1 grad: -0.250000
+
+weight delta[4] = 0.247527
+
+ neuron 1, weight 0 batch 0 grad: -0.497527
+
+ neuron 1, weight 0 batch 1 grad: 0.250000
+
+weight delta[0] = -0.247527
+
+ neuron 1, weight 1 batch 0 grad: -0.497527
+
+ neuron 1, weight 1 batch 1 grad: 0.250000
+
+weight delta[1] = -0.247527
+
+ neuron 1, weight 2 batch 0 grad: -0.497527
+
+ neuron 1, weight 2 batch 1 grad: 0.250000
+
+weight delta[2] = -0.247527
+
+ neuron 1, weight 3 batch 0 grad: -0.497527
+
+ neuron 1, weight 3 batch 1 grad: 0.250000
+
+weight delta[3] = -0.247527
+
+ neuron 1, weight 4 batch 0 grad: -0.497527
+
+ neuron 1, weight 4 batch 1 grad: -0.250000
+
+weight delta[4] = -0.747527
+
+ 0.500000  -0.500000 
+
+ total delta = 0.000000 
+
+ bias [0] = 1.000000  delta = 0.000000 
+
+ -0.500000  0.500000 
+
+ total delta = -0.000000 
+
+ bias [1] = 1.000000  delta = -0.000000 
+
+embedding table:
+token 0:	embedding: 0.788427 	 0.788427 
+token 1:	embedding: 0.894214 	 0.894214 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 0.915371  	Weight 1: 0.915371  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 0.915371  	Weight 1: 0.915371  
+neuron 3, biase 1.000000
+	Weight 0: 0.978843  	Weight 1: 0.978843  
+neuron 4, biase 1.000000
+	Weight 0: 0.873056  	Weight 1: 0.873056  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.124506  	Weight 1: 1.124506  	Weight 2: 1.124506  	Weight 3: 1.124506  	Weight 4: 0.987624  
+neuron 1, bias 1.000000
+	Weight 0: 1.012376  	Weight 1: 1.012376  	Weight 2: 1.012376  	Weight 3: 1.012376  	Weight 4: 1.037376  
+
+
+logit 0: 6.408349 
+
+logit 1: 6.014758 
+
+logit 2: 6.422091 
+
+logit 3: 6.027555 
+
+
+correct index is 1
+
+prob [0] = 0.597147
+
+prob [1] = 0.402853
+
+correct index is 2
+
+prob [2] = 0.597374
+
+prob [3] = 0.402626
+
+ new loss is greater: 0.712197

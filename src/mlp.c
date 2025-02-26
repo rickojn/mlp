@@ -360,6 +360,7 @@ void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, 
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             size_t offset_grad = idx_batch * size_batch + idx_neuron;
+            float db_input = inputs[offset_grad];
             outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]), 2);
         }
     }
@@ -447,9 +448,12 @@ void update_weights(Model * model, size_t size_batch){
         for (size_t idx_weight = 0; idx_weight < DIM_EMBEDDINGS * SIZE_BLOCK; idx_weight++){
             delta = 0.0;
             for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-                size_t offset_batch_weight = idx_batch * SIZE_VOCAB * SIZE_HIDDEN + idx_neuron * SIZE_HIDDEN + idx_weight;
+                size_t offset_batch_weight = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN + 
+                idx_neuron * SIZE_BLOCK * DIM_EMBEDDINGS + idx_weight;
                 // printf("\n neuron %zu, weight %zu batch %zu grad: %f\n", idx_neuron, idx_weight, idx_batch, model->gradients.weights_output[offset_batch_weight]);
+                float db_grad = model->gradients.weights_hidden[offset_batch_weight];
                 delta += model->gradients.weights_hidden[offset_batch_weight];
+                
             }
             // printf("\nweight delta[%zu] = %f\n", idx_weight, delta);
             delta /= size_batch; 
@@ -496,7 +500,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     // print_model(model);
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_output, model->activations.hidden, model->gradients.weights_output,
     model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
-    tanh_backwards(model->activations.hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
+    tanh_backwards(model->activations.pre_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.input, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.activations_embeddings, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->gradients.activations_embeddings, training_set->X, model->gradients.weights_embeddings, training_set->size);

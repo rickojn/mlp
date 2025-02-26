@@ -1,0 +1,119 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+model before training:
+
+embedding table:
+token 0:	embedding: 1.000000 	 1.000000 
+token 1:	embedding: 1.000000 	 1.000000 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 3, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 4, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+
+epoch 0 
+
+
+logit 0: 5.975274 
+
+logit 1: 5.975274 
+
+logit 2: 5.975274 
+
+logit 3: 5.975274 
+
+correct index is 1
+
+prob [0] = 0.500000
+
+prob [1] = 0.500000
+
+correct index is 2
+
+prob [2] = 0.500000
+
+prob [3] = 0.500000
+
+loss before back = 0.693147
+
+ backwards pass ...
+
+ 0.500000  -0.500000 
+
+ total delta = 0.000000 
+
+ bias [0] = 1.000000  delta = 0.000000 
+
+ -0.500000  0.500000 
+
+ total delta = -0.000000 
+
+ bias [1] = 1.000000  delta = -0.000000 
+
+embedding table:
+token 0:	embedding: 0.788427 	 0.788427 
+token 1:	embedding: 0.894214 	 0.894214 
+
+hidden layer: 
+neuron 0, biase 1.000000
+	Weight 0: 0.915371  	Weight 1: 0.915371  
+neuron 1, biase 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  
+neuron 2, biase 1.000000
+	Weight 0: 0.915371  	Weight 1: 0.915371  
+neuron 3, biase 1.000000
+	Weight 0: 0.978843  	Weight 1: 0.978843  
+neuron 4, biase 1.000000
+	Weight 0: 0.873056  	Weight 1: 0.873056  
+
+output layer: 
+neuron 0, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+neuron 1, bias 1.000000
+	Weight 0: 1.000000  	Weight 1: 1.000000  	Weight 2: 1.000000  	Weight 3: 1.000000  	Weight 4: 1.000000  
+
+
+logit 0: 5.929180 
+
+logit 1: 5.929180 
+
+logit 2: 5.941751 
+
+logit 3: 5.941751 
+
+
+correct index is 1
+
+prob [0] = 0.500000
+
+prob [1] = 0.500000
+
+correct index is 2
+
+prob [2] = 0.500000
+
+prob [3] = 0.500000
+
+loss after back = 0.693147
