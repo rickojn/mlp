@@ -386,10 +386,11 @@ void embedding_backwards(const float * grad_activations, const char * inputs, fl
             size_t offset_input_token = idx_batch * SIZE_BLOCK + idx_input_token;
             size_t offset_token_embedding = encode(inputs[offset_input_token]);
             for (size_t idx_embedding_element = 0; idx_embedding_element < DIM_EMBEDDINGS; idx_embedding_element++){
-                float db_grad = grad_activations[offset_input_token];
                 size_t offset_batch_embedding_element = idx_batch * SIZE_VOCAB * DIM_EMBEDDINGS + 
-                offset_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
-                grad_embeddings[offset_batch_embedding_element] += grad_activations[offset_batch_embedding_element];
+                    offset_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
+                size_t offset_embedding_activation = offset_input_token + idx_embedding_element;
+                float db_grad = grad_activations[offset_batch_embedding_element];
+                grad_embeddings[offset_batch_embedding_element] += grad_activations[offset_embedding_activation];
             }
         }
     }
