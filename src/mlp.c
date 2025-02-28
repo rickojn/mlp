@@ -380,14 +380,16 @@ x21,x22, x23,x24, x25,x26
 */
 
 
-void embedding_backwards(const float * grad_activations, const char * input, float * grad_embeddings, size_t size_batch){
-    for (size_t idx_block = 0; idx_block < size_batch; idx_block++){
+void embedding_backwards(const float * grad_activations, const char * inputs, float * grad_embeddings, size_t size_batch){
+    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
         for (size_t idx_input_token = 0; idx_input_token < SIZE_BLOCK; idx_input_token++){
-            size_t offset_input_token = idx_block * SIZE_BLOCK + idx_input_token;
-            size_t offset_token_embedding = encode(input[offset_input_token]);
+            size_t offset_input_token = idx_batch * SIZE_BLOCK + idx_input_token;
+            size_t offset_token_embedding = encode(inputs[offset_input_token]);
             for (size_t idx_embedding_element = 0; idx_embedding_element < DIM_EMBEDDINGS; idx_embedding_element++){
                 float db_grad = grad_activations[offset_input_token];
-                grad_embeddings[offset_input_token * DIM_EMBEDDINGS + idx_embedding_element] += grad_activations[offset_input_token];
+                size_t offset_batch_embedding_element = idx_batch * SIZE_VOCAB * DIM_EMBEDDINGS + 
+                offset_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
+                grad_embeddings[offset_batch_embedding_element] += grad_activations[offset_batch_embedding_element];
             }
         }
     }
