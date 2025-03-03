@@ -3,7 +3,7 @@
 #endif
 
 
-#define SIZE_VOCAB 3
+#define SIZE_VOCAB 4
 #define SIZE_BLOCK 2
 #define SIZE_HIDDEN 5
 #define INITIAL_SIZE 1000 // Initial number of strings

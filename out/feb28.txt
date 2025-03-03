@@ -1,0 +1,61 @@
+correct index is 1
+
+prob [0] = 0.212589
+
+prob [1] = 0.197120
+
+prob [2] = 0.590291
+
+correct index is 5
+
+prob [3] = 0.099796
+
+prob [4] = 0.505409
+
+prob [5] = 0.394794
+
+correct index is 6
+
+prob [6] = 0.018900
+
+prob [7] = 0.945817
+
+prob [8] = 0.035283
+
+loss before back = 2.173975
+
+
+logit 0: -0.849125 
+
+logit 1: -1.105201 
+
+logit 2: 0.321009 
+
+logit 3: -1.651619 
+
+
+correct index is 1
+
+prob [0] = 0.200140
+
+prob [1] = 0.154925
+
+prob [2] = 0.644935
+
+correct index is 5
+
+prob [3] = 0.097907
+
+prob [4] = 0.607714
+
+prob [5] = 0.294379
+
+correct index is 6
+
+prob [6] = 0.024923
+
+prob [7] = 0.933643
+
+prob [8] = 0.041434
+
+ new loss is greater: 2.259887

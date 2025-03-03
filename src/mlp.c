@@ -92,9 +92,9 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_HIDDEN * SIZE_VOCAB // output weights
     + SIZE_VOCAB; // output biases
 
-    size_t size_model_activations = size_batch * (SIZE_BLOCK * DIM_EMBEDDINGS
-    + SIZE_HIDDEN * 2
-    + SIZE_VOCAB * 2);
+    size_t size_model_activations = size_batch * (SIZE_BLOCK * DIM_EMBEDDINGS // inputs
+    + SIZE_HIDDEN * 2 // hidden pre and activations
+    + SIZE_VOCAB * 2); // output logits and probs
 
     size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
     + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
@@ -114,7 +114,8 @@ void create_model(Model * model, size_t size_batch){
     model->parameters.biases_output = model->parameters.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
 
     model->activations.input = model->parameters.biases_output + SIZE_VOCAB;
-    model->activations.pre_hidden = model->activations.input + SIZE_VOCAB * SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
+    model->activations.pre_hidden = model->activations.input +  SIZE_BLOCK * DIM_EMBEDDINGS * size_batch;
+
     model->activations.hidden = model->activations.pre_hidden 
     + SIZE_HIDDEN * size_batch;
     model->activations.output = model->activations.hidden
@@ -151,7 +152,7 @@ void initialise_model(Model *model)
     for (int i = 0; i < size_params; i++)
     {
         *(model->parameters.table_embedding + i) = generate_normal_random_number();
-        // *(model->parameters.table_embedding + i) = 1.0;
+        //*(model->parameters.table_embedding + i) = 1.0;
     }
 }
 
@@ -271,6 +272,7 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
 
         printf("\nprob [%d] = %f\n", offset_batch,  probs[idx_batch * SIZE_VOCAB + 0]);
         printf("\nprob [%d] = %f\n", offset_batch + 1,  probs[idx_batch * SIZE_VOCAB + 1]);
+        printf("\nprob [%d] = %f\n", offset_batch + 2,  probs[idx_batch * SIZE_VOCAB + 2]);
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
     }
     float loss = batch_loss/size_batch;
@@ -291,6 +293,8 @@ void loss_softmax_backwards(const char * labels, float * grad_logits, const floa
             size_t offset_grad_logit = idx_batch * SIZE_VOCAB + idx_logit;
             float db_prob = probs[offset_grad_logit]; 
             grad_logits[offset_grad_logit] = probs[offset_grad_logit] - label;
+            float db_grad_logit = grad_logits[offset_grad_logit];
+            int db = 0;
         }
     }
 }
@@ -390,6 +394,7 @@ void embedding_backwards(const float * grad_activations, const char * inputs, fl
                     offset_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
                 size_t offset_embedding_activation = offset_input_token + idx_embedding_element;
                 float db_grad = grad_activations[offset_batch_embedding_element];
+                printf("offset_batch_embedding_element: %zu\n", offset_batch_embedding_element);
                 grad_embeddings[offset_batch_embedding_element] += grad_activations[offset_embedding_activation];
             }
         }
