@@ -152,7 +152,7 @@ void initialise_model(Model *model)
     for (int i = 0; i < size_params; i++)
     {
         *(model->parameters.table_embedding + i) = generate_normal_random_number();
-        //*(model->parameters.table_embedding + i) = 1.0;
+        // *(model->parameters.table_embedding + i) = 1.0;
     }
 }
 
@@ -475,11 +475,11 @@ void update_weights(Model * model, size_t size_batch){
         }
     }
 
-    // update embedding table
+//    update embedding table
     for (size_t idx_embedding_component = 0; idx_embedding_component < SIZE_VOCAB * DIM_EMBEDDINGS; idx_embedding_component++){
         delta = 0.0;
         for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-            size_t offset_embedding_gradient = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS + idx_embedding_component;
+            size_t offset_embedding_gradient = idx_batch * SIZE_VOCAB * DIM_EMBEDDINGS + idx_embedding_component;
             delta += model->gradients.weights_embeddings[offset_embedding_gradient];
         }
         delta /= size_batch;

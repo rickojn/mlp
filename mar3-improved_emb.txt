@@ -1,0 +1,2181 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+model before training:
+
+embedding table:
+token 0:	embedding: -1.255212 	 -0.760357 
+token 1:	embedding: -0.001434 	 0.622350 
+token 2:	embedding: 1.529260 	 0.136996 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 0.996038  	Weight 1: 0.141729  	Weight 2: -2.124576  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.037315  	Weight 1: -1.247397  	Weight 2: -0.991119  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.583988  	Weight 1: 0.770801  	Weight 2: 0.414911  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.340327  	Weight 1: -0.180978  	Weight 2: -0.246805  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.924544  	Weight 1: -0.115292  	Weight 2: -0.328892  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.455196
+	Weight 0: -0.168911  	Weight 1: 0.573566  	Weight 2: -0.634222  	Weight 3: 0.279987  	Weight 4: 0.316312  
+neuron 1, bias -0.700985
+	Weight 0: 0.210182  	Weight 1: -1.367247  	Weight 2: 0.167800  	Weight 3: -1.738395  	Weight 4: -0.699830  
+neuron 2, bias -0.201957
+	Weight 0: -1.131888  	Weight 1: 1.506419  	Weight 2: -0.416576  	Weight 3: 1.603918  	Weight 4: 0.512526  
+
+epoch 0 
+
+
+logit 0: -1.027256 
+
+logit 1: -1.102803 
+
+logit 2: -0.006001 
+
+logit 3: -1.650766 
+
+correct index is 1
+
+prob [0] = 0.212589
+
+prob [1] = 0.197120
+
+prob [2] = 0.590291
+
+correct index is 5
+
+prob [3] = 0.099796
+
+prob [4] = 0.505409
+
+prob [5] = 0.394794
+
+correct index is 6
+
+prob [6] = 0.018900
+
+prob [7] = 0.945817
+
+prob [8] = 0.035283
+
+loss before back = 2.173975
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.212589  0.099796  -0.981100 
+
+ total delta = -0.066871 
+
+ bias [0] = -1.455196  delta = -0.022290 
+
+ -0.802880  0.505409  0.945817 
+
+ total delta = 0.042544 
+
+ bias [1] = -0.700985  delta = 0.014181 
+
+ 0.590291  -0.605206  0.035283 
+
+ total delta = 0.016218 
+
+ bias [2] = -0.201957  delta = 0.005406 
+
+ neuron 0, weight 0 batch 0 grad: 0.051720
+
+ neuron 0, weight 0 batch 1 grad: -0.085842
+
+ neuron 0, weight 0 batch 2 grad: 0.947088
+
+weight delta[0] = 0.912966
+
+ neuron 0, weight 1 batch 0 grad: 0.193315
+
+ neuron 0, weight 1 batch 1 grad: 0.015269
+
+ neuron 0, weight 1 batch 2 grad: 0.866963
+
+weight delta[1] = 1.075546
+
+ neuron 0, weight 2 batch 0 grad: 0.038851
+
+ neuron 0, weight 2 batch 1 grad: 0.070555
+
+ neuron 0, weight 2 batch 2 grad: -0.876005
+
+weight delta[2] = -0.766598
+
+ neuron 0, weight 3 batch 0 grad: -0.170972
+
+ neuron 0, weight 3 batch 1 grad: -0.088079
+
+ neuron 0, weight 3 batch 2 grad: 0.753467
+
+weight delta[3] = 0.494416
+
+ neuron 0, weight 4 batch 0 grad: 0.193932
+
+ neuron 0, weight 4 batch 1 grad: 0.084203
+
+ neuron 0, weight 4 batch 2 grad: -0.440846
+
+weight delta[4] = -0.162712
+
+ neuron 1, weight 0 batch 0 grad: -0.195329
+
+ neuron 1, weight 0 batch 1 grad: -0.434737
+
+ neuron 1, weight 0 batch 2 grad: -0.913028
+
+weight delta[0] = -1.543094
+
+ neuron 1, weight 1 batch 0 grad: -0.730088
+
+ neuron 1, weight 1 batch 1 grad: 0.077328
+
+ neuron 1, weight 1 batch 2 grad: -0.835784
+
+weight delta[1] = -1.488543
+
+ neuron 1, weight 2 batch 0 grad: -0.146729
+
+ neuron 1, weight 2 batch 1 grad: 0.357322
+
+ neuron 1, weight 2 batch 2 grad: 0.844501
+
+weight delta[2] = 1.055094
+
+ neuron 1, weight 3 batch 0 grad: 0.645705
+
+ neuron 1, weight 3 batch 1 grad: -0.446068
+
+ neuron 1, weight 3 batch 2 grad: -0.726370
+
+weight delta[3] = -0.526733
+
+ neuron 1, weight 4 batch 0 grad: -0.732417
+
+ neuron 1, weight 4 batch 1 grad: 0.426438
+
+ neuron 1, weight 4 batch 2 grad: 0.424992
+
+weight delta[4] = 0.119013
+
+ neuron 2, weight 0 batch 0 grad: 0.143609
+
+ neuron 2, weight 0 batch 1 grad: 0.520579
+
+ neuron 2, weight 0 batch 2 grad: -0.034060
+
+weight delta[0] = 0.630128
+
+ neuron 2, weight 1 batch 0 grad: 0.536773
+
+ neuron 2, weight 1 batch 1 grad: -0.092597
+
+ neuron 2, weight 1 batch 2 grad: -0.031179
+
+weight delta[1] = 0.412997
+
+ neuron 2, weight 2 batch 0 grad: 0.107878
+
+ neuron 2, weight 2 batch 1 grad: -0.427877
+
+ neuron 2, weight 2 batch 2 grad: 0.031504
+
+weight delta[2] = -0.288496
+
+ neuron 2, weight 3 batch 0 grad: -0.474733
+
+ neuron 2, weight 3 batch 1 grad: 0.534147
+
+ neuron 2, weight 3 batch 2 grad: -0.027097
+
+weight delta[3] = 0.032317
+
+ neuron 2, weight 4 batch 0 grad: 0.538486
+
+ neuron 2, weight 4 batch 1 grad: -0.510641
+
+ neuron 2, weight 4 batch 2 grad: 0.015854
+
+weight delta[4] = 0.043699
+
+ 0.212589  0.099796  -0.981100 
+
+ total delta = -0.066871 
+
+ bias [0] = -1.432906  delta = -0.022290 
+
+ -0.802880  0.505409  0.945817 
+
+ total delta = 0.042544 
+
+ bias [1] = -0.715166  delta = 0.014181 
+
+ 0.590291  -0.605206  0.035283 
+
+ total delta = 0.016218 
+
+ bias [2] = -0.207363  delta = 0.005406 
+
+embedding table:
+token 0:	embedding: -1.234038 	 -0.760101 
+token 1:	embedding: -0.046707 	 0.650206 
+token 2:	embedding: 1.558227 	 0.185740 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.048012  	Weight 1: 0.187689  	Weight 2: -2.102132  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.085419  	Weight 1: -1.215402  	Weight 2: -0.986685  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.522619  	Weight 1: 0.823921  	Weight 2: 0.439434  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.364353  	Weight 1: -0.160597  	Weight 2: -0.237843  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.905468  	Weight 1: -0.100968  	Weight 2: -0.324625  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.410615
+	Weight 0: -0.199343  	Weight 1: 0.537715  	Weight 2: -0.608669  	Weight 3: 0.263507  	Weight 4: 0.321736  
+neuron 1, bias -0.729348
+	Weight 0: 0.261619  	Weight 1: -1.317629  	Weight 2: 0.132630  	Weight 3: -1.720837  	Weight 4: -0.703797  
+neuron 2, bias -0.212769
+	Weight 0: -1.152892  	Weight 1: 1.492653  	Weight 2: -0.406960  	Weight 3: 1.602841  	Weight 4: 0.511070  
+
+
+logit 0: -0.904820 
+
+logit 1: -1.083799 
+
+logit 2: 0.092770 
+
+logit 3: -1.523691 
+
+
+correct index is 1
+
+prob [0] = 0.219883
+
+prob [1] = 0.183850
+
+prob [2] = 0.596267
+
+correct index is 5
+
+prob [3] = 0.116179
+
+prob [4] = 0.488957
+
+prob [5] = 0.394864
+
+correct index is 6
+
+prob [6] = 0.025125
+
+prob [7] = 0.933288
+
+prob [8] = 0.041587
+
+loss after back = 2.102250
+
+epoch 1 
+
+
+logit 0: -0.904820 
+
+logit 1: -1.083799 
+
+logit 2: 0.092770 
+
+logit 3: -1.523691 
+
+correct index is 1
+
+prob [0] = 0.219883
+
+prob [1] = 0.183850
+
+prob [2] = 0.596267
+
+correct index is 5
+
+prob [3] = 0.116179
+
+prob [4] = 0.488957
+
+prob [5] = 0.394864
+
+correct index is 6
+
+prob [6] = 0.025125
+
+prob [7] = 0.933288
+
+prob [8] = 0.041587
+
+loss before back = 2.102250
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.219883  0.116179  -0.974875 
+
+ total delta = -0.063881 
+
+ bias [0] = -1.410615  delta = -0.021294 
+
+ -0.816150  0.488957  0.933288 
+
+ total delta = 0.039316 
+
+ bias [1] = -0.729348  delta = 0.013105 
+
+ 0.596267  -0.605136  0.041587 
+
+ total delta = 0.016377 
+
+ bias [2] = -0.212769  delta = 0.005459 
+
+ neuron 0, weight 0 batch 0 grad: 0.029267
+
+ neuron 0, weight 0 batch 1 grad: -0.099406
+
+ neuron 0, weight 0 batch 2 grad: 0.946699
+
+weight delta[0] = 0.876560
+
+ neuron 0, weight 1 batch 0 grad: 0.194464
+
+ neuron 0, weight 1 batch 1 grad: 0.013378
+
+ neuron 0, weight 1 batch 2 grad: 0.862800
+
+weight delta[1] = 1.070642
+
+ neuron 0, weight 2 batch 0 grad: 0.006368
+
+ neuron 0, weight 2 batch 1 grad: 0.072596
+
+ neuron 0, weight 2 batch 2 grad: -0.858661
+
+weight delta[2] = -0.779697
+
+ neuron 0, weight 3 batch 0 grad: -0.179637
+
+ neuron 0, weight 3 batch 1 grad: -0.102693
+
+ neuron 0, weight 3 batch 2 grad: 0.753334
+
+weight delta[3] = 0.471004
+
+ neuron 0, weight 4 batch 0 grad: 0.197975
+
+ neuron 0, weight 4 batch 1 grad: 0.096665
+
+ neuron 0, weight 4 batch 2 grad: -0.425060
+
+weight delta[4] = -0.130420
+
+ neuron 1, weight 0 batch 0 grad: -0.108632
+
+ neuron 1, weight 0 batch 1 grad: -0.418366
+
+ neuron 1, weight 0 batch 2 grad: -0.906314
+
+weight delta[0] = -1.433313
+
+ neuron 1, weight 1 batch 0 grad: -0.721798
+
+ neuron 1, weight 1 batch 1 grad: 0.056305
+
+ neuron 1, weight 1 batch 2 grad: -0.825994
+
+weight delta[1] = -1.491487
+
+ neuron 1, weight 2 batch 0 grad: -0.023635
+
+ neuron 1, weight 2 batch 1 grad: 0.305531
+
+ neuron 1, weight 2 batch 2 grad: 0.822031
+
+weight delta[2] = 1.103927
+
+ neuron 1, weight 3 batch 0 grad: 0.666765
+
+ neuron 1, weight 3 batch 1 grad: -0.432198
+
+ neuron 1, weight 3 batch 2 grad: -0.721197
+
+weight delta[3] = -0.486630
+
+ neuron 1, weight 4 batch 0 grad: -0.734832
+
+ neuron 1, weight 4 batch 1 grad: 0.406827
+
+ neuron 1, weight 4 batch 2 grad: 0.406927
+
+weight delta[4] = 0.078923
+
+ neuron 2, weight 0 batch 0 grad: 0.079365
+
+ neuron 2, weight 0 batch 1 grad: 0.517772
+
+ neuron 2, weight 0 batch 2 grad: -0.040385
+
+weight delta[0] = 0.556753
+
+ neuron 2, weight 1 batch 0 grad: 0.527335
+
+ neuron 2, weight 1 batch 1 grad: -0.069684
+
+ neuron 2, weight 1 batch 2 grad: -0.036806
+
+weight delta[1] = 0.420845
+
+ neuron 2, weight 2 batch 0 grad: 0.017268
+
+ neuron 2, weight 2 batch 1 grad: -0.378127
+
+ neuron 2, weight 2 batch 2 grad: 0.036629
+
+weight delta[2] = -0.324230
+
+ neuron 2, weight 3 batch 0 grad: -0.487128
+
+ neuron 2, weight 3 batch 1 grad: 0.534891
+
+ neuron 2, weight 3 batch 2 grad: -0.032136
+
+weight delta[3] = 0.015627
+
+ neuron 2, weight 4 batch 0 grad: 0.536857
+
+ neuron 2, weight 4 batch 1 grad: -0.503492
+
+ neuron 2, weight 4 batch 2 grad: 0.018132
+
+weight delta[4] = 0.051497
+
+ 0.219883  0.116179  -0.974875 
+
+ total delta = -0.063881 
+
+ bias [0] = -1.389322  delta = -0.021294 
+
+ -0.816150  0.488957  0.933288 
+
+ total delta = 0.039316 
+
+ bias [1] = -0.742453  delta = 0.013105 
+
+ 0.596267  -0.605136  0.041587 
+
+ total delta = 0.016377 
+
+ bias [2] = -0.218228  delta = 0.005459 
+
+embedding table:
+token 0:	embedding: -1.174929 	 -0.761326 
+token 1:	embedding: -0.184899 	 0.727476 
+token 2:	embedding: 1.639928 	 0.330589 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.100881  	Weight 1: 0.234971  	Weight 2: -2.078062  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.134969  	Weight 1: -1.181441  	Weight 2: -0.979629  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.456445  	Weight 1: 0.880465  	Weight 2: 0.465698  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.387029  	Weight 1: -0.141376  	Weight 2: -0.229076  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.885021  	Weight 1: -0.085383  	Weight 2: -0.319348  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.368028
+	Weight 0: -0.228562  	Weight 1: 0.502027  	Weight 2: -0.582679  	Weight 3: 0.247807  	Weight 4: 0.326083  
+neuron 1, bias -0.755558
+	Weight 0: 0.309396  	Weight 1: -1.267913  	Weight 2: 0.095833  	Weight 3: -1.704616  	Weight 4: -0.706427  
+neuron 2, bias -0.223687
+	Weight 0: -1.171450  	Weight 1: 1.478624  	Weight 2: -0.396152  	Weight 3: 1.602320  	Weight 4: 0.509353  
+
+
+logit 0: -0.808632 
+
+logit 1: -1.047970 
+
+logit 2: 0.127973 
+
+logit 3: -1.329638 
+
+
+correct index is 1
+
+prob [0] = 0.230497
+
+prob [1] = 0.181435
+
+prob [2] = 0.588068
+
+correct index is 5
+
+prob [3] = 0.144649
+
+prob [4] = 0.419217
+
+prob [5] = 0.436134
+
+correct index is 6
+
+prob [6] = 0.033908
+
+prob [7] = 0.915580
+
+prob [8] = 0.050511
+
+loss after back = 1.973584
+
+epoch 2 
+
+
+logit 0: -0.808632 
+
+logit 1: -1.047970 
+
+logit 2: 0.127973 
+
+logit 3: -1.329638 
+
+correct index is 1
+
+prob [0] = 0.230497
+
+prob [1] = 0.181435
+
+prob [2] = 0.588068
+
+correct index is 5
+
+prob [3] = 0.144649
+
+prob [4] = 0.419217
+
+prob [5] = 0.436134
+
+correct index is 6
+
+prob [6] = 0.033908
+
+prob [7] = 0.915580
+
+prob [8] = 0.050511
+
+loss before back = 1.973584
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.230497  0.144649  -0.966092 
+
+ total delta = -0.059095 
+
+ bias [0] = -1.368028  delta = -0.019698 
+
+ -0.818565  0.419217  0.915580 
+
+ total delta = 0.031925 
+
+ bias [1] = -0.755558  delta = 0.010642 
+
+ 0.588068  -0.563866  0.050511 
+
+ total delta = 0.018113 
+
+ bias [2] = -0.223687  delta = 0.006038 
+
+ neuron 0, weight 0 batch 0 grad: 0.016915
+
+ neuron 0, weight 0 batch 1 grad: -0.111779
+
+ neuron 0, weight 0 batch 2 grad: 0.948056
+
+weight delta[0] = 0.853192
+
+ neuron 0, weight 1 batch 0 grad: 0.193978
+
+ neuron 0, weight 1 batch 1 grad: 0.024802
+
+ neuron 0, weight 1 batch 2 grad: 0.843455
+
+weight delta[1] = 1.062235
+
+ neuron 0, weight 2 batch 0 grad: -0.027060
+
+ neuron 0, weight 2 batch 1 grad: 0.068501
+
+ neuron 0, weight 2 batch 2 grad: -0.821750
+
+weight delta[2] = -0.780308
+
+ neuron 0, weight 3 batch 0 grad: -0.187101
+
+ neuron 0, weight 3 batch 1 grad: -0.125472
+
+ neuron 0, weight 3 batch 2 grad: 0.751286
+
+weight delta[3] = 0.438713
+
+ neuron 0, weight 4 batch 0 grad: 0.202467
+
+ neuron 0, weight 4 batch 1 grad: 0.118253
+
+ neuron 0, weight 4 batch 2 grad: -0.401752
+
+weight delta[4] = -0.081032
+
+ neuron 1, weight 0 batch 0 grad: -0.060071
+
+ neuron 1, weight 0 batch 1 grad: -0.323955
+
+ neuron 1, weight 0 batch 2 grad: -0.898488
+
+weight delta[0] = -1.282514
+
+ neuron 1, weight 1 batch 0 grad: -0.688874
+
+ neuron 1, weight 1 batch 1 grad: 0.071881
+
+ neuron 1, weight 1 batch 2 grad: -0.799356
+
+weight delta[1] = -1.416349
+
+ neuron 1, weight 2 batch 0 grad: 0.096097
+
+ neuron 1, weight 2 batch 1 grad: 0.198529
+
+ neuron 1, weight 2 batch 2 grad: 0.778786
+
+weight delta[2] = 1.073411
+
+ neuron 1, weight 3 batch 0 grad: 0.664452
+
+ neuron 1, weight 3 batch 1 grad: -0.363640
+
+ neuron 1, weight 3 batch 2 grad: -0.712006
+
+weight delta[3] = -0.411195
+
+ neuron 1, weight 4 batch 0 grad: -0.719022
+
+ neuron 1, weight 4 batch 1 grad: 0.342719
+
+ neuron 1, weight 4 batch 2 grad: 0.380747
+
+weight delta[4] = 0.004443
+
+ neuron 2, weight 0 batch 0 grad: 0.043156
+
+ neuron 2, weight 0 batch 1 grad: 0.435734
+
+ neuron 2, weight 0 batch 2 grad: -0.049568
+
+weight delta[0] = 0.429322
+
+ neuron 2, weight 1 batch 0 grad: 0.494896
+
+ neuron 2, weight 1 batch 1 grad: -0.096684
+
+ neuron 2, weight 1 batch 2 grad: -0.044099
+
+weight delta[1] = 0.354114
+
+ neuron 2, weight 2 batch 0 grad: -0.069037
+
+ neuron 2, weight 2 batch 1 grad: -0.267030
+
+ neuron 2, weight 2 batch 2 grad: 0.042964
+
+weight delta[2] = -0.293103
+
+ neuron 2, weight 3 batch 0 grad: -0.477351
+
+ neuron 2, weight 3 batch 1 grad: 0.489113
+
+ neuron 2, weight 3 batch 2 grad: -0.039280
+
+weight delta[3] = -0.027519
+
+ neuron 2, weight 4 batch 0 grad: 0.516555
+
+ neuron 2, weight 4 batch 1 grad: -0.460972
+
+ neuron 2, weight 4 batch 2 grad: 0.021005
+
+weight delta[4] = 0.076588
+
+ 0.230497  0.144649  -0.966092 
+
+ total delta = -0.059095 
+
+ bias [0] = -1.348330  delta = -0.019698 
+
+ -0.818565  0.419217  0.915580 
+
+ total delta = 0.031925 
+
+ bias [1] = -0.766200  delta = 0.010642 
+
+ 0.588068  -0.563866  0.050511 
+
+ total delta = 0.018113 
+
+ bias [2] = -0.229725  delta = 0.006038 
+
+embedding table:
+token 0:	embedding: -1.064557 	 -0.764225 
+token 1:	embedding: -0.470374 	 0.859565 
+token 2:	embedding: 1.788775 	 0.624519 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.156550  	Weight 1: 0.284376  	Weight 2: -2.051235  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.184409  	Weight 1: -1.145382  	Weight 2: -0.966242  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.387439  	Weight 1: 0.938775  	Weight 2: 0.495507  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.410084  	Weight 1: -0.121735  	Weight 2: -0.218894  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.863086  	Weight 1: -0.068020  	Weight 2: -0.311507  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.328632
+	Weight 0: -0.257001  	Weight 1: 0.466619  	Weight 2: -0.556669  	Weight 3: 0.233183  	Weight 4: 0.328784  
+neuron 1, bias -0.776842
+	Weight 0: 0.352146  	Weight 1: -1.220701  	Weight 2: 0.060052  	Weight 3: -1.690910  	Weight 4: -0.706576  
+neuron 2, bias -0.235763
+	Weight 0: -1.185761  	Weight 1: 1.466821  	Weight 2: -0.386382  	Weight 3: 1.603237  	Weight 4: 0.506800  
+
+
+logit 0: -0.775308 
+
+logit 1: -0.965389 
+
+logit 2: 0.037902 
+
+logit 3: -1.090046 
+
+
+correct index is 1
+
+prob [0] = 0.244976
+
+prob [1] = 0.202569
+
+prob [2] = 0.552455
+
+correct index is 5
+
+prob [3] = 0.193654
+
+prob [4] = 0.336299
+
+prob [5] = 0.470047
+
+correct index is 6
+
+prob [6] = 0.047728
+
+prob [7] = 0.886977
+
+prob [8] = 0.065296
+
+loss after back = 1.797948
+
+epoch 3 
+
+
+logit 0: -0.775308 
+
+logit 1: -0.965389 
+
+logit 2: 0.037902 
+
+logit 3: -1.090046 
+
+correct index is 1
+
+prob [0] = 0.244976
+
+prob [1] = 0.202569
+
+prob [2] = 0.552455
+
+correct index is 5
+
+prob [3] = 0.193654
+
+prob [4] = 0.336299
+
+prob [5] = 0.470047
+
+correct index is 6
+
+prob [6] = 0.047728
+
+prob [7] = 0.886977
+
+prob [8] = 0.065296
+
+loss before back = 1.797948
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.244976  0.193654  -0.952272 
+
+ total delta = -0.051364 
+
+ bias [0] = -1.328632  delta = -0.017121 
+
+ -0.797431  0.336299  0.886977 
+
+ total delta = 0.025463 
+
+ bias [1] = -0.776842  delta = 0.008488 
+
+ 0.552455  -0.529953  0.065296 
+
+ total delta = 0.017267 
+
+ bias [2] = -0.235763  delta = 0.005756 
+
+ neuron 0, weight 0 batch 0 grad: 0.023112
+
+ neuron 0, weight 0 batch 1 grad: -0.077311
+
+ neuron 0, weight 0 batch 2 grad: 0.944041
+
+weight delta[0] = 0.889841
+
+ neuron 0, weight 1 batch 0 grad: 0.187856
+
+ neuron 0, weight 1 batch 1 grad: 0.071024
+
+ neuron 0, weight 1 batch 2 grad: 0.788427
+
+weight delta[1] = 1.047307
+
+ neuron 0, weight 2 batch 0 grad: -0.055559
+
+ neuron 0, weight 2 batch 1 grad: 0.037616
+
+ neuron 0, weight 2 batch 2 grad: -0.731268
+
+weight delta[2] = -0.749211
+
+ neuron 0, weight 3 batch 0 grad: -0.191253
+
+ neuron 0, weight 3 batch 1 grad: -0.158235
+
+ neuron 0, weight 3 batch 2 grad: 0.745024
+
+weight delta[3] = 0.395535
+
+ neuron 0, weight 4 batch 0 grad: 0.205310
+
+ neuron 0, weight 4 batch 1 grad: 0.155208
+
+ neuron 0, weight 4 batch 2 grad: -0.369313
+
+weight delta[4] = -0.008794
+
+ neuron 1, weight 0 batch 0 grad: -0.075231
+
+ neuron 1, weight 0 batch 1 grad: -0.134259
+
+ neuron 1, weight 0 batch 2 grad: -0.879309
+
+weight delta[0] = -1.088800
+
+ neuron 1, weight 1 batch 0 grad: -0.611498
+
+ neuron 1, weight 1 batch 1 grad: 0.123341
+
+ neuron 1, weight 1 batch 2 grad: -0.734366
+
+weight delta[1] = -1.222523
+
+ neuron 1, weight 2 batch 0 grad: 0.180853
+
+ neuron 1, weight 2 batch 1 grad: 0.065324
+
+ neuron 1, weight 2 batch 2 grad: 0.681126
+
+weight delta[2] = 0.927303
+
+ neuron 1, weight 3 batch 0 grad: 0.622554
+
+ neuron 1, weight 3 batch 1 grad: -0.274792
+
+ neuron 1, weight 3 batch 2 grad: -0.693939
+
+weight delta[3] = -0.346176
+
+ neuron 1, weight 4 batch 0 grad: -0.668311
+
+ neuron 1, weight 4 batch 1 grad: 0.269535
+
+ neuron 1, weight 4 batch 2 grad: 0.343989
+
+weight delta[4] = -0.054786
+
+ neuron 2, weight 0 batch 0 grad: 0.052120
+
+ neuron 2, weight 0 batch 1 grad: 0.211571
+
+ neuron 2, weight 0 batch 2 grad: -0.064731
+
+weight delta[0] = 0.198959
+
+ neuron 2, weight 1 batch 0 grad: 0.423642
+
+ neuron 2, weight 1 batch 1 grad: -0.194365
+
+ neuron 2, weight 1 batch 2 grad: -0.054061
+
+weight delta[1] = 0.175216
+
+ neuron 2, weight 2 batch 0 grad: -0.125293
+
+ neuron 2, weight 2 batch 1 grad: -0.102940
+
+ neuron 2, weight 2 batch 2 grad: 0.050142
+
+weight delta[2] = -0.178091
+
+ neuron 2, weight 3 batch 0 grad: -0.431301
+
+ neuron 2, weight 3 batch 1 grad: 0.433027
+
+ neuron 2, weight 3 batch 2 grad: -0.051085
+
+weight delta[3] = -0.049359
+
+ neuron 2, weight 4 batch 0 grad: 0.463001
+
+ neuron 2, weight 4 batch 1 grad: -0.424743
+
+ neuron 2, weight 4 batch 2 grad: 0.025323
+
+weight delta[4] = 0.063581
+
+ 0.244976  0.193654  -0.952272 
+
+ total delta = -0.051364 
+
+ bias [0] = -1.311510  delta = -0.017121 
+
+ -0.797431  0.336299  0.886977 
+
+ total delta = 0.025463 
+
+ bias [1] = -0.785329  delta = 0.008488 
+
+ 0.552455  -0.529953  0.065296 
+
+ total delta = 0.017267 
+
+ bias [2] = -0.241518  delta = 0.005756 
+
+embedding table:
+token 0:	embedding: -0.890990 	 -0.763647 
+token 1:	embedding: -0.978832 	 1.012962 
+token 2:	embedding: 2.001890 	 1.143129 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.221987  	Weight 1: 0.341229  	Weight 2: -2.013300  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.229740  	Weight 1: -1.108716  	Weight 2: -0.942178  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.319633  	Weight 1: 0.996949  	Weight 2: 0.534758  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.435734  	Weight 1: -0.099412  	Weight 2: -0.203735  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.839834  	Weight 1: -0.048348  	Weight 2: -0.298318  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.294389
+	Weight 0: -0.286663  	Weight 1: 0.431709  	Weight 2: -0.531695  	Weight 3: 0.219999  	Weight 4: 0.329077  
+neuron 1, bias -0.793817
+	Weight 0: 0.388440  	Weight 1: -1.179951  	Weight 2: 0.029142  	Weight 3: -1.679371  	Weight 4: -0.704749  
+neuron 2, bias -0.247274
+	Weight 0: -1.192393  	Weight 1: 1.460980  	Weight 2: -0.380446  	Weight 3: 1.604882  	Weight 4: 0.504681  
+
+
+logit 0: -0.837621 
+
+logit 1: -0.828489 
+
+logit 2: -0.201775 
+
+logit 3: -0.929061 
+
+
+correct index is 1
+
+prob [0] = 0.256556
+
+prob [1] = 0.258909
+
+prob [2] = 0.484535
+
+correct index is 5
+
+prob [3] = 0.278027
+
+prob [4] = 0.328833
+
+prob [5] = 0.393140
+
+correct index is 6
+
+prob [6] = 0.081804
+
+prob [7] = 0.804848
+
+prob [8] = 0.113349
+
+loss after back = 1.596099
+
+epoch 4 
+
+
+logit 0: -0.837621 
+
+logit 1: -0.828489 
+
+logit 2: -0.201775 
+
+logit 3: -0.929061 
+
+correct index is 1
+
+prob [0] = 0.256556
+
+prob [1] = 0.258909
+
+prob [2] = 0.484535
+
+correct index is 5
+
+prob [3] = 0.278027
+
+prob [4] = 0.328833
+
+prob [5] = 0.393140
+
+correct index is 6
+
+prob [6] = 0.081804
+
+prob [7] = 0.804848
+
+prob [8] = 0.113349
+
+loss before back = 1.596099
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.256556  0.278027  -0.918196 
+
+ total delta = -0.038361 
+
+ bias [0] = -1.294389  delta = -0.012787 
+
+ -0.741091  0.328833  0.804848 
+
+ total delta = 0.026472 
+
+ bias [1] = -0.793817  delta = 0.008824 
+
+ 0.484535  -0.606860  0.113349 
+
+ total delta = 0.007926 
+
+ bias [2] = -0.247274  delta = 0.002642 
+
+ neuron 0, weight 0 batch 0 grad: 0.052019
+
+ neuron 0, weight 0 batch 1 grad: 0.164872
+
+ neuron 0, weight 0 batch 2 grad: 0.915415
+
+weight delta[0] = 1.132306
+
+ neuron 0, weight 1 batch 0 grad: 0.163533
+
+ neuron 0, weight 1 batch 1 grad: 0.186984
+
+ neuron 0, weight 1 batch 2 grad: 0.606325
+
+weight delta[1] = 0.956842
+
+ neuron 0, weight 2 batch 0 grad: -0.069314
+
+ neuron 0, weight 2 batch 1 grad: -0.072043
+
+ neuron 0, weight 2 batch 2 grad: -0.455941
+
+weight delta[2] = -0.597298
+
+ neuron 0, weight 3 batch 0 grad: -0.180977
+
+ neuron 0, weight 3 batch 1 grad: -0.191671
+
+ neuron 0, weight 3 batch 2 grad: 0.717275
+
+weight delta[3] = 0.344626
+
+ neuron 0, weight 4 batch 0 grad: 0.195883
+
+ neuron 0, weight 4 batch 1 grad: 0.218713
+
+ neuron 0, weight 4 batch 2 grad: -0.326547
+
+weight delta[4] = 0.088049
+
+ neuron 1, weight 0 batch 0 grad: -0.150263
+
+ neuron 1, weight 0 batch 1 grad: 0.195000
+
+ neuron 1, weight 0 batch 2 grad: -0.802410
+
+weight delta[0] = -0.757673
+
+ neuron 1, weight 1 batch 0 grad: -0.472385
+
+ neuron 1, weight 1 batch 1 grad: 0.221153
+
+ neuron 1, weight 1 batch 2 grad: -0.531476
+
+weight delta[1] = -0.782707
+
+ neuron 1, weight 2 batch 0 grad: 0.200221
+
+ neuron 1, weight 2 batch 1 grad: -0.085207
+
+ neuron 1, weight 2 batch 2 grad: 0.399657
+
+weight delta[2] = 0.514670
+
+ neuron 1, weight 3 batch 0 grad: 0.522774
+
+ neuron 1, weight 3 batch 1 grad: -0.226697
+
+ neuron 1, weight 3 batch 2 grad: -0.628729
+
+weight delta[3] = -0.332653
+
+ neuron 1, weight 4 batch 0 grad: -0.565831
+
+ neuron 1, weight 4 batch 1 grad: 0.258681
+
+ neuron 1, weight 4 batch 2 grad: 0.286236
+
+weight delta[4] = -0.020915
+
+ neuron 2, weight 0 batch 0 grad: 0.098244
+
+ neuron 2, weight 0 batch 1 grad: -0.359872
+
+ neuron 2, weight 0 batch 2 grad: -0.113005
+
+weight delta[0] = -0.374633
+
+ neuron 2, weight 1 batch 0 grad: 0.308852
+
+ neuron 2, weight 1 batch 1 grad: -0.408138
+
+ neuron 2, weight 1 batch 2 grad: -0.074849
+
+weight delta[1] = -0.174135
+
+ neuron 2, weight 2 batch 0 grad: -0.130907
+
+ neuron 2, weight 2 batch 1 grad: 0.157250
+
+ neuron 2, weight 2 batch 2 grad: 0.056285
+
+weight delta[2] = 0.082627
+
+ neuron 2, weight 3 batch 0 grad: -0.341797
+
+ neuron 2, weight 3 batch 1 grad: 0.418368
+
+ neuron 2, weight 3 batch 2 grad: -0.088545
+
+weight delta[3] = -0.011974
+
+ neuron 2, weight 4 batch 0 grad: 0.369948
+
+ neuron 2, weight 4 batch 1 grad: -0.477394
+
+ neuron 2, weight 4 batch 2 grad: 0.040311
+
+weight delta[4] = -0.067135
+
+ 0.256556  0.278027  -0.918196 
+
+ total delta = -0.038361 
+
+ bias [0] = -1.281602  delta = -0.012787 
+
+ -0.741091  0.328833  0.804848 
+
+ total delta = 0.026472 
+
+ bias [1] = -0.802641  delta = 0.008824 
+
+ 0.484535  -0.606860  0.113349 
+
+ total delta = 0.007926 
+
+ bias [2] = -0.249916  delta = 0.002642 
+
+embedding table:
+token 0:	embedding: -0.643726 	 -0.749990 
+token 1:	embedding: -1.792371 	 1.136783 
+token 2:	embedding: 2.263493 	 1.937855 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.269876  	Weight 1: 0.386409  	Weight 2: -1.967942  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.263639  	Weight 1: -1.077142  	Weight 2: -0.909195  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.264396  	Weight 1: 1.048226  	Weight 2: 0.588792  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.466240  	Weight 1: -0.071134  	Weight 2: -0.173826  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.816127  	Weight 1: -0.026260  	Weight 2: -0.275266  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.268815
+	Weight 0: -0.324406  	Weight 1: 0.399814  	Weight 2: -0.511785  	Weight 3: 0.208511  	Weight 4: 0.326142  
+neuron 1, bias -0.811465
+	Weight 0: 0.413695  	Weight 1: -1.153860  	Weight 2: 0.011986  	Weight 3: -1.668282  	Weight 4: -0.704052  
+neuron 2, bias -0.252558
+	Weight 0: -1.179905  	Weight 1: 1.466785  	Weight 2: -0.383200  	Weight 3: 1.605281  	Weight 4: 0.506919  
+
+
+logit 0: -1.043202 
+
+logit 1: -0.657569 
+
+logit 2: -0.620603 
+
+logit 3: -0.681525 
+
+
+correct index is 1
+
+prob [0] = 0.250221
+
+prob [1] = 0.367961
+
+prob [2] = 0.381818
+
+correct index is 5
+
+prob [3] = 0.294398
+
+prob [4] = 0.152558
+
+prob [5] = 0.553045
+
+correct index is 6
+
+prob [6] = 0.188336
+
+prob [7] = 0.404810
+
+prob [8] = 0.406853
+
+loss after back = 1.087206
+
+epoch 5 
+
+
+logit 0: -1.043202 
+
+logit 1: -0.657569 
+
+logit 2: -0.620603 
+
+logit 3: -0.681525 
+
+correct index is 1
+
+prob [0] = 0.250221
+
+prob [1] = 0.367961
+
+prob [2] = 0.381818
+
+correct index is 5
+
+prob [3] = 0.294398
+
+prob [4] = 0.152558
+
+prob [5] = 0.553045
+
+correct index is 6
+
+prob [6] = 0.188336
+
+prob [7] = 0.404810
+
+prob [8] = 0.406853
+
+loss before back = 1.087206
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.250221  0.294398  -0.811664 
+
+ total delta = -0.026705 
+
+ bias [0] = -1.268815  delta = -0.008902 
+
+ -0.632039  0.152558  0.404810 
+
+ total delta = -0.016369 
+
+ bias [1] = -0.811465  delta = -0.005456 
+
+ 0.381818  -0.446955  0.406853 
+
+ total delta = 0.028715 
+
+ bias [2] = -0.252558  delta = 0.009572 
+
+ neuron 0, weight 0 batch 0 grad: 0.109790
+
+ neuron 0, weight 0 batch 1 grad: 0.290305
+
+ neuron 0, weight 0 batch 2 grad: 0.810885
+
+weight delta[0] = 1.210981
+
+ neuron 0, weight 1 batch 0 grad: 0.106947
+
+ neuron 0, weight 1 batch 1 grad: 0.267462
+
+ neuron 0, weight 1 batch 2 grad: 0.040131
+
+weight delta[1] = 0.414540
+
+ neuron 0, weight 2 batch 0 grad: -0.052113
+
+ neuron 0, weight 2 batch 1 grad: -0.215972
+
+ neuron 0, weight 2 batch 2 grad: 0.218790
+
+weight delta[2] = -0.049295
+
+ neuron 0, weight 3 batch 0 grad: -0.136261
+
+ neuron 0, weight 3 batch 1 grad: -0.117318
+
+ neuron 0, weight 3 batch 2 grad: 0.622443
+
+weight delta[3] = 0.368863
+
+ neuron 0, weight 4 batch 0 grad: 0.156533
+
+ neuron 0, weight 4 batch 1 grad: 0.227106
+
+ neuron 0, weight 4 batch 2 grad: -0.259731
+
+weight delta[4] = 0.123908
+
+ neuron 1, weight 0 batch 0 grad: -0.277322
+
+ neuron 1, weight 0 batch 1 grad: 0.150437
+
+ neuron 1, weight 0 batch 2 grad: -0.404422
+
+weight delta[0] = -0.531307
+
+ neuron 1, weight 1 batch 0 grad: -0.270139
+
+ neuron 1, weight 1 batch 1 grad: 0.138600
+
+ neuron 1, weight 1 batch 2 grad: -0.020015
+
+weight delta[1] = -0.151555
+
+ neuron 1, weight 2 batch 0 grad: 0.131634
+
+ neuron 1, weight 2 batch 1 grad: -0.111917
+
+ neuron 1, weight 2 batch 2 grad: -0.109120
+
+weight delta[2] = -0.089404
+
+ neuron 1, weight 3 batch 0 grad: 0.344185
+
+ neuron 1, weight 3 batch 1 grad: -0.060795
+
+ neuron 1, weight 3 batch 2 grad: -0.310438
+
+weight delta[3] = -0.027048
+
+ neuron 1, weight 4 batch 0 grad: -0.395391
+
+ neuron 1, weight 4 batch 1 grad: 0.117687
+
+ neuron 1, weight 4 batch 2 grad: 0.129539
+
+weight delta[4] = -0.148165
+
+ neuron 2, weight 0 batch 0 grad: 0.167532
+
+ neuron 2, weight 0 batch 1 grad: -0.440742
+
+ neuron 2, weight 0 batch 2 grad: -0.406463
+
+weight delta[0] = -0.679674
+
+ neuron 2, weight 1 batch 0 grad: 0.163193
+
+ neuron 2, weight 1 batch 1 grad: -0.406062
+
+ neuron 2, weight 1 batch 2 grad: -0.020116
+
+weight delta[1] = -0.262986
+
+ neuron 2, weight 2 batch 0 grad: -0.079520
+
+ neuron 2, weight 2 batch 1 grad: 0.327890
+
+ neuron 2, weight 2 batch 2 grad: -0.109671
+
+weight delta[2] = 0.138699
+
+ neuron 2, weight 3 batch 0 grad: -0.207924
+
+ neuron 2, weight 3 batch 1 grad: 0.178113
+
+ neuron 2, weight 3 batch 2 grad: -0.312005
+
+weight delta[3] = -0.341816
+
+ neuron 2, weight 4 batch 0 grad: 0.238858
+
+ neuron 2, weight 4 batch 1 grad: -0.344793
+
+ neuron 2, weight 4 batch 2 grad: 0.130193
+
+weight delta[4] = 0.024257
+
+ 0.250221  0.294398  -0.811664 
+
+ total delta = -0.026705 
+
+ bias [0] = -1.259913  delta = -0.008902 
+
+ -0.632039  0.152558  0.404810 
+
+ total delta = -0.016369 
+
+ bias [1] = -0.806009  delta = -0.005456 
+
+ 0.381818  -0.446955  0.406853 
+
+ total delta = 0.028715 
+
+ bias [2] = -0.262130  delta = 0.009572 
+
+embedding table:
+token 0:	embedding: -0.317175 	 -0.721107 
+token 1:	embedding: -2.993923 	 1.194421 
+token 2:	embedding: 2.565711 	 3.015325 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.287842  	Weight 1: 0.404540  	Weight 2: -1.946179  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.284923  	Weight 1: -1.055239  	Weight 2: -0.878330  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.233959  	Weight 1: 1.080298  	Weight 2: 0.640299  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.499384  	Weight 1: -0.035010  	Weight 2: -0.105982  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.794379  	Weight 1: -0.003077  	Weight 2: -0.235859  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.251012
+	Weight 0: -0.364772  	Weight 1: 0.385996  	Weight 2: -0.510142  	Weight 3: 0.196216  	Weight 4: 0.322012  
+neuron 1, bias -0.800552
+	Weight 0: 0.431406  	Weight 1: -1.148808  	Weight 2: 0.014966  	Weight 3: -1.667381  	Weight 4: -0.699113  
+neuron 2, bias -0.271702
+	Weight 0: -1.157250  	Weight 1: 1.475551  	Weight 2: -0.387823  	Weight 3: 1.616675  	Weight 4: 0.506110  
+
+
+logit 0: -1.389871 
+
+logit 1: -0.525258 
+
+logit 2: -1.099544 
+
+logit 3: -0.504874 
+
+
+correct index is 1
+
+prob [0] = 0.212271
+
+prob [1] = 0.503951
+
+prob [2] = 0.283778
+
+correct index is 5
+
+prob [3] = 0.202499
+
+prob [4] = 0.042152
+
+prob [5] = 0.755349
+
+correct index is 6
+
+prob [6] = 0.163717
+
+prob [7] = 0.060611
+
+prob [8] = 0.775672
+
+loss after back = 0.925157
+
+epoch 6 
+
+
+logit 0: -1.389871 
+
+logit 1: -0.525258 
+
+logit 2: -1.099544 
+
+logit 3: -0.504874 
+
+correct index is 1
+
+prob [0] = 0.212271
+
+prob [1] = 0.503951
+
+prob [2] = 0.283778
+
+correct index is 5
+
+prob [3] = 0.202499
+
+prob [4] = 0.042152
+
+prob [5] = 0.755349
+
+correct index is 6
+
+prob [6] = 0.163717
+
+prob [7] = 0.060611
+
+prob [8] = 0.775672
+
+loss before back = 0.925157
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.212271  0.202499  -0.836283 
+
+ total delta = -0.042151 
+
+ bias [0] = -1.251012  delta = -0.014050 
+
+ -0.496049  0.042152  0.060611 
+
+ total delta = -0.053379 
+
+ bias [1] = -0.800552  delta = -0.017793 
+
+ 0.283778  -0.244651  0.775672 
+
+ total delta = 0.063687 
+
+ bias [2] = -0.271702  delta = 0.021229 
+
+ neuron 0, weight 0 batch 0 grad: 0.154845
+
+ neuron 0, weight 0 batch 1 grad: 0.202487
+
+ neuron 0, weight 0 batch 2 grad: 0.836033
+
+weight delta[0] = 1.193365
+
+ neuron 0, weight 1 batch 0 grad: 0.027202
+
+ neuron 0, weight 1 batch 1 grad: 0.200052
+
+ neuron 0, weight 1 batch 2 grad: -0.685504
+
+weight delta[1] = -0.458250
+
+ neuron 0, weight 2 batch 0 grad: 0.000985
+
+ neuron 0, weight 2 batch 1 grad: -0.193409
+
+ neuron 0, weight 2 batch 2 grad: 0.766364
+
+weight delta[2] = 0.573939
+
+ neuron 0, weight 3 batch 0 grad: -0.048173
+
+ neuron 0, weight 3 batch 1 grad: 0.004871
+
+ neuron 0, weight 3 batch 2 grad: 0.617115
+
+weight delta[3] = 0.573813
+
+ neuron 0, weight 4 batch 0 grad: 0.082177
+
+ neuron 0, weight 4 batch 1 grad: 0.149413
+
+ neuron 0, weight 4 batch 2 grad: -0.232661
+
+weight delta[4] = -0.001072
+
+ neuron 1, weight 0 batch 0 grad: -0.361852
+
+ neuron 1, weight 0 batch 1 grad: 0.042149
+
+ neuron 1, weight 0 batch 2 grad: -0.060593
+
+weight delta[0] = -0.380296
+
+ neuron 1, weight 1 batch 0 grad: -0.063568
+
+ neuron 1, weight 1 batch 1 grad: 0.041642
+
+ neuron 1, weight 1 batch 2 grad: 0.049683
+
+weight delta[1] = 0.027757
+
+ neuron 1, weight 2 batch 0 grad: -0.002301
+
+ neuron 1, weight 2 batch 1 grad: -0.040260
+
+ neuron 1, weight 2 batch 2 grad: -0.055543
+
+weight delta[2] = -0.098104
+
+ neuron 1, weight 3 batch 0 grad: 0.112573
+
+ neuron 1, weight 3 batch 1 grad: 0.001014
+
+ neuron 1, weight 3 batch 2 grad: -0.044726
+
+weight delta[3] = 0.068861
+
+ neuron 1, weight 4 batch 0 grad: -0.192036
+
+ neuron 1, weight 4 batch 1 grad: 0.031101
+
+ neuron 1, weight 4 batch 2 grad: 0.016863
+
+weight delta[4] = -0.144072
+
+ neuron 2, weight 0 batch 0 grad: 0.207007
+
+ neuron 2, weight 0 batch 1 grad: -0.244636
+
+ neuron 2, weight 0 batch 2 grad: -0.775440
+
+weight delta[0] = -0.813069
+
+ neuron 2, weight 1 batch 0 grad: 0.036366
+
+ neuron 2, weight 1 batch 1 grad: -0.241694
+
+ neuron 2, weight 1 batch 2 grad: 0.635821
+
+weight delta[1] = 0.430493
+
+ neuron 2, weight 2 batch 0 grad: 0.001316
+
+ neuron 2, weight 2 batch 1 grad: 0.233669
+
+ neuron 2, weight 2 batch 2 grad: -0.710820
+
+weight delta[2] = -0.475835
+
+ neuron 2, weight 3 batch 0 grad: -0.064401
+
+ neuron 2, weight 3 batch 1 grad: -0.005885
+
+ neuron 2, weight 3 batch 2 grad: -0.572389
+
+weight delta[3] = -0.642674
+
+ neuron 2, weight 4 batch 0 grad: 0.109859
+
+ neuron 2, weight 4 batch 1 grad: -0.180514
+
+ neuron 2, weight 4 batch 2 grad: 0.215799
+
+weight delta[4] = 0.145144
+
+ 0.212271  0.202499  -0.836283 
+
+ total delta = -0.042151 
+
+ bias [0] = -1.236961  delta = -0.014050 
+
+ -0.496049  0.042152  0.060611 
+
+ total delta = -0.053379 
+
+ bias [1] = -0.782759  delta = -0.017793 
+
+ 0.283778  -0.244651  0.775672 
+
+ total delta = 0.063687 
+
+ bias [2] = -0.292931  delta = 0.021229 
+
+embedding table:
+token 0:	embedding: 0.083454 	 -0.701496 
+token 1:	embedding: -4.686735 	 1.147337 
+token 2:	embedding: 2.907439 	 4.381489 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.292805  	Weight 1: 0.409549  	Weight 2: -1.934944  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.295576  	Weight 1: -1.044263  	Weight 2: -0.852290  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.222459  	Weight 1: 1.092980  	Weight 2: 0.673094  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.519978  	Weight 1: -0.000959  	Weight 2: 0.016556  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.780574  	Weight 1: 0.016862  	Weight 2: -0.169958  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.222911
+	Weight 0: -0.404551  	Weight 1: 0.401271  	Weight 2: -0.529273  	Weight 3: 0.177088  	Weight 4: 0.322048  
+neuron 1, bias -0.764966
+	Weight 0: 0.444082  	Weight 1: -1.149734  	Weight 2: 0.018237  	Weight 3: -1.669676  	Weight 4: -0.694311  
+neuron 2, bias -0.314160
+	Weight 0: -1.130147  	Weight 1: 1.461201  	Weight 2: -0.371962  	Weight 3: 1.638098  	Weight 4: 0.501272  
+
+
+logit 0: -1.788514 
+
+logit 1: -0.582795 
+
+logit 2: -1.320525 
+
+logit 3: -0.467130 
+
+
+correct index is 1
+
+prob [0] = 0.168465
+
+prob [1] = 0.562533
+
+prob [2] = 0.269002
+
+correct index is 5
+
+prob [3] = 0.178033
+
+prob [4] = 0.029919
+
+prob [5] = 0.792048
+
+correct index is 6
+
+prob [6] = 0.169268
+
+prob [7] = 0.040614
+
+prob [8] = 0.790118
+
+loss after back = 0.861571
+
+epoch 7 
+
+
+logit 0: -1.788514 
+
+logit 1: -0.582795 
+
+logit 2: -1.320525 
+
+logit 3: -0.467130 
+
+correct index is 1
+
+prob [0] = 0.168465
+
+prob [1] = 0.562533
+
+prob [2] = 0.269002
+
+correct index is 5
+
+prob [3] = 0.178033
+
+prob [4] = 0.029919
+
+prob [5] = 0.792048
+
+correct index is 6
+
+prob [6] = 0.169268
+
+prob [7] = 0.040614
+
+prob [8] = 0.790118
+
+loss before back = 0.861571
+
+ backwards pass ...
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 0
+offset_batch_embedding_element: 1
+offset_batch_embedding_element: 6
+offset_batch_embedding_element: 7
+offset_batch_embedding_element: 8
+offset_batch_embedding_element: 9
+offset_batch_embedding_element: 14
+offset_batch_embedding_element: 15
+offset_batch_embedding_element: 16
+offset_batch_embedding_element: 17
+
+ 0.168465  0.178033  -0.830732 
+
+ total delta = -0.048423 
+
+ bias [0] = -1.222911  delta = -0.016141 
+
+ -0.437467  0.029919  0.040614 
+
+ total delta = -0.052835 
+
+ bias [1] = -0.764966  delta = -0.017612 
+
+ 0.269002  -0.207952  0.790118 
+
+ total delta = 0.067505 
+
+ bias [2] = -0.314160  delta = 0.022502 
+
+ neuron 0, weight 0 batch 0 grad: 0.154227
+
+ neuron 0, weight 0 batch 1 grad: 0.178033
+
+ neuron 0, weight 0 batch 2 grad: 0.830654
+
+weight delta[0] = 1.162915
+
+ neuron 0, weight 1 batch 0 grad: -0.035421
+
+ neuron 0, weight 1 batch 1 grad: 0.177914
+
+ neuron 0, weight 1 batch 2 grad: -0.826284
+
+weight delta[1] = -0.683790
+
+ neuron 0, weight 2 batch 0 grad: 0.054457
+
+ neuron 0, weight 2 batch 1 grad: -0.177448
+
+ neuron 0, weight 2 batch 2 grad: 0.829090
+
+weight delta[2] = 0.706099
+
+ neuron 0, weight 3 batch 0 grad: 0.044761
+
+ neuron 0, weight 3 batch 1 grad: 0.036336
+
+ neuron 0, weight 3 batch 2 grad: 0.589205
+
+weight delta[3] = 0.670302
+
+ neuron 0, weight 4 batch 0 grad: 0.006886
+
+ neuron 0, weight 4 batch 1 grad: 0.108159
+
+ neuron 0, weight 4 batch 2 grad: -0.210438
+
+weight delta[4] = -0.095392
+
+ neuron 1, weight 0 batch 0 grad: -0.400494
+
+ neuron 1, weight 0 batch 1 grad: 0.029919
+
+ neuron 1, weight 0 batch 2 grad: -0.040611
+
+weight delta[0] = -0.411186
+
+ neuron 1, weight 1 batch 0 grad: 0.091981
+
+ neuron 1, weight 1 batch 1 grad: 0.029899
+
+ neuron 1, weight 1 batch 2 grad: 0.040397
+
+weight delta[1] = 0.162276
+
+ neuron 1, weight 2 batch 0 grad: -0.141413
+
+ neuron 1, weight 2 batch 1 grad: -0.029821
+
+ neuron 1, weight 2 batch 2 grad: -0.040534
+
+weight delta[2] = -0.211767
+
+ neuron 1, weight 3 batch 0 grad: -0.116235
+
+ neuron 1, weight 3 batch 1 grad: 0.006106
+
+ neuron 1, weight 3 batch 2 grad: -0.028806
+
+weight delta[3] = -0.138935
+
+ neuron 1, weight 4 batch 0 grad: -0.017882
+
+ neuron 1, weight 4 batch 1 grad: 0.018176
+
+ neuron 1, weight 4 batch 2 grad: 0.010288
+
+weight delta[4] = 0.010583
+
+ neuron 2, weight 0 batch 0 grad: 0.246267
+
+ neuron 2, weight 0 batch 1 grad: -0.207952
+
+ neuron 2, weight 0 batch 2 grad: -0.790044
+
+weight delta[0] = -0.751729
+
+ neuron 2, weight 1 batch 0 grad: -0.056560
+
+ neuron 2, weight 1 batch 1 grad: -0.207813
+
+ neuron 2, weight 1 batch 2 grad: 0.785887
+
+weight delta[1] = 0.521514
+
+ neuron 2, weight 2 batch 0 grad: 0.086956
+
+ neuron 2, weight 2 batch 1 grad: 0.207269
+
+ neuron 2, weight 2 batch 2 grad: -0.788556
+
+weight delta[2] = -0.494332
+
+ neuron 2, weight 3 batch 0 grad: 0.071474
+
+ neuron 2, weight 3 batch 1 grad: -0.042442
+
+ neuron 2, weight 3 batch 2 grad: -0.560398
+
+weight delta[3] = -0.531367
+
+ neuron 2, weight 4 batch 0 grad: 0.010996
+
+ neuron 2, weight 4 batch 1 grad: -0.126335
+
+ neuron 2, weight 4 batch 2 grad: 0.200149
+
+weight delta[4] = 0.084810
+
+ 0.168465  0.178033  -0.830732 
+
+ total delta = -0.048423 
+
+ bias [0] = -1.206769  delta = -0.016141 
+
+ -0.437467  0.029919  0.040614 
+
+ total delta = -0.052835 
+
+ bias [1] = -0.747355  delta = -0.017612 
+
+ 0.269002  -0.207952  0.790118 
+
+ total delta = 0.067505 
+
+ bias [2] = -0.336662  delta = 0.022502 
+
+embedding table:
+token 0:	embedding: 0.547843 	 -0.739735 
+token 1:	embedding: -6.972037 	 0.962910 
+token 2:	embedding: 3.288162 	 6.039285 
+
+hidden layer: 
+neuron 0, biase 0.060967
+	Weight 0: 1.292359  	Weight 1: 0.409128  	Weight 2: -1.931166  	Weight 3: -0.045193  
+neuron 1, biase -0.748838
+	Weight 0: 0.292913  	Weight 1: -1.046890  	Weight 2: -0.829732  	Weight 3: -0.548901  
+neuron 2, biase 0.734800
+	Weight 0: -0.224969  	Weight 1: 1.090642  	Weight 2: 0.695058  	Weight 3: 1.210563  
+neuron 3, biase 0.157078
+	Weight 0: 1.514727  	Weight 1: 0.018865  	Weight 2: 0.188006  	Weight 3: 0.185108  
+neuron 4, biase -0.014591
+	Weight 0: -0.785107  	Weight 1: 0.028838  	Weight 2: -0.048049  	Weight 3: 1.351889  
+
+output layer: 
+neuron 0, bias -1.190628
+	Weight 0: -0.443315  	Weight 1: 0.424064  	Weight 2: -0.552810  	Weight 3: 0.154745  	Weight 4: 0.325227  
+neuron 1, bias -0.729743
+	Weight 0: 0.457788  	Weight 1: -1.155143  	Weight 2: 0.025296  	Weight 3: -1.665045  	Weight 4: -0.694664  
+neuron 2, bias -0.359163
+	Weight 0: -1.105090  	Weight 1: 1.443817  	Weight 2: -0.355484  	Weight 3: 1.655810  	Weight 4: 0.498445  
+
+
+logit 0: -2.185090 
+
+logit 1: -0.585114 
+
+logit 2: -1.416518 
+
+logit 3: -0.749872 
+
+
+correct index is 1
+
+prob [0] = 0.123311
+
+prob [1] = 0.610747
+
+prob [2] = 0.265942
+
+correct index is 5
+
+prob [3] = 0.281693
+
+prob [4] = 0.262660
+
+prob [5] = 0.455647
+
+correct index is 6
+
+prob [6] = 0.207776
+
+prob [7] = 0.042103
+
+prob [8] = 0.750121
+
+ new loss is greater: 0.950135
