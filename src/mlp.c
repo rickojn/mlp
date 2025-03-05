@@ -392,9 +392,8 @@ void embedding_backwards(const float * grad_activations, const char * inputs, fl
             for (size_t idx_embedding_element = 0; idx_embedding_element < DIM_EMBEDDINGS; idx_embedding_element++){
                 size_t offset_batch_embedding_element = idx_batch * SIZE_VOCAB * DIM_EMBEDDINGS + 
                     offset_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
-                size_t offset_embedding_activation = offset_input_token + idx_embedding_element;
-                float db_grad = grad_activations[offset_batch_embedding_element];
-                printf("offset_batch_embedding_element: %zu\n", offset_batch_embedding_element);
+                size_t offset_embedding_activation = offset_input_token * DIM_EMBEDDINGS + idx_embedding_element;
+                float db_grad = grad_activations[offset_embedding_activation];
                 grad_embeddings[offset_batch_embedding_element] += grad_activations[offset_embedding_activation];
             }
         }
