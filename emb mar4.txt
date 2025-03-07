@@ -1,0 +1,35 @@
+
+embedding table:
+token 0:	embedding: -1.255212 	 -0.760357 
+token 1:	embedding: -0.001434 	 0.622350 
+token 2:	embedding: 1.529260 	 0.136996 
+
+
+embedding table:
+token 0:	embedding: -1.215843 	 -0.794858 
+token 1:	embedding: 0.045048 	 0.605760 
+token 2:	embedding: 1.534085 	 0.137098 
+
+embedding table:
+token 0:	embedding: -1.099044 	 -0.907231 
+token 1:	embedding: 0.178557 	 0.549892 
+token 2:	embedding: 1.548344 	 0.137403 
+
+
+embedding table:
+token 0:	embedding: -0.874650 	 -1.147960 
+token 1:	embedding: 0.432428 	 0.420379 
+token 2:	embedding: 1.576612 	 0.138008 
+
+
+embedding table:
+token 0:	embedding: -0.535353 	 -1.572999 
+token 1:	embedding: 0.834597 	 0.164374 
+token 2:	embedding: 1.623838 	 0.139024 
+
+
+embedding table:
+token 0:	embedding: -0.102637 	 -2.245732 
+token 1:	embedding: 1.413760 	 -0.286119 
+token 2:	embedding: 1.696472 	 0.140592 
+

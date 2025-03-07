@@ -385,16 +385,18 @@ x21,x22, x23,x24, x25,x26
 
 
 void embedding_backwards(const float * grad_activations, const char * inputs, float * grad_embeddings, size_t size_batch){
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+    for (size_t idx_block = 0; idx_block < size_batch; idx_block++){
         for (size_t idx_input_token = 0; idx_input_token < SIZE_BLOCK; idx_input_token++){
-            size_t offset_input_token = idx_batch * SIZE_BLOCK + idx_input_token;
-            size_t offset_token_embedding = encode(inputs[offset_input_token]);
+        // for (size_t idx_input_token = 0; idx_input_token < 1; idx_input_token++){
+            size_t offset_input_token = idx_block * SIZE_BLOCK + idx_input_token;
+            // size_t offset_input_token = idx_block + idx_input_token;
+            size_t idx_token_embedding = encode(inputs[offset_input_token]);
             for (size_t idx_embedding_element = 0; idx_embedding_element < DIM_EMBEDDINGS; idx_embedding_element++){
-                size_t offset_batch_embedding_element = idx_batch * SIZE_VOCAB * DIM_EMBEDDINGS + 
-                    offset_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
-                size_t offset_embedding_activation = offset_input_token * DIM_EMBEDDINGS + idx_embedding_element;
-                float db_grad = grad_activations[offset_embedding_activation];
-                grad_embeddings[offset_batch_embedding_element] += grad_activations[offset_embedding_activation];
+                size_t offset_grad_embedding_element = idx_block * SIZE_VOCAB * DIM_EMBEDDINGS + 
+                    idx_token_embedding * DIM_EMBEDDINGS + idx_embedding_element;
+                size_t offset_grad_embedding_activation = offset_input_token * DIM_EMBEDDINGS + idx_embedding_element;
+                float db_grad = grad_activations[offset_grad_embedding_activation];
+                grad_embeddings[offset_grad_embedding_element] += grad_activations[offset_grad_embedding_activation];
             }
         }
     }
@@ -456,17 +458,16 @@ void update_weights(Model * model, size_t size_batch){
     for (size_t idx_neuron = 0; idx_neuron < SIZE_HIDDEN; idx_neuron++ ){
         for (size_t idx_weight = 0; idx_weight < DIM_EMBEDDINGS * SIZE_BLOCK; idx_weight++){
             delta = 0.0;
-            for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
-                size_t offset_batch_weight = idx_batch * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN + 
-                idx_neuron * SIZE_BLOCK * DIM_EMBEDDINGS + idx_weight;
+            size_t offset_weight = idx_neuron * SIZE_BLOCK * DIM_EMBEDDINGS + idx_weight;
+            for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+                size_t offset_grad_weight = idx_sample * SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_HIDDEN + offset_weight;
                 // printf("\n neuron %zu, weight %zu batch %zu grad: %f\n", idx_neuron, idx_weight, idx_batch, model->gradients.weights_output[offset_batch_weight]);
-                float db_grad = model->gradients.weights_hidden[offset_batch_weight];
-                delta += model->gradients.weights_hidden[offset_batch_weight];
+                float db_grad = model->gradients.weights_hidden[offset_grad_weight];
+                delta += model->gradients.weights_hidden[offset_grad_weight];
                 
             }
             // printf("\nweight delta[%zu] = %f\n", idx_weight, delta);
             delta /= size_batch; 
-            size_t offset_weight = idx_neuron * SIZE_BLOCK * DIM_EMBEDDINGS + idx_weight;
             // float db_weight_before = model->parameters.weights_output[offset_weight];
             model->parameters.weights_hidden[offset_weight] -= delta * LEARNING_RATE;
             // float db_weight_after = model->parameters.weights_output[offset_weight];
