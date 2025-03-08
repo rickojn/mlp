@@ -339,21 +339,21 @@ dz1/dx2 = w5
 
 void matmul_backwards(const float * grads_pre_activations, const float * weights, const float * inputs, float * grads_weights,
 float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inputs, size_t size_batch){
-    for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-            size_t offset_batch_neuron = idx_batch * size_neurons + idx_neuron;
+            size_t offset_grad_bias = idx_sample * size_neurons + idx_neuron;
             if (grads_biases){
-                float db_1 = grads_pre_activations[offset_batch_neuron];
-                grads_biases[offset_batch_neuron] = grads_pre_activations[offset_batch_neuron];
+                float db_1 = grads_pre_activations[offset_grad_bias];
+                grads_biases[offset_grad_bias] = grads_pre_activations[offset_grad_bias];
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_weight = idx_neuron * size_inputs + idx_weight;
-                size_t offset_batch_weight = offset_batch_neuron * size_inputs + idx_weight;
-                size_t offset_batch_input = idx_batch * size_inputs + idx_weight;
-                float db_input = inputs[offset_batch_input];
-                float db_grad  = grads_pre_activations[offset_batch_neuron];
-                grads_weights[offset_batch_weight] = inputs[offset_batch_input] * grads_pre_activations[offset_batch_neuron];
-                grads_inputs[offset_batch_input] += weights[offset_weight] * grads_pre_activations[offset_batch_neuron]; //??
+                size_t offset_grad_weight = offset_grad_bias * size_inputs + idx_weight;
+                size_t offset_grad_input = idx_sample * size_inputs + idx_weight;
+                float db_input = inputs[offset_grad_input];
+                float db_grad  = grads_pre_activations[offset_grad_bias];
+                grads_weights[offset_grad_weight] = inputs[offset_grad_input] * grads_pre_activations[offset_grad_bias];
+                grads_inputs[offset_grad_input] += weights[offset_weight] * grads_pre_activations[offset_grad_bias]; //??
             }
         }
     }
