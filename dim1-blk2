@@ -1,0 +1,598 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+epoch 0 
+
+
+loss before back = 1.831435
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.732645
+
+epoch 1 
+
+
+loss before back = 1.732645
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.674802
+
+epoch 2 
+
+
+loss before back = 1.674802
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.643729
+
+epoch 3 
+
+
+loss before back = 1.643729
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.616929
+
+epoch 4 
+
+
+loss before back = 1.616929
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.579807
+
+epoch 5 
+
+
+loss before back = 1.579807
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.530795
+
+epoch 6 
+
+
+loss before back = 1.530795
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.469576
+
+epoch 7 
+
+
+loss before back = 1.469576
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.401170
+
+epoch 8 
+
+
+loss before back = 1.401170
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.334698
+
+epoch 9 
+
+
+loss before back = 1.334698
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.276093
+
+epoch 10 
+
+
+loss before back = 1.276093
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.227636
+
+epoch 11 
+
+
+loss before back = 1.227636
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.189525
+
+epoch 12 
+
+
+loss before back = 1.189525
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.160850
+
+epoch 13 
+
+
+loss before back = 1.160850
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.140137
+
+epoch 14 
+
+
+loss before back = 1.140137
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.125708
+
+epoch 15 
+
+
+loss before back = 1.125708
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.115970
+
+epoch 16 
+
+
+loss before back = 1.115970
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.109566
+
+epoch 17 
+
+
+loss before back = 1.109566
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.105444
+
+epoch 18 
+
+
+loss before back = 1.105444
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.102834
+
+epoch 19 
+
+
+loss before back = 1.102834
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.101203
+
+epoch 20 
+
+
+loss before back = 1.101203
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.100194
+
+epoch 21 
+
+
+loss before back = 1.100194
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.099574
+
+epoch 22 
+
+
+loss before back = 1.099574
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.099195
+
+epoch 23 
+
+
+loss before back = 1.099195
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098965
+
+epoch 24 
+
+
+loss before back = 1.098965
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098825
+
+epoch 25 
+
+
+loss before back = 1.098825
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098741
+
+epoch 26 
+
+
+loss before back = 1.098741
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098690
+
+epoch 27 
+
+
+loss before back = 1.098690
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098659
+
+epoch 28 
+
+
+loss before back = 1.098659
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098641
+
+epoch 29 
+
+
+loss before back = 1.098641
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098629
+
+epoch 30 
+
+
+loss before back = 1.098629
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098622
+
+epoch 31 
+
+
+loss before back = 1.098622
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098619
+
+epoch 32 
+
+
+loss before back = 1.098619
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098616
+
+epoch 33 
+
+
+loss before back = 1.098616
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098615
+
+epoch 34 
+
+
+loss before back = 1.098615
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098614
+
+epoch 35 
+
+
+loss before back = 1.098614
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098613
+
+epoch 36 
+
+
+loss before back = 1.098613
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098613
+
+epoch 37 
+
+
+loss before back = 1.098613
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098613
+
+epoch 38 
+
+
+loss before back = 1.098613
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098612
+
+epoch 39 
+
+
+loss before back = 1.098612
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098612
+
+epoch 40 
+
+
+loss before back = 1.098612
+
+ backwards pass ...
+
+
+
+
+
+
+loss after back = 1.098612
+
+epoch 41 
+
+
+loss before back = 1.098612
+
+ backwards pass ...
+
+
+
+
+
+
+ new loss is greater: 1.098612
