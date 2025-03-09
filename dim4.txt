@@ -1,0 +1,24 @@
+
+1 names loaded
+
+creating model ...
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+epoch 0 
+
+
+loss before back = 0.643504
+
+ backwards pass ...
+
+
+
+
+
+
+ new loss is greater: 0.657542

@@ -253,7 +253,7 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     matmul_forward(model->activations.hidden, model->parameters.weights_output, model->parameters.biases_output, model->activations.output,
         SIZE_VOCAB, SIZE_HIDDEN, size_batch);
     for (int i = 0; i < 4; i++){
-        printf("\nlogit %d: %f \n",i,model->activations.output[i]);
+        // printf("\nlogit %d: %f \n",i,model->activations.output[i]);
     }
     softmax_foward(model->activations.output, model->activations.probs, size_batch);
     clock_t end = clock();
@@ -267,12 +267,12 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
         size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
         float prob = probs[offset_predicted_prob_for_expected_token];
         //printf("\nprob [%d] = %f\n", offset_predicted_prob_for_expected_token, prob);
-        printf("\ncorrect index is %d\n", offset_predicted_prob_for_expected_token);
+        // printf("\ncorrect index is %d\n", offset_predicted_prob_for_expected_token);
         int offset_batch = idx_batch * SIZE_VOCAB;
 
-        printf("\nprob [%d] = %f\n", offset_batch,  probs[idx_batch * SIZE_VOCAB + 0]);
-        printf("\nprob [%d] = %f\n", offset_batch + 1,  probs[idx_batch * SIZE_VOCAB + 1]);
-        printf("\nprob [%d] = %f\n", offset_batch + 2,  probs[idx_batch * SIZE_VOCAB + 2]);
+        // printf("\nprob [%d] = %f\n", offset_batch,  probs[idx_batch * SIZE_VOCAB + 0]);
+        // printf("\nprob [%d] = %f\n", offset_batch + 1,  probs[idx_batch * SIZE_VOCAB + 1]);
+        // printf("\nprob [%d] = %f\n", offset_batch + 2,  probs[idx_batch * SIZE_VOCAB + 2]);
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
     }
     float loss = batch_loss/size_batch;
@@ -407,16 +407,16 @@ void update_weights(Model * model, size_t size_batch){
     float delta = 0.0;
     // update outputs
     for (size_t idx_neuron = 0; idx_neuron < SIZE_VOCAB; idx_neuron++){
-        printf("\n");
+        // printf("\n");
         for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
             size_t offset_bias_output = idx_batch * SIZE_VOCAB + idx_neuron;
-            printf(" %f ",model->gradients.biases_output[offset_bias_output]);
+            // printf(" %f ",model->gradients.biases_output[offset_bias_output]);
             delta += model->gradients.biases_output[offset_bias_output] * LEARNING_RATE;
         }
-        printf("\n");
-        printf("\n total delta = %f \n", delta);
+        // printf("\n");
+        // printf("\n total delta = %f \n", delta);
         delta /= size_batch;
-        printf("\n bias [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
+        // printf("\n bias [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
         model->parameters.biases_output[idx_neuron] -= delta;
     }
 
@@ -425,10 +425,10 @@ void update_weights(Model * model, size_t size_batch){
             delta = 0.0;
             for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
                 size_t offset_batch_weight = idx_batch * SIZE_VOCAB * SIZE_HIDDEN + idx_neuron * SIZE_HIDDEN + idx_weight;
-                printf("\n neuron %zu, weight %zu batch %zu grad: %f\n", idx_neuron, idx_weight, idx_batch, model->gradients.weights_output[offset_batch_weight]);
+                // printf("\n neuron %zu, weight %zu batch %zu grad: %f\n", idx_neuron, idx_weight, idx_batch, model->gradients.weights_output[offset_batch_weight]);
                 delta += model->gradients.weights_output[offset_batch_weight];
             }
-            printf("\nweight delta[%zu] = %f\n", idx_weight, delta);
+            // printf("\nweight delta[%zu] = %f\n", idx_weight, delta);
             delta /= size_batch; 
             size_t offset_weight = idx_neuron * SIZE_HIDDEN + idx_weight;
             float db_weight_before = model->parameters.weights_output[offset_weight];
@@ -445,13 +445,13 @@ void update_weights(Model * model, size_t size_batch){
         printf("\n");
         for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
             size_t offset_bias_output = idx_batch * SIZE_VOCAB + idx_neuron;
-            printf(" %f ",model->gradients.biases_output[offset_bias_output]);
+            // printf(" %f ",model->gradients.biases_output[offset_bias_output]);
             delta += model->gradients.biases_output[offset_bias_output] * LEARNING_RATE;
         }
-        printf("\n");
-        printf("\n total delta = %f \n", delta);
+        // printf("\n");
+        // printf("\n total delta = %f \n", delta);
         delta /= size_batch;
-        printf("\n bias [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
+        // printf("\n bias [%d] = %f  delta = %f \n", idx_neuron, model->parameters.biases_output[idx_neuron], delta);
         model->parameters.biases_output[idx_neuron] -= delta;
     }
 
@@ -589,15 +589,15 @@ int main()
     // generate(&model, 5);
 
     //training loop
-    printf("\nmodel before training:\n");
-    print_model(&model);
+    // printf("\nmodel before training:\n");
+    // print_model(&model);
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         printf("\nepoch %d \n", idx_epoch);
         printf("\n");
         model_forward(&model, training_set->X, training_set->size);
         printf("\nloss before back = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
-        print_model(&model);
+       // print_model(&model);
 
 
         printf("\n");
