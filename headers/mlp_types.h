@@ -10,7 +10,7 @@
 #define MAX_LENGTH 256  // Maximum length of each string
 #define NUM_EPOCHS 100
 #define LEARNING_RATE 0.1
-#define DIM_EMBEDDINGS 8
+#define DIM_EMBEDDINGS 16
 //#define SIZE_BATCH 32
 
 
