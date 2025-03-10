@@ -279,11 +279,12 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float loss = batch_loss/size_batch;
     if (loss > prev_loss){
         printf("\n new loss is greater: %f\n", loss);
-        exit(0);
+        // exit(0);
     }
     else {
         prev_loss = loss;
     }
+    prev_loss = loss;
     return batch_loss/size_batch;
 }
 
@@ -475,6 +476,8 @@ void update_weights(Model * model, size_t size_batch){
             int db = 0;
         }
     }
+
+    print_embedding_table(model);
 
 //    update embedding table
     for (size_t idx_embedding_component = 0; idx_embedding_component < SIZE_VOCAB * DIM_EMBEDDINGS; idx_embedding_component++){

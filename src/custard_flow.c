@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "../headers/mlp_types.h"
+#include "custard_flow.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -132,12 +133,24 @@ void print_token_embeddings(Model * model, TrainingSet * training_set){
     printf("\n");
 }
 
-void print_model(Model * model){
+
+void print_embedding_table(Model *model)
+{
     printf("\nembedding table:\n");
-    for (int idx_token = 0; idx_token < SIZE_VOCAB; idx_token++){
+    for (int idx_token = 0; idx_token < SIZE_VOCAB; idx_token++)
+    {
         printf("token %d:\t", idx_token);
-        printf("embedding: %f \t %f \n", model->parameters.table_embedding[idx_token * 2], model->parameters.table_embedding[idx_token * 2 + 1]);
+        for (int idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++)
+        {
+            printf("%f\t", model->parameters.table_embedding[idx_token * DIM_EMBEDDINGS + idx_dim]);
+        }
+        printf("\n");
     }
+}
+
+
+void print_model(Model * model){
+    print_embedding_table(model);
 
     printf("\nhidden layer: \n");
     for (size_t idx_neuron = 0; idx_neuron < SIZE_HIDDEN; idx_neuron++){
@@ -160,7 +173,5 @@ void print_model(Model * model){
         }
         printf("\n");
     }
-
-
-
 }
+
