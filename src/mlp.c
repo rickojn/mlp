@@ -148,7 +148,7 @@ void initialise_model(Model *model)
     + SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS // hidden weights
     + SIZE_HIDDEN // hidden biases
     + SIZE_VOCAB // output biases
-    + SIZE_BLOCK * DIM_EMBEDDINGS * SIZE_VOCAB; // output weights
+    + SIZE_BLOCK * SIZE_HIDDEN; // output weights
 
     srand(42);
     // srand(time(NULL));
@@ -521,6 +521,9 @@ void generate(Model *model, int number_of_names){
             input_tokens[idx_token] = '.';
         }
         model_forward(model, input_tokens, 1);
+        // for (int i = 0; i < SIZE_VOCAB; i++){
+        //     printf("\n%f %f\n", model->activations.probs[i], model->activations.output[i]);
+        // }
         char predicted_char = decode(sample_from_multinomial(model->activations.probs, SIZE_VOCAB));
         while (predicted_char != '.'){
             printf("%c", predicted_char);

@@ -1,0 +1,12038 @@
+
+5 names loaded
+
+creating model ...
+
+ model allocated memory: 522596 bytes
+
+ model allocated memory for params and acts: 47204 bytes
+
+ model allocated memory for gradients: 475392 bytes
+
+param and act pointer diff 47204 
+
+grad pointer diff 471936 
+
+... model created.
+
+initialising model ....
+
+model initialised ....
+
+
+Generating names....
+
+bbbbbbbcfaabbbbbcucbcb
+abbbcccbbbbcbcbycab
+abbbbbfaabbbbbbbbbczaa
+cbbbbbbcbcbcbhb
+cbbbcc
+
+epoch 0 
+
+
+
+loss before back = 11.319912
+
+ backwards pass ...
+
+
+
+loss after back = 10.003454
+
+epoch 1 
+
+
+
+loss before back = 10.003454
+
+ backwards pass ...
+
+
+
+loss after back = 8.845024
+
+epoch 2 
+
+
+
+loss before back = 8.845024
+
+ backwards pass ...
+
+
+
+loss after back = 7.832279
+
+epoch 3 
+
+
+
+loss before back = 7.832279
+
+ backwards pass ...
+
+
+
+loss after back = 6.954578
+
+epoch 4 
+
+
+
+loss before back = 6.954578
+
+ backwards pass ...
+
+
+
+loss after back = 6.196351
+
+epoch 5 
+
+
+
+loss before back = 6.196351
+
+ backwards pass ...
+
+
+
+loss after back = 5.541581
+
+epoch 6 
+
+
+
+loss before back = 5.541581
+
+ backwards pass ...
+
+
+
+loss after back = 4.982926
+
+epoch 7 
+
+
+
+loss before back = 4.982926
+
+ backwards pass ...
+
+
+
+loss after back = 4.515638
+
+epoch 8 
+
+
+
+loss before back = 4.515638
+
+ backwards pass ...
+
+
+
+loss after back = 4.130900
+
+epoch 9 
+
+
+
+loss before back = 4.130900
+
+ backwards pass ...
+
+
+
+loss after back = 3.815264
+
+epoch 10 
+
+
+
+loss before back = 3.815264
+
+ backwards pass ...
+
+
+
+loss after back = 3.555403
+
+epoch 11 
+
+
+
+loss before back = 3.555403
+
+ backwards pass ...
+
+
+
+loss after back = 3.339931
+
+epoch 12 
+
+
+
+loss before back = 3.339931
+
+ backwards pass ...
+
+
+
+loss after back = 3.159037
+
+epoch 13 
+
+
+
+loss before back = 3.159037
+
+ backwards pass ...
+
+
+
+loss after back = 3.004514
+
+epoch 14 
+
+
+
+loss before back = 3.004514
+
+ backwards pass ...
+
+
+
+loss after back = 2.870083
+
+epoch 15 
+
+
+
+loss before back = 2.870083
+
+ backwards pass ...
+
+
+
+loss after back = 2.751259
+
+epoch 16 
+
+
+
+loss before back = 2.751259
+
+ backwards pass ...
+
+
+
+loss after back = 2.644826
+
+epoch 17 
+
+
+
+loss before back = 2.644826
+
+ backwards pass ...
+
+
+
+loss after back = 2.548381
+
+epoch 18 
+
+
+
+loss before back = 2.548381
+
+ backwards pass ...
+
+
+
+loss after back = 2.460110
+
+epoch 19 
+
+
+
+loss before back = 2.460110
+
+ backwards pass ...
+
+
+
+loss after back = 2.378689
+
+epoch 20 
+
+
+
+loss before back = 2.378689
+
+ backwards pass ...
+
+
+
+loss after back = 2.303191
+
+epoch 21 
+
+
+
+loss before back = 2.303191
+
+ backwards pass ...
+
+
+
+loss after back = 2.232983
+
+epoch 22 
+
+
+
+loss before back = 2.232983
+
+ backwards pass ...
+
+
+
+loss after back = 2.167626
+
+epoch 23 
+
+
+
+loss before back = 2.167626
+
+ backwards pass ...
+
+
+
+loss after back = 2.106783
+
+epoch 24 
+
+
+
+loss before back = 2.106783
+
+ backwards pass ...
+
+
+
+loss after back = 2.050156
+
+epoch 25 
+
+
+
+loss before back = 2.050156
+
+ backwards pass ...
+
+
+
+loss after back = 1.997443
+
+epoch 26 
+
+
+
+loss before back = 1.997443
+
+ backwards pass ...
+
+
+
+loss after back = 1.948326
+
+epoch 27 
+
+
+
+loss before back = 1.948326
+
+ backwards pass ...
+
+
+
+loss after back = 1.902477
+
+epoch 28 
+
+
+
+loss before back = 1.902477
+
+ backwards pass ...
+
+
+
+loss after back = 1.859569
+
+epoch 29 
+
+
+
+loss before back = 1.859569
+
+ backwards pass ...
+
+
+
+loss after back = 1.819298
+
+epoch 30 
+
+
+
+loss before back = 1.819298
+
+ backwards pass ...
+
+
+
+loss after back = 1.781385
+
+epoch 31 
+
+
+
+loss before back = 1.781385
+
+ backwards pass ...
+
+
+
+loss after back = 1.745584
+
+epoch 32 
+
+
+
+loss before back = 1.745584
+
+ backwards pass ...
+
+
+
+loss after back = 1.711683
+
+epoch 33 
+
+
+
+loss before back = 1.711683
+
+ backwards pass ...
+
+
+
+loss after back = 1.679497
+
+epoch 34 
+
+
+
+loss before back = 1.679497
+
+ backwards pass ...
+
+
+
+loss after back = 1.648871
+
+epoch 35 
+
+
+
+loss before back = 1.648871
+
+ backwards pass ...
+
+
+
+loss after back = 1.619673
+
+epoch 36 
+
+
+
+loss before back = 1.619673
+
+ backwards pass ...
+
+
+
+loss after back = 1.591792
+
+epoch 37 
+
+
+
+loss before back = 1.591792
+
+ backwards pass ...
+
+
+
+loss after back = 1.565135
+
+epoch 38 
+
+
+
+loss before back = 1.565135
+
+ backwards pass ...
+
+
+
+loss after back = 1.539623
+
+epoch 39 
+
+
+
+loss before back = 1.539623
+
+ backwards pass ...
+
+
+
+loss after back = 1.515190
+
+epoch 40 
+
+
+
+loss before back = 1.515190
+
+ backwards pass ...
+
+
+
+loss after back = 1.491780
+
+epoch 41 
+
+
+
+loss before back = 1.491780
+
+ backwards pass ...
+
+
+
+loss after back = 1.469343
+
+epoch 42 
+
+
+
+loss before back = 1.469343
+
+ backwards pass ...
+
+
+
+loss after back = 1.447834
+
+epoch 43 
+
+
+
+loss before back = 1.447834
+
+ backwards pass ...
+
+
+
+loss after back = 1.427214
+
+epoch 44 
+
+
+
+loss before back = 1.427214
+
+ backwards pass ...
+
+
+
+loss after back = 1.407445
+
+epoch 45 
+
+
+
+loss before back = 1.407445
+
+ backwards pass ...
+
+
+
+loss after back = 1.388487
+
+epoch 46 
+
+
+
+loss before back = 1.388487
+
+ backwards pass ...
+
+
+
+loss after back = 1.370303
+
+epoch 47 
+
+
+
+loss before back = 1.370303
+
+ backwards pass ...
+
+
+
+loss after back = 1.352857
+
+epoch 48 
+
+
+
+loss before back = 1.352857
+
+ backwards pass ...
+
+
+
+loss after back = 1.336109
+
+epoch 49 
+
+
+
+loss before back = 1.336109
+
+ backwards pass ...
+
+
+
+loss after back = 1.320024
+
+epoch 50 
+
+
+
+loss before back = 1.320024
+
+ backwards pass ...
+
+
+
+loss after back = 1.304562
+
+epoch 51 
+
+
+
+loss before back = 1.304562
+
+ backwards pass ...
+
+
+
+loss after back = 1.289690
+
+epoch 52 
+
+
+
+loss before back = 1.289690
+
+ backwards pass ...
+
+
+
+loss after back = 1.275370
+
+epoch 53 
+
+
+
+loss before back = 1.275370
+
+ backwards pass ...
+
+
+
+loss after back = 1.261572
+
+epoch 54 
+
+
+
+loss before back = 1.261572
+
+ backwards pass ...
+
+
+
+loss after back = 1.248261
+
+epoch 55 
+
+
+
+loss before back = 1.248261
+
+ backwards pass ...
+
+
+
+loss after back = 1.235411
+
+epoch 56 
+
+
+
+loss before back = 1.235411
+
+ backwards pass ...
+
+
+
+loss after back = 1.222993
+
+epoch 57 
+
+
+
+loss before back = 1.222993
+
+ backwards pass ...
+
+
+
+loss after back = 1.210981
+
+epoch 58 
+
+
+
+loss before back = 1.210981
+
+ backwards pass ...
+
+
+
+loss after back = 1.199352
+
+epoch 59 
+
+
+
+loss before back = 1.199352
+
+ backwards pass ...
+
+
+
+loss after back = 1.188084
+
+epoch 60 
+
+
+
+loss before back = 1.188084
+
+ backwards pass ...
+
+
+
+loss after back = 1.177158
+
+epoch 61 
+
+
+
+loss before back = 1.177158
+
+ backwards pass ...
+
+
+
+loss after back = 1.166553
+
+epoch 62 
+
+
+
+loss before back = 1.166553
+
+ backwards pass ...
+
+
+
+loss after back = 1.156254
+
+epoch 63 
+
+
+
+loss before back = 1.156254
+
+ backwards pass ...
+
+
+
+loss after back = 1.146245
+
+epoch 64 
+
+
+
+loss before back = 1.146245
+
+ backwards pass ...
+
+
+
+loss after back = 1.136509
+
+epoch 65 
+
+
+
+loss before back = 1.136509
+
+ backwards pass ...
+
+
+
+loss after back = 1.127035
+
+epoch 66 
+
+
+
+loss before back = 1.127035
+
+ backwards pass ...
+
+
+
+loss after back = 1.117809
+
+epoch 67 
+
+
+
+loss before back = 1.117809
+
+ backwards pass ...
+
+
+
+loss after back = 1.108819
+
+epoch 68 
+
+
+
+loss before back = 1.108819
+
+ backwards pass ...
+
+
+
+loss after back = 1.100055
+
+epoch 69 
+
+
+
+loss before back = 1.100055
+
+ backwards pass ...
+
+
+
+loss after back = 1.091506
+
+epoch 70 
+
+
+
+loss before back = 1.091506
+
+ backwards pass ...
+
+
+
+loss after back = 1.083162
+
+epoch 71 
+
+
+
+loss before back = 1.083162
+
+ backwards pass ...
+
+
+
+loss after back = 1.075015
+
+epoch 72 
+
+
+
+loss before back = 1.075015
+
+ backwards pass ...
+
+
+
+loss after back = 1.067055
+
+epoch 73 
+
+
+
+loss before back = 1.067055
+
+ backwards pass ...
+
+
+
+loss after back = 1.059276
+
+epoch 74 
+
+
+
+loss before back = 1.059276
+
+ backwards pass ...
+
+
+
+loss after back = 1.051670
+
+epoch 75 
+
+
+
+loss before back = 1.051670
+
+ backwards pass ...
+
+
+
+loss after back = 1.044230
+
+epoch 76 
+
+
+
+loss before back = 1.044230
+
+ backwards pass ...
+
+
+
+loss after back = 1.036948
+
+epoch 77 
+
+
+
+loss before back = 1.036948
+
+ backwards pass ...
+
+
+
+loss after back = 1.029819
+
+epoch 78 
+
+
+
+loss before back = 1.029819
+
+ backwards pass ...
+
+
+
+loss after back = 1.022837
+
+epoch 79 
+
+
+
+loss before back = 1.022837
+
+ backwards pass ...
+
+
+
+loss after back = 1.015997
+
+epoch 80 
+
+
+
+loss before back = 1.015997
+
+ backwards pass ...
+
+
+
+loss after back = 1.009294
+
+epoch 81 
+
+
+
+loss before back = 1.009294
+
+ backwards pass ...
+
+
+
+loss after back = 1.002722
+
+epoch 82 
+
+
+
+loss before back = 1.002722
+
+ backwards pass ...
+
+
+
+loss after back = 0.996277
+
+epoch 83 
+
+
+
+loss before back = 0.996277
+
+ backwards pass ...
+
+
+
+loss after back = 0.989954
+
+epoch 84 
+
+
+
+loss before back = 0.989954
+
+ backwards pass ...
+
+
+
+loss after back = 0.983748
+
+epoch 85 
+
+
+
+loss before back = 0.983748
+
+ backwards pass ...
+
+
+
+loss after back = 0.977658
+
+epoch 86 
+
+
+
+loss before back = 0.977658
+
+ backwards pass ...
+
+
+
+loss after back = 0.971677
+
+epoch 87 
+
+
+
+loss before back = 0.971677
+
+ backwards pass ...
+
+
+
+loss after back = 0.965804
+
+epoch 88 
+
+
+
+loss before back = 0.965804
+
+ backwards pass ...
+
+
+
+loss after back = 0.960034
+
+epoch 89 
+
+
+
+loss before back = 0.960034
+
+ backwards pass ...
+
+
+
+loss after back = 0.954363
+
+epoch 90 
+
+
+
+loss before back = 0.954363
+
+ backwards pass ...
+
+
+
+loss after back = 0.948790
+
+epoch 91 
+
+
+
+loss before back = 0.948790
+
+ backwards pass ...
+
+
+
+loss after back = 0.943311
+
+epoch 92 
+
+
+
+loss before back = 0.943311
+
+ backwards pass ...
+
+
+
+loss after back = 0.937923
+
+epoch 93 
+
+
+
+loss before back = 0.937923
+
+ backwards pass ...
+
+
+
+loss after back = 0.932623
+
+epoch 94 
+
+
+
+loss before back = 0.932623
+
+ backwards pass ...
+
+
+
+loss after back = 0.927409
+
+epoch 95 
+
+
+
+loss before back = 0.927409
+
+ backwards pass ...
+
+
+
+loss after back = 0.922279
+
+epoch 96 
+
+
+
+loss before back = 0.922279
+
+ backwards pass ...
+
+
+
+loss after back = 0.917229
+
+epoch 97 
+
+
+
+loss before back = 0.917229
+
+ backwards pass ...
+
+
+
+loss after back = 0.912259
+
+epoch 98 
+
+
+
+loss before back = 0.912259
+
+ backwards pass ...
+
+
+
+loss after back = 0.907365
+
+epoch 99 
+
+
+
+loss before back = 0.907365
+
+ backwards pass ...
+
+
+
+loss after back = 0.902545
+
+epoch 100 
+
+
+
+loss before back = 0.902545
+
+ backwards pass ...
+
+
+
+loss after back = 0.897798
+
+epoch 101 
+
+
+
+loss before back = 0.897798
+
+ backwards pass ...
+
+
+
+loss after back = 0.893121
+
+epoch 102 
+
+
+
+loss before back = 0.893121
+
+ backwards pass ...
+
+
+
+loss after back = 0.888514
+
+epoch 103 
+
+
+
+loss before back = 0.888514
+
+ backwards pass ...
+
+
+
+loss after back = 0.883973
+
+epoch 104 
+
+
+
+loss before back = 0.883973
+
+ backwards pass ...
+
+
+
+loss after back = 0.879497
+
+epoch 105 
+
+
+
+loss before back = 0.879497
+
+ backwards pass ...
+
+
+
+loss after back = 0.875086
+
+epoch 106 
+
+
+
+loss before back = 0.875086
+
+ backwards pass ...
+
+
+
+loss after back = 0.870735
+
+epoch 107 
+
+
+
+loss before back = 0.870735
+
+ backwards pass ...
+
+
+
+loss after back = 0.866446
+
+epoch 108 
+
+
+
+loss before back = 0.866446
+
+ backwards pass ...
+
+
+
+loss after back = 0.862216
+
+epoch 109 
+
+
+
+loss before back = 0.862216
+
+ backwards pass ...
+
+
+
+loss after back = 0.858043
+
+epoch 110 
+
+
+
+loss before back = 0.858043
+
+ backwards pass ...
+
+
+
+loss after back = 0.853927
+
+epoch 111 
+
+
+
+loss before back = 0.853927
+
+ backwards pass ...
+
+
+
+loss after back = 0.849866
+
+epoch 112 
+
+
+
+loss before back = 0.849866
+
+ backwards pass ...
+
+
+
+loss after back = 0.845858
+
+epoch 113 
+
+
+
+loss before back = 0.845858
+
+ backwards pass ...
+
+
+
+loss after back = 0.841903
+
+epoch 114 
+
+
+
+loss before back = 0.841903
+
+ backwards pass ...
+
+
+
+loss after back = 0.838000
+
+epoch 115 
+
+
+
+loss before back = 0.838000
+
+ backwards pass ...
+
+
+
+loss after back = 0.834146
+
+epoch 116 
+
+
+
+loss before back = 0.834146
+
+ backwards pass ...
+
+
+
+loss after back = 0.830342
+
+epoch 117 
+
+
+
+loss before back = 0.830342
+
+ backwards pass ...
+
+
+
+loss after back = 0.826586
+
+epoch 118 
+
+
+
+loss before back = 0.826586
+
+ backwards pass ...
+
+
+
+loss after back = 0.822877
+
+epoch 119 
+
+
+
+loss before back = 0.822877
+
+ backwards pass ...
+
+
+
+loss after back = 0.819214
+
+epoch 120 
+
+
+
+loss before back = 0.819214
+
+ backwards pass ...
+
+
+
+loss after back = 0.815597
+
+epoch 121 
+
+
+
+loss before back = 0.815597
+
+ backwards pass ...
+
+
+
+loss after back = 0.812023
+
+epoch 122 
+
+
+
+loss before back = 0.812023
+
+ backwards pass ...
+
+
+
+loss after back = 0.808493
+
+epoch 123 
+
+
+
+loss before back = 0.808493
+
+ backwards pass ...
+
+
+
+loss after back = 0.805005
+
+epoch 124 
+
+
+
+loss before back = 0.805005
+
+ backwards pass ...
+
+
+
+loss after back = 0.801559
+
+epoch 125 
+
+
+
+loss before back = 0.801559
+
+ backwards pass ...
+
+
+
+loss after back = 0.798153
+
+epoch 126 
+
+
+
+loss before back = 0.798153
+
+ backwards pass ...
+
+
+
+loss after back = 0.794788
+
+epoch 127 
+
+
+
+loss before back = 0.794788
+
+ backwards pass ...
+
+
+
+loss after back = 0.791462
+
+epoch 128 
+
+
+
+loss before back = 0.791462
+
+ backwards pass ...
+
+
+
+loss after back = 0.788174
+
+epoch 129 
+
+
+
+loss before back = 0.788174
+
+ backwards pass ...
+
+
+
+loss after back = 0.784924
+
+epoch 130 
+
+
+
+loss before back = 0.784924
+
+ backwards pass ...
+
+
+
+loss after back = 0.781711
+
+epoch 131 
+
+
+
+loss before back = 0.781711
+
+ backwards pass ...
+
+
+
+loss after back = 0.778535
+
+epoch 132 
+
+
+
+loss before back = 0.778535
+
+ backwards pass ...
+
+
+
+loss after back = 0.775394
+
+epoch 133 
+
+
+
+loss before back = 0.775394
+
+ backwards pass ...
+
+
+
+loss after back = 0.772288
+
+epoch 134 
+
+
+
+loss before back = 0.772288
+
+ backwards pass ...
+
+
+
+loss after back = 0.769217
+
+epoch 135 
+
+
+
+loss before back = 0.769217
+
+ backwards pass ...
+
+
+
+loss after back = 0.766180
+
+epoch 136 
+
+
+
+loss before back = 0.766180
+
+ backwards pass ...
+
+
+
+loss after back = 0.763176
+
+epoch 137 
+
+
+
+loss before back = 0.763176
+
+ backwards pass ...
+
+
+
+loss after back = 0.760204
+
+epoch 138 
+
+
+
+loss before back = 0.760204
+
+ backwards pass ...
+
+
+
+loss after back = 0.757265
+
+epoch 139 
+
+
+
+loss before back = 0.757265
+
+ backwards pass ...
+
+
+
+loss after back = 0.754357
+
+epoch 140 
+
+
+
+loss before back = 0.754357
+
+ backwards pass ...
+
+
+
+loss after back = 0.751481
+
+epoch 141 
+
+
+
+loss before back = 0.751481
+
+ backwards pass ...
+
+
+
+loss after back = 0.748634
+
+epoch 142 
+
+
+
+loss before back = 0.748634
+
+ backwards pass ...
+
+
+
+loss after back = 0.745818
+
+epoch 143 
+
+
+
+loss before back = 0.745818
+
+ backwards pass ...
+
+
+
+loss after back = 0.743031
+
+epoch 144 
+
+
+
+loss before back = 0.743031
+
+ backwards pass ...
+
+
+
+loss after back = 0.740274
+
+epoch 145 
+
+
+
+loss before back = 0.740274
+
+ backwards pass ...
+
+
+
+loss after back = 0.737545
+
+epoch 146 
+
+
+
+loss before back = 0.737545
+
+ backwards pass ...
+
+
+
+loss after back = 0.734844
+
+epoch 147 
+
+
+
+loss before back = 0.734844
+
+ backwards pass ...
+
+
+
+loss after back = 0.732170
+
+epoch 148 
+
+
+
+loss before back = 0.732170
+
+ backwards pass ...
+
+
+
+loss after back = 0.729525
+
+epoch 149 
+
+
+
+loss before back = 0.729525
+
+ backwards pass ...
+
+
+
+loss after back = 0.726906
+
+epoch 150 
+
+
+
+loss before back = 0.726906
+
+ backwards pass ...
+
+
+
+loss after back = 0.724313
+
+epoch 151 
+
+
+
+loss before back = 0.724313
+
+ backwards pass ...
+
+
+
+loss after back = 0.721746
+
+epoch 152 
+
+
+
+loss before back = 0.721746
+
+ backwards pass ...
+
+
+
+loss after back = 0.719205
+
+epoch 153 
+
+
+
+loss before back = 0.719205
+
+ backwards pass ...
+
+
+
+loss after back = 0.716689
+
+epoch 154 
+
+
+
+loss before back = 0.716689
+
+ backwards pass ...
+
+
+
+loss after back = 0.714198
+
+epoch 155 
+
+
+
+loss before back = 0.714198
+
+ backwards pass ...
+
+
+
+loss after back = 0.711732
+
+epoch 156 
+
+
+
+loss before back = 0.711732
+
+ backwards pass ...
+
+
+
+loss after back = 0.709289
+
+epoch 157 
+
+
+
+loss before back = 0.709289
+
+ backwards pass ...
+
+
+
+loss after back = 0.706870
+
+epoch 158 
+
+
+
+loss before back = 0.706870
+
+ backwards pass ...
+
+
+
+loss after back = 0.704475
+
+epoch 159 
+
+
+
+loss before back = 0.704475
+
+ backwards pass ...
+
+
+
+loss after back = 0.702103
+
+epoch 160 
+
+
+
+loss before back = 0.702103
+
+ backwards pass ...
+
+
+
+loss after back = 0.699754
+
+epoch 161 
+
+
+
+loss before back = 0.699754
+
+ backwards pass ...
+
+
+
+loss after back = 0.697427
+
+epoch 162 
+
+
+
+loss before back = 0.697427
+
+ backwards pass ...
+
+
+
+loss after back = 0.695122
+
+epoch 163 
+
+
+
+loss before back = 0.695122
+
+ backwards pass ...
+
+
+
+loss after back = 0.692838
+
+epoch 164 
+
+
+
+loss before back = 0.692838
+
+ backwards pass ...
+
+
+
+loss after back = 0.690577
+
+epoch 165 
+
+
+
+loss before back = 0.690577
+
+ backwards pass ...
+
+
+
+loss after back = 0.688336
+
+epoch 166 
+
+
+
+loss before back = 0.688336
+
+ backwards pass ...
+
+
+
+loss after back = 0.686117
+
+epoch 167 
+
+
+
+loss before back = 0.686117
+
+ backwards pass ...
+
+
+
+loss after back = 0.683918
+
+epoch 168 
+
+
+
+loss before back = 0.683918
+
+ backwards pass ...
+
+
+
+loss after back = 0.681739
+
+epoch 169 
+
+
+
+loss before back = 0.681739
+
+ backwards pass ...
+
+
+
+loss after back = 0.679581
+
+epoch 170 
+
+
+
+loss before back = 0.679581
+
+ backwards pass ...
+
+
+
+loss after back = 0.677442
+
+epoch 171 
+
+
+
+loss before back = 0.677442
+
+ backwards pass ...
+
+
+
+loss after back = 0.675323
+
+epoch 172 
+
+
+
+loss before back = 0.675323
+
+ backwards pass ...
+
+
+
+loss after back = 0.673223
+
+epoch 173 
+
+
+
+loss before back = 0.673223
+
+ backwards pass ...
+
+
+
+loss after back = 0.671143
+
+epoch 174 
+
+
+
+loss before back = 0.671143
+
+ backwards pass ...
+
+
+
+loss after back = 0.669080
+
+epoch 175 
+
+
+
+loss before back = 0.669080
+
+ backwards pass ...
+
+
+
+loss after back = 0.667037
+
+epoch 176 
+
+
+
+loss before back = 0.667037
+
+ backwards pass ...
+
+
+
+loss after back = 0.665011
+
+epoch 177 
+
+
+
+loss before back = 0.665011
+
+ backwards pass ...
+
+
+
+loss after back = 0.663004
+
+epoch 178 
+
+
+
+loss before back = 0.663004
+
+ backwards pass ...
+
+
+
+loss after back = 0.661015
+
+epoch 179 
+
+
+
+loss before back = 0.661015
+
+ backwards pass ...
+
+
+
+loss after back = 0.659043
+
+epoch 180 
+
+
+
+loss before back = 0.659043
+
+ backwards pass ...
+
+
+
+loss after back = 0.657088
+
+epoch 181 
+
+
+
+loss before back = 0.657088
+
+ backwards pass ...
+
+
+
+loss after back = 0.655151
+
+epoch 182 
+
+
+
+loss before back = 0.655151
+
+ backwards pass ...
+
+
+
+loss after back = 0.653231
+
+epoch 183 
+
+
+
+loss before back = 0.653231
+
+ backwards pass ...
+
+
+
+loss after back = 0.651327
+
+epoch 184 
+
+
+
+loss before back = 0.651327
+
+ backwards pass ...
+
+
+
+loss after back = 0.649440
+
+epoch 185 
+
+
+
+loss before back = 0.649440
+
+ backwards pass ...
+
+
+
+loss after back = 0.647569
+
+epoch 186 
+
+
+
+loss before back = 0.647569
+
+ backwards pass ...
+
+
+
+loss after back = 0.645714
+
+epoch 187 
+
+
+
+loss before back = 0.645714
+
+ backwards pass ...
+
+
+
+loss after back = 0.643876
+
+epoch 188 
+
+
+
+loss before back = 0.643876
+
+ backwards pass ...
+
+
+
+loss after back = 0.642052
+
+epoch 189 
+
+
+
+loss before back = 0.642052
+
+ backwards pass ...
+
+
+
+loss after back = 0.640245
+
+epoch 190 
+
+
+
+loss before back = 0.640245
+
+ backwards pass ...
+
+
+
+loss after back = 0.638453
+
+epoch 191 
+
+
+
+loss before back = 0.638453
+
+ backwards pass ...
+
+
+
+loss after back = 0.636675
+
+epoch 192 
+
+
+
+loss before back = 0.636675
+
+ backwards pass ...
+
+
+
+loss after back = 0.634913
+
+epoch 193 
+
+
+
+loss before back = 0.634913
+
+ backwards pass ...
+
+
+
+loss after back = 0.633166
+
+epoch 194 
+
+
+
+loss before back = 0.633166
+
+ backwards pass ...
+
+
+
+loss after back = 0.631433
+
+epoch 195 
+
+
+
+loss before back = 0.631433
+
+ backwards pass ...
+
+
+
+loss after back = 0.629715
+
+epoch 196 
+
+
+
+loss before back = 0.629715
+
+ backwards pass ...
+
+
+
+loss after back = 0.628011
+
+epoch 197 
+
+
+
+loss before back = 0.628011
+
+ backwards pass ...
+
+
+
+loss after back = 0.626321
+
+epoch 198 
+
+
+
+loss before back = 0.626321
+
+ backwards pass ...
+
+
+
+loss after back = 0.624645
+
+epoch 199 
+
+
+
+loss before back = 0.624645
+
+ backwards pass ...
+
+
+
+loss after back = 0.622982
+
+epoch 200 
+
+
+
+loss before back = 0.622982
+
+ backwards pass ...
+
+
+
+loss after back = 0.621334
+
+epoch 201 
+
+
+
+loss before back = 0.621334
+
+ backwards pass ...
+
+
+
+loss after back = 0.619699
+
+epoch 202 
+
+
+
+loss before back = 0.619699
+
+ backwards pass ...
+
+
+
+loss after back = 0.618077
+
+epoch 203 
+
+
+
+loss before back = 0.618077
+
+ backwards pass ...
+
+
+
+loss after back = 0.616468
+
+epoch 204 
+
+
+
+loss before back = 0.616468
+
+ backwards pass ...
+
+
+
+loss after back = 0.614872
+
+epoch 205 
+
+
+
+loss before back = 0.614872
+
+ backwards pass ...
+
+
+
+loss after back = 0.613289
+
+epoch 206 
+
+
+
+loss before back = 0.613289
+
+ backwards pass ...
+
+
+
+loss after back = 0.611719
+
+epoch 207 
+
+
+
+loss before back = 0.611719
+
+ backwards pass ...
+
+
+
+loss after back = 0.610162
+
+epoch 208 
+
+
+
+loss before back = 0.610162
+
+ backwards pass ...
+
+
+
+loss after back = 0.608616
+
+epoch 209 
+
+
+
+loss before back = 0.608616
+
+ backwards pass ...
+
+
+
+loss after back = 0.607083
+
+epoch 210 
+
+
+
+loss before back = 0.607083
+
+ backwards pass ...
+
+
+
+loss after back = 0.605563
+
+epoch 211 
+
+
+
+loss before back = 0.605563
+
+ backwards pass ...
+
+
+
+loss after back = 0.604054
+
+epoch 212 
+
+
+
+loss before back = 0.604054
+
+ backwards pass ...
+
+
+
+loss after back = 0.602557
+
+epoch 213 
+
+
+
+loss before back = 0.602557
+
+ backwards pass ...
+
+
+
+loss after back = 0.601072
+
+epoch 214 
+
+
+
+loss before back = 0.601072
+
+ backwards pass ...
+
+
+
+loss after back = 0.599598
+
+epoch 215 
+
+
+
+loss before back = 0.599598
+
+ backwards pass ...
+
+
+
+loss after back = 0.598136
+
+epoch 216 
+
+
+
+loss before back = 0.598136
+
+ backwards pass ...
+
+
+
+loss after back = 0.596685
+
+epoch 217 
+
+
+
+loss before back = 0.596685
+
+ backwards pass ...
+
+
+
+loss after back = 0.595246
+
+epoch 218 
+
+
+
+loss before back = 0.595246
+
+ backwards pass ...
+
+
+
+loss after back = 0.593817
+
+epoch 219 
+
+
+
+loss before back = 0.593817
+
+ backwards pass ...
+
+
+
+loss after back = 0.592400
+
+epoch 220 
+
+
+
+loss before back = 0.592400
+
+ backwards pass ...
+
+
+
+loss after back = 0.590994
+
+epoch 221 
+
+
+
+loss before back = 0.590994
+
+ backwards pass ...
+
+
+
+loss after back = 0.589598
+
+epoch 222 
+
+
+
+loss before back = 0.589598
+
+ backwards pass ...
+
+
+
+loss after back = 0.588213
+
+epoch 223 
+
+
+
+loss before back = 0.588213
+
+ backwards pass ...
+
+
+
+loss after back = 0.586838
+
+epoch 224 
+
+
+
+loss before back = 0.586838
+
+ backwards pass ...
+
+
+
+loss after back = 0.585474
+
+epoch 225 
+
+
+
+loss before back = 0.585474
+
+ backwards pass ...
+
+
+
+loss after back = 0.584120
+
+epoch 226 
+
+
+
+loss before back = 0.584120
+
+ backwards pass ...
+
+
+
+loss after back = 0.582776
+
+epoch 227 
+
+
+
+loss before back = 0.582776
+
+ backwards pass ...
+
+
+
+loss after back = 0.581443
+
+epoch 228 
+
+
+
+loss before back = 0.581443
+
+ backwards pass ...
+
+
+
+loss after back = 0.580119
+
+epoch 229 
+
+
+
+loss before back = 0.580119
+
+ backwards pass ...
+
+
+
+loss after back = 0.578806
+
+epoch 230 
+
+
+
+loss before back = 0.578806
+
+ backwards pass ...
+
+
+
+loss after back = 0.577502
+
+epoch 231 
+
+
+
+loss before back = 0.577502
+
+ backwards pass ...
+
+
+
+loss after back = 0.576208
+
+epoch 232 
+
+
+
+loss before back = 0.576208
+
+ backwards pass ...
+
+
+
+loss after back = 0.574923
+
+epoch 233 
+
+
+
+loss before back = 0.574923
+
+ backwards pass ...
+
+
+
+loss after back = 0.573648
+
+epoch 234 
+
+
+
+loss before back = 0.573648
+
+ backwards pass ...
+
+
+
+loss after back = 0.572382
+
+epoch 235 
+
+
+
+loss before back = 0.572382
+
+ backwards pass ...
+
+
+
+loss after back = 0.571125
+
+epoch 236 
+
+
+
+loss before back = 0.571125
+
+ backwards pass ...
+
+
+
+loss after back = 0.569878
+
+epoch 237 
+
+
+
+loss before back = 0.569878
+
+ backwards pass ...
+
+
+
+loss after back = 0.568640
+
+epoch 238 
+
+
+
+loss before back = 0.568640
+
+ backwards pass ...
+
+
+
+loss after back = 0.567410
+
+epoch 239 
+
+
+
+loss before back = 0.567410
+
+ backwards pass ...
+
+
+
+loss after back = 0.566190
+
+epoch 240 
+
+
+
+loss before back = 0.566190
+
+ backwards pass ...
+
+
+
+loss after back = 0.564978
+
+epoch 241 
+
+
+
+loss before back = 0.564978
+
+ backwards pass ...
+
+
+
+loss after back = 0.563775
+
+epoch 242 
+
+
+
+loss before back = 0.563775
+
+ backwards pass ...
+
+
+
+loss after back = 0.562581
+
+epoch 243 
+
+
+
+loss before back = 0.562581
+
+ backwards pass ...
+
+
+
+loss after back = 0.561395
+
+epoch 244 
+
+
+
+loss before back = 0.561395
+
+ backwards pass ...
+
+
+
+loss after back = 0.560218
+
+epoch 245 
+
+
+
+loss before back = 0.560218
+
+ backwards pass ...
+
+
+
+loss after back = 0.559049
+
+epoch 246 
+
+
+
+loss before back = 0.559049
+
+ backwards pass ...
+
+
+
+loss after back = 0.557889
+
+epoch 247 
+
+
+
+loss before back = 0.557889
+
+ backwards pass ...
+
+
+
+loss after back = 0.556737
+
+epoch 248 
+
+
+
+loss before back = 0.556737
+
+ backwards pass ...
+
+
+
+loss after back = 0.555592
+
+epoch 249 
+
+
+
+loss before back = 0.555592
+
+ backwards pass ...
+
+
+
+loss after back = 0.554456
+
+epoch 250 
+
+
+
+loss before back = 0.554456
+
+ backwards pass ...
+
+
+
+loss after back = 0.553328
+
+epoch 251 
+
+
+
+loss before back = 0.553328
+
+ backwards pass ...
+
+
+
+loss after back = 0.552208
+
+epoch 252 
+
+
+
+loss before back = 0.552208
+
+ backwards pass ...
+
+
+
+loss after back = 0.551095
+
+epoch 253 
+
+
+
+loss before back = 0.551095
+
+ backwards pass ...
+
+
+
+loss after back = 0.549991
+
+epoch 254 
+
+
+
+loss before back = 0.549991
+
+ backwards pass ...
+
+
+
+loss after back = 0.548893
+
+epoch 255 
+
+
+
+loss before back = 0.548893
+
+ backwards pass ...
+
+
+
+loss after back = 0.547804
+
+epoch 256 
+
+
+
+loss before back = 0.547804
+
+ backwards pass ...
+
+
+
+loss after back = 0.546722
+
+epoch 257 
+
+
+
+loss before back = 0.546722
+
+ backwards pass ...
+
+
+
+loss after back = 0.545647
+
+epoch 258 
+
+
+
+loss before back = 0.545647
+
+ backwards pass ...
+
+
+
+loss after back = 0.544580
+
+epoch 259 
+
+
+
+loss before back = 0.544580
+
+ backwards pass ...
+
+
+
+loss after back = 0.543520
+
+epoch 260 
+
+
+
+loss before back = 0.543520
+
+ backwards pass ...
+
+
+
+loss after back = 0.542467
+
+epoch 261 
+
+
+
+loss before back = 0.542467
+
+ backwards pass ...
+
+
+
+loss after back = 0.541422
+
+epoch 262 
+
+
+
+loss before back = 0.541422
+
+ backwards pass ...
+
+
+
+loss after back = 0.540384
+
+epoch 263 
+
+
+
+loss before back = 0.540384
+
+ backwards pass ...
+
+
+
+loss after back = 0.539352
+
+epoch 264 
+
+
+
+loss before back = 0.539352
+
+ backwards pass ...
+
+
+
+loss after back = 0.538328
+
+epoch 265 
+
+
+
+loss before back = 0.538328
+
+ backwards pass ...
+
+
+
+loss after back = 0.537310
+
+epoch 266 
+
+
+
+loss before back = 0.537310
+
+ backwards pass ...
+
+
+
+loss after back = 0.536300
+
+epoch 267 
+
+
+
+loss before back = 0.536300
+
+ backwards pass ...
+
+
+
+loss after back = 0.535295
+
+epoch 268 
+
+
+
+loss before back = 0.535295
+
+ backwards pass ...
+
+
+
+loss after back = 0.534298
+
+epoch 269 
+
+
+
+loss before back = 0.534298
+
+ backwards pass ...
+
+
+
+loss after back = 0.533307
+
+epoch 270 
+
+
+
+loss before back = 0.533307
+
+ backwards pass ...
+
+
+
+loss after back = 0.532323
+
+epoch 271 
+
+
+
+loss before back = 0.532323
+
+ backwards pass ...
+
+
+
+loss after back = 0.531346
+
+epoch 272 
+
+
+
+loss before back = 0.531346
+
+ backwards pass ...
+
+
+
+loss after back = 0.530374
+
+epoch 273 
+
+
+
+loss before back = 0.530374
+
+ backwards pass ...
+
+
+
+loss after back = 0.529410
+
+epoch 274 
+
+
+
+loss before back = 0.529410
+
+ backwards pass ...
+
+
+
+loss after back = 0.528451
+
+epoch 275 
+
+
+
+loss before back = 0.528451
+
+ backwards pass ...
+
+
+
+loss after back = 0.527499
+
+epoch 276 
+
+
+
+loss before back = 0.527499
+
+ backwards pass ...
+
+
+
+loss after back = 0.526553
+
+epoch 277 
+
+
+
+loss before back = 0.526553
+
+ backwards pass ...
+
+
+
+loss after back = 0.525613
+
+epoch 278 
+
+
+
+loss before back = 0.525613
+
+ backwards pass ...
+
+
+
+loss after back = 0.524680
+
+epoch 279 
+
+
+
+loss before back = 0.524680
+
+ backwards pass ...
+
+
+
+loss after back = 0.523752
+
+epoch 280 
+
+
+
+loss before back = 0.523752
+
+ backwards pass ...
+
+
+
+loss after back = 0.522830
+
+epoch 281 
+
+
+
+loss before back = 0.522830
+
+ backwards pass ...
+
+
+
+loss after back = 0.521914
+
+epoch 282 
+
+
+
+loss before back = 0.521914
+
+ backwards pass ...
+
+
+
+loss after back = 0.521004
+
+epoch 283 
+
+
+
+loss before back = 0.521004
+
+ backwards pass ...
+
+
+
+loss after back = 0.520100
+
+epoch 284 
+
+
+
+loss before back = 0.520100
+
+ backwards pass ...
+
+
+
+loss after back = 0.519202
+
+epoch 285 
+
+
+
+loss before back = 0.519202
+
+ backwards pass ...
+
+
+
+loss after back = 0.518309
+
+epoch 286 
+
+
+
+loss before back = 0.518309
+
+ backwards pass ...
+
+
+
+loss after back = 0.517422
+
+epoch 287 
+
+
+
+loss before back = 0.517422
+
+ backwards pass ...
+
+
+
+loss after back = 0.516541
+
+epoch 288 
+
+
+
+loss before back = 0.516541
+
+ backwards pass ...
+
+
+
+loss after back = 0.515665
+
+epoch 289 
+
+
+
+loss before back = 0.515665
+
+ backwards pass ...
+
+
+
+loss after back = 0.514795
+
+epoch 290 
+
+
+
+loss before back = 0.514795
+
+ backwards pass ...
+
+
+
+loss after back = 0.513930
+
+epoch 291 
+
+
+
+loss before back = 0.513930
+
+ backwards pass ...
+
+
+
+loss after back = 0.513071
+
+epoch 292 
+
+
+
+loss before back = 0.513071
+
+ backwards pass ...
+
+
+
+loss after back = 0.512217
+
+epoch 293 
+
+
+
+loss before back = 0.512217
+
+ backwards pass ...
+
+
+
+loss after back = 0.511368
+
+epoch 294 
+
+
+
+loss before back = 0.511368
+
+ backwards pass ...
+
+
+
+loss after back = 0.510525
+
+epoch 295 
+
+
+
+loss before back = 0.510525
+
+ backwards pass ...
+
+
+
+loss after back = 0.509686
+
+epoch 296 
+
+
+
+loss before back = 0.509686
+
+ backwards pass ...
+
+
+
+loss after back = 0.508853
+
+epoch 297 
+
+
+
+loss before back = 0.508853
+
+ backwards pass ...
+
+
+
+loss after back = 0.508025
+
+epoch 298 
+
+
+
+loss before back = 0.508025
+
+ backwards pass ...
+
+
+
+loss after back = 0.507203
+
+epoch 299 
+
+
+
+loss before back = 0.507203
+
+ backwards pass ...
+
+
+
+loss after back = 0.506385
+
+epoch 300 
+
+
+
+loss before back = 0.506385
+
+ backwards pass ...
+
+
+
+loss after back = 0.505572
+
+epoch 301 
+
+
+
+loss before back = 0.505572
+
+ backwards pass ...
+
+
+
+loss after back = 0.504764
+
+epoch 302 
+
+
+
+loss before back = 0.504764
+
+ backwards pass ...
+
+
+
+loss after back = 0.503961
+
+epoch 303 
+
+
+
+loss before back = 0.503961
+
+ backwards pass ...
+
+
+
+loss after back = 0.503163
+
+epoch 304 
+
+
+
+loss before back = 0.503163
+
+ backwards pass ...
+
+
+
+loss after back = 0.502370
+
+epoch 305 
+
+
+
+loss before back = 0.502370
+
+ backwards pass ...
+
+
+
+loss after back = 0.501582
+
+epoch 306 
+
+
+
+loss before back = 0.501582
+
+ backwards pass ...
+
+
+
+loss after back = 0.500798
+
+epoch 307 
+
+
+
+loss before back = 0.500798
+
+ backwards pass ...
+
+
+
+loss after back = 0.500019
+
+epoch 308 
+
+
+
+loss before back = 0.500019
+
+ backwards pass ...
+
+
+
+loss after back = 0.499245
+
+epoch 309 
+
+
+
+loss before back = 0.499245
+
+ backwards pass ...
+
+
+
+loss after back = 0.498475
+
+epoch 310 
+
+
+
+loss before back = 0.498475
+
+ backwards pass ...
+
+
+
+loss after back = 0.497710
+
+epoch 311 
+
+
+
+loss before back = 0.497710
+
+ backwards pass ...
+
+
+
+loss after back = 0.496949
+
+epoch 312 
+
+
+
+loss before back = 0.496949
+
+ backwards pass ...
+
+
+
+loss after back = 0.496193
+
+epoch 313 
+
+
+
+loss before back = 0.496193
+
+ backwards pass ...
+
+
+
+loss after back = 0.495441
+
+epoch 314 
+
+
+
+loss before back = 0.495441
+
+ backwards pass ...
+
+
+
+loss after back = 0.494694
+
+epoch 315 
+
+
+
+loss before back = 0.494694
+
+ backwards pass ...
+
+
+
+loss after back = 0.493951
+
+epoch 316 
+
+
+
+loss before back = 0.493951
+
+ backwards pass ...
+
+
+
+loss after back = 0.493213
+
+epoch 317 
+
+
+
+loss before back = 0.493213
+
+ backwards pass ...
+
+
+
+loss after back = 0.492479
+
+epoch 318 
+
+
+
+loss before back = 0.492479
+
+ backwards pass ...
+
+
+
+loss after back = 0.491749
+
+epoch 319 
+
+
+
+loss before back = 0.491749
+
+ backwards pass ...
+
+
+
+loss after back = 0.491024
+
+epoch 320 
+
+
+
+loss before back = 0.491024
+
+ backwards pass ...
+
+
+
+loss after back = 0.490302
+
+epoch 321 
+
+
+
+loss before back = 0.490302
+
+ backwards pass ...
+
+
+
+loss after back = 0.489585
+
+epoch 322 
+
+
+
+loss before back = 0.489585
+
+ backwards pass ...
+
+
+
+loss after back = 0.488872
+
+epoch 323 
+
+
+
+loss before back = 0.488872
+
+ backwards pass ...
+
+
+
+loss after back = 0.488163
+
+epoch 324 
+
+
+
+loss before back = 0.488163
+
+ backwards pass ...
+
+
+
+loss after back = 0.487458
+
+epoch 325 
+
+
+
+loss before back = 0.487458
+
+ backwards pass ...
+
+
+
+loss after back = 0.486757
+
+epoch 326 
+
+
+
+loss before back = 0.486757
+
+ backwards pass ...
+
+
+
+loss after back = 0.486060
+
+epoch 327 
+
+
+
+loss before back = 0.486060
+
+ backwards pass ...
+
+
+
+loss after back = 0.485367
+
+epoch 328 
+
+
+
+loss before back = 0.485367
+
+ backwards pass ...
+
+
+
+loss after back = 0.484678
+
+epoch 329 
+
+
+
+loss before back = 0.484678
+
+ backwards pass ...
+
+
+
+loss after back = 0.483993
+
+epoch 330 
+
+
+
+loss before back = 0.483993
+
+ backwards pass ...
+
+
+
+loss after back = 0.483312
+
+epoch 331 
+
+
+
+loss before back = 0.483312
+
+ backwards pass ...
+
+
+
+loss after back = 0.482635
+
+epoch 332 
+
+
+
+loss before back = 0.482635
+
+ backwards pass ...
+
+
+
+loss after back = 0.481961
+
+epoch 333 
+
+
+
+loss before back = 0.481961
+
+ backwards pass ...
+
+
+
+loss after back = 0.481291
+
+epoch 334 
+
+
+
+loss before back = 0.481291
+
+ backwards pass ...
+
+
+
+loss after back = 0.480625
+
+epoch 335 
+
+
+
+loss before back = 0.480625
+
+ backwards pass ...
+
+
+
+loss after back = 0.479963
+
+epoch 336 
+
+
+
+loss before back = 0.479963
+
+ backwards pass ...
+
+
+
+loss after back = 0.479304
+
+epoch 337 
+
+
+
+loss before back = 0.479304
+
+ backwards pass ...
+
+
+
+loss after back = 0.478649
+
+epoch 338 
+
+
+
+loss before back = 0.478649
+
+ backwards pass ...
+
+
+
+loss after back = 0.477998
+
+epoch 339 
+
+
+
+loss before back = 0.477998
+
+ backwards pass ...
+
+
+
+loss after back = 0.477351
+
+epoch 340 
+
+
+
+loss before back = 0.477351
+
+ backwards pass ...
+
+
+
+loss after back = 0.476706
+
+epoch 341 
+
+
+
+loss before back = 0.476706
+
+ backwards pass ...
+
+
+
+loss after back = 0.476066
+
+epoch 342 
+
+
+
+loss before back = 0.476066
+
+ backwards pass ...
+
+
+
+loss after back = 0.475429
+
+epoch 343 
+
+
+
+loss before back = 0.475429
+
+ backwards pass ...
+
+
+
+loss after back = 0.474795
+
+epoch 344 
+
+
+
+loss before back = 0.474795
+
+ backwards pass ...
+
+
+
+loss after back = 0.474165
+
+epoch 345 
+
+
+
+loss before back = 0.474165
+
+ backwards pass ...
+
+
+
+loss after back = 0.473538
+
+epoch 346 
+
+
+
+loss before back = 0.473538
+
+ backwards pass ...
+
+
+
+loss after back = 0.472915
+
+epoch 347 
+
+
+
+loss before back = 0.472915
+
+ backwards pass ...
+
+
+
+loss after back = 0.472295
+
+epoch 348 
+
+
+
+loss before back = 0.472295
+
+ backwards pass ...
+
+
+
+loss after back = 0.471678
+
+epoch 349 
+
+
+
+loss before back = 0.471678
+
+ backwards pass ...
+
+
+
+loss after back = 0.471065
+
+epoch 350 
+
+
+
+loss before back = 0.471065
+
+ backwards pass ...
+
+
+
+loss after back = 0.470455
+
+epoch 351 
+
+
+
+loss before back = 0.470455
+
+ backwards pass ...
+
+
+
+loss after back = 0.469849
+
+epoch 352 
+
+
+
+loss before back = 0.469849
+
+ backwards pass ...
+
+
+
+loss after back = 0.469245
+
+epoch 353 
+
+
+
+loss before back = 0.469245
+
+ backwards pass ...
+
+
+
+loss after back = 0.468645
+
+epoch 354 
+
+
+
+loss before back = 0.468645
+
+ backwards pass ...
+
+
+
+loss after back = 0.468048
+
+epoch 355 
+
+
+
+loss before back = 0.468048
+
+ backwards pass ...
+
+
+
+loss after back = 0.467454
+
+epoch 356 
+
+
+
+loss before back = 0.467454
+
+ backwards pass ...
+
+
+
+loss after back = 0.466863
+
+epoch 357 
+
+
+
+loss before back = 0.466863
+
+ backwards pass ...
+
+
+
+loss after back = 0.466276
+
+epoch 358 
+
+
+
+loss before back = 0.466276
+
+ backwards pass ...
+
+
+
+loss after back = 0.465691
+
+epoch 359 
+
+
+
+loss before back = 0.465691
+
+ backwards pass ...
+
+
+
+loss after back = 0.465110
+
+epoch 360 
+
+
+
+loss before back = 0.465110
+
+ backwards pass ...
+
+
+
+loss after back = 0.464532
+
+epoch 361 
+
+
+
+loss before back = 0.464532
+
+ backwards pass ...
+
+
+
+loss after back = 0.463956
+
+epoch 362 
+
+
+
+loss before back = 0.463956
+
+ backwards pass ...
+
+
+
+loss after back = 0.463384
+
+epoch 363 
+
+
+
+loss before back = 0.463384
+
+ backwards pass ...
+
+
+
+loss after back = 0.462814
+
+epoch 364 
+
+
+
+loss before back = 0.462814
+
+ backwards pass ...
+
+
+
+loss after back = 0.462248
+
+epoch 365 
+
+
+
+loss before back = 0.462248
+
+ backwards pass ...
+
+
+
+loss after back = 0.461685
+
+epoch 366 
+
+
+
+loss before back = 0.461685
+
+ backwards pass ...
+
+
+
+loss after back = 0.461124
+
+epoch 367 
+
+
+
+loss before back = 0.461124
+
+ backwards pass ...
+
+
+
+loss after back = 0.460567
+
+epoch 368 
+
+
+
+loss before back = 0.460567
+
+ backwards pass ...
+
+
+
+loss after back = 0.460012
+
+epoch 369 
+
+
+
+loss before back = 0.460012
+
+ backwards pass ...
+
+
+
+loss after back = 0.459460
+
+epoch 370 
+
+
+
+loss before back = 0.459460
+
+ backwards pass ...
+
+
+
+loss after back = 0.458911
+
+epoch 371 
+
+
+
+loss before back = 0.458911
+
+ backwards pass ...
+
+
+
+loss after back = 0.458365
+
+epoch 372 
+
+
+
+loss before back = 0.458365
+
+ backwards pass ...
+
+
+
+loss after back = 0.457821
+
+epoch 373 
+
+
+
+loss before back = 0.457821
+
+ backwards pass ...
+
+
+
+loss after back = 0.457280
+
+epoch 374 
+
+
+
+loss before back = 0.457280
+
+ backwards pass ...
+
+
+
+loss after back = 0.456742
+
+epoch 375 
+
+
+
+loss before back = 0.456742
+
+ backwards pass ...
+
+
+
+loss after back = 0.456207
+
+epoch 376 
+
+
+
+loss before back = 0.456207
+
+ backwards pass ...
+
+
+
+loss after back = 0.455675
+
+epoch 377 
+
+
+
+loss before back = 0.455675
+
+ backwards pass ...
+
+
+
+loss after back = 0.455145
+
+epoch 378 
+
+
+
+loss before back = 0.455145
+
+ backwards pass ...
+
+
+
+loss after back = 0.454618
+
+epoch 379 
+
+
+
+loss before back = 0.454618
+
+ backwards pass ...
+
+
+
+loss after back = 0.454093
+
+epoch 380 
+
+
+
+loss before back = 0.454093
+
+ backwards pass ...
+
+
+
+loss after back = 0.453571
+
+epoch 381 
+
+
+
+loss before back = 0.453571
+
+ backwards pass ...
+
+
+
+loss after back = 0.453052
+
+epoch 382 
+
+
+
+loss before back = 0.453052
+
+ backwards pass ...
+
+
+
+loss after back = 0.452535
+
+epoch 383 
+
+
+
+loss before back = 0.452535
+
+ backwards pass ...
+
+
+
+loss after back = 0.452021
+
+epoch 384 
+
+
+
+loss before back = 0.452021
+
+ backwards pass ...
+
+
+
+loss after back = 0.451509
+
+epoch 385 
+
+
+
+loss before back = 0.451509
+
+ backwards pass ...
+
+
+
+loss after back = 0.451000
+
+epoch 386 
+
+
+
+loss before back = 0.451000
+
+ backwards pass ...
+
+
+
+loss after back = 0.450494
+
+epoch 387 
+
+
+
+loss before back = 0.450494
+
+ backwards pass ...
+
+
+
+loss after back = 0.449989
+
+epoch 388 
+
+
+
+loss before back = 0.449989
+
+ backwards pass ...
+
+
+
+loss after back = 0.449488
+
+epoch 389 
+
+
+
+loss before back = 0.449488
+
+ backwards pass ...
+
+
+
+loss after back = 0.448988
+
+epoch 390 
+
+
+
+loss before back = 0.448988
+
+ backwards pass ...
+
+
+
+loss after back = 0.448492
+
+epoch 391 
+
+
+
+loss before back = 0.448492
+
+ backwards pass ...
+
+
+
+loss after back = 0.447997
+
+epoch 392 
+
+
+
+loss before back = 0.447997
+
+ backwards pass ...
+
+
+
+loss after back = 0.447505
+
+epoch 393 
+
+
+
+loss before back = 0.447505
+
+ backwards pass ...
+
+
+
+loss after back = 0.447016
+
+epoch 394 
+
+
+
+loss before back = 0.447016
+
+ backwards pass ...
+
+
+
+loss after back = 0.446529
+
+epoch 395 
+
+
+
+loss before back = 0.446529
+
+ backwards pass ...
+
+
+
+loss after back = 0.446044
+
+epoch 396 
+
+
+
+loss before back = 0.446044
+
+ backwards pass ...
+
+
+
+loss after back = 0.445561
+
+epoch 397 
+
+
+
+loss before back = 0.445561
+
+ backwards pass ...
+
+
+
+loss after back = 0.445081
+
+epoch 398 
+
+
+
+loss before back = 0.445081
+
+ backwards pass ...
+
+
+
+loss after back = 0.444604
+
+epoch 399 
+
+
+
+loss before back = 0.444604
+
+ backwards pass ...
+
+
+
+loss after back = 0.444128
+
+epoch 400 
+
+
+
+loss before back = 0.444128
+
+ backwards pass ...
+
+
+
+loss after back = 0.443655
+
+epoch 401 
+
+
+
+loss before back = 0.443655
+
+ backwards pass ...
+
+
+
+loss after back = 0.443184
+
+epoch 402 
+
+
+
+loss before back = 0.443184
+
+ backwards pass ...
+
+
+
+loss after back = 0.442715
+
+epoch 403 
+
+
+
+loss before back = 0.442715
+
+ backwards pass ...
+
+
+
+loss after back = 0.442248
+
+epoch 404 
+
+
+
+loss before back = 0.442248
+
+ backwards pass ...
+
+
+
+loss after back = 0.441784
+
+epoch 405 
+
+
+
+loss before back = 0.441784
+
+ backwards pass ...
+
+
+
+loss after back = 0.441322
+
+epoch 406 
+
+
+
+loss before back = 0.441322
+
+ backwards pass ...
+
+
+
+loss after back = 0.440862
+
+epoch 407 
+
+
+
+loss before back = 0.440862
+
+ backwards pass ...
+
+
+
+loss after back = 0.440404
+
+epoch 408 
+
+
+
+loss before back = 0.440404
+
+ backwards pass ...
+
+
+
+loss after back = 0.439948
+
+epoch 409 
+
+
+
+loss before back = 0.439948
+
+ backwards pass ...
+
+
+
+loss after back = 0.439495
+
+epoch 410 
+
+
+
+loss before back = 0.439495
+
+ backwards pass ...
+
+
+
+loss after back = 0.439044
+
+epoch 411 
+
+
+
+loss before back = 0.439044
+
+ backwards pass ...
+
+
+
+loss after back = 0.438594
+
+epoch 412 
+
+
+
+loss before back = 0.438594
+
+ backwards pass ...
+
+
+
+loss after back = 0.438147
+
+epoch 413 
+
+
+
+loss before back = 0.438147
+
+ backwards pass ...
+
+
+
+loss after back = 0.437702
+
+epoch 414 
+
+
+
+loss before back = 0.437702
+
+ backwards pass ...
+
+
+
+loss after back = 0.437259
+
+epoch 415 
+
+
+
+loss before back = 0.437259
+
+ backwards pass ...
+
+
+
+loss after back = 0.436818
+
+epoch 416 
+
+
+
+loss before back = 0.436818
+
+ backwards pass ...
+
+
+
+loss after back = 0.436379
+
+epoch 417 
+
+
+
+loss before back = 0.436379
+
+ backwards pass ...
+
+
+
+loss after back = 0.435942
+
+epoch 418 
+
+
+
+loss before back = 0.435942
+
+ backwards pass ...
+
+
+
+loss after back = 0.435507
+
+epoch 419 
+
+
+
+loss before back = 0.435507
+
+ backwards pass ...
+
+
+
+loss after back = 0.435074
+
+epoch 420 
+
+
+
+loss before back = 0.435074
+
+ backwards pass ...
+
+
+
+loss after back = 0.434643
+
+epoch 421 
+
+
+
+loss before back = 0.434643
+
+ backwards pass ...
+
+
+
+loss after back = 0.434214
+
+epoch 422 
+
+
+
+loss before back = 0.434214
+
+ backwards pass ...
+
+
+
+loss after back = 0.433787
+
+epoch 423 
+
+
+
+loss before back = 0.433787
+
+ backwards pass ...
+
+
+
+loss after back = 0.433362
+
+epoch 424 
+
+
+
+loss before back = 0.433362
+
+ backwards pass ...
+
+
+
+loss after back = 0.432938
+
+epoch 425 
+
+
+
+loss before back = 0.432938
+
+ backwards pass ...
+
+
+
+loss after back = 0.432517
+
+epoch 426 
+
+
+
+loss before back = 0.432517
+
+ backwards pass ...
+
+
+
+loss after back = 0.432098
+
+epoch 427 
+
+
+
+loss before back = 0.432098
+
+ backwards pass ...
+
+
+
+loss after back = 0.431680
+
+epoch 428 
+
+
+
+loss before back = 0.431680
+
+ backwards pass ...
+
+
+
+loss after back = 0.431265
+
+epoch 429 
+
+
+
+loss before back = 0.431265
+
+ backwards pass ...
+
+
+
+loss after back = 0.430851
+
+epoch 430 
+
+
+
+loss before back = 0.430851
+
+ backwards pass ...
+
+
+
+loss after back = 0.430439
+
+epoch 431 
+
+
+
+loss before back = 0.430439
+
+ backwards pass ...
+
+
+
+loss after back = 0.430028
+
+epoch 432 
+
+
+
+loss before back = 0.430028
+
+ backwards pass ...
+
+
+
+loss after back = 0.429620
+
+epoch 433 
+
+
+
+loss before back = 0.429620
+
+ backwards pass ...
+
+
+
+loss after back = 0.429214
+
+epoch 434 
+
+
+
+loss before back = 0.429214
+
+ backwards pass ...
+
+
+
+loss after back = 0.428809
+
+epoch 435 
+
+
+
+loss before back = 0.428809
+
+ backwards pass ...
+
+
+
+loss after back = 0.428406
+
+epoch 436 
+
+
+
+loss before back = 0.428406
+
+ backwards pass ...
+
+
+
+loss after back = 0.428005
+
+epoch 437 
+
+
+
+loss before back = 0.428005
+
+ backwards pass ...
+
+
+
+loss after back = 0.427606
+
+epoch 438 
+
+
+
+loss before back = 0.427606
+
+ backwards pass ...
+
+
+
+loss after back = 0.427208
+
+epoch 439 
+
+
+
+loss before back = 0.427208
+
+ backwards pass ...
+
+
+
+loss after back = 0.426812
+
+epoch 440 
+
+
+
+loss before back = 0.426812
+
+ backwards pass ...
+
+
+
+loss after back = 0.426418
+
+epoch 441 
+
+
+
+loss before back = 0.426418
+
+ backwards pass ...
+
+
+
+loss after back = 0.426026
+
+epoch 442 
+
+
+
+loss before back = 0.426026
+
+ backwards pass ...
+
+
+
+loss after back = 0.425635
+
+epoch 443 
+
+
+
+loss before back = 0.425635
+
+ backwards pass ...
+
+
+
+loss after back = 0.425246
+
+epoch 444 
+
+
+
+loss before back = 0.425246
+
+ backwards pass ...
+
+
+
+loss after back = 0.424859
+
+epoch 445 
+
+
+
+loss before back = 0.424859
+
+ backwards pass ...
+
+
+
+loss after back = 0.424473
+
+epoch 446 
+
+
+
+loss before back = 0.424473
+
+ backwards pass ...
+
+
+
+loss after back = 0.424090
+
+epoch 447 
+
+
+
+loss before back = 0.424090
+
+ backwards pass ...
+
+
+
+loss after back = 0.423707
+
+epoch 448 
+
+
+
+loss before back = 0.423707
+
+ backwards pass ...
+
+
+
+loss after back = 0.423326
+
+epoch 449 
+
+
+
+loss before back = 0.423326
+
+ backwards pass ...
+
+
+
+loss after back = 0.422947
+
+epoch 450 
+
+
+
+loss before back = 0.422947
+
+ backwards pass ...
+
+
+
+loss after back = 0.422570
+
+epoch 451 
+
+
+
+loss before back = 0.422570
+
+ backwards pass ...
+
+
+
+loss after back = 0.422194
+
+epoch 452 
+
+
+
+loss before back = 0.422194
+
+ backwards pass ...
+
+
+
+loss after back = 0.421820
+
+epoch 453 
+
+
+
+loss before back = 0.421820
+
+ backwards pass ...
+
+
+
+loss after back = 0.421447
+
+epoch 454 
+
+
+
+loss before back = 0.421447
+
+ backwards pass ...
+
+
+
+loss after back = 0.421077
+
+epoch 455 
+
+
+
+loss before back = 0.421077
+
+ backwards pass ...
+
+
+
+loss after back = 0.420707
+
+epoch 456 
+
+
+
+loss before back = 0.420707
+
+ backwards pass ...
+
+
+
+loss after back = 0.420339
+
+epoch 457 
+
+
+
+loss before back = 0.420339
+
+ backwards pass ...
+
+
+
+loss after back = 0.419973
+
+epoch 458 
+
+
+
+loss before back = 0.419973
+
+ backwards pass ...
+
+
+
+loss after back = 0.419608
+
+epoch 459 
+
+
+
+loss before back = 0.419608
+
+ backwards pass ...
+
+
+
+loss after back = 0.419245
+
+epoch 460 
+
+
+
+loss before back = 0.419245
+
+ backwards pass ...
+
+
+
+loss after back = 0.418883
+
+epoch 461 
+
+
+
+loss before back = 0.418883
+
+ backwards pass ...
+
+
+
+loss after back = 0.418523
+
+epoch 462 
+
+
+
+loss before back = 0.418523
+
+ backwards pass ...
+
+
+
+loss after back = 0.418164
+
+epoch 463 
+
+
+
+loss before back = 0.418164
+
+ backwards pass ...
+
+
+
+loss after back = 0.417807
+
+epoch 464 
+
+
+
+loss before back = 0.417807
+
+ backwards pass ...
+
+
+
+loss after back = 0.417452
+
+epoch 465 
+
+
+
+loss before back = 0.417452
+
+ backwards pass ...
+
+
+
+loss after back = 0.417097
+
+epoch 466 
+
+
+
+loss before back = 0.417097
+
+ backwards pass ...
+
+
+
+loss after back = 0.416744
+
+epoch 467 
+
+
+
+loss before back = 0.416744
+
+ backwards pass ...
+
+
+
+loss after back = 0.416393
+
+epoch 468 
+
+
+
+loss before back = 0.416393
+
+ backwards pass ...
+
+
+
+loss after back = 0.416043
+
+epoch 469 
+
+
+
+loss before back = 0.416043
+
+ backwards pass ...
+
+
+
+loss after back = 0.415695
+
+epoch 470 
+
+
+
+loss before back = 0.415695
+
+ backwards pass ...
+
+
+
+loss after back = 0.415348
+
+epoch 471 
+
+
+
+loss before back = 0.415348
+
+ backwards pass ...
+
+
+
+loss after back = 0.415002
+
+epoch 472 
+
+
+
+loss before back = 0.415002
+
+ backwards pass ...
+
+
+
+loss after back = 0.414658
+
+epoch 473 
+
+
+
+loss before back = 0.414658
+
+ backwards pass ...
+
+
+
+loss after back = 0.414315
+
+epoch 474 
+
+
+
+loss before back = 0.414315
+
+ backwards pass ...
+
+
+
+loss after back = 0.413974
+
+epoch 475 
+
+
+
+loss before back = 0.413974
+
+ backwards pass ...
+
+
+
+loss after back = 0.413634
+
+epoch 476 
+
+
+
+loss before back = 0.413634
+
+ backwards pass ...
+
+
+
+loss after back = 0.413295
+
+epoch 477 
+
+
+
+loss before back = 0.413295
+
+ backwards pass ...
+
+
+
+loss after back = 0.412958
+
+epoch 478 
+
+
+
+loss before back = 0.412958
+
+ backwards pass ...
+
+
+
+loss after back = 0.412622
+
+epoch 479 
+
+
+
+loss before back = 0.412622
+
+ backwards pass ...
+
+
+
+loss after back = 0.412288
+
+epoch 480 
+
+
+
+loss before back = 0.412288
+
+ backwards pass ...
+
+
+
+loss after back = 0.411955
+
+epoch 481 
+
+
+
+loss before back = 0.411955
+
+ backwards pass ...
+
+
+
+loss after back = 0.411623
+
+epoch 482 
+
+
+
+loss before back = 0.411623
+
+ backwards pass ...
+
+
+
+loss after back = 0.411293
+
+epoch 483 
+
+
+
+loss before back = 0.411293
+
+ backwards pass ...
+
+
+
+loss after back = 0.410963
+
+epoch 484 
+
+
+
+loss before back = 0.410963
+
+ backwards pass ...
+
+
+
+loss after back = 0.410636
+
+epoch 485 
+
+
+
+loss before back = 0.410636
+
+ backwards pass ...
+
+
+
+loss after back = 0.410309
+
+epoch 486 
+
+
+
+loss before back = 0.410309
+
+ backwards pass ...
+
+
+
+loss after back = 0.409984
+
+epoch 487 
+
+
+
+loss before back = 0.409984
+
+ backwards pass ...
+
+
+
+loss after back = 0.409660
+
+epoch 488 
+
+
+
+loss before back = 0.409660
+
+ backwards pass ...
+
+
+
+loss after back = 0.409337
+
+epoch 489 
+
+
+
+loss before back = 0.409337
+
+ backwards pass ...
+
+
+
+loss after back = 0.409016
+
+epoch 490 
+
+
+
+loss before back = 0.409016
+
+ backwards pass ...
+
+
+
+loss after back = 0.408696
+
+epoch 491 
+
+
+
+loss before back = 0.408696
+
+ backwards pass ...
+
+
+
+loss after back = 0.408377
+
+epoch 492 
+
+
+
+loss before back = 0.408377
+
+ backwards pass ...
+
+
+
+loss after back = 0.408060
+
+epoch 493 
+
+
+
+loss before back = 0.408060
+
+ backwards pass ...
+
+
+
+loss after back = 0.407744
+
+epoch 494 
+
+
+
+loss before back = 0.407744
+
+ backwards pass ...
+
+
+
+loss after back = 0.407428
+
+epoch 495 
+
+
+
+loss before back = 0.407428
+
+ backwards pass ...
+
+
+
+loss after back = 0.407115
+
+epoch 496 
+
+
+
+loss before back = 0.407115
+
+ backwards pass ...
+
+
+
+loss after back = 0.406802
+
+epoch 497 
+
+
+
+loss before back = 0.406802
+
+ backwards pass ...
+
+
+
+loss after back = 0.406491
+
+epoch 498 
+
+
+
+loss before back = 0.406491
+
+ backwards pass ...
+
+
+
+loss after back = 0.406180
+
+epoch 499 
+
+
+
+loss before back = 0.406180
+
+ backwards pass ...
+
+
+
+loss after back = 0.405871
+
+epoch 500 
+
+
+
+loss before back = 0.405871
+
+ backwards pass ...
+
+
+
+loss after back = 0.405564
+
+epoch 501 
+
+
+
+loss before back = 0.405564
+
+ backwards pass ...
+
+
+
+loss after back = 0.405257
+
+epoch 502 
+
+
+
+loss before back = 0.405257
+
+ backwards pass ...
+
+
+
+loss after back = 0.404952
+
+epoch 503 
+
+
+
+loss before back = 0.404952
+
+ backwards pass ...
+
+
+
+loss after back = 0.404647
+
+epoch 504 
+
+
+
+loss before back = 0.404647
+
+ backwards pass ...
+
+
+
+loss after back = 0.404344
+
+epoch 505 
+
+
+
+loss before back = 0.404344
+
+ backwards pass ...
+
+
+
+loss after back = 0.404042
+
+epoch 506 
+
+
+
+loss before back = 0.404042
+
+ backwards pass ...
+
+
+
+loss after back = 0.403742
+
+epoch 507 
+
+
+
+loss before back = 0.403742
+
+ backwards pass ...
+
+
+
+loss after back = 0.403442
+
+epoch 508 
+
+
+
+loss before back = 0.403442
+
+ backwards pass ...
+
+
+
+loss after back = 0.403144
+
+epoch 509 
+
+
+
+loss before back = 0.403144
+
+ backwards pass ...
+
+
+
+loss after back = 0.402846
+
+epoch 510 
+
+
+
+loss before back = 0.402846
+
+ backwards pass ...
+
+
+
+loss after back = 0.402550
+
+epoch 511 
+
+
+
+loss before back = 0.402550
+
+ backwards pass ...
+
+
+
+loss after back = 0.402255
+
+epoch 512 
+
+
+
+loss before back = 0.402255
+
+ backwards pass ...
+
+
+
+loss after back = 0.401961
+
+epoch 513 
+
+
+
+loss before back = 0.401961
+
+ backwards pass ...
+
+
+
+loss after back = 0.401668
+
+epoch 514 
+
+
+
+loss before back = 0.401668
+
+ backwards pass ...
+
+
+
+loss after back = 0.401377
+
+epoch 515 
+
+
+
+loss before back = 0.401377
+
+ backwards pass ...
+
+
+
+loss after back = 0.401086
+
+epoch 516 
+
+
+
+loss before back = 0.401086
+
+ backwards pass ...
+
+
+
+loss after back = 0.400797
+
+epoch 517 
+
+
+
+loss before back = 0.400797
+
+ backwards pass ...
+
+
+
+loss after back = 0.400508
+
+epoch 518 
+
+
+
+loss before back = 0.400508
+
+ backwards pass ...
+
+
+
+loss after back = 0.400221
+
+epoch 519 
+
+
+
+loss before back = 0.400221
+
+ backwards pass ...
+
+
+
+loss after back = 0.399935
+
+epoch 520 
+
+
+
+loss before back = 0.399935
+
+ backwards pass ...
+
+
+
+loss after back = 0.399650
+
+epoch 521 
+
+
+
+loss before back = 0.399650
+
+ backwards pass ...
+
+
+
+loss after back = 0.399365
+
+epoch 522 
+
+
+
+loss before back = 0.399365
+
+ backwards pass ...
+
+
+
+loss after back = 0.399082
+
+epoch 523 
+
+
+
+loss before back = 0.399082
+
+ backwards pass ...
+
+
+
+loss after back = 0.398800
+
+epoch 524 
+
+
+
+loss before back = 0.398800
+
+ backwards pass ...
+
+
+
+loss after back = 0.398519
+
+epoch 525 
+
+
+
+loss before back = 0.398519
+
+ backwards pass ...
+
+
+
+loss after back = 0.398239
+
+epoch 526 
+
+
+
+loss before back = 0.398239
+
+ backwards pass ...
+
+
+
+loss after back = 0.397960
+
+epoch 527 
+
+
+
+loss before back = 0.397960
+
+ backwards pass ...
+
+
+
+loss after back = 0.397683
+
+epoch 528 
+
+
+
+loss before back = 0.397683
+
+ backwards pass ...
+
+
+
+loss after back = 0.397406
+
+epoch 529 
+
+
+
+loss before back = 0.397406
+
+ backwards pass ...
+
+
+
+loss after back = 0.397130
+
+epoch 530 
+
+
+
+loss before back = 0.397130
+
+ backwards pass ...
+
+
+
+loss after back = 0.396855
+
+epoch 531 
+
+
+
+loss before back = 0.396855
+
+ backwards pass ...
+
+
+
+loss after back = 0.396581
+
+epoch 532 
+
+
+
+loss before back = 0.396581
+
+ backwards pass ...
+
+
+
+loss after back = 0.396309
+
+epoch 533 
+
+
+
+loss before back = 0.396309
+
+ backwards pass ...
+
+
+
+loss after back = 0.396037
+
+epoch 534 
+
+
+
+loss before back = 0.396037
+
+ backwards pass ...
+
+
+
+loss after back = 0.395766
+
+epoch 535 
+
+
+
+loss before back = 0.395766
+
+ backwards pass ...
+
+
+
+loss after back = 0.395496
+
+epoch 536 
+
+
+
+loss before back = 0.395496
+
+ backwards pass ...
+
+
+
+loss after back = 0.395227
+
+epoch 537 
+
+
+
+loss before back = 0.395227
+
+ backwards pass ...
+
+
+
+loss after back = 0.394959
+
+epoch 538 
+
+
+
+loss before back = 0.394959
+
+ backwards pass ...
+
+
+
+loss after back = 0.394692
+
+epoch 539 
+
+
+
+loss before back = 0.394692
+
+ backwards pass ...
+
+
+
+loss after back = 0.394426
+
+epoch 540 
+
+
+
+loss before back = 0.394426
+
+ backwards pass ...
+
+
+
+loss after back = 0.394161
+
+epoch 541 
+
+
+
+loss before back = 0.394161
+
+ backwards pass ...
+
+
+
+loss after back = 0.393897
+
+epoch 542 
+
+
+
+loss before back = 0.393897
+
+ backwards pass ...
+
+
+
+loss after back = 0.393634
+
+epoch 543 
+
+
+
+loss before back = 0.393634
+
+ backwards pass ...
+
+
+
+loss after back = 0.393372
+
+epoch 544 
+
+
+
+loss before back = 0.393372
+
+ backwards pass ...
+
+
+
+loss after back = 0.393111
+
+epoch 545 
+
+
+
+loss before back = 0.393111
+
+ backwards pass ...
+
+
+
+loss after back = 0.392851
+
+epoch 546 
+
+
+
+loss before back = 0.392851
+
+ backwards pass ...
+
+
+
+loss after back = 0.392591
+
+epoch 547 
+
+
+
+loss before back = 0.392591
+
+ backwards pass ...
+
+
+
+loss after back = 0.392333
+
+epoch 548 
+
+
+
+loss before back = 0.392333
+
+ backwards pass ...
+
+
+
+loss after back = 0.392075
+
+epoch 549 
+
+
+
+loss before back = 0.392075
+
+ backwards pass ...
+
+
+
+loss after back = 0.391819
+
+epoch 550 
+
+
+
+loss before back = 0.391819
+
+ backwards pass ...
+
+
+
+loss after back = 0.391563
+
+epoch 551 
+
+
+
+loss before back = 0.391563
+
+ backwards pass ...
+
+
+
+loss after back = 0.391308
+
+epoch 552 
+
+
+
+loss before back = 0.391308
+
+ backwards pass ...
+
+
+
+loss after back = 0.391055
+
+epoch 553 
+
+
+
+loss before back = 0.391055
+
+ backwards pass ...
+
+
+
+loss after back = 0.390801
+
+epoch 554 
+
+
+
+loss before back = 0.390801
+
+ backwards pass ...
+
+
+
+loss after back = 0.390549
+
+epoch 555 
+
+
+
+loss before back = 0.390549
+
+ backwards pass ...
+
+
+
+loss after back = 0.390298
+
+epoch 556 
+
+
+
+loss before back = 0.390298
+
+ backwards pass ...
+
+
+
+loss after back = 0.390048
+
+epoch 557 
+
+
+
+loss before back = 0.390048
+
+ backwards pass ...
+
+
+
+loss after back = 0.389798
+
+epoch 558 
+
+
+
+loss before back = 0.389798
+
+ backwards pass ...
+
+
+
+loss after back = 0.389550
+
+epoch 559 
+
+
+
+loss before back = 0.389550
+
+ backwards pass ...
+
+
+
+loss after back = 0.389302
+
+epoch 560 
+
+
+
+loss before back = 0.389302
+
+ backwards pass ...
+
+
+
+loss after back = 0.389055
+
+epoch 561 
+
+
+
+loss before back = 0.389055
+
+ backwards pass ...
+
+
+
+loss after back = 0.388809
+
+epoch 562 
+
+
+
+loss before back = 0.388809
+
+ backwards pass ...
+
+
+
+loss after back = 0.388564
+
+epoch 563 
+
+
+
+loss before back = 0.388564
+
+ backwards pass ...
+
+
+
+loss after back = 0.388320
+
+epoch 564 
+
+
+
+loss before back = 0.388320
+
+ backwards pass ...
+
+
+
+loss after back = 0.388077
+
+epoch 565 
+
+
+
+loss before back = 0.388077
+
+ backwards pass ...
+
+
+
+loss after back = 0.387834
+
+epoch 566 
+
+
+
+loss before back = 0.387834
+
+ backwards pass ...
+
+
+
+loss after back = 0.387592
+
+epoch 567 
+
+
+
+loss before back = 0.387592
+
+ backwards pass ...
+
+
+
+loss after back = 0.387351
+
+epoch 568 
+
+
+
+loss before back = 0.387351
+
+ backwards pass ...
+
+
+
+loss after back = 0.387111
+
+epoch 569 
+
+
+
+loss before back = 0.387111
+
+ backwards pass ...
+
+
+
+loss after back = 0.386872
+
+epoch 570 
+
+
+
+loss before back = 0.386872
+
+ backwards pass ...
+
+
+
+loss after back = 0.386633
+
+epoch 571 
+
+
+
+loss before back = 0.386633
+
+ backwards pass ...
+
+
+
+loss after back = 0.386396
+
+epoch 572 
+
+
+
+loss before back = 0.386396
+
+ backwards pass ...
+
+
+
+loss after back = 0.386159
+
+epoch 573 
+
+
+
+loss before back = 0.386159
+
+ backwards pass ...
+
+
+
+loss after back = 0.385923
+
+epoch 574 
+
+
+
+loss before back = 0.385923
+
+ backwards pass ...
+
+
+
+loss after back = 0.385688
+
+epoch 575 
+
+
+
+loss before back = 0.385688
+
+ backwards pass ...
+
+
+
+loss after back = 0.385453
+
+epoch 576 
+
+
+
+loss before back = 0.385453
+
+ backwards pass ...
+
+
+
+loss after back = 0.385219
+
+epoch 577 
+
+
+
+loss before back = 0.385219
+
+ backwards pass ...
+
+
+
+loss after back = 0.384987
+
+epoch 578 
+
+
+
+loss before back = 0.384987
+
+ backwards pass ...
+
+
+
+loss after back = 0.384754
+
+epoch 579 
+
+
+
+loss before back = 0.384754
+
+ backwards pass ...
+
+
+
+loss after back = 0.384523
+
+epoch 580 
+
+
+
+loss before back = 0.384523
+
+ backwards pass ...
+
+
+
+loss after back = 0.384293
+
+epoch 581 
+
+
+
+loss before back = 0.384293
+
+ backwards pass ...
+
+
+
+loss after back = 0.384063
+
+epoch 582 
+
+
+
+loss before back = 0.384063
+
+ backwards pass ...
+
+
+
+loss after back = 0.383834
+
+epoch 583 
+
+
+
+loss before back = 0.383834
+
+ backwards pass ...
+
+
+
+loss after back = 0.383606
+
+epoch 584 
+
+
+
+loss before back = 0.383606
+
+ backwards pass ...
+
+
+
+loss after back = 0.383379
+
+epoch 585 
+
+
+
+loss before back = 0.383379
+
+ backwards pass ...
+
+
+
+loss after back = 0.383152
+
+epoch 586 
+
+
+
+loss before back = 0.383152
+
+ backwards pass ...
+
+
+
+loss after back = 0.382926
+
+epoch 587 
+
+
+
+loss before back = 0.382926
+
+ backwards pass ...
+
+
+
+loss after back = 0.382701
+
+epoch 588 
+
+
+
+loss before back = 0.382701
+
+ backwards pass ...
+
+
+
+loss after back = 0.382476
+
+epoch 589 
+
+
+
+loss before back = 0.382476
+
+ backwards pass ...
+
+
+
+loss after back = 0.382253
+
+epoch 590 
+
+
+
+loss before back = 0.382253
+
+ backwards pass ...
+
+
+
+loss after back = 0.382030
+
+epoch 591 
+
+
+
+loss before back = 0.382030
+
+ backwards pass ...
+
+
+
+loss after back = 0.381808
+
+epoch 592 
+
+
+
+loss before back = 0.381808
+
+ backwards pass ...
+
+
+
+loss after back = 0.381586
+
+epoch 593 
+
+
+
+loss before back = 0.381586
+
+ backwards pass ...
+
+
+
+loss after back = 0.381366
+
+epoch 594 
+
+
+
+loss before back = 0.381366
+
+ backwards pass ...
+
+
+
+loss after back = 0.381145
+
+epoch 595 
+
+
+
+loss before back = 0.381145
+
+ backwards pass ...
+
+
+
+loss after back = 0.380926
+
+epoch 596 
+
+
+
+loss before back = 0.380926
+
+ backwards pass ...
+
+
+
+loss after back = 0.380708
+
+epoch 597 
+
+
+
+loss before back = 0.380708
+
+ backwards pass ...
+
+
+
+loss after back = 0.380490
+
+epoch 598 
+
+
+
+loss before back = 0.380490
+
+ backwards pass ...
+
+
+
+loss after back = 0.380273
+
+epoch 599 
+
+
+
+loss before back = 0.380273
+
+ backwards pass ...
+
+
+
+loss after back = 0.380056
+
+epoch 600 
+
+
+
+loss before back = 0.380056
+
+ backwards pass ...
+
+
+
+loss after back = 0.379840
+
+epoch 601 
+
+
+
+loss before back = 0.379840
+
+ backwards pass ...
+
+
+
+loss after back = 0.379625
+
+epoch 602 
+
+
+
+loss before back = 0.379625
+
+ backwards pass ...
+
+
+
+loss after back = 0.379411
+
+epoch 603 
+
+
+
+loss before back = 0.379411
+
+ backwards pass ...
+
+
+
+loss after back = 0.379198
+
+epoch 604 
+
+
+
+loss before back = 0.379198
+
+ backwards pass ...
+
+
+
+loss after back = 0.378985
+
+epoch 605 
+
+
+
+loss before back = 0.378985
+
+ backwards pass ...
+
+
+
+loss after back = 0.378772
+
+epoch 606 
+
+
+
+loss before back = 0.378772
+
+ backwards pass ...
+
+
+
+loss after back = 0.378561
+
+epoch 607 
+
+
+
+loss before back = 0.378561
+
+ backwards pass ...
+
+
+
+loss after back = 0.378350
+
+epoch 608 
+
+
+
+loss before back = 0.378350
+
+ backwards pass ...
+
+
+
+loss after back = 0.378140
+
+epoch 609 
+
+
+
+loss before back = 0.378140
+
+ backwards pass ...
+
+
+
+loss after back = 0.377930
+
+epoch 610 
+
+
+
+loss before back = 0.377930
+
+ backwards pass ...
+
+
+
+loss after back = 0.377721
+
+epoch 611 
+
+
+
+loss before back = 0.377721
+
+ backwards pass ...
+
+
+
+loss after back = 0.377513
+
+epoch 612 
+
+
+
+loss before back = 0.377513
+
+ backwards pass ...
+
+
+
+loss after back = 0.377306
+
+epoch 613 
+
+
+
+loss before back = 0.377306
+
+ backwards pass ...
+
+
+
+loss after back = 0.377099
+
+epoch 614 
+
+
+
+loss before back = 0.377099
+
+ backwards pass ...
+
+
+
+loss after back = 0.376893
+
+epoch 615 
+
+
+
+loss before back = 0.376893
+
+ backwards pass ...
+
+
+
+loss after back = 0.376687
+
+epoch 616 
+
+
+
+loss before back = 0.376687
+
+ backwards pass ...
+
+
+
+loss after back = 0.376482
+
+epoch 617 
+
+
+
+loss before back = 0.376482
+
+ backwards pass ...
+
+
+
+loss after back = 0.376278
+
+epoch 618 
+
+
+
+loss before back = 0.376278
+
+ backwards pass ...
+
+
+
+loss after back = 0.376075
+
+epoch 619 
+
+
+
+loss before back = 0.376075
+
+ backwards pass ...
+
+
+
+loss after back = 0.375872
+
+epoch 620 
+
+
+
+loss before back = 0.375872
+
+ backwards pass ...
+
+
+
+loss after back = 0.375669
+
+epoch 621 
+
+
+
+loss before back = 0.375669
+
+ backwards pass ...
+
+
+
+loss after back = 0.375468
+
+epoch 622 
+
+
+
+loss before back = 0.375468
+
+ backwards pass ...
+
+
+
+loss after back = 0.375267
+
+epoch 623 
+
+
+
+loss before back = 0.375267
+
+ backwards pass ...
+
+
+
+loss after back = 0.375066
+
+epoch 624 
+
+
+
+loss before back = 0.375066
+
+ backwards pass ...
+
+
+
+loss after back = 0.374867
+
+epoch 625 
+
+
+
+loss before back = 0.374867
+
+ backwards pass ...
+
+
+
+loss after back = 0.374667
+
+epoch 626 
+
+
+
+loss before back = 0.374667
+
+ backwards pass ...
+
+
+
+loss after back = 0.374469
+
+epoch 627 
+
+
+
+loss before back = 0.374469
+
+ backwards pass ...
+
+
+
+loss after back = 0.374271
+
+epoch 628 
+
+
+
+loss before back = 0.374271
+
+ backwards pass ...
+
+
+
+loss after back = 0.374074
+
+epoch 629 
+
+
+
+loss before back = 0.374074
+
+ backwards pass ...
+
+
+
+loss after back = 0.373877
+
+epoch 630 
+
+
+
+loss before back = 0.373877
+
+ backwards pass ...
+
+
+
+loss after back = 0.373681
+
+epoch 631 
+
+
+
+loss before back = 0.373681
+
+ backwards pass ...
+
+
+
+loss after back = 0.373486
+
+epoch 632 
+
+
+
+loss before back = 0.373486
+
+ backwards pass ...
+
+
+
+loss after back = 0.373291
+
+epoch 633 
+
+
+
+loss before back = 0.373291
+
+ backwards pass ...
+
+
+
+loss after back = 0.373097
+
+epoch 634 
+
+
+
+loss before back = 0.373097
+
+ backwards pass ...
+
+
+
+loss after back = 0.372903
+
+epoch 635 
+
+
+
+loss before back = 0.372903
+
+ backwards pass ...
+
+
+
+loss after back = 0.372710
+
+epoch 636 
+
+
+
+loss before back = 0.372710
+
+ backwards pass ...
+
+
+
+loss after back = 0.372518
+
+epoch 637 
+
+
+
+loss before back = 0.372518
+
+ backwards pass ...
+
+
+
+loss after back = 0.372326
+
+epoch 638 
+
+
+
+loss before back = 0.372326
+
+ backwards pass ...
+
+
+
+loss after back = 0.372135
+
+epoch 639 
+
+
+
+loss before back = 0.372135
+
+ backwards pass ...
+
+
+
+loss after back = 0.371944
+
+epoch 640 
+
+
+
+loss before back = 0.371944
+
+ backwards pass ...
+
+
+
+loss after back = 0.371754
+
+epoch 641 
+
+
+
+loss before back = 0.371754
+
+ backwards pass ...
+
+
+
+loss after back = 0.371564
+
+epoch 642 
+
+
+
+loss before back = 0.371564
+
+ backwards pass ...
+
+
+
+loss after back = 0.371376
+
+epoch 643 
+
+
+
+loss before back = 0.371376
+
+ backwards pass ...
+
+
+
+loss after back = 0.371187
+
+epoch 644 
+
+
+
+loss before back = 0.371187
+
+ backwards pass ...
+
+
+
+loss after back = 0.370999
+
+epoch 645 
+
+
+
+loss before back = 0.370999
+
+ backwards pass ...
+
+
+
+loss after back = 0.370812
+
+epoch 646 
+
+
+
+loss before back = 0.370812
+
+ backwards pass ...
+
+
+
+loss after back = 0.370626
+
+epoch 647 
+
+
+
+loss before back = 0.370626
+
+ backwards pass ...
+
+
+
+loss after back = 0.370439
+
+epoch 648 
+
+
+
+loss before back = 0.370439
+
+ backwards pass ...
+
+
+
+loss after back = 0.370254
+
+epoch 649 
+
+
+
+loss before back = 0.370254
+
+ backwards pass ...
+
+
+
+loss after back = 0.370069
+
+epoch 650 
+
+
+
+loss before back = 0.370069
+
+ backwards pass ...
+
+
+
+loss after back = 0.369885
+
+epoch 651 
+
+
+
+loss before back = 0.369885
+
+ backwards pass ...
+
+
+
+loss after back = 0.369701
+
+epoch 652 
+
+
+
+loss before back = 0.369701
+
+ backwards pass ...
+
+
+
+loss after back = 0.369518
+
+epoch 653 
+
+
+
+loss before back = 0.369518
+
+ backwards pass ...
+
+
+
+loss after back = 0.369335
+
+epoch 654 
+
+
+
+loss before back = 0.369335
+
+ backwards pass ...
+
+
+
+loss after back = 0.369153
+
+epoch 655 
+
+
+
+loss before back = 0.369153
+
+ backwards pass ...
+
+
+
+loss after back = 0.368971
+
+epoch 656 
+
+
+
+loss before back = 0.368971
+
+ backwards pass ...
+
+
+
+loss after back = 0.368790
+
+epoch 657 
+
+
+
+loss before back = 0.368790
+
+ backwards pass ...
+
+
+
+loss after back = 0.368610
+
+epoch 658 
+
+
+
+loss before back = 0.368610
+
+ backwards pass ...
+
+
+
+loss after back = 0.368430
+
+epoch 659 
+
+
+
+loss before back = 0.368430
+
+ backwards pass ...
+
+
+
+loss after back = 0.368250
+
+epoch 660 
+
+
+
+loss before back = 0.368250
+
+ backwards pass ...
+
+
+
+loss after back = 0.368072
+
+epoch 661 
+
+
+
+loss before back = 0.368072
+
+ backwards pass ...
+
+
+
+loss after back = 0.367893
+
+epoch 662 
+
+
+
+loss before back = 0.367893
+
+ backwards pass ...
+
+
+
+loss after back = 0.367715
+
+epoch 663 
+
+
+
+loss before back = 0.367715
+
+ backwards pass ...
+
+
+
+loss after back = 0.367538
+
+epoch 664 
+
+
+
+loss before back = 0.367538
+
+ backwards pass ...
+
+
+
+loss after back = 0.367361
+
+epoch 665 
+
+
+
+loss before back = 0.367361
+
+ backwards pass ...
+
+
+
+loss after back = 0.367185
+
+epoch 666 
+
+
+
+loss before back = 0.367185
+
+ backwards pass ...
+
+
+
+loss after back = 0.367009
+
+epoch 667 
+
+
+
+loss before back = 0.367009
+
+ backwards pass ...
+
+
+
+loss after back = 0.366834
+
+epoch 668 
+
+
+
+loss before back = 0.366834
+
+ backwards pass ...
+
+
+
+loss after back = 0.366659
+
+epoch 669 
+
+
+
+loss before back = 0.366659
+
+ backwards pass ...
+
+
+
+loss after back = 0.366485
+
+epoch 670 
+
+
+
+loss before back = 0.366485
+
+ backwards pass ...
+
+
+
+loss after back = 0.366311
+
+epoch 671 
+
+
+
+loss before back = 0.366311
+
+ backwards pass ...
+
+
+
+loss after back = 0.366138
+
+epoch 672 
+
+
+
+loss before back = 0.366138
+
+ backwards pass ...
+
+
+
+loss after back = 0.365965
+
+epoch 673 
+
+
+
+loss before back = 0.365965
+
+ backwards pass ...
+
+
+
+loss after back = 0.365793
+
+epoch 674 
+
+
+
+loss before back = 0.365793
+
+ backwards pass ...
+
+
+
+loss after back = 0.365621
+
+epoch 675 
+
+
+
+loss before back = 0.365621
+
+ backwards pass ...
+
+
+
+loss after back = 0.365450
+
+epoch 676 
+
+
+
+loss before back = 0.365450
+
+ backwards pass ...
+
+
+
+loss after back = 0.365280
+
+epoch 677 
+
+
+
+loss before back = 0.365280
+
+ backwards pass ...
+
+
+
+loss after back = 0.365109
+
+epoch 678 
+
+
+
+loss before back = 0.365109
+
+ backwards pass ...
+
+
+
+loss after back = 0.364940
+
+epoch 679 
+
+
+
+loss before back = 0.364940
+
+ backwards pass ...
+
+
+
+loss after back = 0.364771
+
+epoch 680 
+
+
+
+loss before back = 0.364771
+
+ backwards pass ...
+
+
+
+loss after back = 0.364602
+
+epoch 681 
+
+
+
+loss before back = 0.364602
+
+ backwards pass ...
+
+
+
+loss after back = 0.364434
+
+epoch 682 
+
+
+
+loss before back = 0.364434
+
+ backwards pass ...
+
+
+
+loss after back = 0.364266
+
+epoch 683 
+
+
+
+loss before back = 0.364266
+
+ backwards pass ...
+
+
+
+loss after back = 0.364099
+
+epoch 684 
+
+
+
+loss before back = 0.364099
+
+ backwards pass ...
+
+
+
+loss after back = 0.363932
+
+epoch 685 
+
+
+
+loss before back = 0.363932
+
+ backwards pass ...
+
+
+
+loss after back = 0.363766
+
+epoch 686 
+
+
+
+loss before back = 0.363766
+
+ backwards pass ...
+
+
+
+loss after back = 0.363600
+
+epoch 687 
+
+
+
+loss before back = 0.363600
+
+ backwards pass ...
+
+
+
+loss after back = 0.363434
+
+epoch 688 
+
+
+
+loss before back = 0.363434
+
+ backwards pass ...
+
+
+
+loss after back = 0.363270
+
+epoch 689 
+
+
+
+loss before back = 0.363270
+
+ backwards pass ...
+
+
+
+loss after back = 0.363105
+
+epoch 690 
+
+
+
+loss before back = 0.363105
+
+ backwards pass ...
+
+
+
+loss after back = 0.362941
+
+epoch 691 
+
+
+
+loss before back = 0.362941
+
+ backwards pass ...
+
+
+
+loss after back = 0.362778
+
+epoch 692 
+
+
+
+loss before back = 0.362778
+
+ backwards pass ...
+
+
+
+loss after back = 0.362615
+
+epoch 693 
+
+
+
+loss before back = 0.362615
+
+ backwards pass ...
+
+
+
+loss after back = 0.362452
+
+epoch 694 
+
+
+
+loss before back = 0.362452
+
+ backwards pass ...
+
+
+
+loss after back = 0.362290
+
+epoch 695 
+
+
+
+loss before back = 0.362290
+
+ backwards pass ...
+
+
+
+loss after back = 0.362129
+
+epoch 696 
+
+
+
+loss before back = 0.362129
+
+ backwards pass ...
+
+
+
+loss after back = 0.361968
+
+epoch 697 
+
+
+
+loss before back = 0.361968
+
+ backwards pass ...
+
+
+
+loss after back = 0.361807
+
+epoch 698 
+
+
+
+loss before back = 0.361807
+
+ backwards pass ...
+
+
+
+loss after back = 0.361647
+
+epoch 699 
+
+
+
+loss before back = 0.361647
+
+ backwards pass ...
+
+
+
+loss after back = 0.361487
+
+epoch 700 
+
+
+
+loss before back = 0.361487
+
+ backwards pass ...
+
+
+
+loss after back = 0.361327
+
+epoch 701 
+
+
+
+loss before back = 0.361327
+
+ backwards pass ...
+
+
+
+loss after back = 0.361169
+
+epoch 702 
+
+
+
+loss before back = 0.361169
+
+ backwards pass ...
+
+
+
+loss after back = 0.361010
+
+epoch 703 
+
+
+
+loss before back = 0.361010
+
+ backwards pass ...
+
+
+
+loss after back = 0.360852
+
+epoch 704 
+
+
+
+loss before back = 0.360852
+
+ backwards pass ...
+
+
+
+loss after back = 0.360695
+
+epoch 705 
+
+
+
+loss before back = 0.360695
+
+ backwards pass ...
+
+
+
+loss after back = 0.360538
+
+epoch 706 
+
+
+
+loss before back = 0.360538
+
+ backwards pass ...
+
+
+
+loss after back = 0.360381
+
+epoch 707 
+
+
+
+loss before back = 0.360381
+
+ backwards pass ...
+
+
+
+loss after back = 0.360224
+
+epoch 708 
+
+
+
+loss before back = 0.360224
+
+ backwards pass ...
+
+
+
+loss after back = 0.360069
+
+epoch 709 
+
+
+
+loss before back = 0.360069
+
+ backwards pass ...
+
+
+
+loss after back = 0.359913
+
+epoch 710 
+
+
+
+loss before back = 0.359913
+
+ backwards pass ...
+
+
+
+loss after back = 0.359758
+
+epoch 711 
+
+
+
+loss before back = 0.359758
+
+ backwards pass ...
+
+
+
+loss after back = 0.359604
+
+epoch 712 
+
+
+
+loss before back = 0.359604
+
+ backwards pass ...
+
+
+
+loss after back = 0.359450
+
+epoch 713 
+
+
+
+loss before back = 0.359450
+
+ backwards pass ...
+
+
+
+loss after back = 0.359296
+
+epoch 714 
+
+
+
+loss before back = 0.359296
+
+ backwards pass ...
+
+
+
+loss after back = 0.359143
+
+epoch 715 
+
+
+
+loss before back = 0.359143
+
+ backwards pass ...
+
+
+
+loss after back = 0.358990
+
+epoch 716 
+
+
+
+loss before back = 0.358990
+
+ backwards pass ...
+
+
+
+loss after back = 0.358838
+
+epoch 717 
+
+
+
+loss before back = 0.358838
+
+ backwards pass ...
+
+
+
+loss after back = 0.358686
+
+epoch 718 
+
+
+
+loss before back = 0.358686
+
+ backwards pass ...
+
+
+
+loss after back = 0.358534
+
+epoch 719 
+
+
+
+loss before back = 0.358534
+
+ backwards pass ...
+
+
+
+loss after back = 0.358383
+
+epoch 720 
+
+
+
+loss before back = 0.358383
+
+ backwards pass ...
+
+
+
+loss after back = 0.358232
+
+epoch 721 
+
+
+
+loss before back = 0.358232
+
+ backwards pass ...
+
+
+
+loss after back = 0.358082
+
+epoch 722 
+
+
+
+loss before back = 0.358082
+
+ backwards pass ...
+
+
+
+loss after back = 0.357932
+
+epoch 723 
+
+
+
+loss before back = 0.357932
+
+ backwards pass ...
+
+
+
+loss after back = 0.357783
+
+epoch 724 
+
+
+
+loss before back = 0.357783
+
+ backwards pass ...
+
+
+
+loss after back = 0.357634
+
+epoch 725 
+
+
+
+loss before back = 0.357634
+
+ backwards pass ...
+
+
+
+loss after back = 0.357485
+
+epoch 726 
+
+
+
+loss before back = 0.357485
+
+ backwards pass ...
+
+
+
+loss after back = 0.357337
+
+epoch 727 
+
+
+
+loss before back = 0.357337
+
+ backwards pass ...
+
+
+
+loss after back = 0.357189
+
+epoch 728 
+
+
+
+loss before back = 0.357189
+
+ backwards pass ...
+
+
+
+loss after back = 0.357041
+
+epoch 729 
+
+
+
+loss before back = 0.357041
+
+ backwards pass ...
+
+
+
+loss after back = 0.356894
+
+epoch 730 
+
+
+
+loss before back = 0.356894
+
+ backwards pass ...
+
+
+
+loss after back = 0.356748
+
+epoch 731 
+
+
+
+loss before back = 0.356748
+
+ backwards pass ...
+
+
+
+loss after back = 0.356601
+
+epoch 732 
+
+
+
+loss before back = 0.356601
+
+ backwards pass ...
+
+
+
+loss after back = 0.356456
+
+epoch 733 
+
+
+
+loss before back = 0.356456
+
+ backwards pass ...
+
+
+
+loss after back = 0.356310
+
+epoch 734 
+
+
+
+loss before back = 0.356310
+
+ backwards pass ...
+
+
+
+loss after back = 0.356165
+
+epoch 735 
+
+
+
+loss before back = 0.356165
+
+ backwards pass ...
+
+
+
+loss after back = 0.356020
+
+epoch 736 
+
+
+
+loss before back = 0.356020
+
+ backwards pass ...
+
+
+
+loss after back = 0.355876
+
+epoch 737 
+
+
+
+loss before back = 0.355876
+
+ backwards pass ...
+
+
+
+loss after back = 0.355732
+
+epoch 738 
+
+
+
+loss before back = 0.355732
+
+ backwards pass ...
+
+
+
+loss after back = 0.355589
+
+epoch 739 
+
+
+
+loss before back = 0.355589
+
+ backwards pass ...
+
+
+
+loss after back = 0.355445
+
+epoch 740 
+
+
+
+loss before back = 0.355445
+
+ backwards pass ...
+
+
+
+loss after back = 0.355303
+
+epoch 741 
+
+
+
+loss before back = 0.355303
+
+ backwards pass ...
+
+
+
+loss after back = 0.355160
+
+epoch 742 
+
+
+
+loss before back = 0.355160
+
+ backwards pass ...
+
+
+
+loss after back = 0.355018
+
+epoch 743 
+
+
+
+loss before back = 0.355018
+
+ backwards pass ...
+
+
+
+loss after back = 0.354877
+
+epoch 744 
+
+
+
+loss before back = 0.354877
+
+ backwards pass ...
+
+
+
+loss after back = 0.354735
+
+epoch 745 
+
+
+
+loss before back = 0.354735
+
+ backwards pass ...
+
+
+
+loss after back = 0.354594
+
+epoch 746 
+
+
+
+loss before back = 0.354594
+
+ backwards pass ...
+
+
+
+loss after back = 0.354454
+
+epoch 747 
+
+
+
+loss before back = 0.354454
+
+ backwards pass ...
+
+
+
+loss after back = 0.354314
+
+epoch 748 
+
+
+
+loss before back = 0.354314
+
+ backwards pass ...
+
+
+
+loss after back = 0.354174
+
+epoch 749 
+
+
+
+loss before back = 0.354174
+
+ backwards pass ...
+
+
+
+loss after back = 0.354035
+
+epoch 750 
+
+
+
+loss before back = 0.354035
+
+ backwards pass ...
+
+
+
+loss after back = 0.353896
+
+epoch 751 
+
+
+
+loss before back = 0.353896
+
+ backwards pass ...
+
+
+
+loss after back = 0.353757
+
+epoch 752 
+
+
+
+loss before back = 0.353757
+
+ backwards pass ...
+
+
+
+loss after back = 0.353619
+
+epoch 753 
+
+
+
+loss before back = 0.353619
+
+ backwards pass ...
+
+
+
+loss after back = 0.353481
+
+epoch 754 
+
+
+
+loss before back = 0.353481
+
+ backwards pass ...
+
+
+
+loss after back = 0.353343
+
+epoch 755 
+
+
+
+loss before back = 0.353343
+
+ backwards pass ...
+
+
+
+loss after back = 0.353206
+
+epoch 756 
+
+
+
+loss before back = 0.353206
+
+ backwards pass ...
+
+
+
+loss after back = 0.353069
+
+epoch 757 
+
+
+
+loss before back = 0.353069
+
+ backwards pass ...
+
+
+
+loss after back = 0.352932
+
+epoch 758 
+
+
+
+loss before back = 0.352932
+
+ backwards pass ...
+
+
+
+loss after back = 0.352796
+
+epoch 759 
+
+
+
+loss before back = 0.352796
+
+ backwards pass ...
+
+
+
+loss after back = 0.352661
+
+epoch 760 
+
+
+
+loss before back = 0.352661
+
+ backwards pass ...
+
+
+
+loss after back = 0.352525
+
+epoch 761 
+
+
+
+loss before back = 0.352525
+
+ backwards pass ...
+
+
+
+loss after back = 0.352390
+
+epoch 762 
+
+
+
+loss before back = 0.352390
+
+ backwards pass ...
+
+
+
+loss after back = 0.352255
+
+epoch 763 
+
+
+
+loss before back = 0.352255
+
+ backwards pass ...
+
+
+
+loss after back = 0.352121
+
+epoch 764 
+
+
+
+loss before back = 0.352121
+
+ backwards pass ...
+
+
+
+loss after back = 0.351987
+
+epoch 765 
+
+
+
+loss before back = 0.351987
+
+ backwards pass ...
+
+
+
+loss after back = 0.351853
+
+epoch 766 
+
+
+
+loss before back = 0.351853
+
+ backwards pass ...
+
+
+
+loss after back = 0.351720
+
+epoch 767 
+
+
+
+loss before back = 0.351720
+
+ backwards pass ...
+
+
+
+loss after back = 0.351587
+
+epoch 768 
+
+
+
+loss before back = 0.351587
+
+ backwards pass ...
+
+
+
+loss after back = 0.351454
+
+epoch 769 
+
+
+
+loss before back = 0.351454
+
+ backwards pass ...
+
+
+
+loss after back = 0.351322
+
+epoch 770 
+
+
+
+loss before back = 0.351322
+
+ backwards pass ...
+
+
+
+loss after back = 0.351190
+
+epoch 771 
+
+
+
+loss before back = 0.351190
+
+ backwards pass ...
+
+
+
+loss after back = 0.351058
+
+epoch 772 
+
+
+
+loss before back = 0.351058
+
+ backwards pass ...
+
+
+
+loss after back = 0.350927
+
+epoch 773 
+
+
+
+loss before back = 0.350927
+
+ backwards pass ...
+
+
+
+loss after back = 0.350796
+
+epoch 774 
+
+
+
+loss before back = 0.350796
+
+ backwards pass ...
+
+
+
+loss after back = 0.350666
+
+epoch 775 
+
+
+
+loss before back = 0.350666
+
+ backwards pass ...
+
+
+
+loss after back = 0.350535
+
+epoch 776 
+
+
+
+loss before back = 0.350535
+
+ backwards pass ...
+
+
+
+loss after back = 0.350405
+
+epoch 777 
+
+
+
+loss before back = 0.350405
+
+ backwards pass ...
+
+
+
+loss after back = 0.350276
+
+epoch 778 
+
+
+
+loss before back = 0.350276
+
+ backwards pass ...
+
+
+
+loss after back = 0.350146
+
+epoch 779 
+
+
+
+loss before back = 0.350146
+
+ backwards pass ...
+
+
+
+loss after back = 0.350017
+
+epoch 780 
+
+
+
+loss before back = 0.350017
+
+ backwards pass ...
+
+
+
+loss after back = 0.349889
+
+epoch 781 
+
+
+
+loss before back = 0.349889
+
+ backwards pass ...
+
+
+
+loss after back = 0.349760
+
+epoch 782 
+
+
+
+loss before back = 0.349760
+
+ backwards pass ...
+
+
+
+loss after back = 0.349632
+
+epoch 783 
+
+
+
+loss before back = 0.349632
+
+ backwards pass ...
+
+
+
+loss after back = 0.349505
+
+epoch 784 
+
+
+
+loss before back = 0.349505
+
+ backwards pass ...
+
+
+
+loss after back = 0.349378
+
+epoch 785 
+
+
+
+loss before back = 0.349378
+
+ backwards pass ...
+
+
+
+loss after back = 0.349250
+
+epoch 786 
+
+
+
+loss before back = 0.349250
+
+ backwards pass ...
+
+
+
+loss after back = 0.349124
+
+epoch 787 
+
+
+
+loss before back = 0.349124
+
+ backwards pass ...
+
+
+
+loss after back = 0.348997
+
+epoch 788 
+
+
+
+loss before back = 0.348997
+
+ backwards pass ...
+
+
+
+loss after back = 0.348871
+
+epoch 789 
+
+
+
+loss before back = 0.348871
+
+ backwards pass ...
+
+
+
+loss after back = 0.348746
+
+epoch 790 
+
+
+
+loss before back = 0.348746
+
+ backwards pass ...
+
+
+
+loss after back = 0.348620
+
+epoch 791 
+
+
+
+loss before back = 0.348620
+
+ backwards pass ...
+
+
+
+loss after back = 0.348495
+
+epoch 792 
+
+
+
+loss before back = 0.348495
+
+ backwards pass ...
+
+
+
+loss after back = 0.348370
+
+epoch 793 
+
+
+
+loss before back = 0.348370
+
+ backwards pass ...
+
+
+
+loss after back = 0.348246
+
+epoch 794 
+
+
+
+loss before back = 0.348246
+
+ backwards pass ...
+
+
+
+loss after back = 0.348122
+
+epoch 795 
+
+
+
+loss before back = 0.348122
+
+ backwards pass ...
+
+
+
+loss after back = 0.347998
+
+epoch 796 
+
+
+
+loss before back = 0.347998
+
+ backwards pass ...
+
+
+
+loss after back = 0.347874
+
+epoch 797 
+
+
+
+loss before back = 0.347874
+
+ backwards pass ...
+
+
+
+loss after back = 0.347751
+
+epoch 798 
+
+
+
+loss before back = 0.347751
+
+ backwards pass ...
+
+
+
+loss after back = 0.347628
+
+epoch 799 
+
+
+
+loss before back = 0.347628
+
+ backwards pass ...
+
+
+
+loss after back = 0.347505
+
+epoch 800 
+
+
+
+loss before back = 0.347505
+
+ backwards pass ...
+
+
+
+loss after back = 0.347383
+
+epoch 801 
+
+
+
+loss before back = 0.347383
+
+ backwards pass ...
+
+
+
+loss after back = 0.347261
+
+epoch 802 
+
+
+
+loss before back = 0.347261
+
+ backwards pass ...
+
+
+
+loss after back = 0.347139
+
+epoch 803 
+
+
+
+loss before back = 0.347139
+
+ backwards pass ...
+
+
+
+loss after back = 0.347018
+
+epoch 804 
+
+
+
+loss before back = 0.347018
+
+ backwards pass ...
+
+
+
+loss after back = 0.346897
+
+epoch 805 
+
+
+
+loss before back = 0.346897
+
+ backwards pass ...
+
+
+
+loss after back = 0.346776
+
+epoch 806 
+
+
+
+loss before back = 0.346776
+
+ backwards pass ...
+
+
+
+loss after back = 0.346655
+
+epoch 807 
+
+
+
+loss before back = 0.346655
+
+ backwards pass ...
+
+
+
+loss after back = 0.346535
+
+epoch 808 
+
+
+
+loss before back = 0.346535
+
+ backwards pass ...
+
+
+
+loss after back = 0.346415
+
+epoch 809 
+
+
+
+loss before back = 0.346415
+
+ backwards pass ...
+
+
+
+loss after back = 0.346296
+
+epoch 810 
+
+
+
+loss before back = 0.346296
+
+ backwards pass ...
+
+
+
+loss after back = 0.346176
+
+epoch 811 
+
+
+
+loss before back = 0.346176
+
+ backwards pass ...
+
+
+
+loss after back = 0.346057
+
+epoch 812 
+
+
+
+loss before back = 0.346057
+
+ backwards pass ...
+
+
+
+loss after back = 0.345938
+
+epoch 813 
+
+
+
+loss before back = 0.345938
+
+ backwards pass ...
+
+
+
+loss after back = 0.345820
+
+epoch 814 
+
+
+
+loss before back = 0.345820
+
+ backwards pass ...
+
+
+
+loss after back = 0.345702
+
+epoch 815 
+
+
+
+loss before back = 0.345702
+
+ backwards pass ...
+
+
+
+loss after back = 0.345584
+
+epoch 816 
+
+
+
+loss before back = 0.345584
+
+ backwards pass ...
+
+
+
+loss after back = 0.345466
+
+epoch 817 
+
+
+
+loss before back = 0.345466
+
+ backwards pass ...
+
+
+
+loss after back = 0.345349
+
+epoch 818 
+
+
+
+loss before back = 0.345349
+
+ backwards pass ...
+
+
+
+loss after back = 0.345232
+
+epoch 819 
+
+
+
+loss before back = 0.345232
+
+ backwards pass ...
+
+
+
+loss after back = 0.345115
+
+epoch 820 
+
+
+
+loss before back = 0.345115
+
+ backwards pass ...
+
+
+
+loss after back = 0.344998
+
+epoch 821 
+
+
+
+loss before back = 0.344998
+
+ backwards pass ...
+
+
+
+loss after back = 0.344882
+
+epoch 822 
+
+
+
+loss before back = 0.344882
+
+ backwards pass ...
+
+
+
+loss after back = 0.344766
+
+epoch 823 
+
+
+
+loss before back = 0.344766
+
+ backwards pass ...
+
+
+
+loss after back = 0.344651
+
+epoch 824 
+
+
+
+loss before back = 0.344651
+
+ backwards pass ...
+
+
+
+loss after back = 0.344535
+
+epoch 825 
+
+
+
+loss before back = 0.344535
+
+ backwards pass ...
+
+
+
+loss after back = 0.344420
+
+epoch 826 
+
+
+
+loss before back = 0.344420
+
+ backwards pass ...
+
+
+
+loss after back = 0.344305
+
+epoch 827 
+
+
+
+loss before back = 0.344305
+
+ backwards pass ...
+
+
+
+loss after back = 0.344191
+
+epoch 828 
+
+
+
+loss before back = 0.344191
+
+ backwards pass ...
+
+
+
+loss after back = 0.344077
+
+epoch 829 
+
+
+
+loss before back = 0.344077
+
+ backwards pass ...
+
+
+
+loss after back = 0.343963
+
+epoch 830 
+
+
+
+loss before back = 0.343963
+
+ backwards pass ...
+
+
+
+loss after back = 0.343849
+
+epoch 831 
+
+
+
+loss before back = 0.343849
+
+ backwards pass ...
+
+
+
+loss after back = 0.343736
+
+epoch 832 
+
+
+
+loss before back = 0.343736
+
+ backwards pass ...
+
+
+
+loss after back = 0.343622
+
+epoch 833 
+
+
+
+loss before back = 0.343622
+
+ backwards pass ...
+
+
+
+loss after back = 0.343509
+
+epoch 834 
+
+
+
+loss before back = 0.343509
+
+ backwards pass ...
+
+
+
+loss after back = 0.343397
+
+epoch 835 
+
+
+
+loss before back = 0.343397
+
+ backwards pass ...
+
+
+
+loss after back = 0.343285
+
+epoch 836 
+
+
+
+loss before back = 0.343285
+
+ backwards pass ...
+
+
+
+loss after back = 0.343172
+
+epoch 837 
+
+
+
+loss before back = 0.343172
+
+ backwards pass ...
+
+
+
+loss after back = 0.343061
+
+epoch 838 
+
+
+
+loss before back = 0.343061
+
+ backwards pass ...
+
+
+
+loss after back = 0.342949
+
+epoch 839 
+
+
+
+loss before back = 0.342949
+
+ backwards pass ...
+
+
+
+loss after back = 0.342838
+
+epoch 840 
+
+
+
+loss before back = 0.342838
+
+ backwards pass ...
+
+
+
+loss after back = 0.342727
+
+epoch 841 
+
+
+
+loss before back = 0.342727
+
+ backwards pass ...
+
+
+
+loss after back = 0.342616
+
+epoch 842 
+
+
+
+loss before back = 0.342616
+
+ backwards pass ...
+
+
+
+loss after back = 0.342506
+
+epoch 843 
+
+
+
+loss before back = 0.342506
+
+ backwards pass ...
+
+
+
+loss after back = 0.342395
+
+epoch 844 
+
+
+
+loss before back = 0.342395
+
+ backwards pass ...
+
+
+
+loss after back = 0.342285
+
+epoch 845 
+
+
+
+loss before back = 0.342285
+
+ backwards pass ...
+
+
+
+loss after back = 0.342176
+
+epoch 846 
+
+
+
+loss before back = 0.342176
+
+ backwards pass ...
+
+
+
+loss after back = 0.342066
+
+epoch 847 
+
+
+
+loss before back = 0.342066
+
+ backwards pass ...
+
+
+
+loss after back = 0.341957
+
+epoch 848 
+
+
+
+loss before back = 0.341957
+
+ backwards pass ...
+
+
+
+loss after back = 0.341848
+
+epoch 849 
+
+
+
+loss before back = 0.341848
+
+ backwards pass ...
+
+
+
+loss after back = 0.341739
+
+epoch 850 
+
+
+
+loss before back = 0.341739
+
+ backwards pass ...
+
+
+
+loss after back = 0.341631
+
+epoch 851 
+
+
+
+loss before back = 0.341631
+
+ backwards pass ...
+
+
+
+loss after back = 0.341522
+
+epoch 852 
+
+
+
+loss before back = 0.341522
+
+ backwards pass ...
+
+
+
+loss after back = 0.341415
+
+epoch 853 
+
+
+
+loss before back = 0.341415
+
+ backwards pass ...
+
+
+
+loss after back = 0.341307
+
+epoch 854 
+
+
+
+loss before back = 0.341307
+
+ backwards pass ...
+
+
+
+loss after back = 0.341199
+
+epoch 855 
+
+
+
+loss before back = 0.341199
+
+ backwards pass ...
+
+
+
+loss after back = 0.341092
+
+epoch 856 
+
+
+
+loss before back = 0.341092
+
+ backwards pass ...
+
+
+
+loss after back = 0.340985
+
+epoch 857 
+
+
+
+loss before back = 0.340985
+
+ backwards pass ...
+
+
+
+loss after back = 0.340879
+
+epoch 858 
+
+
+
+loss before back = 0.340879
+
+ backwards pass ...
+
+
+
+loss after back = 0.340772
+
+epoch 859 
+
+
+
+loss before back = 0.340772
+
+ backwards pass ...
+
+
+
+loss after back = 0.340666
+
+epoch 860 
+
+
+
+loss before back = 0.340666
+
+ backwards pass ...
+
+
+
+loss after back = 0.340560
+
+epoch 861 
+
+
+
+loss before back = 0.340560
+
+ backwards pass ...
+
+
+
+loss after back = 0.340454
+
+epoch 862 
+
+
+
+loss before back = 0.340454
+
+ backwards pass ...
+
+
+
+loss after back = 0.340349
+
+epoch 863 
+
+
+
+loss before back = 0.340349
+
+ backwards pass ...
+
+
+
+loss after back = 0.340244
+
+epoch 864 
+
+
+
+loss before back = 0.340244
+
+ backwards pass ...
+
+
+
+loss after back = 0.340139
+
+epoch 865 
+
+
+
+loss before back = 0.340139
+
+ backwards pass ...
+
+
+
+loss after back = 0.340034
+
+epoch 866 
+
+
+
+loss before back = 0.340034
+
+ backwards pass ...
+
+
+
+loss after back = 0.339929
+
+epoch 867 
+
+
+
+loss before back = 0.339929
+
+ backwards pass ...
+
+
+
+loss after back = 0.339825
+
+epoch 868 
+
+
+
+loss before back = 0.339825
+
+ backwards pass ...
+
+
+
+loss after back = 0.339721
+
+epoch 869 
+
+
+
+loss before back = 0.339721
+
+ backwards pass ...
+
+
+
+loss after back = 0.339617
+
+epoch 870 
+
+
+
+loss before back = 0.339617
+
+ backwards pass ...
+
+
+
+loss after back = 0.339514
+
+epoch 871 
+
+
+
+loss before back = 0.339514
+
+ backwards pass ...
+
+
+
+loss after back = 0.339411
+
+epoch 872 
+
+
+
+loss before back = 0.339411
+
+ backwards pass ...
+
+
+
+loss after back = 0.339307
+
+epoch 873 
+
+
+
+loss before back = 0.339307
+
+ backwards pass ...
+
+
+
+loss after back = 0.339205
+
+epoch 874 
+
+
+
+loss before back = 0.339205
+
+ backwards pass ...
+
+
+
+loss after back = 0.339102
+
+epoch 875 
+
+
+
+loss before back = 0.339102
+
+ backwards pass ...
+
+
+
+loss after back = 0.339000
+
+epoch 876 
+
+
+
+loss before back = 0.339000
+
+ backwards pass ...
+
+
+
+loss after back = 0.338898
+
+epoch 877 
+
+
+
+loss before back = 0.338898
+
+ backwards pass ...
+
+
+
+loss after back = 0.338796
+
+epoch 878 
+
+
+
+loss before back = 0.338796
+
+ backwards pass ...
+
+
+
+loss after back = 0.338694
+
+epoch 879 
+
+
+
+loss before back = 0.338694
+
+ backwards pass ...
+
+
+
+loss after back = 0.338593
+
+epoch 880 
+
+
+
+loss before back = 0.338593
+
+ backwards pass ...
+
+
+
+loss after back = 0.338491
+
+epoch 881 
+
+
+
+loss before back = 0.338491
+
+ backwards pass ...
+
+
+
+loss after back = 0.338390
+
+epoch 882 
+
+
+
+loss before back = 0.338390
+
+ backwards pass ...
+
+
+
+loss after back = 0.338290
+
+epoch 883 
+
+
+
+loss before back = 0.338290
+
+ backwards pass ...
+
+
+
+loss after back = 0.338189
+
+epoch 884 
+
+
+
+loss before back = 0.338189
+
+ backwards pass ...
+
+
+
+loss after back = 0.338089
+
+epoch 885 
+
+
+
+loss before back = 0.338089
+
+ backwards pass ...
+
+
+
+loss after back = 0.337989
+
+epoch 886 
+
+
+
+loss before back = 0.337989
+
+ backwards pass ...
+
+
+
+loss after back = 0.337889
+
+epoch 887 
+
+
+
+loss before back = 0.337889
+
+ backwards pass ...
+
+
+
+loss after back = 0.337789
+
+epoch 888 
+
+
+
+loss before back = 0.337789
+
+ backwards pass ...
+
+
+
+loss after back = 0.337690
+
+epoch 889 
+
+
+
+loss before back = 0.337690
+
+ backwards pass ...
+
+
+
+loss after back = 0.337591
+
+epoch 890 
+
+
+
+loss before back = 0.337591
+
+ backwards pass ...
+
+
+
+loss after back = 0.337492
+
+epoch 891 
+
+
+
+loss before back = 0.337492
+
+ backwards pass ...
+
+
+
+loss after back = 0.337393
+
+epoch 892 
+
+
+
+loss before back = 0.337393
+
+ backwards pass ...
+
+
+
+loss after back = 0.337294
+
+epoch 893 
+
+
+
+loss before back = 0.337294
+
+ backwards pass ...
+
+
+
+loss after back = 0.337196
+
+epoch 894 
+
+
+
+loss before back = 0.337196
+
+ backwards pass ...
+
+
+
+loss after back = 0.337098
+
+epoch 895 
+
+
+
+loss before back = 0.337098
+
+ backwards pass ...
+
+
+
+loss after back = 0.337000
+
+epoch 896 
+
+
+
+loss before back = 0.337000
+
+ backwards pass ...
+
+
+
+loss after back = 0.336903
+
+epoch 897 
+
+
+
+loss before back = 0.336903
+
+ backwards pass ...
+
+
+
+loss after back = 0.336805
+
+epoch 898 
+
+
+
+loss before back = 0.336805
+
+ backwards pass ...
+
+
+
+loss after back = 0.336708
+
+epoch 899 
+
+
+
+loss before back = 0.336708
+
+ backwards pass ...
+
+
+
+loss after back = 0.336611
+
+epoch 900 
+
+
+
+loss before back = 0.336611
+
+ backwards pass ...
+
+
+
+loss after back = 0.336514
+
+epoch 901 
+
+
+
+loss before back = 0.336514
+
+ backwards pass ...
+
+
+
+loss after back = 0.336418
+
+epoch 902 
+
+
+
+loss before back = 0.336418
+
+ backwards pass ...
+
+
+
+loss after back = 0.336321
+
+epoch 903 
+
+
+
+loss before back = 0.336321
+
+ backwards pass ...
+
+
+
+loss after back = 0.336225
+
+epoch 904 
+
+
+
+loss before back = 0.336225
+
+ backwards pass ...
+
+
+
+loss after back = 0.336129
+
+epoch 905 
+
+
+
+loss before back = 0.336129
+
+ backwards pass ...
+
+
+
+loss after back = 0.336034
+
+epoch 906 
+
+
+
+loss before back = 0.336034
+
+ backwards pass ...
+
+
+
+loss after back = 0.335938
+
+epoch 907 
+
+
+
+loss before back = 0.335938
+
+ backwards pass ...
+
+
+
+loss after back = 0.335843
+
+epoch 908 
+
+
+
+loss before back = 0.335843
+
+ backwards pass ...
+
+
+
+loss after back = 0.335748
+
+epoch 909 
+
+
+
+loss before back = 0.335748
+
+ backwards pass ...
+
+
+
+loss after back = 0.335653
+
+epoch 910 
+
+
+
+loss before back = 0.335653
+
+ backwards pass ...
+
+
+
+loss after back = 0.335558
+
+epoch 911 
+
+
+
+loss before back = 0.335558
+
+ backwards pass ...
+
+
+
+loss after back = 0.335464
+
+epoch 912 
+
+
+
+loss before back = 0.335464
+
+ backwards pass ...
+
+
+
+loss after back = 0.335370
+
+epoch 913 
+
+
+
+loss before back = 0.335370
+
+ backwards pass ...
+
+
+
+loss after back = 0.335276
+
+epoch 914 
+
+
+
+loss before back = 0.335276
+
+ backwards pass ...
+
+
+
+loss after back = 0.335182
+
+epoch 915 
+
+
+
+loss before back = 0.335182
+
+ backwards pass ...
+
+
+
+loss after back = 0.335088
+
+epoch 916 
+
+
+
+loss before back = 0.335088
+
+ backwards pass ...
+
+
+
+loss after back = 0.334995
+
+epoch 917 
+
+
+
+loss before back = 0.334995
+
+ backwards pass ...
+
+
+
+loss after back = 0.334902
+
+epoch 918 
+
+
+
+loss before back = 0.334902
+
+ backwards pass ...
+
+
+
+loss after back = 0.334809
+
+epoch 919 
+
+
+
+loss before back = 0.334809
+
+ backwards pass ...
+
+
+
+loss after back = 0.334716
+
+epoch 920 
+
+
+
+loss before back = 0.334716
+
+ backwards pass ...
+
+
+
+loss after back = 0.334623
+
+epoch 921 
+
+
+
+loss before back = 0.334623
+
+ backwards pass ...
+
+
+
+loss after back = 0.334531
+
+epoch 922 
+
+
+
+loss before back = 0.334531
+
+ backwards pass ...
+
+
+
+loss after back = 0.334439
+
+epoch 923 
+
+
+
+loss before back = 0.334439
+
+ backwards pass ...
+
+
+
+loss after back = 0.334346
+
+epoch 924 
+
+
+
+loss before back = 0.334346
+
+ backwards pass ...
+
+
+
+loss after back = 0.334255
+
+epoch 925 
+
+
+
+loss before back = 0.334255
+
+ backwards pass ...
+
+
+
+loss after back = 0.334163
+
+epoch 926 
+
+
+
+loss before back = 0.334163
+
+ backwards pass ...
+
+
+
+loss after back = 0.334072
+
+epoch 927 
+
+
+
+loss before back = 0.334072
+
+ backwards pass ...
+
+
+
+loss after back = 0.333980
+
+epoch 928 
+
+
+
+loss before back = 0.333980
+
+ backwards pass ...
+
+
+
+loss after back = 0.333889
+
+epoch 929 
+
+
+
+loss before back = 0.333889
+
+ backwards pass ...
+
+
+
+loss after back = 0.333799
+
+epoch 930 
+
+
+
+loss before back = 0.333799
+
+ backwards pass ...
+
+
+
+loss after back = 0.333708
+
+epoch 931 
+
+
+
+loss before back = 0.333708
+
+ backwards pass ...
+
+
+
+loss after back = 0.333617
+
+epoch 932 
+
+
+
+loss before back = 0.333617
+
+ backwards pass ...
+
+
+
+loss after back = 0.333527
+
+epoch 933 
+
+
+
+loss before back = 0.333527
+
+ backwards pass ...
+
+
+
+loss after back = 0.333437
+
+epoch 934 
+
+
+
+loss before back = 0.333437
+
+ backwards pass ...
+
+
+
+loss after back = 0.333347
+
+epoch 935 
+
+
+
+loss before back = 0.333347
+
+ backwards pass ...
+
+
+
+loss after back = 0.333257
+
+epoch 936 
+
+
+
+loss before back = 0.333257
+
+ backwards pass ...
+
+
+
+loss after back = 0.333168
+
+epoch 937 
+
+
+
+loss before back = 0.333168
+
+ backwards pass ...
+
+
+
+loss after back = 0.333079
+
+epoch 938 
+
+
+
+loss before back = 0.333079
+
+ backwards pass ...
+
+
+
+loss after back = 0.332990
+
+epoch 939 
+
+
+
+loss before back = 0.332990
+
+ backwards pass ...
+
+
+
+loss after back = 0.332901
+
+epoch 940 
+
+
+
+loss before back = 0.332901
+
+ backwards pass ...
+
+
+
+loss after back = 0.332812
+
+epoch 941 
+
+
+
+loss before back = 0.332812
+
+ backwards pass ...
+
+
+
+loss after back = 0.332724
+
+epoch 942 
+
+
+
+loss before back = 0.332724
+
+ backwards pass ...
+
+
+
+loss after back = 0.332635
+
+epoch 943 
+
+
+
+loss before back = 0.332635
+
+ backwards pass ...
+
+
+
+loss after back = 0.332547
+
+epoch 944 
+
+
+
+loss before back = 0.332547
+
+ backwards pass ...
+
+
+
+loss after back = 0.332459
+
+epoch 945 
+
+
+
+loss before back = 0.332459
+
+ backwards pass ...
+
+
+
+loss after back = 0.332371
+
+epoch 946 
+
+
+
+loss before back = 0.332371
+
+ backwards pass ...
+
+
+
+loss after back = 0.332284
+
+epoch 947 
+
+
+
+loss before back = 0.332284
+
+ backwards pass ...
+
+
+
+loss after back = 0.332196
+
+epoch 948 
+
+
+
+loss before back = 0.332196
+
+ backwards pass ...
+
+
+
+loss after back = 0.332109
+
+epoch 949 
+
+
+
+loss before back = 0.332109
+
+ backwards pass ...
+
+
+
+loss after back = 0.332022
+
+epoch 950 
+
+
+
+loss before back = 0.332022
+
+ backwards pass ...
+
+
+
+loss after back = 0.331935
+
+epoch 951 
+
+
+
+loss before back = 0.331935
+
+ backwards pass ...
+
+
+
+loss after back = 0.331849
+
+epoch 952 
+
+
+
+loss before back = 0.331849
+
+ backwards pass ...
+
+
+
+loss after back = 0.331762
+
+epoch 953 
+
+
+
+loss before back = 0.331762
+
+ backwards pass ...
+
+
+
+loss after back = 0.331676
+
+epoch 954 
+
+
+
+loss before back = 0.331676
+
+ backwards pass ...
+
+
+
+loss after back = 0.331590
+
+epoch 955 
+
+
+
+loss before back = 0.331590
+
+ backwards pass ...
+
+
+
+loss after back = 0.331504
+
+epoch 956 
+
+
+
+loss before back = 0.331504
+
+ backwards pass ...
+
+
+
+loss after back = 0.331418
+
+epoch 957 
+
+
+
+loss before back = 0.331418
+
+ backwards pass ...
+
+
+
+loss after back = 0.331332
+
+epoch 958 
+
+
+
+loss before back = 0.331332
+
+ backwards pass ...
+
+
+
+loss after back = 0.331247
+
+epoch 959 
+
+
+
+loss before back = 0.331247
+
+ backwards pass ...
+
+
+
+loss after back = 0.331162
+
+epoch 960 
+
+
+
+loss before back = 0.331162
+
+ backwards pass ...
+
+
+
+loss after back = 0.331077
+
+epoch 961 
+
+
+
+loss before back = 0.331077
+
+ backwards pass ...
+
+
+
+loss after back = 0.330992
+
+epoch 962 
+
+
+
+loss before back = 0.330992
+
+ backwards pass ...
+
+
+
+loss after back = 0.330907
+
+epoch 963 
+
+
+
+loss before back = 0.330907
+
+ backwards pass ...
+
+
+
+loss after back = 0.330822
+
+epoch 964 
+
+
+
+loss before back = 0.330822
+
+ backwards pass ...
+
+
+
+loss after back = 0.330738
+
+epoch 965 
+
+
+
+loss before back = 0.330738
+
+ backwards pass ...
+
+
+
+loss after back = 0.330654
+
+epoch 966 
+
+
+
+loss before back = 0.330654
+
+ backwards pass ...
+
+
+
+loss after back = 0.330570
+
+epoch 967 
+
+
+
+loss before back = 0.330570
+
+ backwards pass ...
+
+
+
+loss after back = 0.330486
+
+epoch 968 
+
+
+
+loss before back = 0.330486
+
+ backwards pass ...
+
+
+
+loss after back = 0.330402
+
+epoch 969 
+
+
+
+loss before back = 0.330402
+
+ backwards pass ...
+
+
+
+loss after back = 0.330319
+
+epoch 970 
+
+
+
+loss before back = 0.330319
+
+ backwards pass ...
+
+
+
+loss after back = 0.330236
+
+epoch 971 
+
+
+
+loss before back = 0.330236
+
+ backwards pass ...
+
+
+
+loss after back = 0.330153
+
+epoch 972 
+
+
+
+loss before back = 0.330153
+
+ backwards pass ...
+
+
+
+loss after back = 0.330069
+
+epoch 973 
+
+
+
+loss before back = 0.330069
+
+ backwards pass ...
+
+
+
+loss after back = 0.329987
+
+epoch 974 
+
+
+
+loss before back = 0.329987
+
+ backwards pass ...
+
+
+
+loss after back = 0.329904
+
+epoch 975 
+
+
+
+loss before back = 0.329904
+
+ backwards pass ...
+
+
+
+loss after back = 0.329822
+
+epoch 976 
+
+
+
+loss before back = 0.329822
+
+ backwards pass ...
+
+
+
+loss after back = 0.329739
+
+epoch 977 
+
+
+
+loss before back = 0.329739
+
+ backwards pass ...
+
+
+
+loss after back = 0.329657
+
+epoch 978 
+
+
+
+loss before back = 0.329657
+
+ backwards pass ...
+
+
+
+loss after back = 0.329575
+
+epoch 979 
+
+
+
+loss before back = 0.329575
+
+ backwards pass ...
+
+
+
+loss after back = 0.329494
+
+epoch 980 
+
+
+
+loss before back = 0.329494
+
+ backwards pass ...
+
+
+
+loss after back = 0.329412
+
+epoch 981 
+
+
+
+loss before back = 0.329412
+
+ backwards pass ...
+
+
+
+loss after back = 0.329330
+
+epoch 982 
+
+
+
+loss before back = 0.329330
+
+ backwards pass ...
+
+
+
+loss after back = 0.329249
+
+epoch 983 
+
+
+
+loss before back = 0.329249
+
+ backwards pass ...
+
+
+
+loss after back = 0.329168
+
+epoch 984 
+
+
+
+loss before back = 0.329168
+
+ backwards pass ...
+
+
+
+loss after back = 0.329087
+
+epoch 985 
+
+
+
+loss before back = 0.329087
+
+ backwards pass ...
+
+
+
+loss after back = 0.329006
+
+epoch 986 
+
+
+
+loss before back = 0.329006
+
+ backwards pass ...
+
+
+
+loss after back = 0.328926
+
+epoch 987 
+
+
+
+loss before back = 0.328926
+
+ backwards pass ...
+
+
+
+loss after back = 0.328845
+
+epoch 988 
+
+
+
+loss before back = 0.328845
+
+ backwards pass ...
+
+
+
+loss after back = 0.328765
+
+epoch 989 
+
+
+
+loss before back = 0.328765
+
+ backwards pass ...
+
+
+
+loss after back = 0.328685
+
+epoch 990 
+
+
+
+loss before back = 0.328685
+
+ backwards pass ...
+
+
+
+loss after back = 0.328605
+
+epoch 991 
+
+
+
+loss before back = 0.328605
+
+ backwards pass ...
+
+
+
+loss after back = 0.328525
+
+epoch 992 
+
+
+
+loss before back = 0.328525
+
+ backwards pass ...
+
+
+
+loss after back = 0.328445
+
+epoch 993 
+
+
+
+loss before back = 0.328445
+
+ backwards pass ...
+
+
+
+loss after back = 0.328366
+
+epoch 994 
+
+
+
+loss before back = 0.328366
+
+ backwards pass ...
+
+
+
+loss after back = 0.328287
+
+epoch 995 
+
+
+
+loss before back = 0.328287
+
+ backwards pass ...
+
+
+
+loss after back = 0.328207
+
+epoch 996 
+
+
+
+loss before back = 0.328207
+
+ backwards pass ...
+
+
+
+loss after back = 0.328128
+
+epoch 997 
+
+
+
+loss before back = 0.328128
+
+ backwards pass ...
+
+
+
+loss after back = 0.328049
+
+epoch 998 
+
+
+
+loss before back = 0.328049
+
+ backwards pass ...
+
+
+
+loss after back = 0.327971
+
+epoch 999 
+
+
+
+loss before back = 0.327971
+
+ backwards pass ...
+
+
+
+loss after back = 0.327892
+
+
+Generating names....
+
+isabell
+sophia
+isabella
+olivia
+olivia
