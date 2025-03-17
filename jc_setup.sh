@@ -1,1 +1,1 @@
-export TRAINING_PATH=/home/rickojn/coding/mlp/training/names2.txt
+export TRAINING_PATH=/home/rickojn/coding/mlp/training/names5.txt
