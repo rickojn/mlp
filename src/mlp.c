@@ -110,6 +110,7 @@ void create_model(Model * model, size_t size_batch){
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
     float * model_memory = calloc(size_model_memory, sizeof(float));
     printf("\n model allocated memory: %zu bytes\n", size_model_memory * sizeof(float));
+    printf("\n model allocated memory for params: %zu bytes\n", size_model_params_memory * sizeof(float));
     printf("\n model allocated memory for params and acts: %zu bytes\n", (size_model_params_memory + size_model_activations) * sizeof(float));
     printf("\n model allocated memory for gradients: %zu bytes\n", size_model_gradients * sizeof(float));
 
@@ -147,23 +148,29 @@ void initialise_model(Model *model)
     size_t size_params = SIZE_VOCAB * DIM_EMBEDDINGS // embedding table
     + SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS // hidden weights
     + SIZE_HIDDEN // hidden biases
-    + SIZE_VOCAB // output biases
-    + SIZE_BLOCK * SIZE_HIDDEN; // output weights
+    + SIZE_VOCAB * SIZE_HIDDEN // output weights
+    + SIZE_VOCAB; // output biases
 
     srand(42);
     // srand(time(NULL));
 
+    float db = 0;
+
     for (int i = 0; i < size_params; i++)
     {
         *(model->parameters.table_embedding + i) = generate_normal_random_number();
+        db += *(model->parameters.table_embedding + i);
+        // printf("%f\t", *(model->parameters.table_embedding + i));
         // *(model->parameters.table_embedding + i) = 1.0;
     }
+    printf("\navg of embedding table: %f\n", db/size_params);
+    printf("\nbytes initialised: %zu\n", size_params * sizeof(float));
 }
 
 void embed_tokens(Model * model, char * tokens, size_t size_tokens){
     for (size_t idx_sample = 0; idx_sample < size_tokens; idx_sample ++){
         for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
-            size_t offset_embedding_activation = idx_sample * SIZE_BLOCK * DIM_EMBEDDINGS +idx_token;
+            size_t offset_embedding_activation = idx_sample * SIZE_BLOCK * DIM_EMBEDDINGS + idx_token;
             size_t offset_token = idx_sample * SIZE_BLOCK + idx_token;
             size_t idx_embedding_element = encode(tokens[offset_token]) * DIM_EMBEDDINGS;
             for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
@@ -563,7 +570,7 @@ int main()
     
 
     // generate
-    generate(&model, 5);
+    // generate(&model, 5);
 
     //training loop
     // printf("\nmodel before training:\n");
@@ -578,7 +585,8 @@ int main()
         // for (int x = 0; x < model.size_batch; x++){
         //     printf("\n");
         //     for (int i = 0; i < SIZE_VOCAB; i++){
-        //         printf("prob [%d]: %f\t", i, model.activations.probs[x * model.size_batch + i]);
+        //         // printf("prob [%d]: %f\t", i, model.activations.probs[x * model.size_batch + i]);
+        //         printf("prob [%d]: %f\t", i, model.activations.output[x * model.size_batch + i]);
         //     }    
         // }
         printf("\n");
