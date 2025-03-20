@@ -307,7 +307,7 @@ void loss_softmax_backwards(const char * labels, float * grad_logits, const floa
 void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, size_t size_batch){
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-            size_t offset_grad = idx_sample * size_batch + idx_neuron;
+            size_t offset_grad = idx_sample * size_neurons + idx_neuron;
             float db_input = inputs[offset_grad];
             outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]), 2);
             float db_grad = outputs[offset_grad];
