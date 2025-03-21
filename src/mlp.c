@@ -584,6 +584,64 @@ void save_model(Model * model, const char *filename){
     fclose(file);
 }
 
+void load_model_from_file(Model * model, const char *filename){
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Error opening file %s", filename);
+        return;
+    }
+    // Load all parameters of the model from the file
+    fread(model->parameters.table_embedding, sizeof(float), get_size_model_params_memory(), file);
+    fclose(file);
+}
+
+int load_model(Model * model, const char *dirname){
+    DIR *dir;
+    struct dirent *entry;
+    struct stat file_info;
+    char filename[260];
+    time_t now;
+    time(&now);
+    time_t latest_timestamp = 0;
+    char timestamp[32];
+    char full_filename[260];
+    char latest_fullname[260];
+
+    // Open directory "models"
+    dir = opendir(dirname);
+    if (dir == NULL) {
+        printf("Error opening directory %s", dirname);
+        return 0;
+    }
+
+    // Iterate through files in the directory and find the one with the latest timestamp
+    while ((entry = readdir(dir)) != NULL) {
+        snprintf(full_filename, sizeof(full_filename), "%s/%s", dirname, entry->d_name);
+        if (stat(full_filename, &file_info) == 0 && S_ISREG(file_info.st_mode)) {
+            time_t file_timestamp = file_info.st_mtime; // Use the st_mtime field from stat() to get the last modification time
+
+            if (file_timestamp > latest_timestamp) {
+                latest_timestamp = file_timestamp;
+                strcpy(latest_fullname, full_filename);
+            } 
+        }
+    }
+
+    closedir(dir);
+    if (latest_timestamp == 0) {
+        printf("\nNo model files found in directory %s\n\n", dirname);
+        return 0;
+    } 
+    else {
+        printf("\nLoading model from file %s\n\n", latest_fullname);
+        load_model_from_file(model, latest_fullname); // Load model parameters from the file
+        return 1;
+    }
+
+}
+
+
+
 int main()
 {
     // read in names file
@@ -601,8 +659,10 @@ int main()
     printf("\n... model created.\n");
     
     // initialise model
-    printf("\ninitialising model ....\n");
-    initialise_model(&model);
+    if (!load_model(&model, "models")) {
+        printf("\ninitialising model ....\n");
+        initialise_model(&model);
+    }
     printf("\nmodel initialised ....\n");
     // print_model(&model);
     
@@ -640,7 +700,7 @@ int main()
     }
 
 
-    save_model(&model, "model");
+    save_model(&model, "models/model");
 
     // generate after training
     generate(&model, 5);
