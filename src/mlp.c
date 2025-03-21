@@ -15,7 +15,13 @@
 
 
 
-
+size_t get_size_model_params_memory(){
+    return SIZE_VOCAB * DIM_EMBEDDINGS // embedding table
+    + SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS // hidden weights
+    + SIZE_HIDDEN // hidden biases
+    + SIZE_HIDDEN * SIZE_VOCAB // output weights
+    + SIZE_VOCAB; // output biases
+}
 
 
 
@@ -547,6 +553,37 @@ void generate(Model *model, int number_of_names){
     }
 }
 
+void save_model(Model * model, const char *filename){
+    char timestamp[32];
+    time_t now;
+    struct tm *ts;
+
+    // Get current time
+    time(&now);
+
+    // Convert it to a human-readable format
+    ts = localtime(&now);
+    strftime(timestamp, sizeof timestamp, "%Y%m%d_%H%M%S", ts);
+
+    // Create file name with the timestamp
+    char filename_time[128];
+    sprintf(filename_time, "%s_%s.bin", filename, timestamp);
+
+    printf("\nsaving in file: %s\n", filename_time);
+    FILE *file = fopen(filename_time, "wb");
+    if (file == NULL) {
+        printf("Error opening file %s", filename);
+        return;
+    }
+
+
+
+    // Save all parameters of the model to the file
+    fwrite(model->parameters.table_embedding, sizeof(float), get_size_model_params_memory(), file);
+
+    fclose(file);
+}
+
 int main()
 {
     // read in names file
@@ -601,6 +638,9 @@ int main()
         printf("\n");
         printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     }
+
+
+    save_model(&model, "model");
 
     // generate after training
     generate(&model, 5);
