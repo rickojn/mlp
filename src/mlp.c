@@ -143,28 +143,29 @@ void create_model(Model * model, size_t size_batch){
     model->size_batch = size_batch;
 }
 
+
+void intialise_layer(float * biases, float * weights, size_t size_neurons, size_t size_weights){
+    for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+        biases[idx_neuron] = 0.0;
+        for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
+            size_t offset_weight = idx_neuron * size_weights + idx_weight;
+            weights[offset_weight] = generate_normal_random_number();
+        }
+    }
+}
+
+
 void initialise_model(Model *model)
 {
-    size_t size_params = SIZE_VOCAB * DIM_EMBEDDINGS // embedding table
-    + SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS // hidden weights
-    + SIZE_HIDDEN // hidden biases
-    + SIZE_VOCAB * SIZE_HIDDEN // output weights
-    + SIZE_VOCAB; // output biases
 
     srand(42);
     // srand(time(NULL));
 
-    float db = 0;
-
-    for (int i = 0; i < size_params; i++)
-    {
-        *(model->parameters.table_embedding + i) = generate_normal_random_number();
-        db += *(model->parameters.table_embedding + i);
-        // printf("%f\t", *(model->parameters.table_embedding + i));
-        // *(model->parameters.table_embedding + i) = 1.0;
+    intialise_layer(model->parameters.biases_hidden, model->parameters.weights_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
+    intialise_layer(model->parameters.biases_output, model->parameters.weights_output, SIZE_VOCAB, SIZE_HIDDEN);
+    for (size_t idx_embedding = 0; idx_embedding < SIZE_VOCAB * DIM_EMBEDDINGS; idx_embedding++){
+        model->parameters.table_embedding[idx_embedding] = generate_normal_random_number();
     }
-    printf("\navg of embedding table: %f\n", db/size_params);
-    printf("\nbytes initialised: %zu\n", size_params * sizeof(float));
 }
 
 void embed_tokens(Model * model, char * tokens, size_t size_tokens){
@@ -570,18 +571,19 @@ int main()
     
 
     // generate
-    // generate(&model, 5);
+    generate(&model, 5);
 
     //training loop
     // printf("\nmodel before training:\n");
     // print_model(&model);
+    model_forward(&model, training_set->X, training_set->size);
+    printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
         if (idx_epoch == 30){
             int db_rocal = 0;
         }
         printf("\nepoch %d \n", idx_epoch);
         printf("\n");
-        model_forward(&model, training_set->X, training_set->size);
         // for (int x = 0; x < model.size_batch; x++){
         //     printf("\n");
         //     for (int i = 0; i < SIZE_VOCAB; i++){
@@ -590,7 +592,6 @@ int main()
         //     }    
         // }
         printf("\n");
-        printf("\nloss before back = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
         model_backwards(&model, training_set);
        // print_model(&model);
 
@@ -598,7 +599,7 @@ int main()
         printf("\n");
         model_forward(&model, training_set->X, training_set->size);
         printf("\n");
-        printf("\nloss after back = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
+        printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     }
 
     // generate after training
