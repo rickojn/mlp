@@ -75,6 +75,8 @@ int readNames(char ***names, const char *filename){
 
 }
 
+
+
 float generate_normal_random_number()
 {
     // 2 uniformly distributed random numbers between 0 and 1
@@ -83,6 +85,13 @@ float generate_normal_random_number()
 
     // use Box-Muller to return a normally distributed number
     return sqrt(-2.0 * log(u1)) * cos(2.0 * M_PI * u2);
+}
+
+// Xavier (Glorot) Normal Initialization
+float generate_xavier_number(size_t inputs, size_t outputs)
+{
+    float stddev = sqrt(2.0f / (inputs + outputs));
+    return generate_normal_random_number() * stddev;
 }
 
 

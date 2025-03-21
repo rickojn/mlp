@@ -155,7 +155,7 @@ void intialise_layer(float * biases, float * weights, size_t size_neurons, size_
         biases[idx_neuron] = 0.0;
         for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
             size_t offset_weight = idx_neuron * size_weights + idx_weight;
-            weights[offset_weight] = generate_normal_random_number();
+            weights[offset_weight] = generate_xavier_number(size_weights, size_neurons);
         }
     }
 }
@@ -289,7 +289,7 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float loss = batch_loss/size_batch;
     if (loss > prev_loss){
         printf("\n new loss is greater: %f\n", loss);
-        exit(0);
+        // exit(0);
     }
     else {
         prev_loss = loss;
@@ -703,7 +703,7 @@ int main()
     save_model(&model, "models/model");
 
     // generate after training
-    generate(&model, 5);
+    generate(&model, 20);
 
     for (size_t i = 0; i < count; i++){
         free(names[i]);
