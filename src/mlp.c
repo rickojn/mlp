@@ -462,7 +462,6 @@ void update_parameters(Model * model, size_t size_batch){
 
 
 void model_backwards(Model * model, TrainingSet * training_set){
-    printf("\n backwards pass ...\n");
     clock_t begin, end;
     double time_spent;
     begin = clock();
@@ -676,27 +675,12 @@ int main()
     model_forward(&model, training_set->X, training_set->size);
     printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
-        if (idx_epoch == 30){
-            int db_rocal = 0;
-        }
-        printf("\nepoch %d \n", idx_epoch);
-        printf("\n");
-        // for (int x = 0; x < model.size_batch; x++){
-        //     printf("\n");
-        //     for (int i = 0; i < SIZE_VOCAB; i++){
-        //         // printf("prob [%d]: %f\t", i, model.activations.probs[x * model.size_batch + i]);
-        //         printf("prob [%d]: %f\t", i, model.activations.output[x * model.size_batch + i]);
-        //     }    
-        // }
-        printf("\n");
         model_backwards(&model, training_set);
-       // print_model(&model);
-
-
-        printf("\n");
         model_forward(&model, training_set->X, training_set->size);
-        printf("\n");
-        printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
+        if (idx_epoch % 1000 == 0){
+            printf("\nepoch %d \n", idx_epoch);
+            printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));            
+        }
     }
 
 
