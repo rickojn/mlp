@@ -639,6 +639,24 @@ int load_model(Model * model, const char *dirname){
 
 }
 
+TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int size_batch){
+    TrainingSet * training_batch = malloc(sizeof(TrainingSet));
+    training_batch->size = size_batch;
+    training_batch->X = malloc(size_batch * SIZE_BLOCK * sizeof(char));
+    training_batch->Y = malloc(size_batch * sizeof(char));
+    return training_batch;
+}
+
+void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
+    for (int i = 0; i < training_batch->size; i++){
+        int idx_sample = rand() % training_set->size;
+        for (int j = 0; j < SIZE_BLOCK; j++){
+            training_batch->X[i * SIZE_BLOCK + j] = training_set->X[idx_sample * SIZE_BLOCK + j];
+        }
+        training_batch->Y[i] = training_set->Y[idx_sample];
+    }
+}
+
 
 
 int main()
@@ -650,6 +668,7 @@ int main()
     printf("\n%d names loaded\n", count);
     // create training set from names array
     TrainingSet * training_set = createTrainingSet(names, count);
+    TrainingSet * training_batch = allocate_training_batch_memory(training_set, SIZE_BATCH);
 
     // create model
     printf("\ncreating model ...\n");
@@ -670,14 +689,13 @@ int main()
     generate(&model, 5);
 
     //training loop
-    // printf("\nmodel before training:\n");
-    // print_model(&model);
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
-        model_forward(&model, training_set->X, training_set->size);
+        initialise_training_batch(training_set, training_batch);
+        model_forward(&model, training_batch->X, training_batch->size);
         if (idx_epoch == 0){
-            printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
+            printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
         }
-        model_backwards(&model, training_set);
+        model_backwards(&model, training_batch);
         if (idx_epoch % 1000
             == 0){
             model_forward(&model, training_set->X, training_set->size);
