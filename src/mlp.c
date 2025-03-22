@@ -672,9 +672,11 @@ int main()
     //training loop
     // printf("\nmodel before training:\n");
     // print_model(&model);
-    model_forward(&model, training_set->X, training_set->size);
-    printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
+        model_forward(&model, training_set->X, training_set->size);
+        if (idx_epoch == 0){
+            printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));
+        }
         model_backwards(&model, training_set);
         if (idx_epoch % 1000
             == 0){
