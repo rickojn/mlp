@@ -103,14 +103,10 @@ void create_model(Model * model, size_t size_batch){
     + SIZE_HIDDEN // activations hidden
     + SIZE_VOCAB * 2); // output logits and probs
 
-    size_t size_model_gradients = size_batch * (SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
-    + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
-    + SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS // hidden weights
-    + SIZE_HIDDEN // hidden biases
+    size_t size_model_gradients = size_model_params_memory + size_batch * 
+    ( SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
     + SIZE_HIDDEN // pre-activations hidden
     + SIZE_HIDDEN // hidden activations
-    + SIZE_HIDDEN * SIZE_VOCAB // output weights
-    + SIZE_VOCAB //output biases
     + SIZE_VOCAB); // output pre-activations
 
     size_t size_model_memory = size_model_params_memory + size_model_activations + size_model_gradients;
@@ -289,6 +285,7 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
     float loss = batch_loss/size_batch;
     if (loss > prev_loss){
         printf("\n new loss is greater: %f\n", loss);
+        printf("\n loss diff: %f\n", loss - prev_loss);
         // exit(0);
     }
     else {
@@ -366,18 +363,17 @@ void matmul_backwards(const float * grads_pre_activations, const float * weights
 float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inputs, size_t size_batch){
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-            size_t offset_grad_bias = idx_sample * size_neurons + idx_neuron;
+            size_t offset_grad_bias = idx_neuron;
             if (grads_biases){
                 float db_1 = grads_pre_activations[offset_grad_bias];
-                grads_biases[offset_grad_bias] = grads_pre_activations[offset_grad_bias];
+                grads_biases[offset_grad_bias] += grads_pre_activations[offset_grad_bias];
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_weight = idx_neuron * size_inputs + idx_weight;
-                size_t offset_grad_weight = offset_grad_bias * size_inputs + idx_weight;
                 size_t offset_grad_input = idx_sample * size_inputs + idx_weight;
                 float db_input = inputs[offset_grad_input];
                 float db_grad  = grads_pre_activations[offset_grad_bias];
-                grads_weights[offset_grad_weight] = inputs[offset_grad_input] * grads_pre_activations[offset_grad_bias];
+                grads_weights[offset_weight] += inputs[offset_grad_input] * grads_pre_activations[offset_grad_bias];
                 grads_inputs[offset_grad_input] += weights[offset_weight] * grads_pre_activations[offset_grad_bias]; //??
             }
         }
@@ -465,17 +461,14 @@ void model_backwards(Model * model, TrainingSet * training_set){
     clock_t begin, end;
     double time_spent;
     begin = clock();
-    memset(model->gradients.weights_embeddings, 0, training_set->size * ( SIZE_VOCAB * DIM_EMBEDDINGS //embeddings weights
-        + SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
-        + SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS // hidden weights
-        + SIZE_HIDDEN // hidden biases
+    size_t size_params = get_size_model_params_memory();
+    memset(model->gradients.weights_embeddings, 0, size_params * sizeof(float))
+        + training_set->size * (
+        SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
         + SIZE_HIDDEN // pre-activations hidden
         + SIZE_HIDDEN // hidden activations
-        + SIZE_HIDDEN * SIZE_VOCAB // output weights
-        + SIZE_VOCAB //output biases
         + SIZE_VOCAB) // logits
-        * sizeof(float)
-        );
+        * sizeof(float);
 
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
     // printf("\n before mm back:\n");
@@ -649,7 +642,7 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
     for (int i = 0; i < training_batch->size; i++){
-        int idx_sample = rand() % training_set->size;
+        int idx_sample = rand() % training_set->size * 0.8;
         for (int j = 0; j < SIZE_BLOCK; j++){
             training_batch->X[i * SIZE_BLOCK + j] = training_set->X[idx_sample * SIZE_BLOCK + j];
         }
@@ -673,7 +666,7 @@ int main()
     // create model
     printf("\ncreating model ...\n");
     Model model;
-    create_model(&model, training_set->size);
+    create_model(&model, training_batch->size);
     printf("\n... model created.\n");
     
     // initialise model
@@ -698,14 +691,25 @@ int main()
         model_backwards(&model, training_batch);
         if (idx_epoch % 1000
             == 0){
-            model_forward(&model, training_set->X, training_set->size);
+            model_forward(&model, training_batch->X, training_batch->size * 0.8);
             printf("\nepoch %d \n", idx_epoch);
-            printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_set->Y, training_set->size));            
+            printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size * 0.8));            
         }
     }
 
 
-    save_model(&model, "models/model");
+    // save model
+    char file_name[260];
+    sprintf(file_name, "models/model_blk_%d_hdn_%d_emb_%d.bin", SIZE_BLOCK, SIZE_HIDDEN, DIM_EMBEDDINGS);
+
+    save_model(&model, file_name);
+
+
+    printf("\ntraining loss: %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
+    size_t size_training = (int)(0.8 * training_set->size);
+    size_t size_validation = training_set->size - size_training;
+    model_forward(&model, training_set->X + size_training, size_validation);
+    printf("\nvalidation loss: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
     // generate after training
     generate(&model, 20);

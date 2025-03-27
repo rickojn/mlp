@@ -1,0 +1,32 @@
+
+32032 names loaded
+
+creating model ...
+
+ model allocated memory: 1690852 bytes
+
+ model allocated memory for params: 47588 bytes
+
+ model allocated memory for params and acts: 109540 bytes
+
+ model allocated memory for gradients: 1581312 bytes
+
+param and act pointer diff 109540 
+
+grad pointer diff 1577856 
+
+... model created.
+
+Loading model from file models/model_blk_3_hdn_200_emb_10.bin_20250327_080859.bin
+
+
+model initialised ....
+
+
+Generating names....
+
+shnno
+gialileiysij
+l
+daraia
+zalslemheyarhmatahns
