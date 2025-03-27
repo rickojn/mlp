@@ -130,14 +130,14 @@ void create_model(Model * model, size_t size_batch){
     model->activations.probs = model->activations.output + size_batch * SIZE_VOCAB;
 
     model->gradients.weights_embeddings = model->activations.probs + size_batch * SIZE_VOCAB;
-    model->gradients.activations_embeddings = model->gradients.weights_embeddings + size_batch * SIZE_VOCAB * DIM_EMBEDDINGS;
+    model->gradients.activations_embeddings = model->gradients.weights_embeddings +  SIZE_VOCAB * DIM_EMBEDDINGS;
     model->gradients.weights_hidden = model->gradients.activations_embeddings + size_batch * SIZE_BLOCK * DIM_EMBEDDINGS;
-    model->gradients.biases_hidden = model->gradients.weights_hidden + size_batch * SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS;
-    model->gradients.pre_activations_hidden = model->gradients.biases_hidden + size_batch * SIZE_HIDDEN;
+    model->gradients.biases_hidden = model->gradients.weights_hidden +  SIZE_HIDDEN * SIZE_BLOCK * DIM_EMBEDDINGS;
+    model->gradients.pre_activations_hidden = model->gradients.biases_hidden + SIZE_HIDDEN;
     model->gradients.activations_hidden = model->gradients.pre_activations_hidden + size_batch * SIZE_HIDDEN;
     model->gradients.weights_output = model->gradients.activations_hidden + size_batch * SIZE_HIDDEN;
-    model->gradients.biases_output = model->gradients.weights_output + size_batch * SIZE_HIDDEN * SIZE_VOCAB;
-    model->gradients.pre_activations_output = model->gradients.biases_output + size_batch * SIZE_VOCAB;
+    model->gradients.biases_output = model->gradients.weights_output + SIZE_HIDDEN * SIZE_VOCAB;
+    model->gradients.pre_activations_output = model->gradients.biases_output + SIZE_VOCAB;
 
     printf("\nparam and act pointer diff %ld \n", (char *)model->gradients.weights_embeddings - (char *)model->parameters.table_embedding);   
     printf("\ngrad pointer diff %ld \n", (char *)model->gradients.pre_activations_output - (char *)model->gradients.weights_embeddings);   
@@ -666,7 +666,7 @@ int main()
     // create model
     printf("\ncreating model ...\n");
     Model model;
-    create_model(&model, training_batch->size);
+    create_model(&model, training_set->size);
     printf("\n... model created.\n");
     
     // initialise model
