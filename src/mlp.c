@@ -378,6 +378,15 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
             }
         }
     }
+    for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+        if (grads_biases){
+            grads_biases[idx_neuron] /= size_batch;
+        }
+        for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
+            size_t offset_weight = idx_neuron * size_inputs + idx_weight;
+            grads_weights[offset_weight] /= size_batch;
+        }
+    }
 }
 
 
@@ -414,37 +423,16 @@ void embedding_backwards(const float * grad_activations, const char * inputs, fl
 void update_layer(float * biases, float * weights,  const float * gradients_biases, const float * gradients_weights,
     size_t size_neurons, size_t size_weights, size_t size_batch){
 
-    if (biases)
-    {
-        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++)
-        {
-            float delta = 0.0;
-            for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++)
-            {
-                size_t offset_bias = idx_sample * size_neurons + idx_neuron;
-                delta += gradients_biases[offset_bias];
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            if (biases){
+                biases[idx_neuron] -= gradients_biases[idx_neuron] * LEARNING_RATE;
             }
-            delta /= size_batch;
-            biases[idx_neuron] -= delta * LEARNING_RATE;
+            for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
+                size_t offset_weight = idx_neuron * size_weights + idx_weight;
+                weights[offset_weight] -= gradients_weights[offset_weight] * LEARNING_RATE;
+            }
         }
-    }
 
-    for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++)
-    {
-        for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++)
-        {
-            float delta = 0.0;
-            for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++)
-            {
-                size_t offset_batch_weight = idx_batch * size_neurons * size_weights +
-                                             idx_neuron * size_weights + idx_weight;
-                delta += gradients_weights[offset_batch_weight];
-            }
-            delta /= size_batch;
-            size_t offset_weight = idx_neuron * size_weights + idx_weight;
-            weights[offset_weight] -= delta * LEARNING_RATE;
-        }
-    }
 }
 
 void update_parameters(Model * model, size_t size_batch){

@@ -1,0 +1,78 @@
+
+32032 names loaded
+
+creating model ...
+
+ model allocated memory: 858814136 bytes
+
+ model allocated memory for params: 47588 bytes
+
+ model allocated memory for params and acts: 441726628 bytes
+
+ model allocated memory for gradients: 417087508 bytes
+
+param and act pointer diff 441726628 
+
+grad pointer diff 392448388 
+
+... model created.
+
+No model files found in directory models
+
+
+initialising model ....
+
+model initialised ....
+
+
+Generating names....
+
+fxqsxeoubnrxwtuiqxagbtziztebeeblbse
+xsuzgmxbfrjwqjetgcadxggaljnmasozlkyqvuubncyaobvuhwzedfeooudolrnyzmoujjwxlwzaytwerujuaojohmdtcrtdfizorvkdpjgodauvxaqxqamynqtrinwpvudnqmsixyxa
+pvyrmvhpihazctjqoymlaaaotjlsgnswlroxnxmveovghdxzbkjcmlsgtdxarqwbgl
+ujmspbnxkrvithtxteo
+yry
+
+loss before training = 3.275103
+
+epoch 0 
+
+loss = 3.236375
+
+saving in file: models/model_blk_3_hdn_200_emb_10.bin_20250329_190401.bin
+
+ new loss is greater: 3.459191
+
+ loss diff: 0.222816
+
+training loss: 3.459191
+
+ new loss is greater: 3.505938
+
+ loss diff: 0.046747
+
+validation loss: 3.505938
+
+
+Generating names....
+
+y
+yivqtleiainedtanlrptlehydizhopho
+l
+y
+reh
+ynawptllei
+bl
+laynvuben
+oiehqqhnak
+iiasrlyrazdjxtleyyaillsrjjaarmlyrmslarmiosutlallen
+
+lyowhzzhjideh
+hiwlmoineehtmletlyofuhineydlal
+l
+y
+ynepeoxalelehk
+yiaed
+ilvmuzvywausleyeh
+y
+rdaal
