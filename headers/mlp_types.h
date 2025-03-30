@@ -5,11 +5,11 @@
 
 #define SIZE_VOCAB 27
 #define SIZE_BLOCK 3
-#define INITIAL_SIZE 1000 // Initial number of strings
+#define INITIAL_SIZE 10 // Initial number of strings
 #define MAX_LENGTH 256  // Maximum length of each string
-#define NUM_EPOCHS 1000
+#define NUM_EPOCHS 1
 #define LEARNING_RATE 0.1
-#define DIM_EMBEDDINGS 10
+#define DIM_EMBEDDINGS 2
 #define SIZE_HIDDEN 200
 #define SIZE_BATCH 32
 

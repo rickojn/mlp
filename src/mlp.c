@@ -464,7 +464,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_output, model->activations.hidden, model->gradients.weights_output,
         model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
-    tanh_backwards(model->activations.pre_hidden, model->gradients.activations_hidden, SIZE_HIDDEN, training_set->size);
+    tanh_backwards(model->gradients.activations_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.input, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.activations_embeddings, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->gradients.activations_embeddings, training_set->X, model->gradients.weights_embeddings, training_set->size);
@@ -658,7 +658,8 @@ int main()
     printf("\n... model created.\n");
     
     // initialise model
-    if (!load_model(&model, "models")) {
+    // if (!load_model(&model, "models")) {
+    if (1==1) {
         printf("\ninitialising model ....\n");
         initialise_model(&model);
     }
@@ -700,7 +701,7 @@ int main()
     printf("\nvalidation loss: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
     // generate after training
-    generate(&model, 20);
+    // generate(&model, 20);
 
     for (size_t i = 0; i < count; i++){
         free(names[i]);
