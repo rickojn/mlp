@@ -3,17 +3,17 @@
 
 creating model ...
 
- model allocated memory: 814971128 bytes
+ model allocated memory: 121373848 bytes
 
- model allocated memory for params: 27524 bytes
+ model allocated memory for params: 1684 bytes
 
- model allocated memory for params and acts: 419805124 bytes
+ model allocated memory for params and acts: 73006484 bytes
 
- model allocated memory for gradients: 395166004 bytes
+ model allocated memory for gradients: 48367364 bytes
 
-param and act pointer diff 419805124 
+param and act pointer diff 73006484 
 
-grad pointer diff 370526884 
+grad pointer diff 23728244 
 
 ... model created.
 
@@ -24,24 +24,28 @@ model initialised ....
 
 Generating names....
 
-hiepfjegzlfhinodntbhyykpa
+vi
+dohm
+ogwodwzkbxsqkr
+fwltlitwb
+viscvqrdoifjfrncgbozdxwppgzicciyl
 
-gfsuoc
-ejjkrkwxsfkhkzang
-lronrqxxjrmnsrydcpmzmgfyppwqedrrvggnydkhwywopttuihtxozvdqsvwwnorwuetyrbwozlftezdluaauwekpbhmrwemrkgrbjmsiyyccygpqjpkfvwvydio
-
-loss before training = 3.293291
+loss before training = 3.229028
 
 epoch 0 
 
- new loss is greater: 3.400971
+ new loss is greater: 3.229405
 
- loss diff: 0.107680
+ loss diff: 0.000378
 
-loss = 3.400971
+loss = 3.229405
 
-saving in file: models/model_blk_3_hdn_200_emb_2.bin_20250330_170531.bin
+saving in file: models/model_blk_3_hdn_10_emb_2.bin_20250330_170751.bin
 
-training loss: 3.375604
+training loss: 3.168836
 
-validation loss: 3.346831
+ new loss is greater: 3.291842
+
+ loss diff: 0.123006
+
+validation loss: 3.291842
