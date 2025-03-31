@@ -435,6 +435,7 @@ void update_layer(float * biases, float * weights,  const float * gradients_bias
 
 }
 
+
 void update_parameters(Model * model, size_t size_batch){
     update_layer(model->parameters.biases_output, model->parameters.weights_output, model->gradients.biases_output, model->gradients.weights_output,
         SIZE_VOCAB, SIZE_HIDDEN, size_batch);
@@ -678,13 +679,16 @@ int main()
             printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
         }
         model_backwards(&model, training_batch);
-        if (idx_epoch % 1000
+        // printf("\nmodel after training:\n");
+        // print_model(&model);
+        if (idx_epoch % 1
             == 0){
             model_forward(&model, training_batch->X, training_batch->size * 0.8);
             printf("\nepoch %d \n", idx_epoch);
-            printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size * 0.8));            
+            printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));            
         }
     }
+
 
 
     // save model

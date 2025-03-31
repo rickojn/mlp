@@ -34,13 +34,9 @@ loss before training = 3.229028
 
 epoch 0 
 
- new loss is greater: 3.229405
+loss = 3.168836
 
- loss diff: 0.000378
-
-loss = 3.229405
-
-saving in file: models/model_blk_3_hdn_10_emb_2.bin_20250330_170751.bin
+saving in file: models/model_blk_3_hdn_10_emb_2.bin_20250331_010758.bin
 
 training loss: 3.168836
 
