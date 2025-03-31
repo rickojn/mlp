@@ -363,18 +363,18 @@ void matmul_backwards(const float * grads_pre_activations, const float * weights
 float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inputs, size_t size_batch){
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
-            size_t offset_grad_bias = idx_neuron;
+            size_t offset_grad_pre_act = idx_sample * size_neurons + idx_neuron;
             if (grads_biases){
-                float db_1 = grads_pre_activations[offset_grad_bias];
-                grads_biases[offset_grad_bias] += grads_pre_activations[offset_grad_bias];
+                float db_1 = grads_pre_activations[offset_grad_pre_act];
+                grads_biases[idx_neuron] += grads_pre_activations[offset_grad_pre_act];
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_weight = idx_neuron * size_inputs + idx_weight;
                 size_t offset_grad_input = idx_sample * size_inputs + idx_weight;
                 float db_input = inputs[offset_grad_input];
-                float db_grad  = grads_pre_activations[offset_grad_bias];
-                grads_weights[offset_weight] += inputs[offset_grad_input] * grads_pre_activations[offset_grad_bias];
-                grads_inputs[offset_grad_input] += weights[offset_weight] * grads_pre_activations[offset_grad_bias]; //??
+                float db_grad  = grads_pre_activations[offset_grad_pre_act];
+                grads_weights[offset_weight] += inputs[offset_grad_input] * grads_pre_activations[offset_grad_pre_act];
+                grads_inputs[offset_grad_input] += weights[offset_weight] * grads_pre_activations[offset_grad_pre_act]; //??
             }
         }
     }
