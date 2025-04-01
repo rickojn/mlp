@@ -278,7 +278,9 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
+    printf("\nCalculating loss with size %zu\n", size_batch);
     static float prev_loss = 100;
+    static size_t prev_size_batch = 0;
     float batch_loss = 0.0;
     for (int idx_batch = 0; idx_batch < size_batch; idx_batch++){
         size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
@@ -287,15 +289,16 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
     }
     float loss = batch_loss/size_batch;
-    if (loss > prev_loss){
+    if (loss > prev_loss && size_batch == prev_size_batch){
         printf("\n new loss is greater: %f\n", loss);
         // exit(0);
     }
     else {
         prev_loss = loss;
+        prev_size_batch = size_batch;
     }
     prev_loss = loss;
-    return batch_loss/size_batch;
+    return loss;
 }
 
 void loss_softmax_backwards(const char * labels, float * grad_logits, const float * probs, size_t size_batch){
