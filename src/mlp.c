@@ -274,7 +274,9 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
 }
 
 float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
+    printf("\ncalculating loss with batch size %zu ...\n", size_batch);
     static float prev_loss = 100;
+    static size_t prev_size_batch = 0;
     float batch_loss = 0.0;
     for (int idx_batch = 0; idx_batch < size_batch; idx_batch++){
         size_t offset_predicted_prob_for_expected_token = idx_batch * SIZE_VOCAB + encode(labels[idx_batch]);
@@ -283,13 +285,13 @@ float cross_entropy_loss(float * probs, char * labels, size_t size_batch){
         batch_loss += log(probs[offset_predicted_prob_for_expected_token]) * -1;
     }
     float loss = batch_loss/size_batch;
-    if (loss > prev_loss){
+    if (loss > prev_loss && size_batch == prev_size_batch){
         printf("\n new loss is greater: %f\n", loss);
         printf("\n loss diff: %f\n", loss - prev_loss);
         // exit(0);
     }
     else {
-        prev_loss = loss;
+        prev_size_batch = size_batch;
     }
     prev_loss = loss;
     return batch_loss/size_batch;
@@ -308,13 +310,13 @@ void loss_softmax_backwards(const char * labels, float * grad_logits, const floa
     }
 }
 
-void tanh_backwards(const float * inputs, float * outputs, size_t size_neurons, size_t size_batch){
+void tanh_backwards(const float * pre_activations, float * grad_pre_activations, size_t size_neurons, size_t size_batch){
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             size_t offset_grad = idx_sample * size_neurons + idx_neuron;
-            float db_input = inputs[offset_grad];
-            outputs[offset_grad] = 1 - pow(tanh(inputs[offset_grad]), 2);
-            float db_grad = outputs[offset_grad];
+            float db_input = pre_activations[offset_grad];
+            grad_pre_activations[offset_grad] = 1 - pow(tanh(pre_activations[offset_grad]), 2);
+            float db_grad = grad_pre_activations[offset_grad];
             int db = 0;
         }
     }
@@ -465,7 +467,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_output, model->activations.hidden, model->gradients.weights_output,
         model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
-    tanh_backwards(model->gradients.activations_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
+    tanh_backwards(model->activations.pre_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.input, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.activations_embeddings, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->gradients.activations_embeddings, training_set->X, model->gradients.weights_embeddings, training_set->size);
