@@ -372,11 +372,11 @@ float * grads_biases, float * grads_inputs, size_t size_neurons, size_t size_inp
             }
             for (size_t idx_weight = 0; idx_weight < size_inputs; idx_weight++){
                 size_t offset_weight = idx_neuron * size_inputs + idx_weight;
-                size_t offset_grad_input = idx_sample * size_inputs + idx_weight;
-                float db_input = inputs[offset_grad_input];
+                size_t offset_input = idx_sample * size_inputs + idx_weight;
+                float db_input = inputs[offset_input];
                 float db_grad  = grads_pre_activations[offset_grad_pre_act];
-                grads_weights[offset_weight] += inputs[offset_grad_input] * grads_pre_activations[offset_grad_pre_act];
-                grads_inputs[offset_grad_input] += weights[offset_weight] * grads_pre_activations[offset_grad_pre_act]; //??
+                grads_weights[offset_weight] += inputs[offset_input] * grads_pre_activations[offset_grad_pre_act];
+                grads_inputs[offset_input] += weights[offset_weight] * grads_pre_activations[offset_grad_pre_act]; //??
             }
         }
     }
