@@ -10,7 +10,7 @@
 #define NUM_EPOCHS 10000
 #define LEARNING_RATE 0.1
 #define DIM_EMBEDDINGS 10
-#define SIZE_HIDDEN 200
+#define SIZE_HIDDEN 100
 #define SIZE_BATCH 32
 
 
