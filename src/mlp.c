@@ -426,10 +426,10 @@ void embedding_backwards(const float * grad_activations, const char * inputs, fl
 
 void update_layer(float * biases, float * weights,  const float * gradients_biases, const float * gradients_weights,
     size_t size_neurons, size_t size_weights, size_t size_batch){
-        printf("\n\nbias grads:\n");
+        // printf("\n\nbias grads:\n");
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             if (biases){
-                printf("\n%d bias grad %f\n", idx_neuron, gradients_biases[idx_neuron]);
+                // printf("\n%d bias grad %f\n", idx_neuron, gradients_biases[idx_neuron]);
                 biases[idx_neuron] -= gradients_biases[idx_neuron] * LEARNING_RATE;
             }
             for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
@@ -463,7 +463,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
     + SIZE_HIDDEN // hidden activations
     + SIZE_VOCAB) // logits
     * sizeof(float);
-     printf("\n size grads: %zu\n", size_grads);
+    //  printf("\n size grads: %zu\n", size_grads);
     memset(model->gradients.weights_embeddings, 0, size_grads);
 
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
@@ -637,7 +637,7 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 }
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
-    srand(42);
+    srand(time(NULL));
     for (int i = 0; i < training_batch->size; i++){
         int idx_sample = rand() % training_set->size * 0.8;
         for (int j = 0; j < SIZE_BLOCK; j++){
@@ -667,8 +667,8 @@ int main()
     printf("\n... model created.\n");
     
     // initialise model
-    // if (!load_model(&model, "models")) {
-    if (1==1) {
+    if (!load_model(&model, "models")) {
+    // if (1==1) {
         printf("\ninitialising model ....\n");
         initialise_model(&model);
     }
@@ -678,6 +678,14 @@ int main()
 
     // generate
     generate(&model, 5);
+
+    size_t size_training = (int)(0.8 * training_set->size);
+    size_t size_validation = training_set->size - size_training;
+
+    model_forward(&model, training_set->X + size_training, size_validation);
+    printf("\nvalidation loss before training: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
+
+
 
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
@@ -689,7 +697,7 @@ int main()
         model_backwards(&model, training_batch);
         // printf("\nmodel after training:\n");
         // print_model(&model);
-        if (idx_epoch % 1
+        if (idx_epoch % 10000
             == 0){
             model_forward(&model, training_batch->X, training_batch->size);
             printf("\nepoch %d \n", idx_epoch);
@@ -706,14 +714,12 @@ int main()
     save_model(&model, file_name);
 
 
-    printf("\ntraining loss: %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
-    size_t size_training = (int)(0.8 * training_set->size);
-    size_t size_validation = training_set->size - size_training;
+    printf("\nfinal training batch loss: %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
     model_forward(&model, training_set->X + size_training, size_validation);
     printf("\nvalidation loss: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
     // generate after training
-    // generate(&model, 20);
+    generate(&model, 20);
 
     for (size_t i = 0; i < count; i++){
         free(names[i]);
