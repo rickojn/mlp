@@ -426,9 +426,10 @@ void embedding_backwards(const float * grad_activations, const char * inputs, fl
 
 void update_layer(float * biases, float * weights,  const float * gradients_biases, const float * gradients_weights,
     size_t size_neurons, size_t size_weights, size_t size_batch){
-
+        printf("\n\nbias grads:\n");
         for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
             if (biases){
+                printf("\n%d bias grad %f\n", idx_neuron, gradients_biases[idx_neuron]);
                 biases[idx_neuron] -= gradients_biases[idx_neuron] * LEARNING_RATE;
             }
             for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
@@ -455,13 +456,15 @@ void model_backwards(Model * model, TrainingSet * training_set){
     double time_spent;
     begin = clock();
     size_t size_params = get_size_model_params_memory();
-    memset(model->gradients.weights_embeddings, 0, size_params * sizeof(float))
-        + training_set->size * (
-        SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
-        + SIZE_HIDDEN // pre-activations hidden
-        + SIZE_HIDDEN // hidden activations
-        + SIZE_VOCAB) // logits
-        * sizeof(float);
+    size_t size_grads =  size_params * sizeof(float)
+    + model->size_batch * (
+    SIZE_BLOCK * DIM_EMBEDDINGS // embedding activations
+    + SIZE_HIDDEN // pre-activations hidden
+    + SIZE_HIDDEN // hidden activations
+    + SIZE_VOCAB) // logits
+    * sizeof(float);
+     printf("\n size grads: %zu\n", size_grads);
+    memset(model->gradients.weights_embeddings, 0, size_grads);
 
     loss_softmax_backwards(training_set->Y, model->gradients.pre_activations_output, model->activations.probs, training_set->size);
     // printf("\n before mm back:\n");
@@ -477,7 +480,7 @@ void model_backwards(Model * model, TrainingSet * training_set){
 
     // printf("\n grads after mm back:\n\n");
     // printf("\nLogits:\n");
-    // for (int x = 0; x < model->size_batch; x++){
+    // for (int x = 0; x < training_set->size; x++){
     //     printf("\n");
     //     for (int i = 0; i < SIZE_VOCAB; i++){
     //         printf("grad [%d]: %f\t", i, model->gradients.pre_activations_output[x * SIZE_VOCAB + i]);
@@ -634,6 +637,7 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 }
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
+    srand(42);
     for (int i = 0; i < training_batch->size; i++){
         int idx_sample = rand() % training_set->size * 0.8;
         for (int j = 0; j < SIZE_BLOCK; j++){
@@ -687,7 +691,7 @@ int main()
         // print_model(&model);
         if (idx_epoch % 1
             == 0){
-            model_forward(&model, training_batch->X, training_batch->size * 0.8);
+            model_forward(&model, training_batch->X, training_batch->size);
             printf("\nepoch %d \n", idx_epoch);
             printf("\nloss = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));            
         }
