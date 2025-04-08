@@ -637,14 +637,17 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 }
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
-    srand(time(NULL));
+    srand(42);
+    printf("\nindesxs: [");
     for (int i = 0; i < training_batch->size; i++){
         int idx_sample = rand() % training_set->size * 0.8;
+        printf("%d ", idx_sample);
         for (int j = 0; j < SIZE_BLOCK; j++){
             training_batch->X[i * SIZE_BLOCK + j] = training_set->X[idx_sample * SIZE_BLOCK + j];
         }
         training_batch->Y[i] = training_set->Y[idx_sample];
     }
+    printf("]\n");
 }
 
 
@@ -697,7 +700,7 @@ int main()
         model_backwards(&model, training_batch);
         // printf("\nmodel after training:\n");
         // print_model(&model);
-        if (idx_epoch % 10000
+        if (idx_epoch % 1
             == 0){
             model_forward(&model, training_batch->X, training_batch->size);
             printf("\nepoch %d \n", idx_epoch);
