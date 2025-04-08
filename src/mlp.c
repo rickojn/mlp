@@ -638,7 +638,7 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
     srand(42);
-    printf("\nindesxs: [");
+    printf("\nindices: [");
     for (int i = 0; i < training_batch->size; i++){
         int idx_sample = rand() % training_set->size * 0.8;
         printf("%d ", idx_sample);
@@ -692,15 +692,24 @@ int main()
 
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
-        initialise_training_batch(training_set, training_batch);
+        // initialise_training_batch(training_set, training_batch);
+        training_batch = training_set; //
         model_forward(&model, training_batch->X, training_batch->size);
         if (idx_epoch == 0){
+            printf("\ntraining batch:\n");
+            for (int i = 0; i < training_batch->size; i++){
+                printf("\n");
+                for (int j = 0; j < SIZE_BLOCK; j++){
+                    printf("%c", training_batch->X[i * SIZE_BLOCK + j]);
+                }
+                printf(" -> %c", training_batch->Y[i]);
+            }
             printf("\nloss before training = %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
         }
         model_backwards(&model, training_batch);
         // printf("\nmodel after training:\n");
         // print_model(&model);
-        if (idx_epoch % 1
+        if (idx_epoch % 1000
             == 0){
             model_forward(&model, training_batch->X, training_batch->size);
             printf("\nepoch %d \n", idx_epoch);
@@ -722,7 +731,7 @@ int main()
     printf("\nvalidation loss: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
     // generate after training
-    generate(&model, 20);
+    // generate(&model, 20);
 
     for (size_t i = 0; i < count; i++){
         free(names[i]);
