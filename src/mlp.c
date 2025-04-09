@@ -173,7 +173,7 @@ void initialise_model(Model *model)
 void embed_tokens(Model * model, char * tokens, size_t size_tokens){
     for (size_t idx_sample = 0; idx_sample < size_tokens; idx_sample ++){
         for (size_t idx_token = 0; idx_token < SIZE_BLOCK; idx_token++){
-            size_t offset_embedding_activation = idx_sample * SIZE_BLOCK * DIM_EMBEDDINGS + idx_token;
+            size_t offset_embedding_activation = idx_sample * SIZE_BLOCK * DIM_EMBEDDINGS + idx_token * DIM_EMBEDDINGS;
             size_t offset_token = idx_sample * SIZE_BLOCK + idx_token;
             size_t idx_embedding_element = encode(tokens[offset_token]) * DIM_EMBEDDINGS;
             for (size_t idx_dim = 0; idx_dim < DIM_EMBEDDINGS; idx_dim++){
@@ -726,7 +726,7 @@ int main()
 
 
     printf("\nfinal training batch loss: %f\n", cross_entropy_loss(model.activations.probs, training_batch->Y, training_batch->size));
-    model_forward(&model, training_set->X + size_training, size_validation);
+    model_forward(&model, training_set->X + size_training * SIZE_BLOCK, size_validation);
     printf("\nvalidation loss: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
     // generate after training
