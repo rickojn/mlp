@@ -684,7 +684,7 @@ int main()
     size_t size_training = (int)(0.8 * training_set->size);
     size_t size_validation = training_set->size - size_training;
 
-    model_forward(&model, training_set->X + size_training, size_validation);
+    model_forward(&model, training_set->X + size_training * SIZE_BLOCK, size_validation);
     printf("\nvalidation loss before training: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
 
