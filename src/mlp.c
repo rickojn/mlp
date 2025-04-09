@@ -637,10 +637,9 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 }
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
-    srand(42);
     // printf("\nindices: [");
     for (int i = 0; i < training_batch->size; i++){
-        int idx_sample = rand() % training_set->size * 0.8;
+        int idx_sample = rand() % (int)(training_set->size * 0.8);
         // printf("%d ", idx_sample);
         for (int j = 0; j < SIZE_BLOCK; j++){
             training_batch->X[i * SIZE_BLOCK + j] = training_set->X[idx_sample * SIZE_BLOCK + j];
@@ -731,7 +730,7 @@ int main()
     printf("\nvalidation loss: %f\n", cross_entropy_loss(model.activations.probs, training_set->Y + size_training, size_validation));
 
     // generate after training
-    // generate(&model, 20);
+    generate(&model, 20);
 
     for (size_t i = 0; i < count; i++){
         free(names[i]);
