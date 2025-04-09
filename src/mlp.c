@@ -638,16 +638,16 @@ TrainingSet * allocate_training_batch_memory(TrainingSet * training_set, int siz
 
 void initialise_training_batch(const TrainingSet * training_set, TrainingSet * training_batch){
     srand(42);
-    printf("\nindices: [");
+    // printf("\nindices: [");
     for (int i = 0; i < training_batch->size; i++){
         int idx_sample = rand() % training_set->size * 0.8;
-        printf("%d ", idx_sample);
+        // printf("%d ", idx_sample);
         for (int j = 0; j < SIZE_BLOCK; j++){
             training_batch->X[i * SIZE_BLOCK + j] = training_set->X[idx_sample * SIZE_BLOCK + j];
         }
         training_batch->Y[i] = training_set->Y[idx_sample];
     }
-    printf("]\n");
+    // printf("]\n");
 }
 
 
@@ -692,8 +692,8 @@ int main()
 
     //training loop
     for (int idx_epoch = 0; idx_epoch < NUM_EPOCHS; idx_epoch++){
-        // initialise_training_batch(training_set, training_batch);
-        training_batch = training_set; //
+        initialise_training_batch(training_set, training_batch);
+        // training_batch = training_set; //
         model_forward(&model, training_batch->X, training_batch->size);
         if (idx_epoch == 0){
             printf("\ntraining batch:\n");
