@@ -7,7 +7,7 @@
 #define SIZE_BLOCK 3
 #define INITIAL_SIZE 10 // Initial number of strings
 #define MAX_LENGTH 256  // Maximum length of each string
-#define NUM_EPOCHS 10000
+#define NUM_EPOCHS 1000
 #define LEARNING_RATE 0.1
 #define DIM_EMBEDDINGS 10
 #define SIZE_HIDDEN 100

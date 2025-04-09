@@ -1,0 +1,188 @@
+
+32032 names loaded
+
+creating model ...
+
+ model allocated memory: 493743736 bytes
+
+ model allocated memory for params: 24388 bytes
+
+ model allocated memory for params and acts: 259191428 bytes
+
+ model allocated memory for gradients: 234552308 bytes
+
+param and act pointer diff 259191428 
+
+grad pointer diff 209913188 
+
+... model created.
+
+Loading model from file models/model_blk_3_hdn_100_emb_10.bin_20250409_024638.bin
+
+
+model initialised ....
+
+
+Generating names....
+
+ressta
+nanenahryni
+kakaraia
+zammelieiyaninaqi
+prayla
+
+calculating loss with batch size 45628 ...
+
+validation loss before training: 3.595101
+
+training batch:
+
+... -> s
+..t -> o
+mes -> s
+yun -> a
+ell -> e
+pre -> s
+..n -> a
+... -> k
+oni -> n
+ayl -> a
+.el -> l
+enn -> .
+ewi -> n
+..r -> e
+anv -> i
+... -> a
+ish -> a
+har -> l
+ula -> .
+eya -> n
+lie -> .
+ira -> b
+... -> u
+lay -> l
+out -> .
+eyl -> e
+est -> .
+..c -> h
+.jo -> b
+ynn -> .
+cee -> .
+... -> n
+calculating loss with batch size 32 ...
+
+loss before training = 2.280193
+
+epoch 0 
+
+calculating loss with batch size 32 ...
+
+loss = 2.070730
+
+epoch 100 
+
+calculating loss with batch size 32 ...
+
+ new loss is greater: 2.158748
+
+ loss diff: 0.088018
+
+loss = 2.158748
+
+epoch 200 
+
+calculating loss with batch size 32 ...
+
+loss = 2.007536
+
+epoch 300 
+
+calculating loss with batch size 32 ...
+
+ new loss is greater: 2.323990
+
+ loss diff: 0.316453
+
+loss = 2.323990
+
+epoch 400 
+
+calculating loss with batch size 32 ...
+
+loss = 2.263132
+
+epoch 500 
+
+calculating loss with batch size 32 ...
+
+ new loss is greater: 2.372744
+
+ loss diff: 0.109612
+
+loss = 2.372744
+
+epoch 600 
+
+calculating loss with batch size 32 ...
+
+loss = 2.359587
+
+epoch 700 
+
+calculating loss with batch size 32 ...
+
+loss = 1.947777
+
+epoch 800 
+
+calculating loss with batch size 32 ...
+
+ new loss is greater: 2.262173
+
+ loss diff: 0.314396
+
+loss = 2.262173
+
+epoch 900 
+
+calculating loss with batch size 32 ...
+
+loss = 1.704532
+
+saving in file: models/model_blk_3_hdn_100_emb_10.bin_20250409_024659.bin
+
+calculating loss with batch size 32 ...
+
+ new loss is greater: 2.317548
+
+ loss diff: 0.613016
+
+final training batch loss: 2.317548
+
+calculating loss with batch size 45628 ...
+
+validation loss: 3.595767
+
+
+Generating names....
+
+aaraliey
+crha
+izah
+ealy
+aricxth
+tailima
+waraia
+nilamiynnga
+kari
+mileislee
+nilyla
+koynin
+zos
+jakalynnia
+tehe
+ayelia
+ava
+sab
+jally
+gkynana

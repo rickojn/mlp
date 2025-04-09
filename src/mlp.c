@@ -708,7 +708,7 @@ int main()
         model_backwards(&model, training_batch);
         // printf("\nmodel after training:\n");
         // print_model(&model);
-        if (idx_epoch % 1000
+        if (idx_epoch % 100
             == 0){
             model_forward(&model, training_batch->X, training_batch->size);
             printf("\nepoch %d \n", idx_epoch);
