@@ -94,6 +94,13 @@ float generate_xavier_number(size_t inputs, size_t outputs)
     return generate_normal_random_number() * stddev;
 }
 
+// Kaiming Normal Initialization
+float generate_kaiming_number(size_t inputs, size_t outputs)
+{
+    float stddev = sqrt(2.0f / inputs);
+    return generate_normal_random_number() * stddev;
+}
+
 
 int encode(char c)
 {

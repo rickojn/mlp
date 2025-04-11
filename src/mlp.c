@@ -146,12 +146,22 @@ void create_model(Model * model, size_t size_batch){
 }
 
 
-void intialise_layer(float * biases, float * weights, size_t size_neurons, size_t size_weights){
+void xavier_intialise_layer(float * biases, float * weights, size_t size_neurons, size_t size_weights){
     for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
         biases[idx_neuron] = 0.0;
         for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
             size_t offset_weight = idx_neuron * size_weights + idx_weight;
             weights[offset_weight] = generate_xavier_number(size_weights, size_neurons);
+        }
+    }
+}
+
+void kaiming_intialise_layer(float * biases, float * weights, size_t size_neurons, size_t size_weights){
+    for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+        biases[idx_neuron] = 0.0;
+        for (size_t idx_weight = 0; idx_weight < size_weights; idx_weight++){
+            size_t offset_weight = idx_neuron * size_weights + idx_weight;
+            weights[offset_weight] = generate_kaiming_number(size_weights, size_neurons);
         }
     }
 }
@@ -163,8 +173,8 @@ void initialise_model(Model *model)
     srand(42);
     // srand(time(NULL));
 
-    intialise_layer(model->parameters.biases_hidden, model->parameters.weights_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
-    intialise_layer(model->parameters.biases_output, model->parameters.weights_output, SIZE_VOCAB, SIZE_HIDDEN);
+    xavier_intialise_layer(model->parameters.biases_hidden, model->parameters.weights_hidden, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS);
+    kaiming_intialise_layer(model->parameters.biases_output, model->parameters.weights_output, SIZE_VOCAB, SIZE_HIDDEN);
     for (size_t idx_embedding = 0; idx_embedding < SIZE_VOCAB * DIM_EMBEDDINGS; idx_embedding++){
         model->parameters.table_embedding[idx_embedding] = generate_normal_random_number();
     }
@@ -232,6 +242,16 @@ void tanh_foward(const float * pre_activations, float * activations, size_t size
 }
 
 
+void relu_foward(const float * pre_activations, float * activations, size_t size_neurons, size_t size_batch ){
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_activation = idx_sample * size_neurons + idx_neuron;
+            activations[offset_activation] = fmax(0, pre_activations[offset_activation]);
+        }
+    }
+}
+
+
 
 void softmax_foward(const float * logits, float * probs, size_t size_batch){
     for (size_t idx_batch = 0; idx_batch < size_batch; idx_batch++){
@@ -265,7 +285,8 @@ void model_forward(Model * model, char * tokens, size_t size_batch ){
     embed_tokens(model, tokens, size_batch);
     matmul_forward(model->activations.input, model->parameters.weights_hidden, model->parameters.biases_hidden, model->activations.pre_hidden,
         SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, size_batch);
-    tanh_foward(model->activations.pre_hidden, model->activations.hidden, SIZE_HIDDEN, size_batch);
+    // tanh_foward(model->activations.pre_hidden, model->activations.hidden, SIZE_HIDDEN, size_batch);
+    relu_foward(model->activations.pre_hidden, model->activations.hidden, SIZE_HIDDEN, size_batch);
     matmul_forward(model->activations.hidden, model->parameters.weights_output, model->parameters.biases_output, model->activations.output,
         SIZE_VOCAB, SIZE_HIDDEN, size_batch);
     softmax_foward(model->activations.output, model->activations.probs, size_batch);
@@ -318,6 +339,20 @@ void tanh_backwards(const float * grad_activations, const float * pre_activation
             grad_pre_activations[offset_grad] = (1 - pow(tanh(pre_activations[offset_grad]), 2)) * grad_activations[offset_grad];
             float db_grad = grad_pre_activations[offset_grad];
             int db = 0;
+        }
+    }
+}
+
+void relu_backwards(const float * grad_activations, const float * pre_activations, float * grad_pre_activations, size_t size_neurons, size_t size_batch){
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < size_neurons; idx_neuron++){
+            size_t offset_grad = idx_sample * size_neurons + idx_neuron;
+            if (pre_activations[offset_grad] > 0){
+                grad_pre_activations[offset_grad] = grad_activations[offset_grad]; // * 1 i.e dAct/dPreAct  = 1
+            }
+            else {
+                grad_pre_activations[offset_grad] = 0;
+            }
         }
     }
 }
@@ -472,7 +507,8 @@ void model_backwards(Model * model, TrainingSet * training_set){
     
     matmul_backwards(model->gradients.pre_activations_output, model->parameters.weights_output, model->activations.hidden, model->gradients.weights_output,
         model->gradients.biases_output, model->gradients.activations_hidden, SIZE_VOCAB, SIZE_HIDDEN, training_set->size);
-    tanh_backwards(model->gradients.activations_hidden, model->activations.pre_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
+    // tanh_backwards(model->gradients.activations_hidden, model->activations.pre_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
+    relu_backwards(model->gradients.activations_hidden, model->activations.pre_hidden, model->gradients.pre_activations_hidden, SIZE_HIDDEN, training_set->size);
     matmul_backwards(model->gradients.pre_activations_hidden, model->parameters.weights_hidden, model->activations.input, model->gradients.weights_hidden,
     model->gradients.biases_hidden, model->gradients.activations_embeddings, SIZE_HIDDEN, SIZE_BLOCK * DIM_EMBEDDINGS, training_set->size);
     embedding_backwards(model->gradients.activations_embeddings, training_set->X, model->gradients.weights_embeddings, training_set->size);
