@@ -10,6 +10,16 @@ typedef struct {
     int nImages;
 } InputData;
 
+typedef struct{
+    float *weights, *biases;
+    size_t size_inputs, size_outputs;
+} Layer;
+
+typedef struct {
+    Layer *layers;
+    size_t nLayers;
+} Model;
+
 
 void read_mnist_images(const char *filename, unsigned char **images, int *nImages) {
     FILE *file = fopen(filename, "rb");
@@ -50,12 +60,27 @@ void read_mnist_labels(const char *filename, unsigned char **labels, int *nLabel
 
 
 int main() {
-    InputData data = {0};
+    // read input data
+    InputData data_training, data_test = {0};
+
     const char *training_images_path = "/home/rickojn/coding/deep/data/train-images.idx3-ubyte";
     const char *training_labels_path = "/home/rickojn/coding/deep/data/train-labels.idx1-ubyte";
-    read_mnist_images(training_images_path, &data.images, &data.nImages);
-    read_mnist_labels(training_labels_path, &data.labels, &data.nImages);
-    printf("Number of training labels: %d\n", data.nImages);
-    printf("Number of training images: %d\n", data.nImages);
+    read_mnist_images(training_images_path, &data_training.images, &data_training.nImages);
+    read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
+    printf("Number of training images: %d\n", data_training.nImages);
+
+    const char *test_images_path = "/home/rickojn/coding/deep/data/t10k-images.idx3-ubyte";
+    const char *test_labels_path = "/home/rickojn/coding/deep/data/t10k-labels.idx1-ubyte";
+    read_mnist_images(test_images_path, &data_test.images, &data_test.nImages);
+    read_mnist_labels(test_labels_path, &data_test.labels, &data_test.nImages);
+    printf("Number of test images: %d\n", data_test.nImages);
+
+
+
+
+
+
+
+
     return 0;
 }
