@@ -4,6 +4,9 @@
 #include <math.h>
 
 #define SIZE_CLASSES 10
+#define SIZE_BATCH 100
+#define SIZE_OUTPUT 10
+#define SIZE_HIDDEN 128
 
 typedef struct {
     unsigned char *images, *labels;
@@ -17,7 +20,7 @@ typedef struct{
 
 typedef struct {
     Layer *layers;
-    size_t nLayers;
+    size_t size_layers;
 } Model;
 
 
@@ -74,6 +77,10 @@ int main() {
     read_mnist_images(test_images_path, &data_test.images, &data_test.nImages);
     read_mnist_labels(test_labels_path, &data_test.labels, &data_test.nImages);
     printf("Number of test images: %d\n", data_test.nImages);
+
+    // create model
+    Model model;
+    Layer layer_hidden, layer_output;
 
 
 
