@@ -111,7 +111,7 @@ void create_model(Model * model, size_t size_batch){
 
     size_t size_model = size_model_params + size_model_activations + size_model_gradients;
     float * model_memory_start = calloc(size_model, sizeof(float));
-    printf("\n model parameters count: %zu\n", size_model);
+    printf("\n model parameters count: %zu\n", size_model_params);
  
     model->parameters.table_embedding = model_memory_start;
     model->parameters.weights_hidden = model_memory_start + SIZE_VOCAB * DIM_EMBEDDINGS;
