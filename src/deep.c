@@ -13,9 +13,12 @@ typedef struct {
     int nImages, rows, cols;
 } InputData;
 
-typedef struct{
+
+typedef struct Layer{
     float *weights, *biases;
     size_t size_inputs, size_outputs;
+    void (*activation_forward)(struct Layer* layer, float *input, float *output);
+    void (*activation_backward)(struct Layer* layer, float *dout, float *din);
 } Layer;
 
 typedef struct {
@@ -27,6 +30,45 @@ typedef struct {
     float *activations;
     size_t size_activations;
 } Activations;
+
+
+void matmul_forward(Layer *layer, float *input, float *output)
+{
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_outputs; idx_neuron++) {
+        output[idx_neuron] = layer->biases[idx_neuron];
+        for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
+            output[idx_neuron] += layer->weights[idx_input * layer->size_outputs + idx_neuron] * input[idx_input];
+        }
+    }
+} 
+
+
+void relu_forward(Layer *layer, float *input, float *output)
+{
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_outputs; idx_neuron++) {
+        output[idx_neuron] = fmaxf(0.0f, input[idx_neuron]);
+    }
+}
+
+void softmax_forward(Layer *layer, float *input, float *output)
+{
+    float max = input[0];
+    for (size_t i = 1; i < layer->size_outputs; i++) {
+        if (input[i] > max) {
+            max = input[i];
+        }
+    }
+
+    float sum = 0.0f;
+    for (size_t i = 0; i < layer->size_outputs; i++) {
+        output[i] = expf(input[i] - max);
+        sum += output[i];
+    }
+
+    for (size_t i = 0; i < layer->size_outputs; i++) {
+        output[i] /= sum;
+    }
+}
 
 
 void read_mnist_images(const char *filename, unsigned char **images, int *nImages) {
@@ -95,6 +137,8 @@ void kaiming_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
     layer->size_inputs = inputs;
     layer->size_outputs = outputs;
 
+    layer->activation_forward = relu_forward;
+
     layer->weights = malloc(inputs * outputs * sizeof(float));
     layer->biases = malloc(outputs * sizeof(float));
 
@@ -109,6 +153,8 @@ void xavier_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
 {
     layer->size_inputs = inputs;
     layer->size_outputs = outputs;
+
+    layer->activation_forward = softmax_forward;
 
     layer->weights = malloc(inputs * outputs * sizeof(float));
     layer->biases = malloc(outputs * sizeof(float));
@@ -159,6 +205,7 @@ void free_model(Model *model)
 void model_forward(Model *model, Activations *activations)
 {
     printf("\nModel forward pass...\n");
+
 } 
 
 size_t get_size_parameters(Model *model)
@@ -207,7 +254,7 @@ int main() {
     Model model = {0};
     // create layers
     Layer layer_hidden, layer_output;
-    kaiming_initialize_layer(&layer_hidden, SIZE_CLASSES, SIZE_HIDDEN);
+    kaiming_initialize_layer(&layer_hidden, data_test.cols * data_test.rows, SIZE_HIDDEN);
     xavier_initialize_layer(&layer_output, SIZE_HIDDEN, SIZE_OUTPUT);
     // add layers to model
     add_layer(&model, &layer_hidden);
