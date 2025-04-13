@@ -10,7 +10,7 @@
 
 typedef struct {
     unsigned char *images, *labels;
-    int nImages;
+    int nImages, rows, cols;
 } InputData;
 
 typedef struct{
@@ -22,6 +22,11 @@ typedef struct {
     Layer **layers;
     size_t size_layers;
 } Model;
+
+typedef struct {
+    float *activations;
+    size_t size_activations;
+} Activations;
 
 
 void read_mnist_images(const char *filename, unsigned char **images, int *nImages) {
@@ -138,19 +143,49 @@ void print_layer(Layer *layer)
     printf("\n");
 }
 
-
-
 void free_layer(Layer *layer)
 {
     free(layer->weights);
     free(layer->biases);
 }
+
 void free_model(Model *model)
 {
     for (size_t i = 0; i < model->size_layers; i++)
       free_layer(model->layers[i]);
     free(model->layers);
 }
+
+void model_forward(Model *model, Activations *activations)
+{
+    printf("\nModel forward pass...\n");
+} 
+
+size_t get_size_parameters(Model *model)
+{
+    size_t size = 0;
+    for (size_t i = 0; i < model->size_layers; i++) {
+        size += model->layers[i]->size_inputs * model->layers[i]->size_outputs;
+        size += model->layers[i]->size_outputs;
+    }
+    return size;
+}
+
+void initialise_activations(Activations * activations, Model *model, InputData *data)
+{
+    for (size_t i = 0; i < model->size_layers; i++) {
+        activations->size_activations += model->layers[i]->size_outputs;
+    }
+    activations->size_activations += data->rows * data->cols;
+    activations->size_activations *= data->nImages;
+    activations->activations = calloc(activations->size_activations, sizeof(float));
+}
+
+void free_activations(Activations * activations)
+{
+    free(activations->activations);
+}
+
 
 int main() {
     // read input data
@@ -170,7 +205,6 @@ int main() {
 
     // create model
     Model model = {0};
-    printf("\nlayers: %zu\n", model.size_layers);
     // create layers
     Layer layer_hidden, layer_output;
     kaiming_initialize_layer(&layer_hidden, SIZE_CLASSES, SIZE_HIDDEN);
@@ -178,13 +212,16 @@ int main() {
     // add layers to model
     add_layer(&model, &layer_hidden);
     add_layer(&model, &layer_output);
-    // print model
-    printf("Model:\n");
-    for (size_t i = 0; i < model.size_layers; i++)
-        print_layer(model.layers[i]);
+    printf("Number of parameters: %zu\n", get_size_parameters(&model));
+    // test loss before training
+    Activations activations = {0};
+    initialise_activations(&activations, &model, &data_test);
+    model_forward(&model, &activations);
+    // free activations
+    free_activations(&activations);
     // free model
     free_model(&model);
-    // free layers
+    // free input data
     free(data_training.images);
     free(data_training.labels);
     free(data_test.images);
