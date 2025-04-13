@@ -6,7 +6,7 @@
 #define SIZE_CLASSES 10
 #define SIZE_MINI_BATCH 100
 #define SIZE_OUTPUT 10
-#define SIZE_HIDDEN 10
+#define SIZE_HIDDEN 32
 
 typedef struct {
     unsigned char *images, *labels;
@@ -16,7 +16,7 @@ typedef struct {
 
 typedef struct Layer{
     float *weights, *biases;
-    size_t size_inputs, size_outputs;
+    size_t size_inputs, size_neurons;
     void (*activation_forward)(struct Layer* layer, float *input, float *output);
     void (*activation_backward)(struct Layer* layer, float *dout, float *din);
 } Layer;
@@ -34,10 +34,10 @@ typedef struct {
 
 void matmul_forward(Layer *layer, float *input, float *output)
 {
-    for (size_t idx_neuron = 0; idx_neuron < layer->size_outputs; idx_neuron++) {
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
         output[idx_neuron] = layer->biases[idx_neuron];
         for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
-            output[idx_neuron] += layer->weights[idx_input * layer->size_outputs + idx_neuron] * input[idx_input];
+            output[idx_neuron] += layer->weights[idx_input * layer->size_neurons + idx_neuron] * input[idx_input];
         }
     }
 } 
@@ -45,7 +45,7 @@ void matmul_forward(Layer *layer, float *input, float *output)
 
 void relu_forward(Layer *layer, float *input, float *output)
 {
-    for (size_t idx_neuron = 0; idx_neuron < layer->size_outputs; idx_neuron++) {
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
         output[idx_neuron] = fmaxf(0.0f, input[idx_neuron]);
     }
 }
@@ -53,42 +53,42 @@ void relu_forward(Layer *layer, float *input, float *output)
 void softmax_forward(Layer *layer, float *input, float *output)
 {
     float max = input[0];
-    for (size_t i = 1; i < layer->size_outputs; i++) {
+    for (size_t i = 1; i < layer->size_neurons; i++) {
         if (input[i] > max) {
             max = input[i];
         }
     }
 
     float sum = 0.0f;
-    for (size_t i = 0; i < layer->size_outputs; i++) {
+    for (size_t i = 0; i < layer->size_neurons; i++) {
         output[i] = expf(input[i] - max);
         sum += output[i];
     }
 
-    for (size_t i = 0; i < layer->size_outputs; i++) {
+    for (size_t i = 0; i < layer->size_neurons; i++) {
         output[i] /= sum;
     }
 }
 
 
-void read_mnist_images(const char *filename, unsigned char **images, int *nImages) {
+void read_mnist_images(const char *filename, InputData *data) {
     FILE *file = fopen(filename, "rb");
     if (!file) exit(1);
 
-    int temp, rows, cols;
+    int temp;
     fread(&temp, sizeof(int), 1, file);
-    fread(nImages, sizeof(int), 1, file);
-    *nImages = __builtin_bswap32(*nImages);
+    fread(&data->nImages, sizeof(int), 1, file);
+    data->nImages = __builtin_bswap32(data->nImages);
 
-    fread(&rows, sizeof(int), 1, file);
-    fread(&cols, sizeof(int), 1, file);
+    fread(&data->rows, sizeof(int), 1, file);
+    fread(&data->cols, sizeof(int), 1, file);
 
-    rows = __builtin_bswap32(rows);
-    cols = __builtin_bswap32(cols);
-    printf("rows: %d, cols: %d\n", rows, cols);
+    data->rows = __builtin_bswap32(data->rows);
+    data->cols = __builtin_bswap32(data->cols);
+    printf("rows: %d, cols: %d\n", data->rows, data->cols);
 
-    *images = malloc((*nImages) * rows * cols);
-    fread(*images, sizeof(unsigned char), (*nImages) * rows * cols, file);
+    data->images = malloc(data->nImages * data->rows * data->cols);
+    fread(data->images, sizeof(unsigned char), data->nImages * data->rows * data->cols, file);
     fclose(file);
 
 }
@@ -135,7 +135,7 @@ float generate_kaiming_number(size_t inputs, size_t outputs)
 void kaiming_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
 {
     layer->size_inputs = inputs;
-    layer->size_outputs = outputs;
+    layer->size_neurons = outputs;
 
     layer->activation_forward = relu_forward;
 
@@ -152,7 +152,7 @@ void kaiming_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
 void xavier_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
 {
     layer->size_inputs = inputs;
-    layer->size_outputs = outputs;
+    layer->size_neurons = outputs;
 
     layer->activation_forward = softmax_forward;
 
@@ -179,12 +179,12 @@ void add_layer(Model *model, Layer *layer)
 
 void print_layer(Layer *layer)
 {
-    printf("Layer: %zu inputs, %zu outputs\n", layer->size_inputs, layer->size_outputs);
+    printf("Layer: %zu inputs, %zu outputs\n", layer->size_inputs, layer->size_neurons);
     printf("Weights:\n");
-    for (size_t i = 0; i < layer->size_inputs * layer->size_outputs; i++)
+    for (size_t i = 0; i < layer->size_inputs * layer->size_neurons; i++)
         printf("%f ", layer->weights[i]);
     printf("\nBiases:\n");
-    for (size_t i = 0; i < layer->size_outputs; i++)
+    for (size_t i = 0; i < layer->size_neurons; i++)
         printf("%f ", layer->biases[i]);
     printf("\n");
 }
@@ -202,9 +202,18 @@ void free_model(Model *model)
     free(model->layers);
 }
 
-void model_forward(Model *model, Activations *activations)
+void model_forward(Model *model, Activations *activations, InputData *data)
 {
     printf("\nModel forward pass...\n");
+    float *inputs = activations->activations;
+    float *outputs = activations->activations + data->rows * data->cols;
+    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
+        Layer *layer = model->layers[idx_layer];
+        inputs += idx_layer == 0 ? 0 : model->layers[idx_layer - 1]->size_neurons;
+        outputs += layer->size_neurons;
+        matmul_forward(layer, inputs, outputs);
+        layer->activation_forward(layer, outputs, outputs);
+    }
 
 } 
 
@@ -212,8 +221,8 @@ size_t get_size_parameters(Model *model)
 {
     size_t size = 0;
     for (size_t i = 0; i < model->size_layers; i++) {
-        size += model->layers[i]->size_inputs * model->layers[i]->size_outputs;
-        size += model->layers[i]->size_outputs;
+        size += model->layers[i]->size_inputs * model->layers[i]->size_neurons;
+        size += model->layers[i]->size_neurons;
     }
     return size;
 }
@@ -221,7 +230,7 @@ size_t get_size_parameters(Model *model)
 void initialise_activations(Activations * activations, Model *model, InputData *data)
 {
     for (size_t i = 0; i < model->size_layers; i++) {
-        activations->size_activations += model->layers[i]->size_outputs;
+        activations->size_activations += model->layers[i]->size_neurons;
     }
     activations->size_activations += data->rows * data->cols;
     activations->size_activations *= data->nImages;
@@ -240,13 +249,13 @@ int main() {
 
     const char *training_images_path = "/home/rickojn/coding/deep/data/train-images.idx3-ubyte";
     const char *training_labels_path = "/home/rickojn/coding/deep/data/train-labels.idx1-ubyte";
-    read_mnist_images(training_images_path, &data_training.images, &data_training.nImages);
+    read_mnist_images(training_images_path, &data_training);
     read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
     printf("Number of training images: %d\n", data_training.nImages);
 
     const char *test_images_path = "/home/rickojn/coding/deep/data/t10k-images.idx3-ubyte";
     const char *test_labels_path = "/home/rickojn/coding/deep/data/t10k-labels.idx1-ubyte";
-    read_mnist_images(test_images_path, &data_test.images, &data_test.nImages);
+    read_mnist_images(test_images_path, &data_test);
     read_mnist_labels(test_labels_path, &data_test.labels, &data_test.nImages);
     printf("Number of test images: %d\n", data_test.nImages);
 
@@ -263,7 +272,7 @@ int main() {
     // test loss before training
     Activations activations = {0};
     initialise_activations(&activations, &model, &data_test);
-    model_forward(&model, &activations);
+    model_forward(&model, &activations, &data_test);
     // free activations
     free_activations(&activations);
     // free model
