@@ -17,7 +17,7 @@ typedef struct {
 typedef struct Layer{
     float *weights, *biases;
     size_t size_inputs, size_neurons;
-    void (*activation_forward)(struct Layer* layer, float *input, float *output);
+    void (*activation_forward)(struct Layer* layer, float *input, float *output, size_t size_batch);
     void (*activation_backward)(struct Layer* layer, float *dout, float *din);
 } Layer;
 
@@ -32,44 +32,58 @@ typedef struct {
 } Activations;
 
 
-void matmul_forward(Layer *layer, float *input, float *output)
+void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
-    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-        output[idx_neuron] = layer->biases[idx_neuron];
-        for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
-            output[idx_neuron] += layer->weights[idx_input * layer->size_neurons + idx_neuron] * input[idx_input];
+    for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
+        printf("mm forward idx_image: %zu\n", idx_image);
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            output[idx_image * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
+            for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
+                output[idx_image * layer->size_neurons + idx_neuron] += 
+                layer->weights[idx_input * layer->size_neurons + idx_neuron] * input[idx_image * layer->size_inputs + idx_input];
+            }
         }
     }
 } 
 
 
-void relu_forward(Layer *layer, float *input, float *output)
+void relu_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
-    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-        output[idx_neuron] = fmaxf(0.0f, input[idx_neuron]);
-    }
-}
-
-void softmax_forward(Layer *layer, float *input, float *output)
-{
-    float max = input[0];
-    for (size_t i = 1; i < layer->size_neurons; i++) {
-        if (input[i] > max) {
-            max = input[i];
+    for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
+        printf("relu forward idx_image: %zu\n", idx_image);
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            output[idx_image * layer->size_neurons + idx_neuron] = fmaxf(0.0f, input[idx_image * layer->size_neurons + idx_neuron]);
         }
     }
-
-    float sum = 0.0f;
-    for (size_t i = 0; i < layer->size_neurons; i++) {
-        output[i] = expf(input[i] - max);
-        sum += output[i];
-    }
-
-    for (size_t i = 0; i < layer->size_neurons; i++) {
-        output[i] /= sum;
-    }
 }
 
+void softmax_forward(Layer *layer, float *input, float *output, size_t size_batch)
+{
+    for (size_t idx_image = 0; idx_image < size_batch; idx_image++)
+    {
+        printf("softmax forward idx_image: %zu\n", idx_image);
+        float max = input[0];
+        for (size_t i = 1; i < layer->size_neurons; i++)
+        {
+            if (input[i] > max)
+            {
+                max = input[i];
+            }
+        }
+
+        float sum = 0.0f;
+        for (size_t i = 0; i < layer->size_neurons; i++)
+        {
+            output[i] = expf(input[i] - max);
+            sum += output[i];
+        }
+
+        for (size_t i = 0; i < layer->size_neurons; i++)
+        {
+            output[i] /= sum;
+        }
+    }
+}
 
 void read_mnist_images(const char *filename, InputData *data) {
     FILE *file = fopen(filename, "rb");
@@ -211,8 +225,8 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         Layer *layer = model->layers[idx_layer];
         inputs += idx_layer == 0 ? 0 : model->layers[idx_layer - 1]->size_neurons;
         outputs += layer->size_neurons;
-        matmul_forward(layer, inputs, outputs);
-        layer->activation_forward(layer, outputs, outputs);
+        matmul_forward(layer, inputs, outputs, data->nImages);
+        layer->activation_forward(layer, outputs, outputs, data->nImages);
     }
 
 } 
@@ -282,13 +296,6 @@ int main() {
     free(data_training.labels);
     free(data_test.images);
     free(data_test.labels);
-
-
-
-
-
-
-
 
     return 0;
 }
