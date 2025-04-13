@@ -6,7 +6,7 @@
 #define SIZE_CLASSES 10
 #define SIZE_MINI_BATCH 100
 #define SIZE_OUTPUT 10
-#define SIZE_HIDDEN 128
+#define SIZE_HIDDEN 10
 
 typedef struct {
     unsigned char *images, *labels;
@@ -19,7 +19,7 @@ typedef struct{
 } Layer;
 
 typedef struct {
-    Layer *layers;
+    Layer **layers;
     size_t size_layers;
 } Model;
 
@@ -115,6 +115,29 @@ void xavier_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
         layer->biases[i] = 0.0f;
 }
 
+void add_layer(Model *model, Layer *layer)
+{
+    if (model->size_layers == 0) {
+        model->layers = malloc(sizeof(Layer *));
+    } else {
+        model->layers = realloc(model->layers, (model->size_layers + 1) * sizeof(Layer *));
+    }
+    model->layers[model->size_layers] = layer;
+    model->size_layers++;
+}
+
+void print_layer(Layer *layer)
+{
+    printf("Layer: %zu inputs, %zu outputs\n", layer->size_inputs, layer->size_outputs);
+    printf("Weights:\n");
+    for (size_t i = 0; i < layer->size_inputs * layer->size_outputs; i++)
+        printf("%f ", layer->weights[i]);
+    printf("\nBiases:\n");
+    for (size_t i = 0; i < layer->size_outputs; i++)
+        printf("%f ", layer->biases[i]);
+    printf("\n");
+}
+
 
 
 void free_layer(Layer *layer)
@@ -125,7 +148,7 @@ void free_layer(Layer *layer)
 void free_model(Model *model)
 {
     for (size_t i = 0; i < model->size_layers; i++)
-        free_layer(&model->layers[i]);
+      free_layer(model->layers[i]);
     free(model->layers);
 }
 
@@ -146,14 +169,22 @@ int main() {
     printf("Number of test images: %d\n", data_test.nImages);
 
     // create model
-    Model model;
+    Model model = {0};
+    printf("\nlayers: %zu\n", model.size_layers);
+    // create layers
     Layer layer_hidden, layer_output;
     kaiming_initialize_layer(&layer_hidden, SIZE_CLASSES, SIZE_HIDDEN);
     xavier_initialize_layer(&layer_output, SIZE_HIDDEN, SIZE_OUTPUT);
-
-
-    free_layer(&layer_hidden);
-    free_layer(&layer_output);
+    // add layers to model
+    add_layer(&model, &layer_hidden);
+    add_layer(&model, &layer_output);
+    // print model
+    printf("Model:\n");
+    for (size_t i = 0; i < model.size_layers; i++)
+        print_layer(model.layers[i]);
+    // free model
+    free_model(&model);
+    // free layers
     free(data_training.images);
     free(data_training.labels);
     free(data_test.images);
