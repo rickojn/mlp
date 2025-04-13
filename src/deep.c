@@ -35,7 +35,6 @@ typedef struct {
 void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
-        printf("mm forward idx_image: %zu\n", idx_image);
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             output[idx_image * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
             for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
@@ -50,7 +49,6 @@ void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch
 void relu_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
-        printf("relu forward idx_image: %zu\n", idx_image);
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             output[idx_image * layer->size_neurons + idx_neuron] = fmaxf(0.0f, input[idx_image * layer->size_neurons + idx_neuron]);
         }
@@ -61,7 +59,6 @@ void softmax_forward(Layer *layer, float *input, float *output, size_t size_batc
 {
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++)
     {
-        printf("softmax forward idx_image: %zu\n", idx_image);
         float max = input[0];
         for (size_t i = 1; i < layer->size_neurons; i++)
         {
@@ -249,6 +246,10 @@ void initialise_activations(Activations * activations, Model *model, InputData *
     activations->size_activations += data->rows * data->cols;
     activations->size_activations *= data->nImages;
     activations->activations = calloc(activations->size_activations, sizeof(float));
+
+    for (size_t idx_pixel = 0; idx_pixel < data->nImages * data->rows * data->cols; idx_pixel++) {
+        activations->activations[idx_pixel] = (float)data->images[idx_pixel] / 255.0f;
+    }
 }
 
 void free_activations(Activations * activations)
