@@ -4,9 +4,10 @@
 #include <math.h>
 
 #define SIZE_CLASSES 10
-#define SIZE_MINI_BATCH 100
+#define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 32
+#define NUMBER_EPOCHS 10
 
 typedef struct {
     unsigned char *images, *labels;
@@ -30,6 +31,11 @@ typedef struct {
     float *activations;
     size_t size_activations;
 } Activations;
+
+typedef struct {
+    float *grads;
+    size_t size_grads;
+} Gradients;
 
 
 
@@ -101,6 +107,30 @@ void softmax_forward(Layer *layer, float *logits, float *probs, size_t size_batc
         }
     }
 }
+
+void model_forward(Model *model, Activations *activations, InputData *data)
+{
+    printf("\nModel forward pass...\n");
+    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
+        Layer *layer = model->layers[idx_layer];
+        matmul_forward(layer, layer->inputs, layer->outputs, data->nImages);
+        layer->activation_forward(layer, layer->outputs, layer->outputs, data->nImages);
+    }
+}
+
+void matmul_backward(Layer *layer, float *dout, float *din, size_t size_batch)
+{
+    for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            din[idx_image * layer->size_inputs + idx_neuron] = 0.0f;
+            for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
+                din[idx_image * layer->size_inputs + idx_input] += 
+                dout[idx_image * layer->size_neurons + idx_neuron] * layer->weights[idx_input * layer->size_neurons + idx_neuron];
+            }
+        }
+    }
+}
+
 
 void read_mnist_images(const char *filename, InputData *data) {
     FILE *file = fopen(filename, "rb");
@@ -251,16 +281,6 @@ void print_probs(Model *model, Activations *activations, InputData *data)
 }
 
 
-void model_forward(Model *model, Activations *activations, InputData *data)
-{
-    printf("\nModel forward pass...\n");
-    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
-        Layer *layer = model->layers[idx_layer];
-        matmul_forward(layer, layer->inputs, layer->outputs, data->nImages);
-        layer->activation_forward(layer, layer->outputs, layer->outputs, data->nImages);
-    }
-} 
-
 float get_loss(Model *model, Activations *activations, InputData *data)
 {
     float loss = 0.0f;
@@ -339,10 +359,30 @@ void free_activations(Activations * activations)
     free(activations->activations);
 }
 
+void allocate_mini_batch_memory(InputData * mini_batch_data)
+{
+    mini_batch_data->images = malloc(mini_batch_data->nImages * mini_batch_data->rows * mini_batch_data->cols);
+    mini_batch_data->labels = malloc(mini_batch_data->nImages * sizeof(unsigned char));
+}
+
+void free_mini_batch_memory(InputData * mini_batch_data)
+{
+    free(mini_batch_data->images);
+    free(mini_batch_data->labels);
+}
+
+void initialise_mini_batch(InputData * training_data, InputData * mini_batch_data){
+    for (size_t idx_mini_batch_image = 0; idx_mini_batch_image < mini_batch_data->nImages; idx_mini_batch_image++) {
+        size_t idx_training_image = rand() % training_data->nImages;
+        mini_batch_data->images[idx_mini_batch_image] = training_data->images[idx_training_image];
+        mini_batch_data->labels[idx_mini_batch_image] = training_data->labels[idx_training_image];
+    }
+}
+
 
 int main() {
     // read input data
-    InputData data_training, data_test = {0};
+    InputData data_training, data_test, data_mini_batch = {0};
 
     const char * data_path = getenv("DATA_PATH");
     
@@ -374,6 +414,24 @@ int main() {
     model_forward(&model, &activations, &data_test);
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
+
+    // train model
+
+    data_mini_batch.nImages = SIZE_MINI_BATCH;
+    data_mini_batch.rows = data_training.rows;
+    data_mini_batch.cols = data_training.cols;
+    allocate_mini_batch_memory(&data_mini_batch);
+    initialise_activations(&activations, &model, &data_mini_batch);
+
+    for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
+        printf("\nEpoch %zu\n", epoch);
+        initialise_mini_batch(&data_training, &data_mini_batch);
+        model_forward(&model, &activations, &data_mini_batch);
+        printf("Training loss: %f\n", get_loss(&model, &activations, &data_mini_batch));
+        printf("Training accuracy: %f\n", get_accuracy(&model, &activations, &data_mini_batch));
+    }
+    
+
     // free activations
     free_activations(&activations);
     // free model
