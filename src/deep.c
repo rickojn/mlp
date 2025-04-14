@@ -234,9 +234,6 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         matmul_forward(layer, layer->inputs, layer->outputs, data->nImages);
         layer->activation_forward(layer, layer->outputs, layer->outputs, data->nImages);
     }
-
-    print_probs(model, activations, data);
-
 } 
 
 float get_loss(Model *model, Activations *activations, InputData *data)
@@ -244,7 +241,7 @@ float get_loss(Model *model, Activations *activations, InputData *data)
     float loss = 0.0f;
     float *probs = model->layers[model->size_layers - 1]->outputs;
     float db_prob = 0.0f;
-    for (size_t idx_image = 0; idx_image < 10; idx_image++) {
+    for (size_t idx_image = 0; idx_image < data->nImages; idx_image++) {
         unsigned char label = data->labels[idx_image];
         size_t start_sample = idx_image * SIZE_CLASSES;
         db_prob = probs[start_sample + label];
