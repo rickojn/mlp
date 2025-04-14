@@ -273,6 +273,33 @@ float get_loss(Model *model, Activations *activations, InputData *data)
     return loss / data->nImages;
 }
 
+int arg_max(float *probs, size_t size)
+{
+    int max_idx = 0;
+    float max_val = probs[0];
+    for (size_t i = 1; i < size; i++) {
+        if (probs[i] > max_val) {
+            max_val = probs[i];
+            max_idx = i;
+        }
+    }
+    return max_idx;
+}
+
+float get_accuracy(Model *model, Activations *activations, InputData *data)
+{
+    int correct = 0;
+    float *probs = model->layers[model->size_layers - 1]->outputs;
+    for (size_t idx_image = 0; idx_image < data->nImages; idx_image++) {
+        unsigned char label = data->labels[idx_image];
+        size_t offset_probs_dist = idx_image * SIZE_CLASSES;
+        int predicted_label = arg_max(probs + offset_probs_dist, SIZE_CLASSES);
+        if (predicted_label == label) {
+            correct++;
+        }
+    }
+    return (float)correct / data->nImages;
+}
 
 size_t get_size_parameters(Model *model)
 {
@@ -346,6 +373,7 @@ int main() {
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
+    printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     // free activations
     free_activations(&activations);
     // free model
