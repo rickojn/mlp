@@ -265,11 +265,9 @@ float get_loss(Model *model, Activations *activations, InputData *data)
 {
     float loss = 0.0f;
     float *probs = model->layers[model->size_layers - 1]->outputs;
-    float db_prob = 0.0f;
     for (size_t idx_image = 0; idx_image < data->nImages; idx_image++) {
         unsigned char label = data->labels[idx_image];
         size_t start_sample = idx_image * SIZE_CLASSES;
-        db_prob = probs[start_sample + label];
         loss -= logf(probs[start_sample + label]);
     }
     return loss / data->nImages;
