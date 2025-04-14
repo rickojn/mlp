@@ -15,7 +15,7 @@ typedef struct {
 
 
 typedef struct Layer{
-    float *weights, *biases;
+    float *weights, *biases, *inputs, *outputs;
     size_t size_inputs, size_neurons;
     void (*activation_forward)(struct Layer* layer, float *input, float *output, size_t size_batch);
     void (*activation_backward)(struct Layer* layer, float *dout, float *din);
@@ -55,30 +55,40 @@ void relu_forward(Layer *layer, float *input, float *output, size_t size_batch)
     }
 }
 
-void softmax_forward(Layer *layer, float *input, float *output, size_t size_batch)
+void softmax_forward(Layer *layer, float *logits, float *probs, size_t size_batch)
 {
+    float db_prob_sum = 0.0f;
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++)
     {
-        float max = input[0];
-        for (size_t i = 1; i < layer->size_neurons; i++)
+        float max = logits[0];
+        size_t start_sample = idx_image * layer->size_neurons;
+        for (size_t i = start_sample + 1; i < layer->size_neurons; i++)
         {
-            if (input[i] > max)
+            if (logits[i] > max)
             {
-                max = input[i];
+                max = logits[i];
             }
         }
 
         float sum = 0.0f;
-        for (size_t i = 0; i < layer->size_neurons; i++)
+        for (size_t i = start_sample; i < layer->size_neurons; i++)
         {
-            output[i] = expf(input[i] - max);
-            sum += output[i];
+            probs[i] = expf(logits[i] - max);
+            sum += probs[i];
         }
 
-        for (size_t i = 0; i < layer->size_neurons; i++)
+        for (size_t i = start_sample; i < layer->size_neurons; i++)
         {
-            output[i] /= sum;
+            probs[i] /= sum;
+            if (idx_image == 0) {
+                printf("%f ", probs[i]); 
+                db_prob_sum += probs[i];           
+            }
         }
+        if (idx_image == 0){
+            printf("\nSum of probabilities: %f\n", db_prob_sum);
+        }
+
     }
 }
 
@@ -213,20 +223,32 @@ void free_model(Model *model)
     free(model->layers);
 }
 
+void print_probs(Model *model, Activations *activations, InputData *data)
+{
+    printf("Probabilities:\n");
+    float *probs = model->layers[model->size_layers - 1]->outputs;
+    float prob_sum = 0.0f;
+    for (size_t idx_prob = 0; idx_prob < SIZE_CLASSES; idx_prob++) {
+        prob_sum += probs[idx_prob];
+        printf("%f ", probs[idx_prob]);
+    }
+    printf("\nprob sum = %f\n", prob_sum);
+}
+
+
 void model_forward(Model *model, Activations *activations, InputData *data)
 {
     printf("\nModel forward pass...\n");
-    float *inputs = activations->activations;
-    float *outputs = activations->activations + data->rows * data->cols;
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        inputs += idx_layer == 0 ? 0 : model->layers[idx_layer - 1]->size_neurons;
-        outputs += layer->size_neurons;
-        matmul_forward(layer, inputs, outputs, data->nImages);
-        layer->activation_forward(layer, outputs, outputs, data->nImages);
+        matmul_forward(layer, layer->inputs, layer->outputs, data->nImages);
+        layer->activation_forward(layer, layer->outputs, layer->outputs, data->nImages);
     }
 
+    print_probs(model, activations, data);
+
 } 
+
 
 size_t get_size_parameters(Model *model)
 {
@@ -249,6 +271,15 @@ void initialise_activations(Activations * activations, Model *model, InputData *
 
     for (size_t idx_pixel = 0; idx_pixel < data->nImages * data->rows * data->cols; idx_pixel++) {
         activations->activations[idx_pixel] = (float)data->images[idx_pixel] / 255.0f;
+    }
+
+    float *inputs = activations->activations;
+    float *outputs = activations->activations + data->rows * data->cols;
+
+    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
+        Layer *layer = model->layers[idx_layer];
+        layer->inputs = idx_layer == 0 ? inputs : model->layers[idx_layer - 1]->outputs;
+        layer->outputs = idx_layer == 0? outputs : outputs + model->layers[idx_layer -1]->size_neurons * data->nImages;
     }
 }
 
