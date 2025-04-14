@@ -327,8 +327,8 @@ int main() {
     read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
     printf("Number of training images: %d\n", data_training.nImages);
 
-    const char *test_images_path = "/home/rickojn/coding/deep/data/t10k-images.idx3-ubyte";
-    const char *test_labels_path = "/home/rickojn/coding/deep/data/t10k-labels.idx1-ubyte";
+    const char *test_images_path = concatStrings(data_path, "/t10k-images.idx3-ubyte");
+    const char *test_labels_path = concatStrings(data_path, "/t10k-labels.idx1-ubyte");
     read_mnist_images(test_images_path, &data_test);
     read_mnist_labels(test_labels_path, &data_test.labels, &data_test.nImages);
     printf("Number of test images: %d\n", data_test.nImages);
