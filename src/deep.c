@@ -57,38 +57,23 @@ void relu_forward(Layer *layer, float *input, float *output, size_t size_batch)
 
 void softmax_forward(Layer *layer, float *logits, float *probs, size_t size_batch)
 {
-    float db_prob_sum = 0.0f;
-    for (size_t idx_image = 0; idx_image < size_batch; idx_image++)
-    {
-        float max = logits[0];
-        size_t start_sample = idx_image * layer->size_neurons;
-        for (size_t i = start_sample + 1; i < layer->size_neurons; i++)
-        {
-            if (logits[i] > max)
-            {
-                max = logits[i];
+    for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
+        float max_logit = logits[idx_image * layer->size_neurons];
+        for (size_t idx_neuron = 1; idx_neuron < layer->size_neurons; idx_neuron++) {
+            if (logits[idx_image * layer->size_neurons + idx_neuron] > max_logit) {
+                max_logit = logits[idx_image * layer->size_neurons + idx_neuron];
             }
         }
 
-        float sum = 0.0f;
-        for (size_t i = start_sample; i < layer->size_neurons; i++)
-        {
-            probs[i] = expf(logits[i] - max);
-            sum += probs[i];
+        float sum_exp = 0.0f;
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            probs[idx_image * layer->size_neurons + idx_neuron] = expf(logits[idx_image * layer->size_neurons + idx_neuron] - max_logit);
+            sum_exp += probs[idx_image * layer->size_neurons + idx_neuron];
         }
 
-        for (size_t i = start_sample; i < layer->size_neurons; i++)
-        {
-            probs[i] /= sum;
-            if (idx_image == 0) {
-                printf("%f ", probs[i]); 
-                db_prob_sum += probs[i];           
-            }
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            probs[idx_image * layer->size_neurons + idx_neuron] /= sum_exp;
         }
-        if (idx_image == 0){
-            printf("\nSum of probabilities: %f\n", db_prob_sum);
-        }
-
     }
 }
 
@@ -228,11 +213,16 @@ void print_probs(Model *model, Activations *activations, InputData *data)
     printf("Probabilities:\n");
     float *probs = model->layers[model->size_layers - 1]->outputs;
     float prob_sum = 0.0f;
-    for (size_t idx_prob = 0; idx_prob < SIZE_CLASSES; idx_prob++) {
-        prob_sum += probs[idx_prob];
-        printf("%f ", probs[idx_prob]);
+    for (size_t idx_image = 0; idx_image < 2; idx_image++) {
+        size_t start_sample = idx_image * SIZE_CLASSES;
+        prob_sum = 0.0f;
+        for (size_t idx_prob = 0; idx_prob < SIZE_CLASSES; idx_prob++) {
+            prob_sum += probs[start_sample + idx_prob];
+            printf("%f ", probs[start_sample + idx_prob]);
+        }
+        printf("\n");
+        printf("\nprob sum = %f\n", prob_sum);
     }
-    printf("\nprob sum = %f\n", prob_sum);
 }
 
 
@@ -248,6 +238,20 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     print_probs(model, activations, data);
 
 } 
+
+float get_loss(Model *model, Activations *activations, InputData *data)
+{
+    float loss = 0.0f;
+    float *probs = model->layers[model->size_layers - 1]->outputs;
+    float db_prob = 0.0f;
+    for (size_t idx_image = 0; idx_image < 10; idx_image++) {
+        unsigned char label = data->labels[idx_image];
+        size_t start_sample = idx_image * SIZE_CLASSES;
+        db_prob = probs[start_sample + label];
+        loss -= logf(probs[start_sample + label]);
+    }
+    return loss / data->nImages;
+}
 
 
 size_t get_size_parameters(Model *model)
@@ -319,6 +323,7 @@ int main() {
     Activations activations = {0};
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
+    printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     // free activations
     free_activations(&activations);
     // free model
