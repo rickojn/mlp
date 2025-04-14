@@ -1,1 +1,1 @@
-export TRAINING_DIR=/home/rickojn/coding/deep/data
+export DATA_PATH=/home/rickojn/coding/deep/data

@@ -32,6 +32,31 @@ typedef struct {
 } Activations;
 
 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to concatenate two strings and return the new string
+char *concatStrings(const char *str1, const char *str2) {
+    // Allocate memory for the new string
+    char *newStr = malloc(strlen(str1) + strlen(str2) + 1);  // +1 for null terminator
+    if (newStr == NULL) {
+        printf("Memory allocation failed\n");
+        return NULL;  // Return NULL if memory allocation fails
+    }
+
+    // Copy the first string
+    strcpy(newStr, str1);
+
+    // Append the second string
+    strcat(newStr, str2);
+
+    return newStr;  // Return the concatenated string
+}
+
+
+
 void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
@@ -294,8 +319,10 @@ int main() {
     // read input data
     InputData data_training, data_test = {0};
 
-    const char *training_images_path = "/home/rickojn/coding/deep/data/train-images.idx3-ubyte";
-    const char *training_labels_path = "/home/rickojn/coding/deep/data/train-labels.idx1-ubyte";
+    const char * data_path = getenv("DATA_PATH");
+    
+    const char * training_images_path = concatStrings(data_path, "/train-images.idx3-ubyte");
+    const char *training_labels_path = concatStrings(data_path, "/train-labels.idx1-ubyte");
     read_mnist_images(training_images_path, &data_training);
     read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
     printf("Number of training images: %d\n", data_training.nImages);
