@@ -118,18 +118,6 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     }
 }
 
-void matmul_backward(Layer *layer, float *dout, float *din, size_t size_batch)
-{
-    for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
-        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-            din[idx_image * layer->size_inputs + idx_neuron] = 0.0f;
-            for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
-                din[idx_image * layer->size_inputs + idx_input] += 
-                dout[idx_image * layer->size_neurons + idx_neuron] * layer->weights[idx_input * layer->size_neurons + idx_neuron];
-            }
-        }
-    }
-}
 
 
 void read_mnist_images(const char *filename, InputData *data) {
@@ -359,6 +347,23 @@ void free_activations(Activations * activations)
     free(activations->activations);
 }
 
+void initialise_gradients(Gradients * gradients, Model *model, InputData *data)
+{
+    for (size_t i = 0; i < model->size_layers; i++) {
+        // size of gradients for parameters
+        gradients->size_grads += model->layers[i]->size_inputs * model->layers[i]->size_neurons;
+        gradients->size_grads += model->layers[i]->size_neurons;
+        // size of gradients for activations
+        gradients->size_grads += model->layers[i]->size_neurons * data->nImages;
+    }
+    gradients->grads = calloc(gradients->size_grads * sizeof(float), 0);
+}
+
+void free_gradients(Gradients * gradients)
+{
+    free(gradients->grads);
+}
+
 void allocate_mini_batch_memory(InputData * mini_batch_data)
 {
     mini_batch_data->images = malloc(mini_batch_data->nImages * mini_batch_data->rows * mini_batch_data->cols);
@@ -417,11 +422,13 @@ int main() {
 
     // train model
 
+    Gradients gradients = {0};
     data_mini_batch.nImages = SIZE_MINI_BATCH;
     data_mini_batch.rows = data_training.rows;
     data_mini_batch.cols = data_training.cols;
     allocate_mini_batch_memory(&data_mini_batch);
     initialise_activations(&activations, &model, &data_mini_batch);
+    initialise_gradients(&gradients, &model, &data_mini_batch);
 
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         printf("\nEpoch %zu\n", epoch);
