@@ -391,8 +391,8 @@ void free_gradients(Gradients * gradients)
 
 void allocate_mini_batch_memory(InputData * mini_batch_data)
 {
-    mini_batch_data->images = malloc(mini_batch_data->nImages * mini_batch_data->rows * mini_batch_data->cols);
-    mini_batch_data->labels = malloc(mini_batch_data->nImages * sizeof(unsigned char));
+    mini_batch_data->images = calloc(mini_batch_data->nImages * mini_batch_data->rows * mini_batch_data->cols, sizeof(unsigned char));
+    mini_batch_data->labels = calloc(mini_batch_data->nImages, sizeof(unsigned char));
 }
 
 void free_mini_batch_memory(InputData * mini_batch_data)
@@ -450,6 +450,7 @@ int main() {
     model_forward(&model, &activations, &data_test);
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
+    free_activations(&activations);
 
     // train model
 
@@ -471,6 +472,7 @@ int main() {
     }
     
 
+    free_mini_batch_memory(&data_mini_batch);
     free_gradients(&gradients);
     // free activations
     free_activations(&activations);
