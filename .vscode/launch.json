@@ -36,7 +36,7 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [{"name": "TRAINING_PATH", "value": "/home/rickojn/coding/mlp/training/names.txt"}],
+            "environment": [{"name": "DATA_PATH", "value": "/home/rickojn/coding/deep/data"}],
             "externalConsole": false,
             "MIMode": "gdb",            
             "setupCommands": [

@@ -16,7 +16,8 @@ typedef struct {
 
 
 typedef struct Layer{
-    float *weights, *biases, *inputs, *outputs;
+    float *weights, *biases, *activations_input, *activations_output,
+    *gradients_input, *gradients_output, *gradients_weights, *gradients_biases;
     size_t size_inputs, size_neurons;
     void (*activation_forward)(struct Layer* layer, float *input, float *output, size_t size_batch);
     void (*activation_backward)(struct Layer* layer, float *dout, float *din);
@@ -113,8 +114,18 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     printf("\nModel forward pass...\n");
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        matmul_forward(layer, layer->inputs, layer->outputs, data->nImages);
-        layer->activation_forward(layer, layer->outputs, layer->outputs, data->nImages);
+        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        layer->activation_forward(layer, layer->activations_output, layer->activations_output, data->nImages);
+    }
+}
+
+
+void softmax_backward(Layer *layer, float *dout, float *din)
+{
+    for (size_t idx_image = 0; idx_image < layer->size_neurons; idx_image++) {
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            din[idx_image * layer->size_neurons + idx_neuron] = dout[idx_image * layer->size_neurons + idx_neuron] - dout[idx_image * layer->size_neurons + idx_neuron] * dout[idx_image * layer->size_neurons + idx_neuron];
+        }
     }
 }
 
@@ -254,7 +265,7 @@ void free_model(Model *model)
 void print_probs(Model *model, Activations *activations, InputData *data)
 {
     printf("Probabilities:\n");
-    float *probs = model->layers[model->size_layers - 1]->outputs;
+    float *probs = model->layers[model->size_layers - 1]->activations_output;
     float prob_sum = 0.0f;
     for (size_t idx_image = 0; idx_image < 2; idx_image++) {
         size_t start_sample = idx_image * SIZE_CLASSES;
@@ -272,7 +283,7 @@ void print_probs(Model *model, Activations *activations, InputData *data)
 float get_loss(Model *model, Activations *activations, InputData *data)
 {
     float loss = 0.0f;
-    float *probs = model->layers[model->size_layers - 1]->outputs;
+    float *probs = model->layers[model->size_layers - 1]->activations_output;
     for (size_t idx_image = 0; idx_image < data->nImages; idx_image++) {
         unsigned char label = data->labels[idx_image];
         size_t start_sample = idx_image * SIZE_CLASSES;
@@ -297,7 +308,7 @@ int arg_max(float *probs, size_t size)
 float get_accuracy(Model *model, Activations *activations, InputData *data)
 {
     int correct = 0;
-    float *probs = model->layers[model->size_layers - 1]->outputs;
+    float *probs = model->layers[model->size_layers - 1]->activations_output;
     for (size_t idx_image = 0; idx_image < data->nImages; idx_image++) {
         unsigned char label = data->labels[idx_image];
         size_t offset_probs_dist = idx_image * SIZE_CLASSES;
@@ -337,8 +348,8 @@ void initialise_activations(Activations * activations, Model *model, InputData *
 
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        layer->inputs = idx_layer == 0 ? inputs : model->layers[idx_layer - 1]->outputs;
-        layer->outputs = idx_layer == 0? outputs : outputs + model->layers[idx_layer -1]->size_neurons * data->nImages;
+        layer->activations_input = idx_layer == 0 ? inputs : model->layers[idx_layer - 1]->activations_output;
+        layer->activations_output = idx_layer == 0? outputs : outputs + model->layers[idx_layer -1]->size_neurons * data->nImages;
     }
 }
 
@@ -357,6 +368,20 @@ void initialise_gradients(Gradients * gradients, Model *model, InputData *data)
         gradients->size_grads += model->layers[i]->size_neurons * data->nImages;
     }
     gradients->grads = calloc(gradients->size_grads * sizeof(float), 0);
+    
+    // connect gradients to layers
+
+    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
+        Layer *layer = model->layers[idx_layer];
+        layer->gradients_input = idx_layer == 0 ? NULL : model->layers[idx_layer - 1]->gradients_output;
+
+        layer->gradients_biases = idx_layer == 0 ? gradients->grads 
+        : model->layers[idx_layer -1]->gradients_output + model->layers[idx_layer -1]->size_neurons * data->nImages;
+
+        layer->gradients_weights =  layer->gradients_biases + layer->size_neurons;
+
+        layer->gradients_output = layer->gradients_weights + layer->size_inputs * layer->size_neurons;
+    }
 }
 
 void free_gradients(Gradients * gradients)
@@ -436,6 +461,7 @@ int main() {
         model_forward(&model, &activations, &data_mini_batch);
         printf("Training loss: %f\n", get_loss(&model, &activations, &data_mini_batch));
         printf("Training accuracy: %f\n", get_accuracy(&model, &activations, &data_mini_batch));
+        memset(gradients.grads, 0, gradients.size_grads * sizeof(float));
     }
     
 
