@@ -422,11 +422,17 @@ int main() {
     read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
     printf("Number of training images: %d\n", data_training.nImages);
 
+    free((char *)training_images_path);
+    free((char *)training_labels_path);
+
     const char *test_images_path = concatStrings(data_path, "/t10k-images.idx3-ubyte");
     const char *test_labels_path = concatStrings(data_path, "/t10k-labels.idx1-ubyte");
     read_mnist_images(test_images_path, &data_test);
     read_mnist_labels(test_labels_path, &data_test.labels, &data_test.nImages);
     printf("Number of test images: %d\n", data_test.nImages);
+
+    free((char *)test_images_path);
+    free((char *)test_labels_path);
 
     // create model
     Model model = {0};
@@ -465,6 +471,7 @@ int main() {
     }
     
 
+    free_gradients(&gradients);
     // free activations
     free_activations(&activations);
     // free model
