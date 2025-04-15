@@ -1,9 +1,9 @@
 rickojn@Jazzclub-3~/coding/deep/build branch: main $ valgrind -s --leak-check=full ./deep
-==355249== Memcheck, a memory error detector
-==355249== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==355249== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==355249== Command: ./deep
-==355249==
+==360466== Memcheck, a memory error detector
+==360466== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==360466== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==360466== Command: ./deep
+==360466==
 rows: 28, cols: 28
 Number of training images: 60000
 rows: 28, cols: 28
@@ -13,408 +13,875 @@ Number of parameters: 25450
 Model forward pass...
 Test loss before training: 2.364593
 Test accuracy before training: 0.090100
-==355249== Warning: set address range perms: large range [0xa37a040, 0x493e0d40) (defined)
+==360466== Warning: set address range perms: large range [0xa37a040, 0x493e0d40) (defined)
 
 Epoch 0
 
 Model forward pass...
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x48A95C7: fmaxf (s_fmaxf.S:26)
-==355249==    by 0x1096BB: relu_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B058: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x109778: softmax_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B058: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x48EB5C1: __expf_fma (e_expf.c:62)
-==355249==    by 0x10982C: softmax_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B058: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x48EB60B: __expf_fma (e_expf.c:98)
-==355249==    by 0x10982C: softmax_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B058: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x48EB7F2: __logf_fma (e_logf.c:50)
-==355249==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B078: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x48EB804: __logf_fma (e_logf.c:53)
-==355249==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B078: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x48EB849: __logf_fma (e_logf.c:80)
-==355249==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B078: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06078: __printf_fp_l (printf_fp.c:387)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06092: __printf_fp_l (printf_fp.c:387)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A01B34: __mpn_extract_double (dbl2mpn.c:56)
-==355249==    by 0x4A0638E: __printf_fp_l (printf_fp.c:387)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A063E3: __printf_fp_l (printf_fp.c:428)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06406: __printf_fp_l (printf_fp.c:428)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A06D3F: __printf_fp_l (printf_fp.c:428)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06439: __printf_fp_l (printf_fp.c:429)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A0645C: __printf_fp_l (printf_fp.c:429)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A0645E: __printf_fp_l (printf_fp.c:429)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A0648A: __printf_fp_l (printf_fp.c:430)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A064AD: __printf_fp_l (printf_fp.c:430)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A064AF: __printf_fp_l (printf_fp.c:430)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A064CD: __printf_fp_l (printf_fp.c:437)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A075ED: __printf_fp_l (printf_fp.c:640)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A075FC: __printf_fp_l (printf_fp.c:816)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A0031C: __mpn_lshift (lshift.S:59)
-==355249==    by 0x4A07600: __printf_fp_l (printf_fp.c:816)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A0031F: __mpn_lshift (lshift.S:60)
-==355249==    by 0x4A07600: __printf_fp_l (printf_fp.c:816)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A0761D: __printf_fp_l (printf_fp.c:817)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A059B9: hack_digit (printf_fp.c:169)
-==355249==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
-==355249==    by 0x4A059C0: hack_digit (printf_fp.c:170)
-==355249==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
-==355249==    by 0x4A059C0: hack_digit (printf_fp.c:170)
-==355249==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A059B9: hack_digit (printf_fp.c:169)
-==355249==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
-==355249==    by 0x4A059C0: hack_digit (printf_fp.c:170)
-==355249==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
-==355249==    by 0x4A059C0: hack_digit (printf_fp.c:170)
-==355249==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06DF0: __printf_fp_l (printf_fp.c:969)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A059B9: hack_digit (printf_fp.c:169)
-==355249==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
-==355249==    by 0x4A059C0: hack_digit (printf_fp.c:170)
-==355249==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Use of uninitialised value of size 8
-==355249==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
-==355249==    by 0x4A059C0: hack_digit (printf_fp.c:170)
-==355249==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06E29: __printf_fp_l (printf_fp.c:972)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06E9A: round_away (rounding-mode.h:52)
-==355249==    by 0x4A06E9A: __printf_fp_l (printf_fp.c:989)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06E9F: round_away (rounding-mode.h:52)
-==355249==    by 0x4A06E9F: __printf_fp_l (printf_fp.c:989)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A06EA8: round_away (rounding-mode.h:58)
-==355249==    by 0x4A06EA8: __printf_fp_l (printf_fp.c:989)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A07502: __printf_fp_l (printf_fp.c:999)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A0752B: __printf_fp_l (printf_fp.c:999)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A0756B: __printf_fp_l (printf_fp.c:1019)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A07104: __printf_fp_l (printf_fp.c:1157)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A0735D: __printf_fp_l (printf_fp.c:1220)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A07343: __printf_fp_l (printf_fp.c:1222)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x4A3ADDD: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:783)
-==355249==    by 0x4A07C2F: __printf_fp_l (printf_fp.c:1246)
-==355249==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Syscall param write(buf) points to uninitialised byte(s)
-==355249==    at 0x4AB8297: write (write.c:26)
-==355249==    by 0x4A38E8C: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1181)
-==355249==    by 0x4A3A950: new_do_write (fileops.c:449)
-==355249==    by 0x4A3A950: _IO_new_do_write (fileops.c:426)
-==355249==    by 0x4A3A950: _IO_do_write@@GLIBC_2.2.5 (fileops.c:423)
-==355249==    by 0x4A396B4: _IO_new_file_xsputn (fileops.c:1244)
-==355249==    by 0x4A396B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
-==355249==    by 0x4A20FE5: __vfprintf_internal (vfprintf-internal.c:1719)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x10B08D: main (in /home/rickojn/coding/deep/build/deep)
-==355249==  Address 0x4ba03af is 15 bytes inside a block of size 1,024 alloc'd
-==355249==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x4A2BD03: _IO_file_doallocate (filedoalloc.c:101)
-==355249==    by 0x4A3BECF: _IO_doallocbuf (genops.c:347)
-==355249==    by 0x4A3AF2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
-==355249==    by 0x4A396B4: _IO_new_file_xsputn (fileops.c:1244)
-==355249==    by 0x4A396B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
-==355249==    by 0x4A20971: __vfprintf_internal (vfprintf-internal.c:1373)
-==355249==    by 0x4A0BD3E: printf (printf.c:33)
-==355249==    by 0x109BEC: read_mnist_images (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10AD31: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48A95C7: fmaxf (s_fmaxf.S:26)
+==360466==    by 0x1096BB: relu_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x109778: softmax_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48EB5C1: __expf_fma (e_expf.c:62)
+==360466==    by 0x10982C: softmax_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x48EB60B: __expf_fma (e_expf.c:98)
+==360466==    by 0x10982C: softmax_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48EB7F2: __logf_fma (e_logf.c:50)
+==360466==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B074: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48EB804: __logf_fma (e_logf.c:53)
+==360466==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B074: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x48EB849: __logf_fma (e_logf.c:80)
+==360466==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B074: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06078: __printf_fp_l (printf_fp.c:387)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06092: __printf_fp_l (printf_fp.c:387)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A01B34: __mpn_extract_double (dbl2mpn.c:56)
+==360466==    by 0x4A0638E: __printf_fp_l (printf_fp.c:387)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A063E3: __printf_fp_l (printf_fp.c:428)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06406: __printf_fp_l (printf_fp.c:428)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A06D3F: __printf_fp_l (printf_fp.c:428)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06439: __printf_fp_l (printf_fp.c:429)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0645C: __printf_fp_l (printf_fp.c:429)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0645E: __printf_fp_l (printf_fp.c:429)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0648A: __printf_fp_l (printf_fp.c:430)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A064AD: __printf_fp_l (printf_fp.c:430)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A064AF: __printf_fp_l (printf_fp.c:430)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A064CD: __printf_fp_l (printf_fp.c:437)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A075ED: __printf_fp_l (printf_fp.c:640)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A075FC: __printf_fp_l (printf_fp.c:816)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0031C: __mpn_lshift (lshift.S:59)
+==360466==    by 0x4A07600: __printf_fp_l (printf_fp.c:816)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0031F: __mpn_lshift (lshift.S:60)
+==360466==    by 0x4A07600: __printf_fp_l (printf_fp.c:816)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0761D: __printf_fp_l (printf_fp.c:817)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A059B9: hack_digit (printf_fp.c:169)
+==360466==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A059B9: hack_digit (printf_fp.c:169)
+==360466==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06DF0: __printf_fp_l (printf_fp.c:969)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A059B9: hack_digit (printf_fp.c:169)
+==360466==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06E29: __printf_fp_l (printf_fp.c:972)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06E9A: round_away (rounding-mode.h:52)
+==360466==    by 0x4A06E9A: __printf_fp_l (printf_fp.c:989)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06E9F: round_away (rounding-mode.h:52)
+==360466==    by 0x4A06E9F: __printf_fp_l (printf_fp.c:989)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06EA8: round_away (rounding-mode.h:58)
+==360466==    by 0x4A06EA8: __printf_fp_l (printf_fp.c:989)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07502: __printf_fp_l (printf_fp.c:999)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0752B: __printf_fp_l (printf_fp.c:999)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0756B: __printf_fp_l (printf_fp.c:1019)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07104: __printf_fp_l (printf_fp.c:1157)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0735D: __printf_fp_l (printf_fp.c:1220)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07343: __printf_fp_l (printf_fp.c:1222)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A3ADDD: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:783)
+==360466==    by 0x4A07C2F: __printf_fp_l (printf_fp.c:1246)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== Syscall param write(buf) points to uninitialised byte(s)
+==360466==    at 0x4AB8297: write (write.c:26)
+==360466==    by 0x4A38E8C: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1181)
+==360466==    by 0x4A3A950: new_do_write (fileops.c:449)
+==360466==    by 0x4A3A950: _IO_new_do_write (fileops.c:426)
+==360466==    by 0x4A3A950: _IO_do_write@@GLIBC_2.2.5 (fileops.c:423)
+==360466==    by 0x4A396B4: _IO_new_file_xsputn (fileops.c:1244)
+==360466==    by 0x4A396B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==360466==    by 0x4A20FE5: __vfprintf_internal (vfprintf-internal.c:1719)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==  Address 0x4ba03af is 15 bytes inside a block of size 1,024 alloc'd
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x4A2BD03: _IO_file_doallocate (filedoalloc.c:101)
+==360466==    by 0x4A3BECF: _IO_doallocbuf (genops.c:347)
+==360466==    by 0x4A3AF2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+==360466==    by 0x4A396B4: _IO_new_file_xsputn (fileops.c:1244)
+==360466==    by 0x4A396B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==360466==    by 0x4A20971: __vfprintf_internal (vfprintf-internal.c:1373)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x109BEC: read_mnist_images (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AD2D: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
 Training loss: 2.302585
-==355249== Conditional jump or move depends on uninitialised value(s)
-==355249==    at 0x10A531: arg_max (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10A601: get_accuracy (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10B0AD: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x10A531: arg_max (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10A601: get_accuracy (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B0A9: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
 Training accuracy: 0.031250
-==355249== Invalid write of size 8
-==355249==    at 0x4842964: memset (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10B0E5: main (in /home/rickojn/coding/deep/build/deep)
-==355249==  Address 0x4bd43e0 is 0 bytes after a block of size 0 alloc'd
-==355249==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10AA0E: initialise_gradients (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10AFF4: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Invalid write of size 8
-==355249==    at 0x4842967: memset (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10B0E5: main (in /home/rickojn/coding/deep/build/deep)
-==355249==  Address 0x4bd43e8 is 8 bytes after a block of size 0 alloc'd
-==355249==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10AA0E: initialise_gradients (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10AFF4: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Invalid write of size 8
-==355249==    at 0x484296B: memset (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10B0E5: main (in /home/rickojn/coding/deep/build/deep)
-==355249==  Address 0x4bd43f0 is 16 bytes after a block of size 0 alloc'd
-==355249==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10AA0E: initialise_gradients (in /home/rickojn/coding/deep/build/deep)
-==355249==    by 0x10AFF4: main (in /home/rickojn/coding/deep/build/deep)
-==355249==
-==355249== Invalid write of size 8
-==355249==    at 0x484296F: memset (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10B0E5: main (in /home/rickojn/coding/deep/build/deep)
-==355249==  Address 0x4bd43f8 is 24 bytes after a block of size 0 in arena "client"
-==355249==
 
-valgrind: m_mallocfree.c:305 (get_bszB_as_is): Assertion 'bszB_lo == bszB_hi' failed.
-valgrind: Heap block lo/hi size mismatch: lo = 64, hi = 0.
-This is probably caused by your program erroneously writing past the
-end of a heap block and corrupting heap metadata.  If you fix any
-invalid writes reported by Memcheck, this assertion failure will
-probably go away.  Please try that before reporting this as a bug.
+Epoch 1
 
+Model forward pass...
+Training loss: 2.301682
+Training accuracy: 0.125000
 
-host stacktrace:
-==355249==    at 0x58046FFA: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x58047127: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x580472CB: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x580514B4: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x5803DE9A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x5803CD9F: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x58041F04: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x5803C1D8: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux)
-==355249==    by 0x1002DAD625: ???
-==355249==    by 0x1002CA9F2F: ???
-==355249==    by 0x1002CA9F17: ???
-==355249==    by 0x1002CA9F2F: ???
-==355249==    by 0x1002CA9F3F: ???
+Epoch 2
 
-sched status:
-  running_tid=1
+Model forward pass...
+Training loss: 2.302099
+Training accuracy: 0.093750
 
-Thread 1: status = VgTs_Runnable (lwpid 355249)
-==355249==    at 0x4842994: memset (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==355249==    by 0x10B0E5: main (in /home/rickojn/coding/deep/build/deep)
-client stack range: [0x1FFEFFD000 0x1FFF000FFF] client SP: 0x1FFEFFF608
-valgrind stack range: [0x1002BAA000 0x1002CA9FFF] top usage: 18696 of 1048576
+Epoch 3
 
+Model forward pass...
+Training loss: 2.304036
+Training accuracy: 0.125000
 
-Note: see also the FAQ in the source distribution.
-It contains workarounds to several common problems.
-In particular, if Valgrind aborted or crashed after
-identifying problems in your program, there's a good chance
-that fixing those problems will prevent Valgrind aborting or
-crashing, especially if it happened in m_mallocfree.c.
+Epoch 4
 
-If that doesn't help, please report this bug to: www.valgrind.org
+Model forward pass...
+Training loss: 2.301989
+Training accuracy: 0.062500
 
-In the bug report, send all the above text, the valgrind
-version, and what OS and version you are using.  Thanks.
+Epoch 5
 
+Model forward pass...
+Training loss: 2.304031
+Training accuracy: 0.031250
+
+Epoch 6
+
+Model forward pass...
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07522: __printf_fp_l (printf_fp.c:999)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+Training loss: 2.303450
+Training accuracy: 0.187500
+
+Epoch 7
+
+Model forward pass...
+Training loss: 2.301065
+Training accuracy: 0.093750
+
+Epoch 8
+
+Model forward pass...
+Training loss: 2.302842
+Training accuracy: 0.031250
+
+Epoch 9
+
+Model forward pass...
+Training loss: 2.302639
+Training accuracy: 0.093750
+==360466== Warning: set address range perms: large range [0xa37a028, 0x493e0d58) (noaccess)
+==360466==
+==360466== HEAP SUMMARY:
+==360466==     in use at exit: 33,172,514 bytes in 8 blocks
+==360466==   total heap usage: 28 allocs, 20 frees, 1,145,629,362 bytes allocated
+==360466==
+==360466== 32 bytes in 1 blocks are definitely lost in loss record 1 of 8
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x10ABAA: allocate_mini_batch_memory (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AFB0: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 54 bytes in 1 blocks are definitely lost in loss record 2 of 8
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x109467: concatStrings (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AD84: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 54 bytes in 1 blocks are definitely lost in loss record 3 of 8
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x109467: concatStrings (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10ADA1: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 55 bytes in 1 blocks are definitely lost in loss record 4 of 8
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x109467: concatStrings (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10ACF0: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 55 bytes in 1 blocks are definitely lost in loss record 5 of 8
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x109467: concatStrings (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AD0D: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 25,088 bytes in 1 blocks are definitely lost in loss record 6 of 8
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x10AB8F: allocate_mini_batch_memory (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AFB0: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 107,176 bytes in 1 blocks are definitely lost in loss record 7 of 8
+==360466==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x10AA0A: initialise_gradients (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AFF0: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== 33,040,000 bytes in 1 blocks are possibly lost in loss record 8 of 8
+==360466==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x10A782: initialise_activations (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AEDF: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== LEAK SUMMARY:
+==360466==    definitely lost: 132,514 bytes in 7 blocks
+==360466==    indirectly lost: 0 bytes in 0 blocks
+==360466==      possibly lost: 33,040,000 bytes in 1 blocks
+==360466==    still reachable: 0 bytes in 0 blocks
+==360466==         suppressed: 0 bytes in 0 blocks
+==360466==
+==360466== Use --track-origins=yes to see where uninitialised values come from
+==360466== ERROR SUMMARY: 24071 errors from 57 contexts (suppressed: 0 from 0)
+==360466==
+==360466== 1 errors in context 1 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07522: __printf_fp_l (printf_fp.c:999)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 4 errors in context 2 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06EA8: round_away (rounding-mode.h:58)
+==360466==    by 0x4A06EA8: __printf_fp_l (printf_fp.c:989)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 5 errors in context 3 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0756B: __printf_fp_l (printf_fp.c:1019)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 5 errors in context 4 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07502: __printf_fp_l (printf_fp.c:999)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 5 errors in context 5 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06E9F: round_away (rounding-mode.h:52)
+==360466==    by 0x4A06E9F: __printf_fp_l (printf_fp.c:989)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 6 errors in context 6 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0752B: __printf_fp_l (printf_fp.c:999)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 7 of 57:
+==360466== Syscall param write(buf) points to uninitialised byte(s)
+==360466==    at 0x4AB8297: write (write.c:26)
+==360466==    by 0x4A38E8C: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1181)
+==360466==    by 0x4A3A950: new_do_write (fileops.c:449)
+==360466==    by 0x4A3A950: _IO_new_do_write (fileops.c:426)
+==360466==    by 0x4A3A950: _IO_do_write@@GLIBC_2.2.5 (fileops.c:423)
+==360466==    by 0x4A396B4: _IO_new_file_xsputn (fileops.c:1244)
+==360466==    by 0x4A396B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==360466==    by 0x4A20FE5: __vfprintf_internal (vfprintf-internal.c:1719)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==  Address 0x4ba03af is 15 bytes inside a block of size 1,024 alloc'd
+==360466==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==360466==    by 0x4A2BD03: _IO_file_doallocate (filedoalloc.c:101)
+==360466==    by 0x4A3BECF: _IO_doallocbuf (genops.c:347)
+==360466==    by 0x4A3AF2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+==360466==    by 0x4A396B4: _IO_new_file_xsputn (fileops.c:1244)
+==360466==    by 0x4A396B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==360466==    by 0x4A20971: __vfprintf_internal (vfprintf-internal.c:1373)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x109BEC: read_mnist_images (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10AD2D: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 8 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07104: __printf_fp_l (printf_fp.c:1157)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 9 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06E9A: round_away (rounding-mode.h:52)
+==360466==    by 0x4A06E9A: __printf_fp_l (printf_fp.c:989)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 10 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06E29: __printf_fp_l (printf_fp.c:972)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 11 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 12 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 13 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A059B9: hack_digit (printf_fp.c:169)
+==360466==    by 0x4A06E0A: __printf_fp_l (printf_fp.c:970)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 14 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06DF0: __printf_fp_l (printf_fp.c:969)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 15 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 16 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 17 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A059B9: hack_digit (printf_fp.c:169)
+==360466==    by 0x4A0697B: __printf_fp_l (printf_fp.c:933)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 18 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0761D: __printf_fp_l (printf_fp.c:817)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 19 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0031F: __mpn_lshift (lshift.S:60)
+==360466==    by 0x4A07600: __printf_fp_l (printf_fp.c:816)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 20 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0031C: __mpn_lshift (lshift.S:59)
+==360466==    by 0x4A07600: __printf_fp_l (printf_fp.c:816)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 21 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A075FC: __printf_fp_l (printf_fp.c:816)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 22 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A075ED: __printf_fp_l (printf_fp.c:640)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 23 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A064CD: __printf_fp_l (printf_fp.c:437)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 24 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A064AF: __printf_fp_l (printf_fp.c:430)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 25 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A064AD: __printf_fp_l (printf_fp.c:430)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 26 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0648A: __printf_fp_l (printf_fp.c:430)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 27 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A0645E: __printf_fp_l (printf_fp.c:429)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 28 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0645C: __printf_fp_l (printf_fp.c:429)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 29 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06439: __printf_fp_l (printf_fp.c:429)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 30 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A06D3F: __printf_fp_l (printf_fp.c:428)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 31 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06406: __printf_fp_l (printf_fp.c:428)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 32 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A063E3: __printf_fp_l (printf_fp.c:428)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 33 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A01B34: __mpn_extract_double (dbl2mpn.c:56)
+==360466==    by 0x4A0638E: __printf_fp_l (printf_fp.c:387)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 34 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06092: __printf_fp_l (printf_fp.c:387)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10 errors in context 35 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A06078: __printf_fp_l (printf_fp.c:387)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 60 errors in context 36 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A00A0C: __mpn_mul_1 (mul_1.S:52)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 60 errors in context 37 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A009E8: __mpn_mul_1 (mul_1.S:36)
+==360466==    by 0x4A059C0: hack_digit (printf_fp.c:170)
+==360466==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 60 errors in context 38 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x4A059B9: hack_digit (printf_fp.c:169)
+==360466==    by 0x4A06A28: __printf_fp_l (printf_fp.c:957)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 69 errors in context 39 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A3ADDD: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:783)
+==360466==    by 0x4A07C2F: __printf_fp_l (printf_fp.c:1246)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 69 errors in context 40 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A07343: __printf_fp_l (printf_fp.c:1222)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 69 errors in context 41 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x4A0735D: __printf_fp_l (printf_fp.c:1220)
+==360466==    by 0x4A214B9: __vfprintf_internal (vfprintf-internal.c:1687)
+==360466==    by 0x4A0BD3E: printf (printf.c:33)
+==360466==    by 0x10B089: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 320 errors in context 42 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x48EB849: __logf_fma (e_logf.c:80)
+==360466==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B074: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 320 errors in context 43 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48EB804: __logf_fma (e_logf.c:53)
+==360466==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B074: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 320 errors in context 44 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48EB7F2: __logf_fma (e_logf.c:50)
+==360466==    by 0x10A4AC: get_loss (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B074: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 2880 errors in context 45 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x10A531: arg_max (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10A601: get_accuracy (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B0A9: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 2880 errors in context 46 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x109778: softmax_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 3200 errors in context 47 of 57:
+==360466== Use of uninitialised value of size 8
+==360466==    at 0x48EB60B: __expf_fma (e_expf.c:98)
+==360466==    by 0x10982C: softmax_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 3200 errors in context 48 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48EB5C1: __expf_fma (e_expf.c:62)
+==360466==    by 0x10982C: softmax_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466==
+==360466== 10240 errors in context 49 of 57:
+==360466== Conditional jump or move depends on uninitialised value(s)
+==360466==    at 0x48A95C7: fmaxf (s_fmaxf.S:26)
+==360466==    by 0x1096BB: relu_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x1099AC: model_forward (in /home/rickojn/coding/deep/build/deep)
+==360466==    by 0x10B054: main (in /home/rickojn/coding/deep/build/deep)
+==360466==
+==360466== ERROR SUMMARY: 24071 errors from 57 contexts (suppressed: 0 from 0)
 rickojn@Jazzclub-3~/coding/deep/build branch: main $

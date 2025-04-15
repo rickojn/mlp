@@ -367,7 +367,7 @@ void initialise_gradients(Gradients * gradients, Model *model, InputData *data)
         // size of gradients for activations
         gradients->size_grads += model->layers[i]->size_neurons * data->nImages;
     }
-    gradients->grads = calloc(gradients->size_grads * sizeof(float), 0);
+    gradients->grads = calloc(gradients->size_grads, sizeof(float));
     
     // connect gradients to layers
 
