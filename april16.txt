@@ -1,0 +1,409 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 25450
+Test loss before training: 2.364593
+Test accuracy before training: 0.090100
+
+epoch: 0
+Training loss: 2.302585
+Training accuracy: 0.031250
+
+epoch: 100
+Training loss: 2.294683
+Training accuracy: 0.187500
+
+epoch: 200
+Training loss: 2.285815
+Training accuracy: 0.125000
+
+epoch: 300
+Training loss: 2.309577
+Training accuracy: 0.093750
+
+epoch: 400
+Training loss: 2.300807
+Training accuracy: 0.125000
+
+epoch: 500
+Training loss: 2.315583
+Training accuracy: 0.062500
+
+epoch: 600
+Training loss: 2.322007
+Training accuracy: 0.062500
+
+epoch: 700
+Training loss: 2.314645
+Training accuracy: 0.125000
+
+epoch: 800
+Training loss: 2.290929
+Training accuracy: 0.125000
+
+epoch: 900
+Training loss: 2.318243
+Training accuracy: 0.125000
+
+epoch: 1000
+Training loss: 2.321570
+Training accuracy: 0.031250
+
+epoch: 1100
+Training loss: 2.316202
+Training accuracy: 0.156250
+
+epoch: 1200
+Training loss: 2.294183
+Training accuracy: 0.125000
+
+epoch: 1300
+Training loss: 2.298858
+Training accuracy: 0.156250
+
+epoch: 1400
+Training loss: 2.298139
+Training accuracy: 0.156250
+
+epoch: 1500
+Training loss: 2.294075
+Training accuracy: 0.187500
+
+epoch: 1600
+Training loss: 2.314344
+Training accuracy: 0.031250
+
+epoch: 1700
+Training loss: 2.309422
+Training accuracy: 0.031250
+
+epoch: 1800
+Training loss: 2.290883
+Training accuracy: 0.187500
+
+epoch: 1900
+Training loss: 2.297707
+Training accuracy: 0.125000
+
+epoch: 2000
+Training loss: 2.302134
+Training accuracy: 0.125000
+
+epoch: 2100
+Training loss: 2.318368
+Training accuracy: 0.093750
+
+epoch: 2200
+Training loss: 2.295863
+Training accuracy: 0.156250
+
+epoch: 2300
+Training loss: 2.286099
+Training accuracy: 0.187500
+
+epoch: 2400
+Training loss: 2.304065
+Training accuracy: 0.093750
+
+epoch: 2500
+Training loss: 2.309344
+Training accuracy: 0.187500
+
+epoch: 2600
+Training loss: 2.296410
+Training accuracy: 0.187500
+
+epoch: 2700
+Training loss: 2.328597
+Training accuracy: 0.031250
+
+epoch: 2800
+Training loss: 2.330778
+Training accuracy: 0.062500
+
+epoch: 2900
+Training loss: 2.303190
+Training accuracy: 0.125000
+
+epoch: 3000
+Training loss: 2.289634
+Training accuracy: 0.125000
+
+epoch: 3100
+Training loss: 2.312944
+Training accuracy: 0.093750
+
+epoch: 3200
+Training loss: 2.292007
+Training accuracy: 0.218750
+
+epoch: 3300
+Training loss: 2.295565
+Training accuracy: 0.156250
+
+epoch: 3400
+Training loss: 2.290673
+Training accuracy: 0.218750
+
+epoch: 3500
+Training loss: 2.304579
+Training accuracy: 0.093750
+
+epoch: 3600
+Training loss: 2.311582
+Training accuracy: 0.093750
+
+epoch: 3700
+Training loss: 2.300066
+Training accuracy: 0.062500
+
+epoch: 3800
+Training loss: 2.303451
+Training accuracy: 0.093750
+
+epoch: 3900
+Training loss: 2.292162
+Training accuracy: 0.156250
+
+epoch: 4000
+Training loss: 2.294867
+Training accuracy: 0.156250
+
+epoch: 4100
+Training loss: 2.284832
+Training accuracy: 0.156250
+
+epoch: 4200
+Training loss: 2.311781
+Training accuracy: 0.062500
+
+epoch: 4300
+Training loss: 2.289826
+Training accuracy: 0.187500
+
+epoch: 4400
+Training loss: 2.286081
+Training accuracy: 0.218750
+
+epoch: 4500
+Training loss: 2.304552
+Training accuracy: 0.093750
+
+epoch: 4600
+Training loss: 2.303696
+Training accuracy: 0.031250
+
+epoch: 4700
+Training loss: 2.316147
+Training accuracy: 0.093750
+
+epoch: 4800
+Training loss: 2.306515
+Training accuracy: 0.093750
+
+epoch: 4900
+Training loss: 2.292163
+Training accuracy: 0.187500
+
+epoch: 5000
+Training loss: 2.298924
+Training accuracy: 0.125000
+
+epoch: 5100
+Training loss: 2.310518
+Training accuracy: 0.093750
+
+epoch: 5200
+Training loss: 2.314195
+Training accuracy: 0.031250
+
+epoch: 5300
+Training loss: 2.304525
+Training accuracy: 0.062500
+
+epoch: 5400
+Training loss: 2.312281
+Training accuracy: 0.062500
+
+epoch: 5500
+Training loss: 2.315760
+Training accuracy: 0.125000
+
+epoch: 5600
+Training loss: 2.302378
+Training accuracy: 0.125000
+
+epoch: 5700
+Training loss: 2.311611
+Training accuracy: 0.125000
+
+epoch: 5800
+Training loss: 2.303436
+Training accuracy: 0.093750
+
+epoch: 5900
+Training loss: 2.296360
+Training accuracy: 0.093750
+
+epoch: 6000
+Training loss: 2.296006
+Training accuracy: 0.125000
+
+epoch: 6100
+Training loss: 2.292740
+Training accuracy: 0.218750
+
+epoch: 6200
+Training loss: 2.288407
+Training accuracy: 0.187500
+
+epoch: 6300
+Training loss: 2.272904
+Training accuracy: 0.218750
+
+epoch: 6400
+Training loss: 2.312547
+Training accuracy: 0.062500
+
+epoch: 6500
+Training loss: 2.294685
+Training accuracy: 0.156250
+
+epoch: 6600
+Training loss: 2.313489
+Training accuracy: 0.062500
+
+epoch: 6700
+Training loss: 2.301345
+Training accuracy: 0.156250
+
+epoch: 6800
+Training loss: 2.336531
+Training accuracy: 0.000000
+
+epoch: 6900
+Training loss: 2.304677
+Training accuracy: 0.125000
+
+epoch: 7000
+Training loss: 2.293744
+Training accuracy: 0.093750
+
+epoch: 7100
+Training loss: 2.303622
+Training accuracy: 0.156250
+
+epoch: 7200
+Training loss: 2.294343
+Training accuracy: 0.093750
+
+epoch: 7300
+Training loss: 2.295634
+Training accuracy: 0.187500
+
+epoch: 7400
+Training loss: 2.286956
+Training accuracy: 0.156250
+
+epoch: 7500
+Training loss: 2.314775
+Training accuracy: 0.093750
+
+epoch: 7600
+Training loss: 2.301412
+Training accuracy: 0.093750
+
+epoch: 7700
+Training loss: 2.305313
+Training accuracy: 0.062500
+
+epoch: 7800
+Training loss: 2.272495
+Training accuracy: 0.156250
+
+epoch: 7900
+Training loss: 2.273642
+Training accuracy: 0.218750
+
+epoch: 8000
+Training loss: 2.290227
+Training accuracy: 0.125000
+
+epoch: 8100
+Training loss: 2.307301
+Training accuracy: 0.062500
+
+epoch: 8200
+Training loss: 2.288269
+Training accuracy: 0.156250
+
+epoch: 8300
+Training loss: 2.302422
+Training accuracy: 0.093750
+
+epoch: 8400
+Training loss: 2.285397
+Training accuracy: 0.156250
+
+epoch: 8500
+Training loss: 2.291471
+Training accuracy: 0.187500
+
+epoch: 8600
+Training loss: 2.293627
+Training accuracy: 0.187500
+
+epoch: 8700
+Training loss: 2.291657
+Training accuracy: 0.187500
+
+epoch: 8800
+Training loss: 2.306437
+Training accuracy: 0.062500
+
+epoch: 8900
+Training loss: 2.313376
+Training accuracy: 0.062500
+
+epoch: 9000
+Training loss: 2.303448
+Training accuracy: 0.125000
+
+epoch: 9100
+Training loss: 2.300445
+Training accuracy: 0.062500
+
+epoch: 9200
+Training loss: 2.298959
+Training accuracy: 0.125000
+
+epoch: 9300
+Training loss: 2.315830
+Training accuracy: 0.125000
+
+epoch: 9400
+Training loss: 2.315170
+Training accuracy: 0.031250
+
+epoch: 9500
+Training loss: 2.301260
+Training accuracy: 0.062500
+
+epoch: 9600
+Training loss: 2.290983
+Training accuracy: 0.125000
+
+epoch: 9700
+Training loss: 2.284697
+Training accuracy: 0.218750
+
+epoch: 9800
+Training loss: 2.299743
+Training accuracy: 0.156250
+
+epoch: 9900
+Training loss: 2.295361
+Training accuracy: 0.062500
+Test loss after training: 2.377482
+Test accuracy after training: 0.108300

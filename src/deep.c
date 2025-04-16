@@ -7,7 +7,9 @@
 #define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 32
-#define NUMBER_EPOCHS 10
+#define NUMBER_EPOCHS 10000
+#define PRINT_EVERY 100
+#define LEARNING_RATE 0.1f
 
 typedef struct {
     unsigned char *images, *labels;
@@ -20,7 +22,7 @@ typedef struct Layer{
     *gradients_input, *gradients_output, *gradients_weights, *gradients_biases;
     size_t size_inputs, size_neurons;
     void (*activation_forward)(struct Layer* layer, float *input, float *output, size_t size_batch);
-    void (*activation_backward)(struct Layer* layer, float *dout, float *din);
+    void (*activation_backward)(struct Layer* layer, unsigned char * labels, size_t size_batch);
 } Layer;
 
 typedef struct {
@@ -111,7 +113,6 @@ void softmax_forward(Layer *layer, float *logits, float *probs, size_t size_batc
 
 void model_forward(Model *model, Activations *activations, InputData *data)
 {
-    printf("\nModel forward pass...\n");
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
         matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
@@ -120,15 +121,68 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 }
 
 
-void softmax_backward(Layer *layer, float *dout, float *din)
+void loss_softmax_backward(Layer *layer, unsigned char *labels, size_t size_batch)
 {
-    for (size_t idx_image = 0; idx_image < layer->size_neurons; idx_image++) {
-        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-            din[idx_image * layer->size_neurons + idx_neuron] = dout[idx_image * layer->size_neurons + idx_neuron] - dout[idx_image * layer->size_neurons + idx_neuron] * dout[idx_image * layer->size_neurons + idx_neuron];
+    for (size_t idx_image = 0; idx_image < size_batch; idx_image++){
+        for (size_t idx_logit = 0; idx_logit < layer->size_neurons; idx_logit++){
+            float label = idx_logit == labels[idx_image] ? 1.0 : 0.0;
+            size_t offset_logit = idx_image * layer->size_neurons + idx_logit;
+            layer->gradients_output[offset_logit] = layer->activations_output[offset_logit] - label;
+        }
+    }    
+}
+
+void matmul_backward(Layer * layer, size_t size_batch)
+{
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+            size_t offset_grad_pre_act = idx_sample * layer->size_neurons + idx_neuron;
+            if (layer->gradients_biases){
+                layer->gradients_biases[idx_neuron] += layer->gradients_output[offset_grad_pre_act];
+            }
+            for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++){
+                size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
+                size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
+                layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->activations_output[offset_grad_pre_act];
+                layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->activations_output[offset_grad_pre_act]; 
+            }
+        }
+    }
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+        if (layer->gradients_biases){
+            layer->gradients_biases[idx_neuron] /= size_batch;
+        }
+        for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++){
+            size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
+            layer->gradients_weights[offset_weight] /= size_batch;
         }
     }
 }
 
+
+
+void update_layer(Layer *layer, float learning_rate)
+{
+    for (size_t idx_weight = 0; idx_weight < layer->size_inputs * layer->size_neurons; idx_weight++) {
+        layer->weights[idx_weight] -= learning_rate * layer->gradients_weights[idx_weight];
+    }
+    for (size_t idx_bias = 0; idx_bias < layer->size_neurons; idx_bias++) {
+        layer->biases[idx_bias] -= learning_rate * layer->gradients_biases[idx_bias];
+    }
+}
+
+
+void model_backward(Model *model, Activations *activations, InputData *data)
+{
+    for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
+        Layer *layer = model->layers[idx_layer];
+        if (idx_layer == 1){
+            layer->activation_backward(layer, data->labels, data->nImages);
+            matmul_backward(layer, data->nImages);
+            update_layer(layer, LEARNING_RATE);
+        }
+    }
+}
 
 
 void read_mnist_images(const char *filename, InputData *data) {
@@ -215,6 +269,7 @@ void xavier_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
     layer->size_neurons = outputs;
 
     layer->activation_forward = softmax_forward;
+    layer->activation_backward = loss_softmax_backward;
 
     layer->weights = malloc(inputs * outputs * sizeof(float));
     layer->biases = malloc(outputs * sizeof(float));
@@ -332,6 +387,7 @@ size_t get_size_parameters(Model *model)
 
 void initialise_activations(Activations * activations, Model *model, InputData *data)
 {
+    activations->size_activations = 0;
     for (size_t i = 0; i < model->size_layers; i++) {
         activations->size_activations += model->layers[i]->size_neurons;
     }
@@ -463,14 +519,24 @@ int main() {
     initialise_gradients(&gradients, &model, &data_mini_batch);
 
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
-        printf("\nEpoch %zu\n", epoch);
         initialise_mini_batch(&data_training, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
-        printf("Training loss: %f\n", get_loss(&model, &activations, &data_mini_batch));
-        printf("Training accuracy: %f\n", get_accuracy(&model, &activations, &data_mini_batch));
+        model_backward(&model, &activations, &data_mini_batch);
+        if (epoch % PRINT_EVERY == 0) {
+            printf("\nepoch: %zu\n", epoch);
+            printf("Training loss: %f\n", get_loss(&model, &activations, &data_mini_batch));
+            printf("Training accuracy: %f\n", get_accuracy(&model, &activations, &data_mini_batch));
+        }
         memset(gradients.grads, 0, gradients.size_grads * sizeof(float));
     }
-    
+
+    // test loss after training
+    initialise_activations(&activations, &model, &data_test);
+    model_forward(&model, &activations, &data_test);
+    printf("Test loss after training: %f\n", get_loss(&model, &activations, &data_test));
+    printf("Test accuracy after training: %f\n", get_accuracy(&model, &activations, &data_test));
+
+
 
     free_mini_batch_memory(&data_mini_batch);
     free_gradients(&gradients);
