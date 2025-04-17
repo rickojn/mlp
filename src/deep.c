@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 #define SIZE_CLASSES 10
 #define SIZE_MINI_BATCH 32
@@ -235,6 +236,49 @@ void read_mnist_labels(const char *filename, unsigned char **labels, int *nLabel
     fclose(file);
 }
 
+size_t get_size_parameters(Model *model)
+{
+    size_t size = 0;
+    for (size_t i = 0; i < model->size_layers; i++) {
+        size += model->layers[i]->size_inputs * model->layers[i]->size_neurons;
+        size += model->layers[i]->size_neurons;
+    }
+    return size;
+}
+
+
+void save_model(Model * model, const char *filename){
+    char timestamp[32];
+    time_t now;
+    struct tm *ts;
+
+    // Get current time
+    time(&now);
+
+    // Convert it to a human-readable format
+    ts = localtime(&now);
+    strftime(timestamp, sizeof timestamp, "%Y%m%d_%H%M%S", ts);
+
+    // Create file name with the timestamp
+    char filename_time[128];
+    sprintf(filename_time, "%s_%s_h%d.mdl", filename, timestamp, SIZE_HIDDEN);
+
+    printf("\nsaving in file: %s\n", filename_time);
+    FILE *file = fopen(filename_time, "wb");
+    if (file == NULL) {
+        printf("Error opening file %s", filename);
+        return;
+    }
+
+
+
+    // Save all parameters of the model to the file
+    fwrite(model->layers[0], sizeof(float), get_size_parameters(model), file);
+
+    fclose(file);
+}
+
+
 float generate_normal_random_number()
 {
     // 2 uniformly distributed random numbers between 0 and 1
@@ -389,15 +433,6 @@ float get_accuracy(Model *model, Activations *activations, InputData *data)
     return (float)correct / data->nImages;
 }
 
-size_t get_size_parameters(Model *model)
-{
-    size_t size = 0;
-    for (size_t i = 0; i < model->size_layers; i++) {
-        size += model->layers[i]->size_inputs * model->layers[i]->size_neurons;
-        size += model->layers[i]->size_neurons;
-    }
-    return size;
-}
 
 void initialise_activations(Activations * activations, Model *model, InputData *data)
 {
@@ -543,6 +578,9 @@ int main() {
         }
         memset(gradients.grads, 0, gradients.size_grads * sizeof(float));
     }
+
+    // save model
+    save_model(&model, "model");
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
