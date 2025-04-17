@@ -6,8 +6,8 @@
 #define SIZE_CLASSES 10
 #define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
-#define SIZE_HIDDEN 32
-#define NUMBER_EPOCHS 10000
+#define SIZE_HIDDEN 256
+#define NUMBER_EPOCHS 1000
 #define PRINT_EVERY 100
 #define LEARNING_RATE 0.1f
 
@@ -132,6 +132,19 @@ void loss_softmax_backward(Layer *layer, unsigned char *labels, size_t size_batc
     }    
 }
 
+void relu_backward(Layer *layer, unsigned char *labels, size_t size_batch)
+{
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+            size_t offset_grad = idx_sample * layer->size_neurons + idx_neuron;
+            if (layer->activations_output[offset_grad] <= 0){
+                layer->gradients_output[offset_grad] = 0;
+            }
+            // else dAct/dPreAct  = 1 so dLoss/dPreAct = dLoss/dAct
+        }
+    }
+}
+
 void matmul_backward(Layer * layer, size_t size_batch)
 {
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
@@ -144,7 +157,9 @@ void matmul_backward(Layer * layer, size_t size_batch)
                 size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
                 size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
                 layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->activations_output[offset_grad_pre_act];
-                layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->activations_output[offset_grad_pre_act]; 
+                if (layer->gradients_input){
+                    layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
+                }
             }
         }
     }
@@ -176,11 +191,9 @@ void model_backward(Model *model, Activations *activations, InputData *data)
 {
     for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
         Layer *layer = model->layers[idx_layer];
-        if (idx_layer == 1){
-            layer->activation_backward(layer, data->labels, data->nImages);
-            matmul_backward(layer, data->nImages);
-            update_layer(layer, LEARNING_RATE);
-        }
+        layer->activation_backward(layer, data->labels, data->nImages);
+        matmul_backward(layer, data->nImages);
+        update_layer(layer, LEARNING_RATE);
     }
 }
 
@@ -252,6 +265,7 @@ void kaiming_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
     layer->size_neurons = outputs;
 
     layer->activation_forward = relu_forward;
+    layer->activation_backward = relu_backward;
 
     layer->weights = malloc(inputs * outputs * sizeof(float));
     layer->biases = malloc(outputs * sizeof(float));
