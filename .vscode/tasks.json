@@ -28,7 +28,7 @@
             "args": [
                 "-g",
                 "-o",           // Specify the output file
-                "${workspaceFolder}/debug/deep", // Output path and executable name
+                "${workspaceFolder}/build/deep", // Output path and executable name
                 "${workspaceFolder}/src/*.c", // Path to the source C file
                 "-lm",
             ],

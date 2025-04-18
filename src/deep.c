@@ -3,13 +3,16 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #define SIZE_CLASSES 10
 #define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
-#define SIZE_HIDDEN 256
-#define NUMBER_EPOCHS 1000
-#define PRINT_EVERY 100
+#define SIZE_HIDDEN 32
+#define NUMBER_EPOCHS 10000
+#define PRINT_EVERY 1000
 #define LEARNING_RATE 0.1f
 
 typedef struct {
@@ -278,6 +281,62 @@ void save_model(Model * model, const char *filename){
     fclose(file);
 }
 
+void load_model_from_file(Model * model, const char *filename){
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Error opening file %s", filename);
+        return;
+    }
+    // Load all parameters of the model from the file
+    fread(model->layers[0], sizeof(float), get_size_parameters(model), file);
+    fclose(file);
+}
+
+int load_model(Model * model, const char *dirname){
+    DIR *dir;
+    struct dirent *entry;
+    struct stat file_info;
+    time_t now;
+    time(&now);
+    time_t latest_timestamp = 0;
+    char timestamp[32];
+    char full_filename[260];
+    char latest_fullname[260];
+
+    // Open directory "models"
+    dir = opendir(dirname);
+    if (dir == NULL) {
+        printf("Error opening directory %s", dirname);
+        return 0;
+    }
+
+    // Iterate through files in the directory and find the one with the latest timestamp
+    while ((entry = readdir(dir)) != NULL) {
+        snprintf(full_filename, sizeof(full_filename), "%s/%s", dirname, entry->d_name);
+        if (stat(full_filename, &file_info) == 0 && S_ISREG(file_info.st_mode)) {
+            time_t file_timestamp = file_info.st_mtime; // Use the st_mtime field from stat() to get the last modification time
+
+            if (file_timestamp > latest_timestamp) {
+                latest_timestamp = file_timestamp;
+                strcpy(latest_fullname, full_filename);
+            } 
+        }
+    }
+
+    closedir(dir);
+    if (latest_timestamp == 0) {
+        printf("\nNo model files found in directory %s\n\n", dirname);
+        return 0;
+    } 
+    else {
+        printf("\nLoading model from file %s\n\n", latest_fullname);
+        load_model_from_file(model, latest_fullname); // Load model parameters from the file
+        return 1;
+    }
+
+}
+
+
 
 float generate_normal_random_number()
 {
@@ -541,6 +600,8 @@ int main() {
 
     // create model
     Model model = {0};
+    
+
     // create layers
     Layer layer_hidden, layer_output;
     kaiming_initialize_layer(&layer_hidden, data_test.cols * data_test.rows, SIZE_HIDDEN);
@@ -549,6 +610,13 @@ int main() {
     add_layer(&model, &layer_hidden);
     add_layer(&model, &layer_output);
     printf("Number of parameters: %zu\n", get_size_parameters(&model));
+    // load any persisted model parameters from models directory
+    // if (load_model(&model, "../models") == 0) {
+    if (0==0) {
+        printf("No model found, training from scratch\n");
+    } else {
+        printf("Model loaded successfully\n");
+    }
     // test loss before training
     Activations activations = {0};
     initialise_activations(&activations, &model, &data_test);
@@ -580,7 +648,7 @@ int main() {
     }
 
     // save model
-    save_model(&model, "model");
+    save_model(&model, "models/model");
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
