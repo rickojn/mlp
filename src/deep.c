@@ -12,8 +12,8 @@
 #define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 32
-#define NUMBER_EPOCHS 10000
-#define PRINT_EVERY 1000
+#define NUMBER_EPOCHS 100
+#define PRINT_EVERY 10
 #define LEARNING_RATE 0.1f
 
 typedef struct {
@@ -28,6 +28,7 @@ typedef struct Layer{
     size_t size_inputs, size_neurons;
     void (*activation_forward)(struct Layer* layer,  size_t size_batch);
     void (*activation_backward)(struct Layer* layer, unsigned char * labels, size_t size_batch);
+    float (*generate_number)();
 } Layer;
 
 typedef struct {
@@ -266,7 +267,7 @@ void save_model(Model * model, const char *filename){
 
 
     // Save all parameters of the model to the file
-    fwrite(model->layers[0], sizeof(float), model->size_parameters, file);
+    fwrite(model->layers[0]->weights, sizeof(float), model->size_parameters, file);
 
     fclose(file);
 }
@@ -352,6 +353,16 @@ float generate_kaiming_number(size_t inputs, size_t outputs)
     return generate_normal_random_number() * stddev;
 }
 
+
+void initialize_layer(Layer *layer, float (*generate_number)()){
+ 
+    for (size_t i = 0; i < layer->size_inputs * layer->size_neurons; i++)
+        layer->weights[i] = generate_number(layer->size_inputs, layer->size_neurons);
+
+    for (size_t i = 0; i < layer->size_neurons; i++)
+        layer->biases[i] = 0.0f;
+}
+
 void kaiming_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
 {
     layer->size_inputs = inputs;
@@ -391,13 +402,15 @@ void xavier_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
 
 
 void add_layer(Model *model, size_t size_inputs, size_t size_neurons, void(*activation_forward)(Layer *layer, size_t size_batch),
-               void(*activation_backward)(Layer *layer, unsigned char *labels, size_t size_batch))
+               void(*activation_backward)(Layer *layer, unsigned char *labels, size_t size_batch),
+            float (*generate_number)())
 {
     Layer *layer = calloc(1, sizeof(Layer));
     layer->size_inputs = size_inputs;
     layer->size_neurons = size_neurons;
     layer->activation_forward = activation_forward;
     layer->activation_backward = activation_backward;
+    layer->generate_number = generate_number;
     
     model->layers = realloc(model->layers, (model->size_layers + 1) * sizeof(Layer *));
     model->layers[model->size_layers] = layer;
@@ -416,6 +429,14 @@ void allocate_parameters_memory(Model *model)
         offset += layer->size_inputs * layer->size_neurons;
         layer->biases = parameters + offset;
         offset += layer->size_neurons;
+    }
+}
+
+void initialize_model(Model *model)
+{
+    for (size_t i = 0; i < model->size_layers; i++) {
+        Layer *layer = model->layers[i];
+        initialize_layer(layer, layer->generate_number);
     }
 }
 
@@ -457,12 +478,6 @@ void free_layer(Layer *layer)
     free(layer->biases);
 }
 
-void free_model(Model *model)
-{
-    for (size_t i = 0; i < model->size_layers; i++)
-      free_layer(model->layers[i]);
-    free(model->layers);
-}
 
 void print_probs(Model *model, Activations *activations, InputData *data)
 {
@@ -532,6 +547,7 @@ void initialise_activations(Activations * activations, Model *model, InputData *
     activations->size_activations += data->rows * data->cols;
     activations->size_activations *= data->nImages;
     activations->activations = calloc(activations->size_activations, sizeof(float));
+    printf("\n%zu bytes allocated for acts\n", activations->size_activations * sizeof(float));
 
     for (size_t idx_pixel = 0; idx_pixel < data->nImages * data->rows * data->cols; idx_pixel++) {
         activations->activations[idx_pixel] = (float)data->images[idx_pixel] / 255.0f;
@@ -550,6 +566,7 @@ void initialise_activations(Activations * activations, Model *model, InputData *
 void free_activations(Activations * activations)
 {
     free(activations->activations);
+    printf("%zu act bytes freed.\n", activations->size_activations * sizeof(float));
 }
 
 void initialise_gradients(Gradients * gradients, Model *model, InputData *data)
@@ -603,6 +620,15 @@ void initialise_mini_batch(InputData * training_data, InputData * mini_batch_dat
     }
 }
 
+void free_model(Model * model){
+    free(model->layers[0]->weights);
+    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++)
+    {
+        free(model->layers[idx_layer]);
+    }
+    free(model->layers);
+}
+
 
 int main() {
     // read input data
@@ -631,19 +657,13 @@ int main() {
     // create model
     Model model = {0};
     
-
-    // create layers
-    Layer layer_hidden, layer_output;
-    kaiming_initialize_layer(&layer_hidden, data_test.cols * data_test.rows, SIZE_HIDDEN);
-    xavier_initialize_layer(&layer_output, SIZE_HIDDEN, SIZE_OUTPUT);
     // add layers to model
-    add_layer(&model, data_test.cols * data_test.rows, SIZE_HIDDEN, relu_forward, relu_backward);
-    add_layer(&model, SIZE_HIDDEN, SIZE_OUTPUT, softmax_forward, loss_softmax_backward);
+    add_layer(&model, data_test.cols * data_test.rows, SIZE_HIDDEN, relu_forward, relu_backward, generate_kaiming_number);
+    add_layer(&model, SIZE_HIDDEN, SIZE_OUTPUT, softmax_forward, loss_softmax_backward, generate_xavier_number);
 
     printf("Number of parameters: %zu\n", model.size_parameters);
 
     allocate_parameters_memory(&model);
-    exit(0);
     // load any persisted model parameters from models directory
     // if (load_model(&model, "../models") == 0) {
     if (0==0) {
@@ -681,6 +701,8 @@ int main() {
         memset(gradients.grads, 0, gradients.size_grads * sizeof(float));
     }
 
+    free_activations(&activations);
+
     // save model
     save_model(&model, "models/model");
 
@@ -696,7 +718,7 @@ int main() {
     free_gradients(&gradients);
     // free activations
     free_activations(&activations);
-    // free model
+    // free model parameters;
     free_model(&model);
     // free input data
     free(data_training.images);
