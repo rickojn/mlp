@@ -406,6 +406,37 @@ void add_layer(Model *model, size_t size_inputs, size_t size_neurons, void(*acti
 }
 
 
+void allocate_parameters_memory(Model *model)
+{
+    float *parameters = calloc(model->size_parameters, sizeof(float));
+    size_t offset = 0;
+    for (size_t i = 0; i < model->size_layers; i++) {
+        Layer *layer = model->layers[i];
+        layer->weights = parameters + offset;
+        offset += layer->size_inputs * layer->size_neurons;
+        layer->biases = parameters + offset;
+        offset += layer->size_neurons;
+    }
+}
+
+
+void print_layer_weights(Layer *layer)
+{
+    printf("Weights:\n");
+    for (size_t i = 0; i < layer->size_inputs * layer->size_neurons; i++)
+        printf("%f ", layer->weights[i]);
+    printf("\n");
+}
+
+
+void print_layer_biases(Layer *layer)
+{
+    printf("Biases:\n");
+    for (size_t i = 0; i < layer->size_neurons; i++)
+        printf("%f ", layer->biases[i]);
+    printf("\n");
+}
+
 
 
 void print_layer(Layer *layer)
@@ -610,6 +641,8 @@ int main() {
     add_layer(&model, SIZE_HIDDEN, SIZE_OUTPUT, softmax_forward, loss_softmax_backward);
 
     printf("Number of parameters: %zu\n", model.size_parameters);
+
+    allocate_parameters_memory(&model);
     exit(0);
     // load any persisted model parameters from models directory
     // if (load_model(&model, "../models") == 0) {
