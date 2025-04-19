@@ -27,6 +27,7 @@
             "command": "gcc",
             "args": [
                 "-g",
+                "-O0",
                 "-o",           // Specify the output file
                 "${workspaceFolder}/build/deep", // Output path and executable name
                 "${workspaceFolder}/src/*.c", // Path to the source C file

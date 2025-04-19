@@ -34,7 +34,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/debug/deep",
             "args": [],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [{"name": "DATA_PATH", "value": "/home/rickojn/coding/deep/data"}],
             "externalConsole": false,

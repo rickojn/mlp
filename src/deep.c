@@ -664,8 +664,8 @@ int main() {
 
     allocate_parameters_memory(&model);
     // load any persisted model parameters from models directory
-    // if (load_model(&model, "../models") == 0) {
-    if (0==0) {
+    if (load_model(&model, "../models") == 0) {
+    // if (0==0) {
         printf("No model found, training from scratch\n");
     } else {
         printf("Model loaded successfully\n");
