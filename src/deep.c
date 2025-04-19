@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+
 #define SIZE_CLASSES 10
 #define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
@@ -25,13 +26,14 @@ typedef struct Layer{
     float *weights, *biases, *activations_input, *activations_output,
     *gradients_input, *gradients_output, *gradients_weights, *gradients_biases;
     size_t size_inputs, size_neurons;
-    void (*activation_forward)(struct Layer* layer, float *input, float *output, size_t size_batch);
+    void (*activation_forward)(struct Layer* layer,  size_t size_batch);
     void (*activation_backward)(struct Layer* layer, unsigned char * labels, size_t size_batch);
 } Layer;
 
 typedef struct {
     Layer **layers;
     size_t size_layers;
+    size_t size_parameters;
 } Model;
 
 typedef struct {
@@ -46,9 +48,6 @@ typedef struct {
 
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 // Function to concatenate two strings and return the new string
 char *concatStrings(const char *str1, const char *str2) {
@@ -84,33 +83,33 @@ void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch
 } 
 
 
-void relu_forward(Layer *layer, float *input, float *output, size_t size_batch)
+void relu_forward(Layer *layer, size_t size_batch)
 {
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-            output[idx_image * layer->size_neurons + idx_neuron] = fmaxf(0.0f, input[idx_image * layer->size_neurons + idx_neuron]);
+            layer->activations_output[idx_image * layer->size_neurons + idx_neuron] = fmaxf(0.0f, layer->activations_input[idx_image * layer->size_neurons + idx_neuron]);
         }
     }
 }
 
-void softmax_forward(Layer *layer, float *logits, float *probs, size_t size_batch)
+void softmax_forward(Layer *layer, size_t size_batch)
 {
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
-        float max_logit = logits[idx_image * layer->size_neurons];
+        float max_logit = layer->activations_output[idx_image * layer->size_neurons];
         for (size_t idx_neuron = 1; idx_neuron < layer->size_neurons; idx_neuron++) {
-            if (logits[idx_image * layer->size_neurons + idx_neuron] > max_logit) {
-                max_logit = logits[idx_image * layer->size_neurons + idx_neuron];
+            if (layer->activations_output[idx_image * layer->size_neurons + idx_neuron] > max_logit) {
+                max_logit = layer->activations_output[idx_image * layer->size_neurons + idx_neuron];
             }
         }
 
         float sum_exp = 0.0f;
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-            probs[idx_image * layer->size_neurons + idx_neuron] = expf(logits[idx_image * layer->size_neurons + idx_neuron] - max_logit);
-            sum_exp += probs[idx_image * layer->size_neurons + idx_neuron];
+            layer->activations_output[idx_image * layer->size_neurons + idx_neuron] = expf(layer->activations_output[idx_image * layer->size_neurons + idx_neuron] - max_logit);
+            sum_exp += layer->activations_output[idx_image * layer->size_neurons + idx_neuron];
         }
 
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-            probs[idx_image * layer->size_neurons + idx_neuron] /= sum_exp;
+            layer->activations_output[idx_image * layer->size_neurons + idx_neuron] /= sum_exp;
         }
     }
 }
@@ -120,7 +119,7 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
         matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
-        layer->activation_forward(layer, layer->activations_output, layer->activations_output, data->nImages);
+        layer->activation_forward(layer, data->nImages);
     }
 }
 
@@ -239,15 +238,6 @@ void read_mnist_labels(const char *filename, unsigned char **labels, int *nLabel
     fclose(file);
 }
 
-size_t get_size_parameters(Model *model)
-{
-    size_t size = 0;
-    for (size_t i = 0; i < model->size_layers; i++) {
-        size += model->layers[i]->size_inputs * model->layers[i]->size_neurons;
-        size += model->layers[i]->size_neurons;
-    }
-    return size;
-}
 
 
 void save_model(Model * model, const char *filename){
@@ -276,7 +266,7 @@ void save_model(Model * model, const char *filename){
 
 
     // Save all parameters of the model to the file
-    fwrite(model->layers[0], sizeof(float), get_size_parameters(model), file);
+    fwrite(model->layers[0], sizeof(float), model->size_parameters, file);
 
     fclose(file);
 }
@@ -288,7 +278,7 @@ void load_model_from_file(Model * model, const char *filename){
         return;
     }
     // Load all parameters of the model from the file
-    fread(model->layers[0], sizeof(float), get_size_parameters(model), file);
+    fread(model->layers[0], sizeof(float), model->size_parameters, file);
     fclose(file);
 }
 
@@ -398,16 +388,25 @@ void xavier_initialize_layer(Layer *layer, size_t inputs, size_t outputs)
         layer->biases[i] = 0.0f;
 }
 
-void add_layer(Model *model, Layer *layer)
+
+
+void add_layer(Model *model, size_t size_inputs, size_t size_neurons, void(*activation_forward)(Layer *layer, size_t size_batch),
+               void(*activation_backward)(Layer *layer, unsigned char *labels, size_t size_batch))
 {
-    if (model->size_layers == 0) {
-        model->layers = malloc(sizeof(Layer *));
-    } else {
-        model->layers = realloc(model->layers, (model->size_layers + 1) * sizeof(Layer *));
-    }
+    Layer *layer = calloc(1, sizeof(Layer));
+    layer->size_inputs = size_inputs;
+    layer->size_neurons = size_neurons;
+    layer->activation_forward = activation_forward;
+    layer->activation_backward = activation_backward;
+    
+    model->layers = realloc(model->layers, (model->size_layers + 1) * sizeof(Layer *));
     model->layers[model->size_layers] = layer;
     model->size_layers++;
+    model->size_parameters += size_inputs * size_neurons + size_neurons;
 }
+
+
+
 
 void print_layer(Layer *layer)
 {
@@ -607,9 +606,11 @@ int main() {
     kaiming_initialize_layer(&layer_hidden, data_test.cols * data_test.rows, SIZE_HIDDEN);
     xavier_initialize_layer(&layer_output, SIZE_HIDDEN, SIZE_OUTPUT);
     // add layers to model
-    add_layer(&model, &layer_hidden);
-    add_layer(&model, &layer_output);
-    printf("Number of parameters: %zu\n", get_size_parameters(&model));
+    add_layer(&model, data_test.cols * data_test.rows, SIZE_HIDDEN, relu_forward, relu_backward);
+    add_layer(&model, SIZE_HIDDEN, SIZE_OUTPUT, softmax_forward, loss_softmax_backward);
+
+    printf("Number of parameters: %zu\n", model.size_parameters);
+    exit(0);
     // load any persisted model parameters from models directory
     // if (load_model(&model, "../models") == 0) {
     if (0==0) {
