@@ -290,7 +290,6 @@ int load_model(Model * model, const char *dirname){
     time_t now;
     time(&now);
     time_t latest_timestamp = 0;
-    char timestamp[32];
     char full_filename[260];
     char latest_fullname[260];
 
