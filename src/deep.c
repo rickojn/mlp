@@ -241,7 +241,7 @@ void read_mnist_labels(const char *filename, unsigned char **labels, int *nLabel
 
 
 
-void save_model(Model * model, const char *filename){
+void save_model(Model * model, const char *dir_path){
     char timestamp[32];
     time_t now;
     struct tm *ts;
@@ -255,12 +255,12 @@ void save_model(Model * model, const char *filename){
 
     // Create file name with the timestamp
     char filename_time[128];
-    sprintf(filename_time, "%s_%s_h%d.mdl", filename, timestamp, SIZE_HIDDEN);
+    sprintf(filename_time, "%smodel_%s_h%d.mdl", dir_path, timestamp, SIZE_HIDDEN);
 
     printf("\nsaving in file: %s\n", filename_time);
     FILE *file = fopen(filename_time, "wb");
     if (file == NULL) {
-        printf("Error opening file %s", filename);
+        printf("Error opening file %s", dir_path);
         return;
     }
 
@@ -279,7 +279,7 @@ void load_model_from_file(Model * model, const char *filename){
         return;
     }
     // Load all parameters of the model from the file
-    fread(model->layers[0], sizeof(float), model->size_parameters, file);
+    fread(model->layers[0]->weights, sizeof(float), model->size_parameters, file);
     fclose(file);
 }
 
@@ -546,7 +546,6 @@ void initialise_activations(Activations * activations, Model *model, InputData *
     activations->size_activations += data->rows * data->cols;
     activations->size_activations *= data->nImages;
     activations->activations = calloc(activations->size_activations, sizeof(float));
-    printf("\n%zu bytes allocated for acts\n", activations->size_activations * sizeof(float));
 
     for (size_t idx_pixel = 0; idx_pixel < data->nImages * data->rows * data->cols; idx_pixel++) {
         activations->activations[idx_pixel] = (float)data->images[idx_pixel] / 255.0f;
@@ -565,7 +564,6 @@ void initialise_activations(Activations * activations, Model *model, InputData *
 void free_activations(Activations * activations)
 {
     free(activations->activations);
-    printf("%zu act bytes freed.\n", activations->size_activations * sizeof(float));
 }
 
 void initialise_gradients(Gradients * gradients, Model *model, InputData *data)
@@ -633,10 +631,11 @@ int main() {
     // read input data
     InputData data_training, data_test, data_mini_batch = {0};
 
-    const char * data_path = getenv("DATA_PATH");
-    
-    const char * training_images_path = concatStrings(data_path, "/train-images.idx3-ubyte");
-    const char *training_labels_path = concatStrings(data_path, "/train-labels.idx1-ubyte");
+    const char * deep_path = getenv("DEEP_PATH");
+    const char * models_path = concatStrings(deep_path, "models/");
+
+    const char * training_images_path = concatStrings(deep_path, "data/train-images.idx3-ubyte");
+    const char *training_labels_path = concatStrings(deep_path, "data/train-labels.idx1-ubyte");
     read_mnist_images(training_images_path, &data_training);
     read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
     printf("Number of training images: %d\n", data_training.nImages);
@@ -644,8 +643,8 @@ int main() {
     free((char *)training_images_path);
     free((char *)training_labels_path);
 
-    const char *test_images_path = concatStrings(data_path, "/t10k-images.idx3-ubyte");
-    const char *test_labels_path = concatStrings(data_path, "/t10k-labels.idx1-ubyte");
+    const char *test_images_path = concatStrings(deep_path, "data/t10k-images.idx3-ubyte");
+    const char *test_labels_path = concatStrings(deep_path, "data/t10k-labels.idx1-ubyte");
     read_mnist_images(test_images_path, &data_test);
     read_mnist_labels(test_labels_path, &data_test.labels, &data_test.nImages);
     printf("Number of test images: %d\n", data_test.nImages);
@@ -664,12 +663,14 @@ int main() {
 
     allocate_parameters_memory(&model);
     // load any persisted model parameters from models directory
-    if (load_model(&model, "../models") == 0) {
-    // if (0==0) {
+    if (!load_model(&model, models_path)) {
         printf("No model found, training from scratch\n");
+        // initialize model parameters
+        initialize_model(&model);
     } else {
         printf("Model loaded successfully\n");
     }
+
     // test loss before training
     Activations activations = {0};
     initialise_activations(&activations, &model, &data_test);
@@ -703,7 +704,7 @@ int main() {
     free_activations(&activations);
 
     // save model
-    save_model(&model, "models/model");
+    save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);

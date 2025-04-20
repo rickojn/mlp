@@ -1,1 +1,1 @@
-export DATA_PATH=/home/rickojn/coding/deep/data
+export DEEP_PATH=/home/rickojn/coding/deep/
