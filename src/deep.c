@@ -12,8 +12,8 @@
 #define SIZE_MINI_BATCH 32
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 32
-#define NUMBER_EPOCHS 100
-#define PRINT_EVERY 10
+#define NUMBER_EPOCHS 10000
+#define PRINT_EVERY 1000
 #define LEARNING_RATE 0.1f
 
 typedef struct {
@@ -202,24 +202,31 @@ void model_backward(Model *model, Activations *activations, InputData *data)
 }
 
 
+void file_read(void *ptr, size_t size, size_t count, FILE *file) {
+    if (fread(ptr, size, count, file) != count) {
+        perror("Error reading file");
+        exit(EXIT_FAILURE);
+    }
+}
+
 void read_mnist_images(const char *filename, InputData *data) {
     FILE *file = fopen(filename, "rb");
     if (!file) exit(1);
 
     int temp;
-    fread(&temp, sizeof(int), 1, file);
-    fread(&data->nImages, sizeof(int), 1, file);
+    file_read(&temp, sizeof(int), 1, file);
+    file_read(&data->nImages, sizeof(int), 1, file);
     data->nImages = __builtin_bswap32(data->nImages);
 
-    fread(&data->rows, sizeof(int), 1, file);
-    fread(&data->cols, sizeof(int), 1, file);
-
+    file_read(&data->rows, sizeof(int), 1, file);
+    file_read(&data->cols, sizeof(int), 1, file);
     data->rows = __builtin_bswap32(data->rows);
     data->cols = __builtin_bswap32(data->cols);
     printf("rows: %d, cols: %d\n", data->rows, data->cols);
 
     data->images = malloc(data->nImages * data->rows * data->cols);
-    fread(data->images, sizeof(unsigned char), data->nImages * data->rows * data->cols, file);
+    
+    file_read(data->images, sizeof(unsigned char), data->nImages * data->rows * data->cols, file);
     fclose(file);
 
 }
@@ -230,12 +237,13 @@ void read_mnist_labels(const char *filename, unsigned char **labels, int *nLabel
     if (!file) exit(1);
 
     int temp;
-    fread(&temp, sizeof(int), 1, file);
-    fread(nLabels, sizeof(int), 1, file);
+
+    file_read(&temp, sizeof(int), 1, file);
+    file_read(nLabels, sizeof(int), 1, file);
     *nLabels = __builtin_bswap32(*nLabels);
 
     *labels = malloc((*nLabels) * sizeof(unsigned char));
-    fread(*labels, sizeof(unsigned char), (*nLabels), file);
+    file_read(*labels, sizeof(unsigned char), *nLabels, file);
     fclose(file);
 }
 
@@ -279,7 +287,7 @@ void load_model_from_file(Model * model, const char *filename){
         return;
     }
     // Load all parameters of the model from the file
-    fread(model->layers[0]->weights, sizeof(float), model->size_parameters, file);
+    file_read(model->layers[0]->weights, sizeof(float), model->size_parameters, file);
     fclose(file);
 }
 
@@ -663,12 +671,12 @@ int main() {
 
     allocate_parameters_memory(&model);
     // load any persisted model parameters from models directory
-    if (!load_model(&model, models_path)) {
-        printf("No model found, training from scratch\n");
-        // initialize model parameters
-        initialize_model(&model);
-    } else {
+    // otherwise initialize model parameters
+    if (load_model(&model, models_path)) {
         printf("Model loaded successfully\n");
+    } else {
+        printf("No model found, training from scratch\n");
+        initialize_model(&model);
     }
 
     // test loss before training
@@ -679,7 +687,8 @@ int main() {
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     free_activations(&activations);
 
-    // train model
+    // initialise activations and gradients for training
+    // with mini batches
 
     Gradients gradients = {0};
     data_mini_batch.nImages = SIZE_MINI_BATCH;
@@ -688,7 +697,9 @@ int main() {
     allocate_mini_batch_memory(&data_mini_batch);
     initialise_activations(&activations, &model, &data_mini_batch);
     initialise_gradients(&gradients, &model, &data_mini_batch);
+    srand(time(NULL));
 
+    // training loop
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         initialise_mini_batch(&data_training, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
