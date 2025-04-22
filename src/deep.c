@@ -9,12 +9,18 @@
 
 
 #define SIZE_CLASSES 10
-#define SIZE_MINI_BATCH 32
+#define SIZE_MINI_BATCH 1200
 #define SIZE_OUTPUT 10
-#define SIZE_HIDDEN 32
-#define NUMBER_EPOCHS 10000
-#define PRINT_EVERY 1000
+#define SIZE_HIDDEN 256
+#define NUMBER_EPOCHS 10
+#define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
+#define SIZE_TILE 256
+
+
+
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
 
 typedef struct {
     unsigned char *images, *labels;
@@ -72,6 +78,10 @@ char *concatStrings(const char *str1, const char *str2) {
 
 void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
+
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             output[idx_image * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
@@ -81,7 +91,42 @@ void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch
             }
         }
     }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in matmul_forward: %f seconds\n", time_spent);
 } 
+
+
+void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t size_batch)
+{
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            output[idx_sample * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
+        }
+     }
+
+     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample+= SIZE_TILE){
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron+= SIZE_TILE){
+            for (size_t idx_tile_sample = idx_sample; idx_tile_sample < MIN(idx_sample + SIZE_TILE, size_batch); idx_tile_sample++){
+                for (size_t idx_tile_neuron = idx_neuron; idx_tile_neuron < MIN(idx_neuron + SIZE_TILE, layer->size_neurons); idx_tile_neuron++){
+                    size_t offset_output = idx_tile_sample * layer->size_neurons + idx_tile_neuron;
+                    for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++){
+                        size_t offset_weight = idx_tile_neuron * layer->size_inputs + idx_input;
+                        size_t offset_input = idx_tile_sample * layer->size_inputs + idx_input;
+                        layer->activations_output[offset_output] += layer->activations_input[offset_input] * layer->weights[offset_weight];
+                    }
+                }
+            }
+        }
+     }
+ 
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in matmul_forward_tiling: %f seconds\n", time_spent);
+}
 
 
 void relu_forward(Layer *layer, size_t size_batch)
@@ -120,6 +165,7 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
         matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }

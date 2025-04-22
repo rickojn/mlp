@@ -1,0 +1,79 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 203530
+
+Loading model from file /home/rickojn/coding/deep/models//model_20250422_224805_h256.mdl
+
+Model loaded successfully
+Time spent in matmul_forward_tiling: 2.126217 seconds
+Time spent in matmul_forward_tiling: 0.025130 seconds
+Test loss before training: 2.369674
+Test accuracy before training: 0.103900
+Time spent in matmul_forward_tiling: 0.251294 seconds
+Time spent in matmul_forward_tiling: 0.003237 seconds
+
+epoch: 0
+Training loss: 2.301789
+Training accuracy: 0.111667
+Time spent in matmul_forward_tiling: 0.245921 seconds
+Time spent in matmul_forward_tiling: 0.002931 seconds
+
+epoch: 1
+Training loss: 2.301881
+Training accuracy: 0.112500
+Time spent in matmul_forward_tiling: 0.256267 seconds
+Time spent in matmul_forward_tiling: 0.003309 seconds
+
+epoch: 2
+Training loss: 2.301925
+Training accuracy: 0.128333
+Time spent in matmul_forward_tiling: 0.256016 seconds
+Time spent in matmul_forward_tiling: 0.003336 seconds
+
+epoch: 3
+Training loss: 2.302874
+Training accuracy: 0.094167
+Time spent in matmul_forward_tiling: 0.249954 seconds
+Time spent in matmul_forward_tiling: 0.002918 seconds
+
+epoch: 4
+Training loss: 2.302289
+Training accuracy: 0.112500
+Time spent in matmul_forward_tiling: 0.248391 seconds
+Time spent in matmul_forward_tiling: 0.002985 seconds
+
+epoch: 5
+Training loss: 2.301642
+Training accuracy: 0.118333
+Time spent in matmul_forward_tiling: 0.246475 seconds
+Time spent in matmul_forward_tiling: 0.002924 seconds
+
+epoch: 6
+Training loss: 2.302661
+Training accuracy: 0.103333
+Time spent in matmul_forward_tiling: 0.249289 seconds
+Time spent in matmul_forward_tiling: 0.003020 seconds
+
+epoch: 7
+Training loss: 2.301781
+Training accuracy: 0.100833
+Time spent in matmul_forward_tiling: 0.246792 seconds
+Time spent in matmul_forward_tiling: 0.003134 seconds
+
+epoch: 8
+Training loss: 2.301683
+Training accuracy: 0.110833
+Time spent in matmul_forward_tiling: 0.249029 seconds
+Time spent in matmul_forward_tiling: 0.002969 seconds
+
+epoch: 9
+Training loss: 2.302446
+Training accuracy: 0.087500
+
+saving in file: /home/rickojn/coding/deep/models/model_20250422_224929_h256.mdl
+Time spent in matmul_forward_tiling: 2.137812 seconds
+Time spent in matmul_forward_tiling: 0.025904 seconds
+Test loss after training: 2.369615
+Test accuracy after training: 0.103900

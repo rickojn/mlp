@@ -1,0 +1,79 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 203530
+
+Loading model from file /home/rickojn/coding/deep/models//model_20250422_224929_h256.mdl
+
+Model loaded successfully
+Time spent in matmul_forward: 3.307673 seconds
+Time spent in matmul_forward: 0.025943 seconds
+Test loss before training: 2.370542
+Test accuracy before training: 0.099500
+Time spent in matmul_forward: 0.391751 seconds
+Time spent in matmul_forward: 0.003403 seconds
+
+epoch: 0
+Training loss: 2.302125
+Training accuracy: 0.110000
+Time spent in matmul_forward: 0.420054 seconds
+Time spent in matmul_forward: 0.003001 seconds
+
+epoch: 1
+Training loss: 2.302587
+Training accuracy: 0.103333
+Time spent in matmul_forward: 0.418284 seconds
+Time spent in matmul_forward: 0.003201 seconds
+
+epoch: 2
+Training loss: 2.302396
+Training accuracy: 0.104167
+Time spent in matmul_forward: 0.395066 seconds
+Time spent in matmul_forward: 0.003089 seconds
+
+epoch: 3
+Training loss: 2.302042
+Training accuracy: 0.115000
+Time spent in matmul_forward: 0.389062 seconds
+Time spent in matmul_forward: 0.003308 seconds
+
+epoch: 4
+Training loss: 2.302197
+Training accuracy: 0.105000
+Time spent in matmul_forward: 0.396815 seconds
+Time spent in matmul_forward: 0.003003 seconds
+
+epoch: 5
+Training loss: 2.301935
+Training accuracy: 0.114167
+Time spent in matmul_forward: 0.391382 seconds
+Time spent in matmul_forward: 0.002965 seconds
+
+epoch: 6
+Training loss: 2.301832
+Training accuracy: 0.112500
+Time spent in matmul_forward: 0.406858 seconds
+Time spent in matmul_forward: 0.003546 seconds
+
+epoch: 7
+Training loss: 2.301726
+Training accuracy: 0.113333
+Time spent in matmul_forward: 0.389882 seconds
+Time spent in matmul_forward: 0.003169 seconds
+
+epoch: 8
+Training loss: 2.301040
+Training accuracy: 0.107500
+Time spent in matmul_forward: 0.388641 seconds
+Time spent in matmul_forward: 0.003349 seconds
+
+epoch: 9
+Training loss: 2.302883
+Training accuracy: 0.111667
+
+saving in file: /home/rickojn/coding/deep/models/model_20250422_225002_h256.mdl
+Time spent in matmul_forward: 3.285408 seconds
+Time spent in matmul_forward: 0.025346 seconds
+Test loss after training: 2.370557
+Test accuracy after training: 0.099700
