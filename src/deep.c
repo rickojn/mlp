@@ -115,15 +115,50 @@ void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t siz
         }
      }
 
+     /*
+     a a a a   b b b b
+     a a a a   b b b b
+     a a a a   b b b b
+     a a a a   b b b b
+
+     |a a| |a a|   |b b| b b
+     |a a| |a a|   |b b| b b
+      --    --      --      
+      a a   a a    |b b| b b
+      a a   a a    |b b| b b
+
+
+      |c c| c c
+      |c c| c c
+       --
+       c c  c c
+       c c  c c
+
+      a a   a a     b b |b b|
+      a a   a a     b b |b b|
+                         - -
+     |a a| |a a|    b b |b b|
+     |a a| |a a|    b b |b b|
+
+
+       c c  c c
+       c c  c c
+       c c  |c c|
+       c c  |c c|
+
+       output tile [1][1]
+       output tile start = 1 * size_input * SIZE_TILE + 1 * SIZE_TILE
+        
+
+
+     */
      
-     for (size_t idx_tile_inputs = 0; idx_tile_inputs < layer->size_inputs/SIZE_TILE; idx_tile_inputs++){
-        for (size_t idx_tile_weights = 0; idx_tile_weights < layer->size_inputs/SIZE_TILE; idx_tile_weights++){
-            size_t idx_tile_input_start = idx_tile_inputs * SIZE_TILE;
-            
+     for (size_t idx_tile_row = 0; idx_tile_row < size_batch/SIZE_TILE; idx_tile_row++){
+        for (size_t idx_tile_col = 0; idx_tile_col < layer->size_neurons/SIZE_TILE; idx_tile_col++){
+            size_t idx_tile_input_start = idx_tile_row * SIZE_TILE * SIZE_TILE;
+            size_t idx_tile_weight_start = idx_tile_col * SIZE_TILE * SIZE_TILE;
         }
      }
-
-
 
      for (size_t idx_tile_row = 0; idx_tile_row < size_batch; idx_tile_row+= SIZE_TILE){
         for (size_t idx_tile_column = 0; idx_tile_column < layer->size_neurons; idx_tile_column+= SIZE_TILE){
