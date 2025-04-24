@@ -9,7 +9,7 @@
 
 
 #define SIZE_CLASSES 10
-#define SIZE_MINI_BATCH 1200
+#define SIZE_MINI_BATCH 12000
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 256
 #define NUMBER_EPOCHS 10
@@ -104,36 +104,23 @@ void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch
 } 
 
 
-void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t size_batch)
-{
-    clock_t begin, end;
-    double time_spent;
-    begin = clock();
-    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
-        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
-            output[idx_sample * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
-        }
-     }
-
      /*
-     a a a a   b b b b
-     a a a a   b b b b
-     a a a a   b b b b
-     a a a a   b b b b
-
+     
      |a a| |a a|   |b b| b b
      |a a| |a a|   |b b| b b
-      --    --      --      
-      a a   a a    |b b| b b
-      a a   a a    |b b| b b
+     --    --      --      
+     a a   a a    |b b| b b
+     a a   a a    |b b| b b
+     
+     
+     |c c| c c
+     |c c| c c
+     --
+     c c  c c
+     c c  c c
 
 
-      |c c| c c
-      |c c| c c
-       --
-       c c  c c
-       c c  c c
-
+     
       a a   a a     b b |b b|
       a a   a a     b b |b b|
                          - -
@@ -146,39 +133,52 @@ void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t siz
        c c  |c c|
        c c  |c c|
 
-       output tile [1][1]
-       output tile start = 1 * size_input * SIZE_TILE + 1 * SIZE_TILE
-        
+       
 
 
      */
-     
-     for (size_t idx_tile_row = 0; idx_tile_row < size_batch/SIZE_TILE; idx_tile_row++){
-        for (size_t idx_tile_col = 0; idx_tile_col < layer->size_neurons/SIZE_TILE; idx_tile_col++){
-            size_t idx_tile_input_start = idx_tile_row * SIZE_TILE * SIZE_TILE;
-            size_t idx_tile_weight_start = idx_tile_col * SIZE_TILE * SIZE_TILE;
+
+
+void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t size_batch)
+{
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
+
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            layer->activations_output[idx_sample * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
         }
      }
 
-     for (size_t idx_tile_row = 0; idx_tile_row < size_batch; idx_tile_row+= SIZE_TILE){
-        for (size_t idx_tile_column = 0; idx_tile_column < layer->size_neurons; idx_tile_column+= SIZE_TILE){
-            for (size_t idx_sample = idx_tile_row; idx_sample < MIN(idx_tile_row + SIZE_TILE, size_batch); idx_sample++){
-                for (size_t idx_neuron = idx_tile_column; idx_neuron < MIN(idx_tile_column + SIZE_TILE, layer->size_neurons); idx_neuron++){
-                    size_t offset_output = idx_sample * layer->size_neurons + idx_neuron;
-                    for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++){
-                        size_t offset_weight = idx_neuron * layer->size_inputs + idx_input;
-                        size_t offset_input = idx_sample * layer->size_inputs + idx_input;
-                        layer->activations_output[offset_output] += layer->activations_input[offset_input] * layer->weights[offset_weight];
+    for (size_t idx_row_output = 0; idx_row_output < size_batch; idx_row_output += SIZE_TILE){
+        for (size_t idx_col_output = 0; idx_col_output < layer->size_neurons; idx_col_output += SIZE_TILE){
+            for (size_t idx_col_input = 0; idx_col_input < layer->size_inputs; idx_col_input += SIZE_TILE){
+                for (size_t idx_tile_row_output = idx_row_output; idx_tile_row_output < idx_row_output + SIZE_TILE && idx_tile_row_output < size_batch; idx_tile_row_output++){
+                    for (size_t idx_tile_col_output = idx_col_output; idx_tile_col_output <idx_col_output + SIZE_TILE && idx_tile_col_output < layer->size_neurons; idx_tile_col_output++){
+                        float dot_product = 0;
+                        for (size_t idx_tile_inner = idx_col_input; idx_tile_inner < idx_col_input + SIZE_TILE && idx_tile_inner < layer->size_inputs; idx_tile_inner++){
+                            // size_t offset_A = idx_tile_row_output * layer->size_neurons + idx_tile_inner;
+                            // size_t offset_B = idx_tile_col_output * layer->size_neurons + idx_tile_inner;
+                            // // dot_product += layer->activations_input[offset_A] * layer->weights[offset_B];
+                            dot_product += layer->activations_input[idx_tile_row_output * layer->size_neurons + idx_tile_inner] * 
+                            layer->weights[idx_tile_col_output * layer->size_neurons + idx_tile_inner];
+                        }
+                        // size_t offset_C = idx_tile_row_output * layer->size_neurons + idx_tile_col_output;
+                        // layer->activations_output[offset_C] += dot_product;
+                        layer->activations_output[idx_tile_row_output * layer->size_neurons + idx_tile_col_output] += dot_product;
                     }
                 }
             }
         }
-     }
- 
+    }
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Time spent in matmul_forward_tiling: %f seconds\n", time_spent);
+    printf("Time spent in matmul_tiling_forward: %f seconds\n", time_spent);
+
 }
+
+
 
 
 void relu_forward(Layer *layer, size_t size_batch)
@@ -216,7 +216,7 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
