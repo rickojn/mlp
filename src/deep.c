@@ -151,24 +151,21 @@ void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t siz
         }
      }
 
-    for (size_t idx_row_output = 0; idx_row_output < size_batch; idx_row_output += SIZE_TILE){
-        for (size_t idx_col_output = 0; idx_col_output < layer->size_neurons; idx_col_output += SIZE_TILE){
-            for (size_t idx_col_input = 0; idx_col_input < layer->size_inputs; idx_col_input += SIZE_TILE){
-                for (size_t idx_tile_row_output = idx_row_output; idx_tile_row_output < idx_row_output + SIZE_TILE && idx_tile_row_output < size_batch; idx_tile_row_output++){
-                    for (size_t idx_tile_col_output = idx_col_output; idx_tile_col_output <idx_col_output + SIZE_TILE && idx_tile_col_output < layer->size_neurons; idx_tile_col_output++){
+    for (size_t idx_tile_row_start = 0; idx_tile_row_start < size_batch; idx_tile_row_start += SIZE_TILE){
+        for (size_t idx_tile_col_start = 0; idx_tile_col_start < layer->size_neurons; idx_tile_col_start += SIZE_TILE){
+            for (size_t idx_tile_inner_start = 0; idx_tile_inner_start < layer->size_inputs; idx_tile_inner_start += SIZE_TILE){
+
+                for (size_t idx_row_output = idx_tile_row_start; idx_row_output < idx_tile_row_start + SIZE_TILE && idx_row_output < size_batch; idx_row_output++){
+                    for (size_t idx_col_output = idx_tile_col_start; idx_col_output <idx_tile_col_start + SIZE_TILE && idx_col_output < layer->size_neurons; idx_col_output++){
                         float dot_product = 0;
-                        for (size_t idx_tile_inner = idx_col_input; idx_tile_inner < idx_col_input + SIZE_TILE && idx_tile_inner < layer->size_inputs; idx_tile_inner++){
-                            // size_t offset_A = idx_tile_row_output * layer->size_neurons + idx_tile_inner;
-                            // size_t offset_B = idx_tile_col_output * layer->size_neurons + idx_tile_inner;
-                            // // dot_product += layer->activations_input[offset_A] * layer->weights[offset_B];
-                            dot_product += layer->activations_input[idx_tile_row_output * layer->size_neurons + idx_tile_inner] * 
-                            layer->weights[idx_tile_col_output * layer->size_neurons + idx_tile_inner];
+                        for (size_t idx_inner = idx_tile_inner_start; idx_inner < idx_tile_inner_start + SIZE_TILE && idx_inner < layer->size_inputs; idx_inner++){
+                            dot_product += layer->activations_input[idx_row_output * layer->size_neurons + idx_inner] * 
+                            layer->weights[idx_col_output * layer->size_neurons + idx_inner];
                         }
-                        // size_t offset_C = idx_tile_row_output * layer->size_neurons + idx_tile_col_output;
-                        // layer->activations_output[offset_C] += dot_product;
-                        layer->activations_output[idx_tile_row_output * layer->size_neurons + idx_tile_col_output] += dot_product;
+                        layer->activations_output[idx_row_output * layer->size_neurons + idx_col_output] += dot_product;
                     }
                 }
+
             }
         }
     }
