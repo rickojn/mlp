@@ -176,6 +176,27 @@ void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t siz
 }
 
 
+void matmul_forward_outer_product(Layer * layer, size_t size_batch){
+    for (size_t start_m_tile = 0; start_m_tile < size_batch; start_m_tile += SIZE_TILE){
+        for (size_t start_n_tile = 0; start_n_tile < layer->size_neurons; start_n_tile += SIZE_TILE){
+            for (size_t start_k_tile = 0; start_k_tile < layer->size_inputs; start_k_tile += SIZE_TILE){
+
+                for (size_t idx_m = start_m_tile; idx_m < start_m_tile + SIZE_TILE && idx_m < size_batch; idx_m++){
+                    for (size_t idx_n = start_n_tile; idx_n < start_n_tile + SIZE_TILE && idx_n < layer->size_neurons; idx_n ++){
+                        float sum = 0.0f;
+                        size_t base_m = idx_m * size_batch;
+                        size_t base_n = idx_n * layer->size_neurons;
+                        for (size_t idx_k = 0; idx_k < start_k_tile + SIZE_TILE && idx_k < layer->size_inputs; idx_k++){
+                            sum += layer->activations_input[base_m + idx_k] * layer->weights[base_n + idx_k];
+                        }
+                        layer->activations_output[idx_m * layer->size_neurons + idx_n] += sum;
+                    }
+                }
+
+            }
+        }
+    }
+}
 
 
 void relu_forward(Layer *layer, size_t size_batch)
@@ -214,7 +235,8 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
         // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
-        matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
+        matmul_forward_outer_product(layer, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }
