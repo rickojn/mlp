@@ -1,0 +1,77 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 203530
+
+No model files found in directory /home/rickojn/coding/deep/models/
+
+No model found, training from scratch
+Time spent in matmul_outer_product: 5.955349 seconds
+Time spent in matmul_outer_product: 0.021650 seconds
+Test loss before training: 2.373986
+Test accuracy before training: 0.097300
+Time spent in matmul_outer_product: 7.054114 seconds
+Time spent in matmul_outer_product: 0.025972 seconds
+
+epoch: 0
+Training loss: 2.302706
+Training accuracy: 0.101500
+Time spent in matmul_outer_product: 7.149610 seconds
+Time spent in matmul_outer_product: 0.025999 seconds
+
+epoch: 1
+Training loss: 2.302522
+Training accuracy: 0.113500
+Time spent in matmul_outer_product: 6.969446 seconds
+Time spent in matmul_outer_product: 0.030386 seconds
+
+epoch: 2
+Training loss: 2.302569
+Training accuracy: 0.112333
+Time spent in matmul_outer_product: 7.016954 seconds
+Time spent in matmul_outer_product: 0.026193 seconds
+
+epoch: 3
+Training loss: 2.302424
+Training accuracy: 0.108250
+Time spent in matmul_outer_product: 6.883298 seconds
+Time spent in matmul_outer_product: 0.025797 seconds
+
+epoch: 4
+Training loss: 2.302588
+Training accuracy: 0.116250
+Time spent in matmul_outer_product: 7.078477 seconds
+Time spent in matmul_outer_product: 0.030792 seconds
+
+epoch: 5
+Training loss: 2.302478
+Training accuracy: 0.115917
+Time spent in matmul_outer_product: 7.368158 seconds
+Time spent in matmul_outer_product: 0.026354 seconds
+
+epoch: 6
+Training loss: 2.302499
+Training accuracy: 0.109250
+Time spent in matmul_outer_product: 7.375490 seconds
+Time spent in matmul_outer_product: 0.029374 seconds
+
+epoch: 7
+Training loss: 2.302461
+Training accuracy: 0.113667
+Time spent in matmul_outer_product: 7.985733 seconds
+Time spent in matmul_outer_product: 0.027714 seconds
+
+epoch: 8
+Training loss: 2.302441
+Training accuracy: 0.111417
+Time spent in matmul_outer_product: 7.193950 seconds
+Time spent in matmul_outer_product: 0.027325 seconds
+
+epoch: 9
+Training loss: 2.302339
+Training accuracy: 0.115917
+Time spent in matmul_outer_product: 6.105880 seconds
+Time spent in matmul_outer_product: 0.023332 seconds
+Test loss after training: 2.374079
+Test accuracy after training: 0.097500

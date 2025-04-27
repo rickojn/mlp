@@ -250,9 +250,9 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
-        matmul_forward_outer_product(layer, data->nImages);
+        // matmul_forward_outer_product(layer, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -830,8 +830,8 @@ int main() {
     allocate_mini_batch_memory(&data_mini_batch);
     initialise_activations(&activations, &model, &data_mini_batch);
     initialise_gradients(&gradients, &model, &data_mini_batch);
-    srand(time(NULL));
-
+    // srand(time(NULL)); db
+    srand(42);
     // training loop
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         initialise_mini_batch(&data_training, &data_mini_batch);
