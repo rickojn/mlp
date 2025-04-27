@@ -177,6 +177,17 @@ void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t siz
 
 
 void matmul_forward_outer_product(Layer * layer, size_t size_batch){
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
+
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+            size_t offset_activation = idx_sample * layer->size_neurons + idx_neuron;
+            layer->activations_output[offset_activation] = layer->biases[idx_neuron];
+        }
+    }
+
     for (size_t start_m_tile = 0; start_m_tile < size_batch; start_m_tile += SIZE_TILE){
         for (size_t start_n_tile = 0; start_n_tile < layer->size_neurons; start_n_tile += SIZE_TILE){
             for (size_t start_k_tile = 0; start_k_tile < layer->size_inputs; start_k_tile += SIZE_TILE){
@@ -184,8 +195,8 @@ void matmul_forward_outer_product(Layer * layer, size_t size_batch){
                 for (size_t idx_m = start_m_tile; idx_m < start_m_tile + SIZE_TILE && idx_m < size_batch; idx_m++){
                     for (size_t idx_n = start_n_tile; idx_n < start_n_tile + SIZE_TILE && idx_n < layer->size_neurons; idx_n ++){
                         float sum = 0.0f;
-                        size_t base_m = idx_m * size_batch;
-                        size_t base_n = idx_n * layer->size_neurons;
+                        size_t base_m = idx_m * layer->size_neurons;
+                        size_t base_n = idx_n * layer->size_inputs;
                         for (size_t idx_k = 0; idx_k < start_k_tile + SIZE_TILE && idx_k < layer->size_inputs; idx_k++){
                             sum += layer->activations_input[base_m + idx_k] * layer->weights[base_n + idx_k];
                         }
@@ -196,6 +207,11 @@ void matmul_forward_outer_product(Layer * layer, size_t size_batch){
             }
         }
     }
+
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in matmul_outer_product: %f seconds\n", time_spent);
+
 }
 
 
@@ -832,7 +848,7 @@ int main() {
     free_activations(&activations);
 
     // save model
-    save_model(&model, models_path);
+    // save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
