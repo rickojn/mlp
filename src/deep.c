@@ -93,8 +93,9 @@ void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             // output[idx_image * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
             for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
-                output[idx_image * layer->size_neurons + idx_neuron] += 
-                input[idx_image * layer->size_inputs + idx_input] * layer->weights[idx_neuron * layer->size_neurons + idx_neuron];
+                output[idx_image * layer->size_neurons + idx_neuron] +=  // [idx_image][idx_neuron]
+                input[idx_image * layer->size_inputs + idx_input] // [idx_image][idx_input]
+                 * layer->weights[idx_neuron * layer->size_neurons + idx_input]; // [idx_input][idx_neuron]
             }
         }
     }
@@ -250,9 +251,9 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
-        // matmul_forward_outer_product(layer, data->nImages);
+        matmul_forward_outer_product(layer, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -819,6 +820,8 @@ int main() {
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     free_activations(&activations);
+
+    exit(0);
 
     // initialise activations and gradients for training
     // with mini batches
