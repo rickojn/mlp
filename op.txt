@@ -7,71 +7,148 @@ Number of parameters: 203530
 No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
-Time spent in matmul_outer_product: 5.955349 seconds
-Time spent in matmul_outer_product: 0.021650 seconds
+Time spent in matmul_outer_product: 5.895579 seconds
+Time spent in matmul_outer_product: 0.021649 seconds
 Test loss before training: 2.373986
 Test accuracy before training: 0.097300
-Time spent in matmul_outer_product: 7.054114 seconds
-Time spent in matmul_outer_product: 0.025972 seconds
+Time spent in matmul_outer_product: 6.967851 seconds
+Time spent in matmul_outer_product: 0.026100 seconds
+Probabilities:
+0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 
+
+prob sum = 1.000000
+0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 0.100000 
+
+prob sum = 1.000000
 
 epoch: 0
 Training loss: 2.302706
 Training accuracy: 0.101500
-Time spent in matmul_outer_product: 7.149610 seconds
-Time spent in matmul_outer_product: 0.025999 seconds
+Time spent in matmul_outer_product: 6.986374 seconds
+Time spent in matmul_outer_product: 0.026474 seconds
+Probabilities:
+0.100015 0.100112 0.099969 0.100049 0.099929 0.099964 0.099964 0.100042 0.100005 0.099950 
+
+prob sum = 1.000000
+0.100015 0.100112 0.099969 0.100049 0.099929 0.099964 0.099964 0.100042 0.100005 0.099950 
+
+prob sum = 1.000000
 
 epoch: 1
 Training loss: 2.302522
 Training accuracy: 0.113500
-Time spent in matmul_outer_product: 6.969446 seconds
-Time spent in matmul_outer_product: 0.030386 seconds
+Time spent in matmul_outer_product: 6.879856 seconds
+Time spent in matmul_outer_product: 0.025805 seconds
+Probabilities:
+0.100010 0.100246 0.099955 0.100043 0.099892 0.099857 0.099984 0.100081 0.099957 0.099975 
+
+prob sum = 1.000000
+0.100010 0.100246 0.099955 0.100043 0.099892 0.099857 0.099984 0.100081 0.099957 0.099975 
+
+prob sum = 1.000000
 
 epoch: 2
 Training loss: 2.302569
 Training accuracy: 0.112333
-Time spent in matmul_outer_product: 7.016954 seconds
-Time spent in matmul_outer_product: 0.026193 seconds
+Time spent in matmul_outer_product: 6.936985 seconds
+Time spent in matmul_outer_product: 0.027605 seconds
+Probabilities:
+0.099957 0.100367 0.099966 0.100019 0.099937 0.099794 0.099931 0.100180 0.099930 0.099917 
+
+prob sum = 1.000000
+0.099957 0.100367 0.099966 0.100019 0.099937 0.099794 0.099931 0.100180 0.099930 0.099917 
+
+prob sum = 1.000000
 
 epoch: 3
 Training loss: 2.302424
 Training accuracy: 0.108250
-Time spent in matmul_outer_product: 6.883298 seconds
-Time spent in matmul_outer_product: 0.025797 seconds
+Time spent in matmul_outer_product: 7.057448 seconds
+Time spent in matmul_outer_product: 0.026118 seconds
+Probabilities:
+0.099978 0.100446 0.099994 0.100020 0.099934 0.099677 0.099944 0.100238 0.099883 0.099886 
+
+prob sum = 1.000000
+0.099978 0.100446 0.099994 0.100020 0.099934 0.099677 0.099944 0.100238 0.099883 0.099886 
+
+prob sum = 1.000000
 
 epoch: 4
 Training loss: 2.302588
 Training accuracy: 0.116250
-Time spent in matmul_outer_product: 7.078477 seconds
-Time spent in matmul_outer_product: 0.030792 seconds
+Time spent in matmul_outer_product: 6.907976 seconds
+Time spent in matmul_outer_product: 0.028497 seconds
+Probabilities:
+0.099900 0.100605 0.100007 0.100062 0.099964 0.099567 0.099896 0.100262 0.099884 0.099854 
+
+prob sum = 1.000000
+0.099900 0.100605 0.100007 0.100062 0.099964 0.099567 0.099896 0.100262 0.099884 0.099854 
+
+prob sum = 1.000000
 
 epoch: 5
 Training loss: 2.302478
 Training accuracy: 0.115917
-Time spent in matmul_outer_product: 7.368158 seconds
-Time spent in matmul_outer_product: 0.026354 seconds
+Time spent in matmul_outer_product: 6.902483 seconds
+Time spent in matmul_outer_product: 0.025878 seconds
+Probabilities:
+0.099866 0.100759 0.099999 0.100078 0.099952 0.099490 0.099914 0.100304 0.099848 0.099791 
+
+prob sum = 1.000000
+0.099866 0.100759 0.099999 0.100078 0.099952 0.099490 0.099914 0.100304 0.099848 0.099791 
+
+prob sum = 1.000000
 
 epoch: 6
 Training loss: 2.302499
 Training accuracy: 0.109250
-Time spent in matmul_outer_product: 7.375490 seconds
-Time spent in matmul_outer_product: 0.029374 seconds
+Time spent in matmul_outer_product: 6.877837 seconds
+Time spent in matmul_outer_product: 0.027510 seconds
+Probabilities:
+0.099837 0.100844 0.099995 0.100142 0.099966 0.099435 0.099843 0.100323 0.099819 0.099795 
+
+prob sum = 1.000000
+0.099837 0.100844 0.099995 0.100142 0.099966 0.099435 0.099843 0.100323 0.099819 0.099795 
+
+prob sum = 1.000000
 
 epoch: 7
 Training loss: 2.302461
 Training accuracy: 0.113667
-Time spent in matmul_outer_product: 7.985733 seconds
-Time spent in matmul_outer_product: 0.027714 seconds
+Time spent in matmul_outer_product: 7.121848 seconds
+Time spent in matmul_outer_product: 0.026480 seconds
+Probabilities:
+0.099824 0.100973 0.099979 0.100194 0.100018 0.099319 0.099833 0.100296 0.099739 0.099825 
+
+prob sum = 1.000000
+0.099824 0.100973 0.099979 0.100194 0.100018 0.099319 0.099833 0.100296 0.099739 0.099825 
+
+prob sum = 1.000000
 
 epoch: 8
 Training loss: 2.302441
 Training accuracy: 0.111417
-Time spent in matmul_outer_product: 7.193950 seconds
-Time spent in matmul_outer_product: 0.027325 seconds
+Time spent in matmul_outer_product: 6.917992 seconds
+Time spent in matmul_outer_product: 0.025918 seconds
+Probabilities:
+0.099804 0.101079 0.100004 0.100209 0.099952 0.099251 0.099788 0.100357 0.099737 0.099819 
+
+prob sum = 1.000000
+0.099804 0.101079 0.100004 0.100209 0.099952 0.099251 0.099788 0.100357 0.099737 0.099819 
+
+prob sum = 1.000000
 
 epoch: 9
 Training loss: 2.302339
 Training accuracy: 0.115917
-Time spent in matmul_outer_product: 6.105880 seconds
-Time spent in matmul_outer_product: 0.023332 seconds
+Time spent in matmul_outer_product: 5.757831 seconds
+Time spent in matmul_outer_product: 0.023884 seconds
+Probabilities:
+0.072525 0.110536 0.130145 0.114700 0.132493 0.100013 0.116442 0.086116 0.053750 0.083280 
+
+prob sum = 1.000000
+0.096223 0.085267 0.092225 0.094133 0.135387 0.101711 0.104273 0.116559 0.089843 0.084379 
+
+prob sum = 1.000000
 Test loss after training: 2.374079
 Test accuracy after training: 0.097500

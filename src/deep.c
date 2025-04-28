@@ -250,9 +250,9 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
-        // matmul_forward_outer_product(layer, data->nImages);
+        matmul_forward_outer_product(layer, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -833,9 +833,13 @@ int main() {
     // srand(time(NULL)); db
     srand(42);
     // training loop
+    printf("\n");
+    printf("\n");
+    printf("training loop:\n");
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         initialise_mini_batch(&data_training, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
+        print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);
         if (epoch % PRINT_EVERY == 0) {
             printf("\nepoch: %zu\n", epoch);
@@ -853,6 +857,7 @@ int main() {
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
+    print_probs(&model, & activations, &data_test);
     printf("Test loss after training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy after training: %f\n", get_accuracy(&model, &activations, &data_test));
 
