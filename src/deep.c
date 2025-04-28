@@ -78,6 +78,8 @@ char *concatStrings(const char *str1, const char *str2) {
 
 void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch)
 {
+    
+    printf("mat mul naive ....\n");
     clock_t begin, end;
     double time_spent;
     begin = clock();
@@ -93,9 +95,9 @@ void matmul_forward(Layer *layer, float *input, float *output, size_t size_batch
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             // output[idx_image * layer->size_neurons + idx_neuron] = layer->biases[idx_neuron];
             for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
-                output[idx_image * layer->size_neurons + idx_neuron] +=  // [idx_image][idx_neuron]
-                input[idx_image * layer->size_inputs + idx_input] // [idx_image][idx_input]
-                 * layer->weights[idx_neuron * layer->size_neurons + idx_input]; // [idx_input][idx_neuron]
+                output[idx_image * layer->size_neurons + idx_neuron] +=  // [idx_image][idx_neuron] row major
+                input[idx_image * layer->size_inputs + idx_input] // [idx_image][idx_input] row major
+                 * layer->weights[idx_neuron * layer->size_inputs + idx_input]; // [idx_input][idx_neuron] col major
             }
         }
     }
@@ -178,6 +180,7 @@ void matmul_forward_tiling(Layer *layer, float *input, float *output, size_t siz
 
 
 void matmul_forward_outer_product(Layer * layer, size_t size_batch){
+    printf("matmul outer product\n");
     clock_t begin, end;
     double time_spent;
     begin = clock();
@@ -196,10 +199,10 @@ void matmul_forward_outer_product(Layer * layer, size_t size_batch){
                 for (size_t idx_m = start_m_tile; idx_m < start_m_tile + SIZE_TILE && idx_m < size_batch; idx_m++){
                     for (size_t idx_n = start_n_tile; idx_n < start_n_tile + SIZE_TILE && idx_n < layer->size_neurons; idx_n ++){
                         float sum = 0.0f;
-                        size_t base_m = idx_m * layer->size_neurons;
-                        size_t base_n = idx_n * layer->size_inputs;
+                        size_t base_a = idx_m * layer->size_inputs;
+                        size_t base_b = idx_n * layer->size_inputs;
                         for (size_t idx_k = 0; idx_k < start_k_tile + SIZE_TILE && idx_k < layer->size_inputs; idx_k++){
-                            sum += layer->activations_input[base_m + idx_k] * layer->weights[base_n + idx_k];
+                            sum += layer->activations_input[base_a + idx_k] * layer->weights[base_b + idx_k];
                         }
                         layer->activations_output[idx_m * layer->size_neurons + idx_n] += sum;
                     }
@@ -251,9 +254,9 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
-        matmul_forward_outer_product(layer, data->nImages);
+        // matmul_forward_outer_product(layer, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -821,7 +824,7 @@ int main() {
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     free_activations(&activations);
 
-    exit(0);
+    // exit(0);
 
     // initialise activations and gradients for training
     // with mini batches
