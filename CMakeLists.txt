@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.10)
 project(deep_project C)
 
 # Set compile flags for Debug and Release configurations
-set(CMAKE_C_FLAGS_DEBUG "-g -fopenmp -Wall -O3")
-set(CMAKE_C_FLAGS_RELEASE "-fopenmp -Wall -O3 -DNDEBUG")
+set(CMAKE_C_FLAGS_DEBUG "-g -fopenmp -Wall -O2")
+set(CMAKE_C_FLAGS_RELEASE "-fopenmp -Wall -O2 -DNDEBUG -mavx -mavx2 -mfma -march=native")
 
 # Define the source files
 set(SOURCE_FILES
