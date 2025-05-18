@@ -401,6 +401,7 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
         simd_matmul_forward(layer, data->nImages);
+        printf("layer %zu: activations_output[11] = %f\n", idx_layer, layer->activations_output[11]);
         layer->activation_forward(layer, data->nImages);
     }
 }

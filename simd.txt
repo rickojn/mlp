@@ -8,33 +8,41 @@ No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 matmul simd ....
-Time spent in matmul_simd_forward: 0.318202 seconds
+Time spent in matmul_simd_forward: 0.276026 seconds
+layer 0: activations_output[11] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.011182 seconds
+Time spent in matmul_simd_forward: 0.009403 seconds
+layer 1: activations_output[11] = 0.000000
 Test loss before training: 2.302701
 Test accuracy before training: 0.098000
 
 
 training loop:
 matmul simd ....
-Time spent in matmul_simd_forward: 0.299481 seconds
+Time spent in matmul_simd_forward: 0.347672 seconds
+layer 0: activations_output[11] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012639 seconds
+Time spent in matmul_simd_forward: 0.011182 seconds
+layer 1: activations_output[11] = 0.000000
 
 epoch: 0
 Training loss: 2.302706
 Training accuracy: 0.101500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.288637 seconds
+Time spent in matmul_simd_forward: 0.303232 seconds
+layer 0: activations_output[11] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.014425 seconds
+Time spent in matmul_simd_forward: 0.011814 seconds
+layer 1: activations_output[11] = 0.000000
 
 epoch: 1
 Training loss: 2.302706
 Training accuracy: 0.099500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.276603 seconds
+Time spent in matmul_simd_forward: 0.280334 seconds
+layer 0: activations_output[11] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.011323 seconds
+Time spent in matmul_simd_forward: 0.010143 seconds
+layer 1: activations_output[11] = 0.000000
 Test loss after training: 2.302701
 Test accuracy after training: 0.098000
