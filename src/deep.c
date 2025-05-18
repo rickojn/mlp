@@ -14,7 +14,7 @@
 #define SIZE_MINI_BATCH 12000
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 288
-#define NUMBER_EPOCHS 10
+#define NUMBER_EPOCHS 2
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
@@ -75,6 +75,32 @@ char *concatStrings(const char *str1, const char *str2) {
 
     return newStr;  // Return the concatenated string
 }
+
+void col_to_row_major(const float *src_matrix, float *dest_matrix, size_t num_rows, size_t num_cols){
+    for (size_t r = 0; r < num_rows; r++){
+        for (size_t c = 0; c < num_cols; c++){            
+            int offset_dest = r * num_cols + c; //[i][j] 
+            int offset_source = c * num_rows + r; //[j][i] 
+            dest_matrix[offset_dest] = src_matrix[offset_source];
+            int db_copied_value = dest_matrix[offset_dest];
+            int db = 0;
+        }
+    }
+}
+
+
+void row_to_col_major(const float *src_matrix, float *dest_matrix, size_t num_rows, size_t num_cols){
+    for (size_t r = 0; r < num_rows; r++){
+        for (size_t c = 0; c < num_cols; c++){            
+            int offset_dest = c * num_rows + r; //[j][i] 
+            int offset_source = r * num_cols + c; //[i][j] 
+            dest_matrix[offset_dest] = src_matrix[offset_source];
+            int db_copied_value = dest_matrix[offset_dest];
+            int db = 0;
+        }
+    }
+}
+
 
 
 
@@ -321,7 +347,14 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
         }
      }
 
-    simd_matmul(layer->activations_input, layer->weights, layer->activations_output, size_batch, layer->size_neurons, layer->size_inputs);
+    float *A = calloc(size_batch * layer->size_inputs, sizeof(float));
+    float *B = calloc(layer->size_inputs * layer->size_neurons, sizeof(float));
+    float *C = calloc(size_batch * layer->size_neurons, sizeof(float));
+    row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
+    col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
+
+    simd_matmul(A, B, layer->activations_output, size_batch, layer->size_neurons, layer->size_inputs);
+    col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
 
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
@@ -364,7 +397,7 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-     //   matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+    //    matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
         simd_matmul_forward(layer, data->nImages);
@@ -956,7 +989,7 @@ int main() {
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         initialise_mini_batch(&data_training, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
-        print_probs(&model, &activations, &data_mini_batch);
+        // print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);
         if (epoch % PRINT_EVERY == 0) {
             printf("\nepoch: %zu\n", epoch);
@@ -974,7 +1007,7 @@ int main() {
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
-    print_probs(&model, & activations, &data_test);
+    // print_probs(&model, & activations, &data_test);
     printf("Test loss after training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy after training: %f\n", get_accuracy(&model, &activations, &data_test));
 

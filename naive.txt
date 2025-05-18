@@ -1,0 +1,40 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 228970
+
+No model files found in directory /home/rickojn/coding/deep/models/
+
+No model found, training from scratch
+mat mul naive ....
+Time spent in matmul_forward: 2.348104 seconds
+mat mul naive ....
+Time spent in matmul_forward: 0.027772 seconds
+Test loss before training: 2.358079
+Test accuracy before training: 0.098000
+
+
+training loop:
+mat mul naive ....
+Time spent in matmul_forward: 2.744752 seconds
+mat mul naive ....
+Time spent in matmul_forward: 0.035053 seconds
+
+epoch: 0
+Training loss: 2.302706
+Training accuracy: 0.101500
+mat mul naive ....
+Time spent in matmul_forward: 2.746476 seconds
+mat mul naive ....
+Time spent in matmul_forward: 0.034355 seconds
+
+epoch: 1
+Training loss: 2.302522
+Training accuracy: 0.113500
+mat mul naive ....
+Time spent in matmul_forward: 2.266027 seconds
+mat mul naive ....
+Time spent in matmul_forward: 0.029921 seconds
+Test loss after training: 2.358048
+Test accuracy after training: 0.098000

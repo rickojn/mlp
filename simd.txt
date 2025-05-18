@@ -1,0 +1,40 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 228970
+
+No model files found in directory /home/rickojn/coding/deep/models/
+
+No model found, training from scratch
+matmul simd ....
+Time spent in matmul_simd_forward: 0.318202 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.011182 seconds
+Test loss before training: 2.302701
+Test accuracy before training: 0.098000
+
+
+training loop:
+matmul simd ....
+Time spent in matmul_simd_forward: 0.299481 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.012639 seconds
+
+epoch: 0
+Training loss: 2.302706
+Training accuracy: 0.101500
+matmul simd ....
+Time spent in matmul_simd_forward: 0.288637 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.014425 seconds
+
+epoch: 1
+Training loss: 2.302706
+Training accuracy: 0.099500
+matmul simd ....
+Time spent in matmul_simd_forward: 0.276603 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.011323 seconds
+Test loss after training: 2.302701
+Test accuracy after training: 0.098000
