@@ -32,6 +32,10 @@
                 "${workspaceFolder}/build/deep", // Output path and executable name
                 "${workspaceFolder}/src/*.c", // Path to the source C file
                 "-lm",
+                "-mavx",
+                 "-mavx2",
+                 "-mfma",
+                 "-march=native",
             ],
             "group": {
                 "kind": "build",

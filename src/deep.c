@@ -347,7 +347,7 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
             size_t offset_activation = idx_sample * layer->size_neurons + idx_neuron;
-            C[offset_activation] = layer->biases[idx_neuron];
+            layer->activations_output[offset_activation] = layer->biases[idx_neuron];
         }
      }
 
