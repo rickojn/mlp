@@ -402,10 +402,10 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
-        simd_matmul_forward(layer, data->nImages);
+        // simd_matmul_forward(layer, data->nImages);
         printf("layer %zu: activations_output[11] = %f\n", idx_layer, layer->activations_output[11]);
         layer->activation_forward(layer, data->nImages);
     }
@@ -970,6 +970,7 @@ int main() {
     Activations activations = {0};
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
+    print_probs(&model, &activations, &data_test);
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     free_activations(&activations);
@@ -1013,7 +1014,7 @@ int main() {
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
-    // print_probs(&model, & activations, &data_test);
+    print_probs(&model, & activations, &data_test);
     printf("Test loss after training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy after training: %f\n", get_accuracy(&model, &activations, &data_test));
 
