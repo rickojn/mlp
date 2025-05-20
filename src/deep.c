@@ -358,7 +358,7 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
     row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
 
-    simd_matmul(A, B, layer->activations_output, size_batch, layer->size_neurons, layer->size_inputs);
+    simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
     col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
 
     end = clock();

@@ -8,41 +8,41 @@ No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 matmul simd ....
-Time spent in matmul_simd_forward: 0.321440 seconds
-layer 0: activations_output[11] = 0.000000
+Time spent in matmul_simd_forward: 0.267298 seconds
+layer 0: activations_output[11] = 0.580765
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012999 seconds
-layer 1: activations_output[11] = 0.992157
-Test loss before training: 2.331871
-Test accuracy before training: 0.098800
+Time spent in matmul_simd_forward: 0.011350 seconds
+layer 1: activations_output[11] = 0.762432
+Test loss before training: 2.358145
+Test accuracy before training: 0.098200
 
 
 training loop:
 matmul simd ....
-Time spent in matmul_simd_forward: 0.289408 seconds
+Time spent in matmul_simd_forward: 0.342449 seconds
 layer 0: activations_output[11] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.015842 seconds
+Time spent in matmul_simd_forward: 0.016194 seconds
 layer 1: activations_output[11] = 0.000000
 
 epoch: 0
 Training loss: 2.302706
 Training accuracy: 0.101500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.317447 seconds
+Time spent in matmul_simd_forward: 0.297612 seconds
 layer 0: activations_output[11] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.014079 seconds
-layer 1: activations_output[11] = 0.100000
+Time spent in matmul_simd_forward: 0.015963 seconds
+layer 1: activations_output[11] = 0.000000
 
 epoch: 1
 Training loss: 2.302706
 Training accuracy: 0.099500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.279672 seconds
-layer 0: activations_output[11] = 0.000000
+Time spent in matmul_simd_forward: 0.278987 seconds
+layer 0: activations_output[11] = 0.580765
 matmul simd ....
-Time spent in matmul_simd_forward: 0.013070 seconds
-layer 1: activations_output[11] = 0.992157
-Test loss after training: 2.331871
-Test accuracy after training: 0.098800
+Time spent in matmul_simd_forward: 0.013483 seconds
+layer 1: activations_output[11] = 0.762432
+Test loss after training: 2.358079
+Test accuracy after training: 0.098000
