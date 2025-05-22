@@ -411,6 +411,19 @@ void model_forward(Model *model, Activations *activations, InputData *data)
     }
 }
 
+void model_simd_forward(Model *model, Activations *activations, InputData *data)
+{
+    for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++)
+    {
+        Layer *layer = model->layers[idx_layer];
+        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward_outer_product(layer, data->nImages);
+        simd_matmul_forward(layer, data->nImages);
+        printf("layer %zu: activations_output[11] = %f\n", idx_layer, layer->activations_output[11]);
+        layer->activation_forward(layer, data->nImages);
+    }
+}
 
 void loss_softmax_backward(Layer *layer, unsigned char *labels, size_t size_batch)
 {
@@ -847,12 +860,13 @@ void initialise_activations(Activations * activations, Model *model, InputData *
     }
 
     float *inputs = activations->activations;
-    float *outputs = activations->activations + data->rows * data->cols;
+    float *outputs = activations->activations + data->rows * data->cols * data->nImages;
 
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
         layer->activations_input = idx_layer == 0 ? inputs : model->layers[idx_layer - 1]->activations_output;
-        layer->activations_output = idx_layer == 0? outputs : outputs + model->layers[idx_layer -1]->size_neurons * data->nImages;
+        layer->activations_output = idx_layer == 0 ? outputs : outputs + model->layers[idx_layer -1]->size_neurons * data->nImages;
+        printf("layer %zu: activations_output address = %p\n", idx_layer, layer->activations_output);
     }
 }
 
@@ -971,6 +985,37 @@ int main() {
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
     print_probs(&model, &activations, &data_test);
+    printf("model address of probs = %p\n", model.layers[model.size_layers - 1]->activations_output);
+    printf("first model prob = %f\n", model.layers[model.size_layers - 1]->activations_output[0]);
+    size_t offset_hidden_acts = data_test.cols * data_test.rows * data_test.nImages;
+    size_t offset_probs = offset_hidden_acts + model.layers[0]->size_neurons * data_test.nImages;
+    printf("calculated address of probs = %p\n", &activations.activations[offset_probs]);
+    printf("first calculated prob = %f\n", activations.activations[offset_probs]);
+    Activations simd_activations = {0};
+    initialise_activations(&simd_activations, &model, &data_test);
+    model_simd_forward(&model, &simd_activations, &data_test);
+    printf("simd model address of probs = %p\n", model.layers[model.size_layers - 1]->activations_output);
+    printf("first simd model prob = %f\n", model.layers[model.size_layers - 1]->activations_output[0]);
+
+    printf("calculated address of simd_probs = %p\n", &simd_activations.activations[offset_probs]);
+    printf("first calculated simd prob = %f\n", simd_activations.activations[offset_probs]);
+
+    float db_sum = 0.0f;
+    for (int i = offset_probs; i < offset_probs + SIZE_CLASSES * data_test.nImages; i++){
+        if (activations.activations[i] != simd_activations.activations[i]){
+            printf("naive probs[%d] = %f and simd probs[%d] = %f\n", i - offset_probs, activations.activations[i], i - offset_probs, simd_activations.activations[i]);
+            exit(0);
+        }
+    }
+    printf("All probs are equal\n");
+
+    exit(0);
+
+
+
+
+
+
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     free_activations(&activations);

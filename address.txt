@@ -1,0 +1,41 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 228970
+
+No model files found in directory /home/rickojn/coding/deep/models/
+
+No model found, training from scratch
+layer 0: activations_output address = 0x7fb81847b410
+layer 1: activations_output address = 0x7fb818f77c10
+mat mul naive ....
+Time spent in matmul_forward: 2.271379 seconds
+layer 0: activations_output[11] = 0.580765
+mat mul naive ....
+Time spent in matmul_forward: 0.028044 seconds
+layer 1: activations_output[11] = 0.762432
+Probabilities:
+0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
+
+prob sum = 1.000000
+0.099892 0.175749 0.096546 0.046783 0.093021 0.082774 0.144228 0.075335 0.099377 0.086295 
+
+prob sum = 1.000000
+model address of probs = 0x7fb818f77c10
+first model prob = 0.074968
+calculated address of probs = 0x7fb818f77c10
+first calculated prob = 0.074968
+layer 0: activations_output address = 0x7fb815b34410
+layer 1: activations_output address = 0x7fb816630c10
+matmul simd ....
+Time spent in matmul_simd_forward: 0.279320 seconds
+layer 0: activations_output[11] = 0.580765
+matmul simd ....
+Time spent in matmul_simd_forward: 0.013811 seconds
+layer 1: activations_output[11] = 0.762432
+simd model address of probs = 0x7fb816630c10
+first simd model prob = 0.074968
+calculated address of simd_probs = 0x7fb816630c10
+first calculated simd prob = 0.074968
+naive probs[96480] = 0.062237 and simd probs[96480] = 0.060034
