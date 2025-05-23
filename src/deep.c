@@ -21,7 +21,6 @@
 
 
 
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 
 typedef struct {
@@ -1000,14 +999,31 @@ int main() {
     printf("calculated address of simd_probs = %p\n", &simd_activations.activations[offset_probs]);
     printf("first calculated simd prob = %f\n", simd_activations.activations[offset_probs]);
 
-    float db_sum = 0.0f;
+    float db_sum_naive = 0.0f;
+    float db_sum_simd = 0.0f;
+    int is_equal = 1;
     for (int i = offset_probs; i < offset_probs + SIZE_CLASSES * data_test.nImages; i++){
         if (activations.activations[i] != simd_activations.activations[i]){
-            printf("naive probs[%d] = %f and simd probs[%d] = %f\n", i - offset_probs, activations.activations[i], i - offset_probs, simd_activations.activations[i]);
-            exit(0);
+            db_sum_naive += activations.activations[i];
+            db_sum_simd += simd_activations.activations[i];
+            is_equal = 0;
+            int offset = i - offset_probs;
+            int row = offset / SIZE_CLASSES;
+            int col = offset % SIZE_CLASSES;
+            printf("naive probs[%d][%d] = %f and simd probs[%d][%d] = %f\n",
+                row, col, activations.activations[i], row, col, simd_activations.activations[i]);
+            if (col == 9){
+                printf("naive sum = %f and simd sum = %f\n", db_sum_naive, db_sum_simd);
+                db_sum_naive = 0.0f;
+                db_sum_simd = 0.0f;
+            }
         }
     }
-    printf("All probs are equal\n");
+    if (is_equal){
+        printf("naive and simd probs are equal\n");
+    } else {
+        printf("naive and simd probs are NOT equal\n");
+    }
 
     exit(0);
 
