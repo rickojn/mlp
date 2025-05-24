@@ -1,0 +1,70 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Number of parameters: 228970
+
+No model files found in directory /home/rickojn/coding/deep/models/
+
+No model found, training from scratch
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.327820 seconds
+layer 0: activations_output[11] = 0.580765
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.013157 seconds
+layer 1: activations_output[11] = 0.762432
+Probabilities:
+0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
+
+prob sum = 1.000000
+0.099892 0.175749 0.096546 0.046783 0.093021 0.082774 0.144228 0.075335 0.099377 0.086295 
+
+prob sum = 1.000000
+Test loss before training: 2.358079
+Test accuracy before training: 0.098000
+
+
+training loop:
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.333467 seconds
+layer 0: activations_output[11] = 0.000000
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.013865 seconds
+layer 1: activations_output[11] = 0.000000
+
+epoch: 0
+Training loss: 2.302706
+Training accuracy: 0.101500
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.303334 seconds
+layer 0: activations_output[11] = 0.000000
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.013903 seconds
+layer 1: activations_output[11] = 0.000000
+
+epoch: 1
+Training loss: 2.302706
+Training accuracy: 0.099500
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.285080 seconds
+layer 0: activations_output[11] = 0.580765
+matmul simd ....
+Using new SIMD implementation
+Time spent in matmul_simd_forward: 0.011293 seconds
+layer 1: activations_output[11] = 0.762432
+Probabilities:
+0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
+
+prob sum = 1.000000
+0.099892 0.175749 0.096546 0.046783 0.093021 0.082774 0.144228 0.075335 0.099377 0.086295 
+
+prob sum = 1.000000
+Test loss after training: 2.358079
+Test accuracy after training: 0.098000

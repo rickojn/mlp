@@ -8,10 +8,10 @@ No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 mat mul naive ....
-Time spent in matmul_forward: 2.260577 seconds
+Time spent in matmul_forward: 2.259743 seconds
 layer 0: activations_output[11] = 0.580765
 mat mul naive ....
-Time spent in matmul_forward: 0.027995 seconds
+Time spent in matmul_forward: 0.027652 seconds
 layer 1: activations_output[11] = 0.762432
 Probabilities:
 0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
@@ -26,30 +26,30 @@ Test accuracy before training: 0.098000
 
 training loop:
 mat mul naive ....
-Time spent in matmul_forward: 2.709901 seconds
+Time spent in matmul_forward: 2.721890 seconds
 layer 0: activations_output[11] = 0.000000
 mat mul naive ....
-Time spent in matmul_forward: 0.034080 seconds
+Time spent in matmul_forward: 0.033504 seconds
 layer 1: activations_output[11] = 0.000000
 
 epoch: 0
 Training loss: 2.302706
 Training accuracy: 0.101500
 mat mul naive ....
-Time spent in matmul_forward: 2.712267 seconds
+Time spent in matmul_forward: 2.714445 seconds
 layer 0: activations_output[11] = 0.000000
 mat mul naive ....
-Time spent in matmul_forward: 0.033252 seconds
+Time spent in matmul_forward: 0.034263 seconds
 layer 1: activations_output[11] = 0.001117
 
 epoch: 1
 Training loss: 2.302522
 Training accuracy: 0.113500
 mat mul naive ....
-Time spent in matmul_forward: 2.258915 seconds
+Time spent in matmul_forward: 2.256150 seconds
 layer 0: activations_output[11] = 0.580765
 mat mul naive ....
-Time spent in matmul_forward: 0.027878 seconds
+Time spent in matmul_forward: 0.027732 seconds
 layer 1: activations_output[11] = 0.764887
 Probabilities:
 0.074962 0.176872 0.076480 0.096236 0.150111 0.059891 0.046529 0.089391 0.138494 0.091035 

@@ -18,6 +18,7 @@
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
+#define OLD 0 // Set to 1 to use old SIMD implementation, 0 for new SIMD implementation
 
 
 
@@ -270,6 +271,54 @@ ab ab    ab ab   ab ab    ab ab
 
 */
 
+void old_simd_kernel(const float * tile_A, const float * tile_B, float * tile_C, size_t M, size_t N, size_t K, size_t tile_m, size_t tile_n){
+    __m256 reg_array_C[8][1] = {};
+    __m256 reg_col_tile_A_1;
+    __m256 reg_tile_B_element;
+
+    for (size_t idx_k = 0; idx_k < K; idx_k++){
+        reg_col_tile_A_1 = _mm256_loadu_ps(&tile_A[idx_k * M]);
+
+        
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N]);
+
+        reg_array_C[0][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[0][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 1]);
+
+        reg_array_C[1][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[1][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 2]);
+
+        reg_array_C[2][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[2][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 3]);
+
+        reg_array_C[3][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[3][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 4]);
+
+        reg_array_C[4][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[4][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 5]);
+        reg_array_C[5][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[5][0]);
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 6]);
+        reg_array_C[6][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[6][0]);
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 7]);
+        reg_array_C[7][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[7][0]);
+    }   
+
+    for (size_t idx = 0;  idx < 8; idx++){
+        _mm256_storeu_ps(&tile_C[idx * M], reg_array_C[idx][0]);
+    }
+}
+
 
 void simd_kernel(const float * tile_A, const float * tile_B, float * C, size_t M, size_t N, size_t K, size_t tile_m, size_t tile_n, size_t offset_tile_C){
     __m256 reg_array_C[8][1] = {};
@@ -319,6 +368,22 @@ void simd_kernel(const float * tile_A, const float * tile_B, float * C, size_t M
     }
 }
 
+void old_simd_matmul(const float *A, const float *B, float *C, size_t M, size_t N, size_t K)
+{
+    const size_t tile_m = 8;
+    const size_t tile_n = 8;
+    size_t offset_C = 0;
+    for (size_t idx_m = 0; idx_m < M; idx_m += tile_m)
+    {
+        for (size_t idx_n = 0; idx_n < N; idx_n += tile_n)
+        {
+            offset_C= idx_m + idx_n * M;
+            old_simd_kernel(&A[idx_m], &B[idx_n], &C[offset_C], M, N, K, tile_m, tile_n);
+        }
+    }
+}
+
+
 void simd_matmul(const float *A, const float *B, float *C, size_t M, size_t N, size_t K)
 {
     const size_t tile_m = 8;
@@ -357,8 +422,17 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
     col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
     row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
-
-    simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
+    if (OLD)
+    {
+        printf("Using old SIMD implementation\n");
+        old_simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
+    }
+    else
+    // Call the new SIMD matmul function
+    {
+        printf("Using new SIMD implementation\n");
+        simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
+    };
     col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
 
     end = clock();
@@ -402,10 +476,10 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 {
     for (size_t idx_layer = 0; idx_layer < model->size_layers; idx_layer++) {
         Layer *layer = model->layers[idx_layer];
-        matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
-        // simd_matmul_forward(layer, data->nImages);
+        simd_matmul_forward(layer, data->nImages);
         printf("layer %zu: activations_output[11] = %f\n", idx_layer, layer->activations_output[11]);
         layer->activation_forward(layer, data->nImages);
     }
