@@ -4,103 +4,75 @@ rows: 28, cols: 28
 Number of test images: 10000
 Number of parameters: 228970
 
-Loading model from file /home/rickojn/coding/deep/models//model_20250525_234945_h288.mdl
+Loading model from file /home/rickojn/coding/deep/models//model_20250526_000112_h288.mdl
 
 Model loaded successfully
 matmul simd ....
-Time spent in matmul_simd_forward: 0.293061 seconds
+Time spent in matmul_simd_forward: 0.295366 seconds
+relu forward ...
+Time spent in relu_forward: 0.006385 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012248 seconds
-Test loss before training: 2.350664
-Test accuracy before training: 0.098700
+Time spent in matmul_simd_forward: 0.010875 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000617 seconds
+Test loss before training: 2.347901
+Test accuracy before training: 0.099200
 
 
 training loop:
 
 epoch: 0
 matmul simd ....
-Time spent in matmul_simd_forward: 0.334625 seconds
+Time spent in matmul_simd_forward: 0.319759 seconds
+relu forward ...
+Time spent in relu_forward: 0.007073 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.013688 seconds
-Training loss: 2.391293
-Training accuracy: 0.101583
+Time spent in matmul_simd_forward: 0.011924 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000727 seconds
+loss softmax backward ...
+Time spent in loss_softmax_backward: 0.705157 seconds
+matmul backward ...
+Time spent in matmul_backward: 0.756883 seconds
+relu backward ...
+Time spent in relu_backward: 0.760756 seconds
+matmul backward ...
+Time spent in matmul_backward: 2.910729 seconds
+
+
+Training loss: 2.383044
+Training accuracy: 0.100167
 
 epoch: 1
 matmul simd ....
-Time spent in matmul_simd_forward: 0.330664 seconds
+Time spent in matmul_simd_forward: 0.298934 seconds
+relu forward ...
+Time spent in relu_forward: 0.007448 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.013879 seconds
-Training loss: 2.377942
-Training accuracy: 0.102167
+Time spent in matmul_simd_forward: 0.012469 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000720 seconds
+loss softmax backward ...
+Time spent in loss_softmax_backward: 3.244389 seconds
+matmul backward ...
+Time spent in matmul_backward: 3.286048 seconds
+relu backward ...
+Time spent in relu_backward: 3.289852 seconds
+matmul backward ...
+Time spent in matmul_backward: 5.413891 seconds
 
-epoch: 2
-matmul simd ....
-Time spent in matmul_simd_forward: 0.332253 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.011756 seconds
-Training loss: 2.372468
-Training accuracy: 0.094917
 
-epoch: 3
-matmul simd ....
-Time spent in matmul_simd_forward: 0.309702 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.012205 seconds
-Training loss: 2.387614
+Training loss: 2.370243
 Training accuracy: 0.102583
 
-epoch: 4
+saving in file: /home/rickojn/coding/deep/models/model_20250526_000139_h288.mdl
 matmul simd ....
-Time spent in matmul_simd_forward: 0.336177 seconds
+Time spent in matmul_simd_forward: 0.285335 seconds
+relu forward ...
+Time spent in relu_forward: 0.007735 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.013595 seconds
-Training loss: 2.366453
-Training accuracy: 0.098833
-
-epoch: 5
-matmul simd ....
-Time spent in matmul_simd_forward: 0.393629 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.012861 seconds
-Training loss: 2.370366
-Training accuracy: 0.102833
-
-epoch: 6
-matmul simd ....
-Time spent in matmul_simd_forward: 0.330094 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.013372 seconds
-Training loss: 2.388093
-Training accuracy: 0.100417
-
-epoch: 7
-matmul simd ....
-Time spent in matmul_simd_forward: 0.332991 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.012745 seconds
-Training loss: 2.372556
-Training accuracy: 0.099167
-
-epoch: 8
-matmul simd ....
-Time spent in matmul_simd_forward: 0.340869 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.013866 seconds
-Training loss: 2.360846
-Training accuracy: 0.098417
-
-epoch: 9
-matmul simd ....
-Time spent in matmul_simd_forward: 0.401326 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.013927 seconds
-Training loss: 2.388166
-Training accuracy: 0.099083
-
-saving in file: /home/rickojn/coding/deep/models/model_20250525_235031_h288.mdl
-matmul simd ....
-Time spent in matmul_simd_forward: 0.430236 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.018223 seconds
-Test loss after training: 2.349367
-Test accuracy after training: 0.098900
+Time spent in matmul_simd_forward: 0.010761 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000688 seconds
+Test loss after training: 2.347700
+Test accuracy after training: 0.099200

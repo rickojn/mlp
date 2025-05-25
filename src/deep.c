@@ -14,7 +14,7 @@
 #define SIZE_MINI_BATCH 12000
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 288
-#define NUMBER_EPOCHS 10
+#define NUMBER_EPOCHS 2
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
@@ -437,15 +437,27 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
 
 void relu_forward(Layer *layer, size_t size_batch)
 {
+    printf("relu forward ...\n");
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
+
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             layer->activations_output[idx_image * layer->size_neurons + idx_neuron] = fmaxf(0.0f, layer->activations_input[idx_image * layer->size_neurons + idx_neuron]);
         }
     }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in relu_forward: %f seconds\n", time_spent);
 }
 
 void softmax_forward(Layer *layer, size_t size_batch)
 {
+    printf("softmax forward ...\n");
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
         float max_logit = layer->activations_output[idx_image * layer->size_neurons];
         for (size_t idx_neuron = 1; idx_neuron < layer->size_neurons; idx_neuron++) {
@@ -464,6 +476,9 @@ void softmax_forward(Layer *layer, size_t size_batch)
             layer->activations_output[idx_image * layer->size_neurons + idx_neuron] /= sum_exp;
         }
     }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in softmax_forward: %f seconds\n", time_spent);
 }
 
 void model_forward(Model *model, Activations *activations, InputData *data)
@@ -481,6 +496,9 @@ void model_forward(Model *model, Activations *activations, InputData *data)
 
 void loss_softmax_backward(Layer *layer, unsigned char *labels, size_t size_batch)
 {
+    printf("loss softmax backward ...\n");
+    clock_t begin, end;
+    double time_spent;
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++){
         for (size_t idx_logit = 0; idx_logit < layer->size_neurons; idx_logit++){
             float label = idx_logit == labels[idx_image] ? 1.0 : 0.0;
@@ -488,10 +506,16 @@ void loss_softmax_backward(Layer *layer, unsigned char *labels, size_t size_batc
             layer->gradients_output[offset_logit] = layer->activations_output[offset_logit] - label;
         }
     }    
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in loss_softmax_backward: %f seconds\n", time_spent);
 }
 
 void relu_backward(Layer *layer, unsigned char *labels, size_t size_batch)
 {
+    printf("relu backward ...\n");
+    clock_t begin, end;
+    double time_spent;
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
             size_t offset_grad = idx_sample * layer->size_neurons + idx_neuron;
@@ -501,10 +525,16 @@ void relu_backward(Layer *layer, unsigned char *labels, size_t size_batch)
             // else dAct/dPreAct  = 1 so dLoss/dPreAct = dLoss/dAct
         }
     }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in relu_backward: %f seconds\n", time_spent);
 }
 
 void matmul_backward(Layer * layer, size_t size_batch)
 {
+    printf("matmul backward ...\n");
+    clock_t begin, end;
+    double time_spent;
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
             size_t offset_grad_pre_act = idx_sample * layer->size_neurons + idx_neuron;
@@ -530,6 +560,9 @@ void matmul_backward(Layer * layer, size_t size_batch)
             layer->gradients_weights[offset_weight] /= size_batch;
         }
     }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in matmul_backward: %f seconds\n", time_spent);
 }
 
 
@@ -1065,6 +1098,7 @@ int main() {
         model_forward(&model, &activations, &data_mini_batch);
         // print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);
+        printf("\n\n");
         if (epoch % PRINT_EVERY == 0) {
             printf("Training loss: %f\n", get_loss(&model, &activations, &data_mini_batch));
             printf("Training accuracy: %f\n", get_accuracy(&model, &activations, &data_mini_batch));
