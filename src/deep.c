@@ -14,11 +14,11 @@
 #define SIZE_MINI_BATCH 12000
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 288
-#define NUMBER_EPOCHS 2
+#define NUMBER_EPOCHS 10
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
-#define OLD 0 // Set to 1 to use old SIMD implementation, 0 for new SIMD implementation
+
 
 
 
@@ -416,17 +416,8 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
     col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
     row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
-    if (OLD)
-    {
-        printf("Using old SIMD implementation\n");
-        old_simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
-    }
-    else
-    // Call the new SIMD matmul function
-    {
-        printf("Using new SIMD implementation\n");
-        simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
-    };
+
+    simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
     col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
     free(A);
     free(B);
@@ -483,13 +474,6 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
         simd_matmul_forward(layer, data->nImages);
-        if (idx_layer == 0) {
-            printf("first 784 activations ...\n");
-            for (size_t idx = 0; idx < 784; idx++) {
-                printf("%f ", layer->activations_input[idx]);
-            }
-            printf("\n");
-        }
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -1053,7 +1037,6 @@ int main() {
     Activations activations = {0};
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
-    print_probs(&model, &activations, &data_test);
     printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
     free_activations(&activations);
@@ -1092,12 +1075,11 @@ int main() {
     free_activations(&activations);
 
     // save model
-    // save_model(&model, models_path);
+    save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
-    print_probs(&model, & activations, &data_test);
     printf("Test loss after training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy after training: %f\n", get_accuracy(&model, &activations, &data_test));
 
