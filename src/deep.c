@@ -480,7 +480,13 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
         simd_matmul_forward(layer, data->nImages);
-        printf("layer %zu: activations_output[11] = %f\n", idx_layer, layer->activations_output[11]);
+        if (idx_layer == 0) {
+            printf("first 784 activations ...\n");
+            for (size_t idx = 0; idx < 784; idx++) {
+                printf("%f ", layer->activations_input[idx]);
+            }
+            printf("\n");
+        }
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -1067,13 +1073,13 @@ int main() {
     printf("\n");
     printf("training loop:\n");
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
+        printf("\nepoch: %zu\n", epoch);
         initialise_mini_batch(&data_training, &data_mini_batch);
         initialise_activations(&activations, &model, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
         // print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);
         if (epoch % PRINT_EVERY == 0) {
-            printf("\nepoch: %zu\n", epoch);
             printf("Training loss: %f\n", get_loss(&model, &activations, &data_mini_batch));
             printf("Training accuracy: %f\n", get_accuracy(&model, &activations, &data_mini_batch));
         }
