@@ -421,12 +421,10 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
     col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
     row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
-    for (int i = 0; i < layer->size_inputs && layer->size_inputs == 288; i++){
+    if (layer->size_inputs == 784)
+        printf("first row of inputs to matmul\n");
+    for (int i = 0; i < layer->size_inputs && layer->size_inputs == 784; i++){
         printf("%f ", layer->activations_input[i]);
-    }
-    printf("\n");
-    for (int i = 0; i < layer->size_inputs * size_batch && layer->size_inputs == 288; i+=size_batch){
-        printf("%f ", A[i]);
     }
     printf("\n");
     if (OLD)
@@ -450,6 +448,11 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
 
 void relu_forward(Layer *layer, size_t size_batch)
 {
+    printf("relu forward preactivations:\n");
+    for (int i = 0; i < layer->size_neurons; i++) {
+        printf("%f", layer->activations_output[i]);
+    }
+    printf("\n");
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++) {
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
             layer->activations_output[idx_image * layer->size_neurons + idx_neuron] = fmaxf(0.0f, layer->activations_input[idx_image * layer->size_neurons + idx_neuron]);
@@ -490,7 +493,7 @@ void model_forward(Model *model, Activations *activations, InputData *data)
             matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         else
             simd_matmul_forward(layer, data->nImages);
-        printf("Layer %zu: logit[0] = %f\t", idx_layer, layer->activations_output[0]);
+        printf("Layer %zu: logit[0] = %f\n", idx_layer, layer->activations_output[0]);
         layer->activation_forward(layer, data->nImages);
         printf("Layer %zu: prob[0] = %f\n", idx_layer, layer->activations_output[0]);
     }
@@ -927,9 +930,21 @@ void initialise_activations(Activations * activations, Model *model, InputData *
     activations->size_activations *= data->nImages;
     activations->activations = calloc(activations->size_activations, sizeof(float));
 
+    printf("first 784 activations (pixels of first image):\n");
+    for (int i = 0; i < 784; i++) {
+        printf("%x ", data->images[i]);
+    }
+    printf("\n");
+
     for (size_t idx_pixel = 0; idx_pixel < data->nImages * data->rows * data->cols; idx_pixel++) {
         activations->activations[idx_pixel] = (float)data->images[idx_pixel] / 255.0f;
     }
+
+    printf("first 784 activations (pixels of first image):\n");
+    for (int i = 0; i < 784; i++) {
+        printf("%f ", activations->activations[i]);
+    }
+    printf("\n");
 
     float *inputs = activations->activations;
     float *outputs = activations->activations + data->rows * data->cols;
@@ -1069,7 +1084,6 @@ int main() {
     data_mini_batch.rows = data_training.rows;
     data_mini_batch.cols = data_training.cols;
     allocate_mini_batch_memory(&data_mini_batch);
-    initialise_activations(&activations, &model, &data_mini_batch);
     initialise_gradients(&gradients, &model, &data_mini_batch);
     // srand(time(NULL)); db
     srand(42);
@@ -1080,6 +1094,7 @@ int main() {
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         printf("Epoch %zu\n", epoch);
         initialise_mini_batch(&data_training, &data_mini_batch);
+        initialise_activations(&activations, &model, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
         // print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);
