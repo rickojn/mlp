@@ -409,16 +409,10 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     float *B = calloc(layer->size_inputs * layer->size_neurons, sizeof(float));
     float *C = calloc(size_batch * layer->size_neurons, sizeof(float));
 
-    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
-        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
-            size_t offset_activation = idx_sample * layer->size_neurons + idx_neuron;
-            layer->activations_output[offset_activation] = layer->biases[idx_neuron];
-        }
-     }
-
+    
     memcpy(A, layer->activations_input, size_batch * layer->size_inputs * sizeof(float));
     memcpy(B, layer->weights, layer->size_inputs * layer->size_neurons * sizeof(float));
-     
+    
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
     col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
     row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
@@ -434,6 +428,15 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
         simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
     };
     col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
+    free(A);
+    free(B);
+    free(C);
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+            size_t offset_activation = idx_sample * layer->size_neurons + idx_neuron;
+            layer->activations_output[offset_activation] += layer->biases[idx_neuron];
+        }
+     }
 
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
