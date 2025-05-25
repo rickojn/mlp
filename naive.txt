@@ -10,28 +10,32 @@ No model found, training from scratch
 
 
 training loop:
+Epoch 0
 mat mul naive ....
-Time spent in matmul_forward: 0.001791 seconds
+Time spent in matmul_forward: 0.001789 seconds
+Layer 0: logit[0] = 0.000000	Layer 0: prob[0] = 0.000000
+mat mul naive ....
+Time spent in matmul_forward: 0.000022 seconds
+Layer 1: logit[0] = 0.000000	Layer 1: prob[0] = 0.100000
+
+
+
+Epoch 1
+mat mul naive ....
+Time spent in matmul_forward: 0.001894 seconds
+Layer 0: logit[0] = 0.000000	Layer 0: prob[0] = 0.000000
 mat mul naive ....
 Time spent in matmul_forward: 0.000023 seconds
-epoch: 0 layer 1 activations[0] = 0.100000
+Layer 1: logit[0] = -0.010000	Layer 1: prob[0] = 0.099001
 
-epoch: 0
-Training loss: 2.302585
-Training accuracy: 0.000000
-mat mul naive ....
-Time spent in matmul_forward: 0.001774 seconds
-mat mul naive ....
-Time spent in matmul_forward: 0.000023 seconds
-epoch: 1 layer 1 activations[0] = 0.099001
 
-epoch: 1
-Training loss: 2.304816
-Training accuracy: 0.125000
+
 mat mul naive ....
-Time spent in matmul_forward: 2.262808 seconds
+Time spent in matmul_forward: 2.261880 seconds
+Layer 0: logit[0] = 0.120567	Layer 0: prob[0] = 0.000000
 mat mul naive ....
-Time spent in matmul_forward: 0.027650 seconds
+Time spent in matmul_forward: 0.027714 seconds
+Layer 1: logit[0] = -0.270302	Layer 1: prob[0] = 0.075408
 
 
 

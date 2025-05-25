@@ -10,28 +10,32 @@ No model found, training from scratch
 
 
 training loop:
+Epoch 0
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000775 seconds
-matmul simd ....
-Time spent in matmul_simd_forward: 0.000017 seconds
-epoch: 0 layer 1 activations[0] = 0.100000
-
-epoch: 0
-Training loss: 2.302585
-Training accuracy: 0.000000
-matmul simd ....
-Time spent in matmul_simd_forward: 0.000655 seconds
+Time spent in matmul_simd_forward: 0.000661 seconds
+Layer 0: logit[0] = 0.000000	Layer 0: prob[0] = 0.000000
 matmul simd ....
 Time spent in matmul_simd_forward: 0.000014 seconds
-epoch: 1 layer 1 activations[0] = 0.100000
+Layer 1: logit[0] = 0.000000	Layer 1: prob[0] = 0.100000
 
-epoch: 1
-Training loss: 2.302585
-Training accuracy: 0.250000
+
+
+Epoch 1
 matmul simd ....
-Time spent in matmul_simd_forward: 0.285779 seconds
+Time spent in matmul_simd_forward: 0.000636 seconds
+Layer 0: logit[0] = 0.000000	Layer 0: prob[0] = 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.010560 seconds
+Time spent in matmul_simd_forward: 0.000013 seconds
+Layer 1: logit[0] = 0.000000	Layer 1: prob[0] = 0.100000
+
+
+
+matmul simd ....
+Time spent in matmul_simd_forward: 0.272210 seconds
+Layer 0: logit[0] = 0.120567	Layer 0: prob[0] = 0.000000
+matmul simd ....
+Time spent in matmul_simd_forward: 0.009685 seconds
+Layer 1: logit[0] = -0.275402	Layer 1: prob[0] = 0.074968
 
 
 
