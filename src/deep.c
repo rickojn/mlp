@@ -1059,7 +1059,6 @@ int main() {
     data_mini_batch.rows = data_training.rows;
     data_mini_batch.cols = data_training.cols;
     allocate_mini_batch_memory(&data_mini_batch);
-    initialise_activations(&activations, &model, &data_mini_batch);
     initialise_gradients(&gradients, &model, &data_mini_batch);
     // srand(time(NULL)); db
     srand(42);
@@ -1069,6 +1068,7 @@ int main() {
     printf("training loop:\n");
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         initialise_mini_batch(&data_training, &data_mini_batch);
+        initialise_activations(&activations, &model, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
         // print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);

@@ -8,10 +8,10 @@ No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 mat mul naive ....
-Time spent in matmul_forward: 2.259743 seconds
+Time spent in matmul_forward: 2.306880 seconds
 layer 0: activations_output[11] = 0.580765
 mat mul naive ....
-Time spent in matmul_forward: 0.027652 seconds
+Time spent in matmul_forward: 0.028233 seconds
 layer 1: activations_output[11] = 0.762432
 Probabilities:
 0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
@@ -26,37 +26,37 @@ Test accuracy before training: 0.098000
 
 training loop:
 mat mul naive ....
-Time spent in matmul_forward: 2.721890 seconds
-layer 0: activations_output[11] = 0.000000
+Time spent in matmul_forward: 2.773683 seconds
+layer 0: activations_output[11] = 0.031882
 mat mul naive ....
-Time spent in matmul_forward: 0.033504 seconds
-layer 1: activations_output[11] = 0.000000
+Time spent in matmul_forward: 0.034206 seconds
+layer 1: activations_output[11] = 0.603268
 
 epoch: 0
-Training loss: 2.302706
-Training accuracy: 0.101500
+Training loss: 2.403615
+Training accuracy: 0.103833
 mat mul naive ....
-Time spent in matmul_forward: 2.714445 seconds
-layer 0: activations_output[11] = 0.000000
+Time spent in matmul_forward: 2.833556 seconds
+layer 0: activations_output[11] = -0.395407
 mat mul naive ....
-Time spent in matmul_forward: 0.034263 seconds
-layer 1: activations_output[11] = 0.001117
+Time spent in matmul_forward: 0.035001 seconds
+layer 1: activations_output[11] = -0.190841
 
 epoch: 1
-Training loss: 2.302522
-Training accuracy: 0.113500
+Training loss: 2.391722
+Training accuracy: 0.101917
 mat mul naive ....
-Time spent in matmul_forward: 2.256150 seconds
-layer 0: activations_output[11] = 0.580765
+Time spent in matmul_forward: 2.304790 seconds
+layer 0: activations_output[11] = 0.480904
 mat mul naive ....
-Time spent in matmul_forward: 0.027732 seconds
-layer 1: activations_output[11] = 0.764887
+Time spent in matmul_forward: 0.027839 seconds
+layer 1: activations_output[11] = 0.671862
 Probabilities:
-0.074962 0.176872 0.076480 0.096236 0.150111 0.059891 0.046529 0.089391 0.138494 0.091035 
+0.076742 0.174844 0.077389 0.096094 0.149601 0.059059 0.047490 0.089269 0.137284 0.092229 
 
 prob sum = 1.000000
-0.099885 0.176151 0.096486 0.046794 0.092904 0.082641 0.144180 0.075383 0.099317 0.086259 
+0.101957 0.173266 0.097291 0.046641 0.092544 0.081108 0.146551 0.074965 0.098318 0.087358 
 
 prob sum = 1.000000
-Test loss after training: 2.358048
-Test accuracy after training: 0.098000
+Test loss after training: 2.356514
+Test accuracy after training: 0.097700

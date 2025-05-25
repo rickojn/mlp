@@ -9,11 +9,11 @@ No model files found in directory /home/rickojn/coding/deep/models/
 No model found, training from scratch
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.295179 seconds
+Time spent in matmul_simd_forward: 0.312588 seconds
 layer 0: activations_output[11] = 0.580765
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.012331 seconds
+Time spent in matmul_simd_forward: 0.012192 seconds
 layer 1: activations_output[11] = 0.762432
 Probabilities:
 0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
@@ -29,11 +29,11 @@ Test accuracy before training: 0.098000
 training loop:
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.327081 seconds
+Time spent in matmul_simd_forward: 0.323630 seconds
 layer 0: activations_output[11] = 0.031882
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.014360 seconds
+Time spent in matmul_simd_forward: 0.014036 seconds
 layer 1: activations_output[11] = 0.603268
 
 epoch: 0
@@ -41,11 +41,11 @@ Training loss: 2.403615
 Training accuracy: 0.103833
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.471103 seconds
+Time spent in matmul_simd_forward: 0.370168 seconds
 layer 0: activations_output[11] = -0.395363
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.014482 seconds
+Time spent in matmul_simd_forward: 0.015138 seconds
 layer 1: activations_output[11] = -0.190029
 
 epoch: 1
@@ -53,11 +53,11 @@ Training loss: 2.391879
 Training accuracy: 0.101917
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.292027 seconds
+Time spent in matmul_simd_forward: 0.352645 seconds
 layer 0: activations_output[11] = 0.480987
 matmul simd ....
 Using new SIMD implementation
-Time spent in matmul_simd_forward: 0.012624 seconds
+Time spent in matmul_simd_forward: 0.012035 seconds
 layer 1: activations_output[11] = 0.672451
 Probabilities:
 0.076378 0.174887 0.077247 0.096096 0.149836 0.059359 0.047315 0.089258 0.137599 0.092025 
