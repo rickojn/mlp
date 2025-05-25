@@ -7,56 +7,33 @@ Number of parameters: 228970
 No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
-matmul simd ....
-Time spent in matmul_simd_forward: 0.273433 seconds
-layer 0: activations_output[11] = 0.580765
-matmul simd ....
-Time spent in matmul_simd_forward: 0.023563 seconds
-layer 1: activations_output[11] = 0.762432
-Probabilities:
-0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
-
-prob sum = 1.000000
-0.099892 0.175749 0.096546 0.046783 0.093021 0.082774 0.144228 0.075335 0.099377 0.086295 
-
-prob sum = 1.000000
-Test loss before training: 2.358145
-Test accuracy before training: 0.098200
 
 
 training loop:
 matmul simd ....
-Time spent in matmul_simd_forward: 0.309678 seconds
-layer 0: activations_output[11] = 0.000000
+Time spent in matmul_simd_forward: 0.000775 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.015447 seconds
-layer 1: activations_output[11] = 0.000000
+Time spent in matmul_simd_forward: 0.000017 seconds
+epoch: 0 layer 1 activations[0] = 0.100000
 
 epoch: 0
-Training loss: 2.302706
-Training accuracy: 0.101500
+Training loss: 2.302585
+Training accuracy: 0.000000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.297137 seconds
-layer 0: activations_output[11] = 0.000000
+Time spent in matmul_simd_forward: 0.000655 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.017503 seconds
-layer 1: activations_output[11] = 0.000000
+Time spent in matmul_simd_forward: 0.000014 seconds
+epoch: 1 layer 1 activations[0] = 0.100000
 
 epoch: 1
-Training loss: 2.302706
-Training accuracy: 0.099500
+Training loss: 2.302585
+Training accuracy: 0.250000
 matmul simd ....
-Time spent in matmul_simd_forward: 0.296899 seconds
-layer 0: activations_output[11] = 0.580765
+Time spent in matmul_simd_forward: 0.285779 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.014843 seconds
-layer 1: activations_output[11] = 0.762432
-Probabilities:
-0.074968 0.176470 0.076528 0.096212 0.150302 0.059987 0.046545 0.089335 0.138579 0.091074 
+Time spent in matmul_simd_forward: 0.010560 seconds
 
-prob sum = 1.000000
-0.099892 0.175749 0.096546 0.046783 0.093021 0.082774 0.144228 0.075335 0.099377 0.086295 
 
-prob sum = 1.000000
+
 Test loss after training: 2.358079
 Test accuracy after training: 0.098000

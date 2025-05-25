@@ -11,7 +11,7 @@
 
 
 #define SIZE_CLASSES 10
-#define SIZE_MINI_BATCH 12000
+#define SIZE_MINI_BATCH 8
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 288
 #define NUMBER_EPOCHS 2
@@ -19,6 +19,7 @@
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
 #define OLD 0 // Set to 1 to use old SIMD implementation, 0 for new SIMD implementation
+#define NAIVE 1
 
 
 
@@ -416,8 +417,6 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
         }
      }
 
-    memcpy(A, layer->activations_input, size_batch * layer->size_inputs * sizeof(float));
-    memcpy(B, layer->weights, layer->size_inputs * layer->size_neurons * sizeof(float));
      
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
     col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
@@ -430,7 +429,7 @@ void simd_matmul_forward(Layer * layer, size_t size_batch){
     else
     // Call the new SIMD matmul function
     {
-        printf("Using new SIMD implementation\n");
+        // printf("Using new SIMD implementation\n");
         simd_matmul(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
     };
     col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
@@ -479,8 +478,10 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         // matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
-        simd_matmul_forward(layer, data->nImages);
-        printf("layer %zu: activations_output[11] = %f\n", idx_layer, layer->activations_output[11]);
+        if (NAIVE)
+            matmul_forward(layer, layer->activations_input, layer->activations_output, data->nImages);
+        else
+            simd_matmul_forward(layer, data->nImages);
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -1042,12 +1043,11 @@ int main() {
 
     // test loss before training
     Activations activations = {0};
-    initialise_activations(&activations, &model, &data_test);
-    model_forward(&model, &activations, &data_test);
-    print_probs(&model, &activations, &data_test);
-    printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
-    printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
-    free_activations(&activations);
+    // initialise_activations(&activations, &model, &data_test);
+    // model_forward(&model, &activations, &data_test);
+    // printf("Test loss before training: %f\n", get_loss(&model, &activations, &data_test));
+    // printf("Test accuracy before training: %f\n", get_accuracy(&model, &activations, &data_test));
+    // free_activations(&activations);
 
     // exit(0);
 
@@ -1070,6 +1070,7 @@ int main() {
     for (size_t epoch = 0; epoch < NUMBER_EPOCHS; epoch++) {
         initialise_mini_batch(&data_training, &data_mini_batch);
         model_forward(&model, &activations, &data_mini_batch);
+        printf("epoch: %zu layer 1 activations[0] = %f\n", epoch, model.layers[1]->activations_output[0]);
         // print_probs(&model, &activations, &data_mini_batch);
         model_backward(&model, &activations, &data_mini_batch);
         if (epoch % PRINT_EVERY == 0) {
@@ -1088,7 +1089,9 @@ int main() {
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
     model_forward(&model, &activations, &data_test);
-    print_probs(&model, & activations, &data_test);
+    printf("\n");
+    printf("\n");
+    printf("\n");
     printf("Test loss after training: %f\n", get_loss(&model, &activations, &data_test));
     printf("Test accuracy after training: %f\n", get_accuracy(&model, &activations, &data_test));
 
