@@ -544,7 +544,7 @@ void matmul_backward(Layer * layer, size_t size_batch)
             for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++){
                 size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
                 size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
-                layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->activations_output[offset_grad_pre_act];
+                layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
                 if (layer->gradients_input){
                     layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
                 }
