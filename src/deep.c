@@ -530,6 +530,71 @@ void relu_backward(Layer *layer, unsigned char *labels, size_t size_batch)
     printf("Time spent in relu_backward: %f seconds\n", time_spent);
 }
 
+
+
+void matmul_backward_separate(Layer *layer, size_t size_batch)
+{
+    printf("matmul backward (separate loops)...\n");
+    clock_t begin, end;
+    double time_spent;
+
+    // Compute gradients for weights and biases
+    begin = clock();
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+            size_t offset_grad_pre_act = idx_sample * layer->size_neurons + idx_neuron;
+            if (layer->gradients_biases) {
+                layer->gradients_biases[idx_neuron] += layer->gradients_output[offset_grad_pre_act];
+            }
+            for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++) {
+                size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
+                size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
+                layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
+            }
+        }
+    }
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+        if (layer->gradients_biases) {
+            layer->gradients_biases[idx_neuron] /= size_batch;
+        }
+        for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++) {
+            size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
+            layer->gradients_weights[offset_weight] /= size_batch;
+        }
+    }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in matmul_backward (weights/biases): %f seconds\n", time_spent);
+
+    // Compute gradients for input activations
+    begin = clock();
+    if (layer->gradients_input) {
+        for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
+            for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
+                size_t offset_input = idx_sample * layer->size_inputs + idx_input;
+                float grad_input = 0.0f;
+                for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++) {
+                    size_t offset_weight = idx_neuron * layer->size_inputs + idx_input;
+                    size_t offset_grad_pre_act = idx_sample * layer->size_neurons + idx_neuron;
+                    grad_input += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
+                }
+            }
+        }
+        for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
+            for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
+                size_t offset_input = idx_sample * layer->size_inputs + idx_input;
+                layer->gradients_input[offset_input] /= size_batch;
+            }
+        }
+    }
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in matmul_backward (input gradients): %f seconds\n", time_spent);
+}
+
+
+
+
 void matmul_backward(Layer * layer, size_t size_batch)
 {
     printf("matmul backward ...\n");
@@ -565,6 +630,17 @@ void matmul_backward(Layer * layer, size_t size_batch)
     printf("Time spent in matmul_backward: %f seconds\n", time_spent);
 }
 
+void simd_matmul_backward(Layer * layer, size_t size_batch)
+{
+    printf("matmul simd backward ...\n");
+    clock_t begin, end;
+    double time_spent;
+
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in simd_matmul_backward: %f seconds\n", time_spent);
+}
+
 
 
 void update_layer(Layer *layer, float learning_rate)
@@ -584,6 +660,7 @@ void model_backward(Model *model, Activations *activations, InputData *data)
         Layer *layer = model->layers[idx_layer];
         layer->activation_backward(layer, data->labels, data->nImages);
         matmul_backward(layer, data->nImages);
+        // matmul_backward_separate(layer, data->nImages);
         update_layer(layer, LEARNING_RATE);
     }
 }
@@ -1054,7 +1131,14 @@ int main() {
     add_layer(&model, data_test.cols * data_test.rows, SIZE_HIDDEN, relu_forward, relu_backward, generate_kaiming_number);
     add_layer(&model, SIZE_HIDDEN, SIZE_OUTPUT, softmax_forward, loss_softmax_backward, generate_xavier_number);
 
+
+    printf("Model created with %zu layers\n", model.size_layers);
+    for (size_t i = 0; i < model.size_layers; i++) {
+        Layer *layer = model.layers[i];
+        printf("Layer %zu: %zu inputs, %zu neurons\n", i, layer->size_inputs, layer->size_neurons);
+    }
     printf("Number of parameters: %zu\n", model.size_parameters);
+    printf("Batch size: %zu\n", SIZE_MINI_BATCH);
 
     allocate_parameters_memory(&model);
     // load any persisted model parameters from models directory
@@ -1109,7 +1193,7 @@ int main() {
     free_activations(&activations);
 
     // save model
-    save_model(&model, models_path);
+    // save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);

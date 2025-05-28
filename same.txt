@@ -1,0 +1,80 @@
+rows: 28, cols: 28
+Number of training images: 60000
+rows: 28, cols: 28
+Number of test images: 10000
+Model created with 2 layers
+Layer 0: 784 inputs, 288 neurons
+Layer 1: 288 inputs, 10 neurons
+Number of parameters: 228970
+Batch size: 12000
+
+No model files found in directory /home/rickojn/coding/deep/models/
+
+No model found, training from scratch
+matmul simd ....
+Time spent in matmul_simd_forward: 0.308890 seconds
+relu forward ...
+Time spent in relu_forward: 0.006083 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.011563 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000570 seconds
+Test loss before training: 2.358079
+Test accuracy before training: 0.098000
+
+
+training loop:
+
+epoch: 0
+matmul simd ....
+Time spent in matmul_simd_forward: 0.314299 seconds
+relu forward ...
+Time spent in relu_forward: 0.007276 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.011667 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000671 seconds
+loss softmax backward ...
+Time spent in loss_softmax_backward: 0.731810 seconds
+matmul backward ...
+Time spent in matmul_backward: 0.774983 seconds
+relu backward ...
+Time spent in relu_backward: 0.777456 seconds
+matmul backward ...
+Time spent in matmul_backward: 3.370905 seconds
+
+
+Training loss: 2.403615
+Training accuracy: 0.103833
+
+epoch: 1
+matmul simd ....
+Time spent in matmul_simd_forward: 0.313950 seconds
+relu forward ...
+Time spent in relu_forward: 0.007442 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.011650 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000708 seconds
+loss softmax backward ...
+Time spent in loss_softmax_backward: 3.720513 seconds
+matmul backward ...
+Time spent in matmul_backward: 3.758027 seconds
+relu backward ...
+Time spent in relu_backward: 3.760526 seconds
+matmul backward ...
+Time spent in matmul_backward: 6.367678 seconds
+
+
+Training loss: 2.391753
+Training accuracy: 0.101917
+matmul simd ....
+Time spent in matmul_simd_forward: 0.280272 seconds
+relu forward ...
+Time spent in relu_forward: 0.005949 seconds
+matmul simd ....
+Time spent in matmul_simd_forward: 0.010268 seconds
+softmax forward ...
+Time spent in softmax_forward: 0.000560 seconds
+Test loss after training: 2.356452
+Test accuracy after training: 0.097700
