@@ -14,7 +14,7 @@
 #define SIZE_MINI_BATCH 12000
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 288
-#define NUMBER_EPOCHS 2
+#define NUMBER_EPOCHS 10
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
@@ -498,6 +498,7 @@ void loss_softmax_backward(Layer *layer, unsigned char *labels, size_t size_batc
 {
     printf("loss softmax backward ...\n");
     clock_t begin, end;
+    begin = clock();
     double time_spent;
     for (size_t idx_image = 0; idx_image < size_batch; idx_image++){
         for (size_t idx_logit = 0; idx_logit < layer->size_neurons; idx_logit++){
@@ -515,6 +516,7 @@ void relu_backward(Layer *layer, unsigned char *labels, size_t size_batch)
 {
     printf("relu backward ...\n");
     clock_t begin, end;
+    begin = clock();
     double time_spent;
     for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
         for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
@@ -659,8 +661,8 @@ void model_backward(Model *model, Activations *activations, InputData *data)
     for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
         Layer *layer = model->layers[idx_layer];
         layer->activation_backward(layer, data->labels, data->nImages);
-        matmul_backward(layer, data->nImages);
-        // matmul_backward_separate(layer, data->nImages);
+        // matmul_backward(layer, data->nImages);
+        matmul_backward_separate(layer, data->nImages);
         update_layer(layer, LEARNING_RATE);
     }
 }
@@ -1193,7 +1195,7 @@ int main() {
     free_activations(&activations);
 
     // save model
-    // save_model(&model, models_path);
+    save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
