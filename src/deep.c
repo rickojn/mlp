@@ -14,7 +14,7 @@
 #define SIZE_MINI_BATCH 12000
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 288
-#define NUMBER_EPOCHS 10
+#define NUMBER_EPOCHS 2
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
@@ -368,6 +368,65 @@ void simd_kernel(const float * tile_A, const float * tile_B, float * C, size_t M
     }
 }
 
+void simd_kernel_div(const float * tile_A, const float * tile_B, float * C, size_t M, size_t N, size_t K, size_t tile_m, size_t tile_n, size_t offset_tile_C){
+    __m256 reg_array_C[8][1] = {};
+    __m256 reg_col_tile_A_1;
+    __m256 reg_tile_B_element;
+
+    for (size_t idx_k = 0; idx_k < K; idx_k++){
+        reg_col_tile_A_1 = _mm256_loadu_ps(&tile_A[idx_k * M]);
+
+        
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N]);
+
+        reg_array_C[0][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[0][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 1]);
+
+        reg_array_C[1][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[1][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 2]);
+
+        reg_array_C[2][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[2][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 3]);
+
+        reg_array_C[3][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[3][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 4]);
+
+        reg_array_C[4][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[4][0]);
+
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 5]);
+        reg_array_C[5][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[5][0]);
+
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 6]);
+        reg_array_C[6][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[6][0]);
+        reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 7]);
+        reg_array_C[7][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[7][0]);
+    }   
+
+    // divide by K
+    // No, K is a size_t (typically an integer type), but _mm256_broadcast_ss expects a pointer to a float.
+    // You need to create a float variable from K, then broadcast that float.
+
+    float Kf = (float)K;
+    __m256 reg_K = _mm256_broadcast_ss(&Kf);
+    for (size_t idx = 0; idx * M + offset_tile_C < M * N && idx < 8; idx++){
+        reg_array_C[idx][0] = _mm256_div_ps(reg_array_C[idx][0], reg_K);
+    }
+
+    for (size_t idx = 0; idx * M + offset_tile_C < M * N && idx < 8; idx++){
+        _mm256_storeu_ps(&C[idx * M + offset_tile_C], reg_array_C[idx][0]);
+    }
+}
+
+
 void old_simd_matmul(const float *A, const float *B, float *C, size_t M, size_t N, size_t K)
 {
     const size_t tile_m = 8;
@@ -395,6 +454,22 @@ void simd_matmul(const float *A, const float *B, float *C, size_t M, size_t N, s
         {
             offset_C= idx_m + idx_n * M;
             simd_kernel(&A[idx_m], &B[idx_n], C, M, N, K, tile_m, tile_n, offset_C);
+        }
+    }
+}
+
+
+void simd_matmul_b(const float *A, const float *B, float *C, size_t M, size_t N, size_t K)
+{
+    const size_t tile_m = 8;
+    const size_t tile_n = 8;
+    size_t offset_C = 0;
+    for (size_t idx_m = 0; idx_m < M; idx_m += tile_m)
+    {
+        for (size_t idx_n = 0; idx_n < N; idx_n += tile_n)
+        {
+            offset_C= idx_m + idx_n * M;
+            simd_kernel_div(&A[idx_m], &B[idx_n], C, M, N, K, tile_m, tile_n, offset_C);
         }
     }
 }
@@ -635,10 +710,44 @@ void matmul_backward(Layer * layer, size_t size_batch)
 
 void simd_matmul_backward(Layer * layer, size_t size_batch)
 {
-    printf("matmul simd backward ...\n");
+    printf("matmul simd backward weight grads ...\n");
     clock_t begin, end;
     double time_spent;
-
+    begin = clock();
+    float *A = calloc(size_batch * layer->size_inputs, sizeof(float));
+    float *B = calloc(layer->size_inputs * layer->size_neurons, sizeof(float));
+    float *C = calloc(size_batch * layer->size_neurons, sizeof(float));
+    memcpy(A, layer->activations_input, size_batch * layer->size_inputs * sizeof(float));
+    memcpy(B, layer->weights, layer->size_inputs * layer->size_neurons * sizeof(float));
+    row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
+    col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
+    row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
+    simd_matmul_b(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
+    col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
+    free(A);
+    free(B);
+    free(C);
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent in simd_matmul_backward weight grads: %f seconds\n", time_spent);
+    printf("matmul simd backward input grads ...\n");
+    begin = clock();
+    for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++){
+        for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+            size_t offset_grad_pre_act = idx_sample * layer->size_neurons + idx_neuron;
+            if (layer->gradients_biases){
+                layer->gradients_biases[idx_neuron] += layer->gradients_output[offset_grad_pre_act];
+            }
+            for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++){
+                size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
+                size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
+                layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
+                if (layer->gradients_input){
+                    layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
+                }
+            }
+        }
+    }
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("Time spent in simd_matmul_backward: %f seconds\n", time_spent);
@@ -662,8 +771,9 @@ void model_backward(Model *model, Activations *activations, InputData *data)
     for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
         Layer *layer = model->layers[idx_layer];
         layer->activation_backward(layer, data->labels, data->nImages);
-        matmul_backward(layer, data->nImages);
+        // matmul_backward(layer, data->nImages);
         // matmul_backward_separate(layer, data->nImages);
+        simd_matmul_backward(layer, data->nImages);
         update_layer(layer, LEARNING_RATE);
     }
 }
@@ -1196,7 +1306,7 @@ int main() {
     free_activations(&activations);
 
     // save model
-    save_model(&model, models_path);
+    // save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
