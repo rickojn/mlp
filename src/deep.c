@@ -721,7 +721,7 @@ void simd_matmul_backward(Layer * layer, size_t size_batch)
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
     col_to_row_major(layer->gradients_output, B, size_batch, layer->size_neurons);
     simd_matmul_b(A, B, C, layer->size_inputs, layer->size_neurons, size_batch);
-    col_to_row_major(C, layer->gradients_output, layer->size_inputs, layer->size_neurons);
+    col_to_row_major(C, layer->gradients_weights, layer->size_inputs, layer->size_neurons);
     free(A);
     free(B);
     free(C);
@@ -739,16 +739,20 @@ void simd_matmul_backward(Layer * layer, size_t size_batch)
             for (size_t idx_weight = 0; idx_weight < layer->size_inputs; idx_weight++){
                 size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
                 size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
-                layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
                 if (layer->gradients_input){
                     layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
                 }
             }
         }
     }
+    for (size_t idx_neuron = 0; idx_neuron < layer->size_neurons; idx_neuron++){
+        if (layer->gradients_biases){
+            layer->gradients_biases[idx_neuron] /= size_batch;
+        }
+    }
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Time spent in simd_matmul_backward: %f seconds\n", time_spent);
+    printf("Time spent for input activation grads: %f seconds\n", time_spent);
 }
 
 
@@ -772,6 +776,10 @@ void model_backward(Model *model, Activations *activations, InputData *data)
         // matmul_backward(layer, data->nImages);
         // matmul_backward_separate(layer, data->nImages);
         simd_matmul_backward(layer, data->nImages);
+        // print first 10 weight gradients
+        for (int db_idx = 0; db_idx < 10 && db_idx < layer->size_inputs * layer->size_neurons; db_idx++) {
+            printf("Weight gradient %d: %f\n", db_idx, layer->gradients_weights[db_idx]);
+        }
         update_layer(layer, LEARNING_RATE);
     }
 }
