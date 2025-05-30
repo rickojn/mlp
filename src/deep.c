@@ -714,16 +714,14 @@ void simd_matmul_backward(Layer * layer, size_t size_batch)
     clock_t begin, end;
     double time_spent;
     begin = clock();
-    float *A = calloc(size_batch * layer->size_inputs, sizeof(float));
-    float *B = calloc(layer->size_inputs * layer->size_neurons, sizeof(float));
-    float *C = calloc(size_batch * layer->size_neurons, sizeof(float));
-    memcpy(A, layer->activations_input, size_batch * layer->size_inputs * sizeof(float));
-    memcpy(B, layer->weights, layer->size_inputs * layer->size_neurons * sizeof(float));
+    float *A = calloc(layer->size_inputs * size_batch, sizeof(float));
+    float *B = calloc(size_batch * layer->size_neurons, sizeof(float));
+    float *C = calloc(layer->size_inputs * layer->size_neurons, sizeof(float));
+
     row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
-    col_to_row_major(layer->weights, B, layer->size_inputs, layer->size_neurons);
-    row_to_col_major(layer->activations_output, C, size_batch, layer->size_neurons);
-    simd_matmul_b(A, B, C, size_batch, layer->size_neurons, layer->size_inputs);
-    col_to_row_major(C, layer->activations_output, size_batch, layer->size_neurons);
+    col_to_row_major(layer->gradients_output, B, size_batch, layer->size_neurons);
+    simd_matmul_b(A, B, C, layer->size_inputs, layer->size_neurons, size_batch);
+    col_to_row_major(C, layer->gradients_output, layer->size_inputs, layer->size_neurons);
     free(A);
     free(B);
     free(C);

@@ -12,13 +12,13 @@ Loading model from file /home/rickojn/coding/deep/models//model_20250529_225543_
 
 Model loaded successfully
 matmul simd ....
-Time spent in matmul_simd_forward: 0.283721 seconds
+Time spent in matmul_simd_forward: 0.284421 seconds
 relu forward ...
-Time spent in relu_forward: 0.005170 seconds
+Time spent in relu_forward: 0.005478 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.010790 seconds
+Time spent in matmul_simd_forward: 0.011046 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000546 seconds
+Time spent in softmax_forward: 0.000549 seconds
 Test loss before training: inf
 Test accuracy before training: 0.103200
 
@@ -27,62 +27,62 @@ training loop:
 
 epoch: 0
 matmul simd ....
-Time spent in matmul_simd_forward: 0.320056 seconds
+Time spent in matmul_simd_forward: 0.297430 seconds
 relu forward ...
-Time spent in relu_forward: 0.006192 seconds
+Time spent in relu_forward: 0.006206 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012090 seconds
+Time spent in matmul_simd_forward: 0.011960 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000638 seconds
+Time spent in softmax_forward: 0.000644 seconds
 loss softmax backward ...
-Time spent in loss_softmax_backward: 0.000305 seconds
+Time spent in loss_softmax_backward: 0.000367 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.012104 seconds
+Time spent in simd_matmul_backward weight grads: 0.016394 seconds
 matmul simd backward input grads ...
-Time spent in simd_matmul_backward: 0.044626 seconds
+Time spent in simd_matmul_backward: 0.053495 seconds
 relu backward ...
-Time spent in relu_backward: 0.003106 seconds
+Time spent in relu_backward: 0.003308 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.305991 seconds
+Time spent in simd_matmul_backward weight grads: 0.607968 seconds
 matmul simd backward input grads ...
-Time spent in simd_matmul_backward: 2.644865 seconds
+Time spent in simd_matmul_backward: 2.492887 seconds
 
 
-Training loss: -nan
+Training loss: inf
 Training accuracy: 0.096917
 
 epoch: 1
 matmul simd ....
-Time spent in matmul_simd_forward: 0.305759 seconds
+Time spent in matmul_simd_forward: 0.420756 seconds
 relu forward ...
-Time spent in relu_forward: 0.006213 seconds
+Time spent in relu_forward: 0.006462 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012101 seconds
+Time spent in matmul_simd_forward: 0.012348 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000654 seconds
+Time spent in softmax_forward: 0.000676 seconds
 loss softmax backward ...
-Time spent in loss_softmax_backward: 0.000157 seconds
+Time spent in loss_softmax_backward: 0.000355 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.012281 seconds
+Time spent in simd_matmul_backward weight grads: 0.015620 seconds
 matmul simd backward input grads ...
-Time spent in simd_matmul_backward: 0.037068 seconds
+Time spent in simd_matmul_backward: 0.043839 seconds
 relu backward ...
-Time spent in relu_backward: 0.003161 seconds
+Time spent in relu_backward: 0.003545 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.292887 seconds
+Time spent in simd_matmul_backward weight grads: 0.687822 seconds
 matmul simd backward input grads ...
-Time spent in simd_matmul_backward: 2.639100 seconds
+Time spent in simd_matmul_backward: 2.632027 seconds
 
 
-Training loss: -nan
+Training loss: inf
 Training accuracy: 0.113500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.276534 seconds
+Time spent in matmul_simd_forward: 0.283256 seconds
 relu forward ...
-Time spent in relu_forward: 0.005189 seconds
+Time spent in relu_forward: 0.005143 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.009910 seconds
+Time spent in matmul_simd_forward: 0.010164 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000570 seconds
+Time spent in softmax_forward: 0.000536 seconds
 Test loss after training: inf
 Test accuracy after training: 0.095800
