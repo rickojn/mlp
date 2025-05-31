@@ -11,7 +11,7 @@
 
 
 #define SIZE_CLASSES 10
-#define SIZE_MINI_BATCH 8
+#define SIZE_MINI_BATCH 16
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 8
 #define NUMBER_EPOCHS 2
@@ -380,7 +380,14 @@ void simd_kernel_div(const float * tile_A, const float * tile_B, float * C, size
         reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N]);
 
         reg_array_C[0][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[0][0]);
-
+        if (N == 10 && offset_tile_C == 0)
+        {
+            float first_float = _mm256_cvtss_f32(reg_array_C[0][0]);
+            printf("wg sum[0][0]: %f  avg = %f\n", first_float, first_float/K);
+        }
+        // _mm256_cvtss_f32 extracts the lowest (first) float from a __m256 AVX register.
+        // It is commonly used to get a single float value out of a 256-bit SIMD register.
+        // Example: float val = _mm256_cvtss_f32(reg); // gets the first float from reg
 
         reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 1]);
 
@@ -688,9 +695,10 @@ void matmul_backward(Layer * layer, size_t size_batch)
                 size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
                 size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
                 layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
-                if (layer->size_inputs == 8 && idx_weight < 8 && idx_neuron == 0 && idx_sample == 0){
+                if (layer->size_inputs == 8 && idx_weight == 0 && idx_neuron == 0){
                     printf("%zu activation input %f, weight %f, gradient output sum %f, gradient output average: %f\n", 
-                        idx_weight, layer->activations_input[offset_input], layer->gradients_output[offset_grad_pre_act], layer->gradients_weights[offset_weight], layer->gradients_weights[offset_weight] / size_batch);    
+                        idx_weight, layer->activations_input[offset_input], layer->gradients_output[offset_grad_pre_act], 
+                        layer->gradients_weights[offset_weight], layer->gradients_weights[offset_weight] / size_batch);    
                 }
                 if (layer->gradients_input){
                     layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
@@ -777,13 +785,10 @@ void model_backward(Model *model, Activations *activations, InputData *data)
     for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
         Layer *layer = model->layers[idx_layer];
         layer->activation_backward(layer, data->labels, data->nImages);
-        matmul_backward(layer, data->nImages);
+        // matmul_backward(layer, data->nImages);
         // matmul_backward_separate(layer, data->nImages);
-        // simd_matmul_backward(layer, data->nImages);
-        // print first 10 weight gradients
-        for (int db_idx = 0; db_idx < 10 && db_idx < layer->size_inputs * layer->size_neurons; db_idx++) {
-            printf("Weight gradient %d: %f\n", db_idx, layer->gradients_weights[db_idx]);
-        }
+        simd_matmul_backward(layer, data->nImages);
+        printf("Layer %d weight grad [0][0] = %f\n", idx_layer, layer->gradients_weights[0]);
         update_layer(layer, LEARNING_RATE);
     }
 }
