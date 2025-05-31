@@ -3,126 +3,126 @@ Number of training images: 60000
 rows: 28, cols: 28
 Number of test images: 10000
 Model created with 2 layers
-Layer 0: 784 inputs, 288 neurons
-Layer 1: 288 inputs, 10 neurons
-Number of parameters: 228970
+Layer 0: 784 inputs, 8 neurons
+Layer 1: 8 inputs, 10 neurons
+Number of parameters: 6370
 Batch size: 12000
 
 No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 matmul simd ....
-Time spent in matmul_simd_forward: 0.301866 seconds
+Time spent in matmul_simd_forward: 0.038686 seconds
 relu forward ...
-Time spent in relu_forward: 0.006705 seconds
+Time spent in relu_forward: 0.000158 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012416 seconds
+Time spent in matmul_simd_forward: 0.000667 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000680 seconds
-Test loss before training: 2.358079
-Test accuracy before training: 0.098000
+Time spent in softmax_forward: 0.000711 seconds
+Test loss before training: 2.335670
+Test accuracy before training: 0.097500
 
 
 training loop:
 
 epoch: 0
 matmul simd ....
-Time spent in matmul_simd_forward: 0.357498 seconds
+Time spent in matmul_simd_forward: 0.035334 seconds
 relu forward ...
-Time spent in relu_forward: 0.006203 seconds
+Time spent in relu_forward: 0.000179 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.013389 seconds
+Time spent in matmul_simd_forward: 0.000686 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000797 seconds
+Time spent in softmax_forward: 0.000753 seconds
 loss softmax backward ...
-Time spent in loss_softmax_backward: 0.000362 seconds
+Time spent in loss_softmax_backward: 0.000295 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.031731 seconds
+Time spent in simd_matmul_backward weight grads: 0.000209 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 0.042302 seconds
-Weight gradient 0: -0.000764
-Weight gradient 1: -0.001292
-Weight gradient 2: 0.000793
-Weight gradient 3: -0.000145
-Weight gradient 4: 0.000599
-Weight gradient 5: 0.000781
-Weight gradient 6: -0.000808
-Weight gradient 7: 0.001484
-Weight gradient 8: 0.000251
-Weight gradient 9: -0.001762
+Time spent for input activation grads: 0.001256 seconds
+Weight gradient 0: -0.001553
+Weight gradient 1: -0.000411
+Weight gradient 2: 0.000588
+Weight gradient 3: 0.000584
+Weight gradient 4: -0.000967
+Weight gradient 5: 0.000486
+Weight gradient 6: -0.000693
+Weight gradient 7: -0.000497
+Weight gradient 8: 0.000534
+Weight gradient 9: -0.000586
 relu backward ...
-Time spent in relu_backward: 0.003768 seconds
+Time spent in relu_backward: 0.000089 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 1.259312 seconds
+Time spent in simd_matmul_backward weight grads: 0.036883 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 1.535754 seconds
-Weight gradient 0: 0.000121
-Weight gradient 1: 0.000178
-Weight gradient 2: 0.000043
-Weight gradient 3: 0.000113
-Weight gradient 4: 0.000144
-Weight gradient 5: 0.000087
-Weight gradient 6: 0.000115
-Weight gradient 7: 0.000024
-Weight gradient 8: 0.000155
-Weight gradient 9: 0.000023
+Time spent for input activation grads: 0.041602 seconds
+Weight gradient 0: -0.000016
+Weight gradient 1: 0.000038
+Weight gradient 2: -0.000043
+Weight gradient 3: 0.000056
+Weight gradient 4: 0.000039
+Weight gradient 5: 0.000075
+Weight gradient 6: 0.000036
+Weight gradient 7: -0.000039
+Weight gradient 8: -0.000013
+Weight gradient 9: 0.000034
 
 
-Training loss: 2.403615
-Training accuracy: 0.103833
+Training loss: 2.348373
+Training accuracy: 0.094833
 
 epoch: 1
 matmul simd ....
-Time spent in matmul_simd_forward: 0.508739 seconds
+Time spent in matmul_simd_forward: 0.038403 seconds
 relu forward ...
-Time spent in relu_forward: 0.006535 seconds
+Time spent in relu_forward: 0.000197 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.012058 seconds
+Time spent in matmul_simd_forward: 0.000596 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000702 seconds
+Time spent in softmax_forward: 0.000676 seconds
 loss softmax backward ...
-Time spent in loss_softmax_backward: 0.000233 seconds
+Time spent in loss_softmax_backward: 0.000157 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.028069 seconds
+Time spent in simd_matmul_backward weight grads: 0.000208 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 0.029520 seconds
-Weight gradient 0: 0.000372
-Weight gradient 1: -0.001335
-Weight gradient 2: -0.000450
-Weight gradient 3: 0.000101
-Weight gradient 4: 0.000697
-Weight gradient 5: 0.000470
-Weight gradient 6: 0.000515
-Weight gradient 7: 0.000604
-Weight gradient 8: -0.000753
-Weight gradient 9: 0.001012
+Time spent for input activation grads: 0.000984 seconds
+Weight gradient 0: -0.001446
+Weight gradient 1: 0.000779
+Weight gradient 2: -0.000780
+Weight gradient 3: -0.000959
+Weight gradient 4: 0.001246
+Weight gradient 5: -0.000977
+Weight gradient 6: -0.000692
+Weight gradient 7: 0.000374
+Weight gradient 8: -0.001751
+Weight gradient 9: -0.000622
 relu backward ...
-Time spent in relu_backward: 0.003427 seconds
+Time spent in relu_backward: 0.000090 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 1.267270 seconds
+Time spent in simd_matmul_backward weight grads: 0.037706 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 1.437221 seconds
-Weight gradient 0: -0.000029
-Weight gradient 1: 0.000136
-Weight gradient 2: 0.000181
-Weight gradient 3: 0.000072
-Weight gradient 4: 0.000092
-Weight gradient 5: 0.000097
-Weight gradient 6: 0.000116
-Weight gradient 7: 0.000046
-Weight gradient 8: 0.000048
-Weight gradient 9: 0.000127
+Time spent for input activation grads: 0.041860 seconds
+Weight gradient 0: -0.000010
+Weight gradient 1: 0.000056
+Weight gradient 2: 0.000026
+Weight gradient 3: 0.000061
+Weight gradient 4: 0.000109
+Weight gradient 5: -0.000002
+Weight gradient 6: 0.000015
+Weight gradient 7: 0.000108
+Weight gradient 8: -0.000017
+Weight gradient 9: 0.000054
 
 
-Training loss: 2.392793
-Training accuracy: 0.101833
+Training loss: 2.334381
+Training accuracy: 0.102500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.346517 seconds
+Time spent in matmul_simd_forward: 0.030776 seconds
 relu forward ...
-Time spent in relu_forward: 0.005152 seconds
+Time spent in relu_forward: 0.000149 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.010589 seconds
+Time spent in matmul_simd_forward: 0.000424 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000623 seconds
-Test loss after training: 2.357799
-Test accuracy after training: 0.098000
+Time spent in softmax_forward: 0.000561 seconds
+Test loss after training: 2.335311
+Test accuracy after training: 0.107400
