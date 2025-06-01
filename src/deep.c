@@ -571,6 +571,12 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
         simd_matmul_forward(layer, data->nImages);
+        if (layer->size_inputs == 8)
+        {
+            for (size_t idx = 0; idx < layer->size_neurons; idx++){
+                printf("logit = %f\n", layer->activations_output[idx * layer->size_neurons]);
+            }
+        }
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -794,8 +800,8 @@ void model_backward(Model *model, Activations *activations, InputData *data)
         layer->activation_backward(layer, data->labels, data->nImages);
         if (idx_layer == 1){
             for (int db_i=0; db_i < data->nImages; db_i++){
-                printf(" input %f   z grad %f\n", 
-                    layer->activations_input[db_i * layer-> size_inputs], layer->gradients_output[db_i * layer->size_neurons]);
+                printf(" input %f   z grad %f  prob %f\n", 
+                    layer->activations_input[db_i * layer-> size_inputs], layer->gradients_output[db_i * layer->size_neurons], layer->activations_output[db_i * layer->size_neurons]);
             }
         }
         // matmul_backward(layer, data->nImages);
