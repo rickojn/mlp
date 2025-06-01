@@ -12,13 +12,13 @@ No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 matmul simd ....
-Time spent in matmul_simd_forward: 0.035394 seconds
+Time spent in matmul_simd_forward: 0.036849 seconds
 relu forward ...
-Time spent in relu_forward: 0.000222 seconds
+Time spent in relu_forward: 0.000170 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000821 seconds
+Time spent in matmul_simd_forward: 0.000671 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000711 seconds
+Time spent in softmax_forward: 0.000559 seconds
 Test loss before training: 2.335670
 Test accuracy before training: 0.097500
 
@@ -27,11 +27,11 @@ training loop:
 
 epoch: 0
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000027 seconds
+Time spent in matmul_simd_forward: 0.000042 seconds
 relu forward ...
 Time spent in relu_forward: 0.000001 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000001 seconds
+Time spent in matmul_simd_forward: 0.000002 seconds
 softmax forward ...
 Time spent in softmax_forward: 0.000002 seconds
 loss softmax backward ...
@@ -54,31 +54,31 @@ Time spent in loss_softmax_backward: 0.000001 seconds
  input 0.000000   z grad 0.100000
 matmul simd backward weight grads ...
 input = 0.000000 z grad = 0.108971  wg sum[0][0]: 0.000000  avg = 0.000000
-input = 0.000000 z grad = 0.112276  wg sum[0][0]: 0.000000  avg = 0.000000
-input = 0.349020 z grad = 0.078902  wg sum[0][0]: 0.027538  avg = 0.001721
-input = 0.000000 z grad = 0.083239  wg sum[0][0]: 0.027538  avg = 0.001721
-input = 0.000000 z grad = 0.082078  wg sum[0][0]: 0.027538  avg = 0.001721
-input = 0.000000 z grad = 0.120128  wg sum[0][0]: 0.027538  avg = 0.001721
-input = 0.000000 z grad = 0.113071  wg sum[0][0]: 0.027538  avg = 0.001721
-input = 0.000000 z grad = 0.104526  wg sum[0][0]: 0.027538  avg = 0.001721
-input = 0.992157 z grad = 0.095736  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = -0.898928  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = 0.072773  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = 0.105490  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = 0.115496  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = -0.882082  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = 0.063120  wg sum[0][0]: 0.122524  avg = 0.007658
-input = 0.000000 z grad = 0.074389  wg sum[0][0]: 0.122524  avg = 0.007658
-Time spent in simd_matmul_backward weight grads: 0.000012 seconds
+input = 0.992157 z grad = 0.072773  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = -0.900000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = -0.900000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+input = 0.000000 z grad = 0.100000  wg sum[0][0]: 0.072202  avg = 0.004513
+Time spent in simd_matmul_backward weight grads: 0.000030 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 0.000020 seconds
-Layer 1 weight grad [0][0] = 0.007658
+Time spent for input activation grads: 0.000002 seconds
+Layer 1 weight grad [0][0] = 0.004513
 relu backward ...
-Time spent in relu_backward: 0.000002 seconds
+Time spent in relu_backward: 0.000001 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.000090 seconds
+Time spent in simd_matmul_backward weight grads: 0.000016 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 0.000095 seconds
+Time spent for input activation grads: 0.000087 seconds
 Layer 0 weight grad [0][0] = 0.000000
 
 
@@ -87,17 +87,17 @@ Training accuracy: 0.125000
 
 epoch: 1
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000029 seconds
+Time spent in matmul_simd_forward: 0.000028 seconds
 relu forward ...
-Time spent in relu_forward: 0.000001 seconds
+Time spent in relu_forward: 0.000002 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000002 seconds
+Time spent in matmul_simd_forward: 0.000001 seconds
 softmax forward ...
 Time spent in softmax_forward: 0.000002 seconds
 loss softmax backward ...
-Time spent in loss_softmax_backward: 0.000001 seconds
- input 0.000000   z grad 0.118915
- input 0.000000   z grad 0.125447
+Time spent in loss_softmax_backward: 0.000014 seconds
+ input 0.000000   z grad 0.118916
+ input 0.000000   z grad 0.125383
  input 0.000000   z grad 0.100260
  input 0.000000   z grad -0.899740
  input 0.000000   z grad 0.100260
@@ -113,44 +113,44 @@ Time spent in loss_softmax_backward: 0.000001 seconds
  input 0.000000   z grad 0.100260
  input 0.000000   z grad 0.100260
 matmul simd backward weight grads ...
-input = 0.000000 z grad = 0.118915  wg sum[0][0]: 0.000000  avg = 0.000000
-input = 0.000000 z grad = 0.070296  wg sum[0][0]: 0.000000  avg = 0.000000
-input = 0.827451 z grad = 0.073514  wg sum[0][0]: 0.060829  avg = 0.003802
-input = 0.000000 z grad = 0.098603  wg sum[0][0]: 0.060829  avg = 0.003802
-input = 0.000000 z grad = 0.061979  wg sum[0][0]: 0.060829  avg = 0.003802
-input = 0.000000 z grad = 0.074169  wg sum[0][0]: 0.060829  avg = 0.003802
-input = 0.082353 z grad = -0.875210  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.108271  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.130754  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.138708  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.125447  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = -0.941346  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.063601  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.100755  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.056682  wg sum[0][0]: -0.011247  avg = -0.000703
-input = 0.000000 z grad = 0.067921  wg sum[0][0]: -0.011247  avg = -0.000703
-Time spent in simd_matmul_backward weight grads: 0.000013 seconds
+input = 0.000000 z grad = 0.118916  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.125383  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = -0.899740  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = -0.899740  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = -0.899740  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+input = 0.000000 z grad = 0.100260  wg sum[0][0]: 0.000000  avg = 0.000000
+Time spent in simd_matmul_backward weight grads: 0.000012 seconds
 matmul simd backward input grads ...
 Time spent for input activation grads: 0.000002 seconds
-Layer 1 weight grad [0][0] = -0.000703
+Layer 1 weight grad [0][0] = 0.000000
 relu backward ...
 Time spent in relu_backward: 0.000001 seconds
 matmul simd backward weight grads ...
-Time spent in simd_matmul_backward weight grads: 0.000028 seconds
+Time spent in simd_matmul_backward weight grads: 0.000018 seconds
 matmul simd backward input grads ...
-Time spent for input activation grads: 0.000093 seconds
+Time spent for input activation grads: 0.000057 seconds
 Layer 0 weight grad [0][0] = 0.000000
 
 
-Training loss: 2.323008
+Training loss: 2.322806
 Training accuracy: 0.062500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.035196 seconds
+Time spent in matmul_simd_forward: 0.034728 seconds
 relu forward ...
-Time spent in relu_forward: 0.000201 seconds
+Time spent in relu_forward: 0.000156 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000507 seconds
+Time spent in matmul_simd_forward: 0.000436 seconds
 softmax forward ...
-Time spent in softmax_forward: 0.000627 seconds
-Test loss after training: 2.335954
+Time spent in softmax_forward: 0.000589 seconds
+Test loss after training: 2.336064
 Test accuracy after training: 0.097200

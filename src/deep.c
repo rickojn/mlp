@@ -388,8 +388,6 @@ void simd_kernel_div(const float * tile_A, const float * tile_B, float * C, size
             printf("input = %f z grad = %f  wg sum[0][0]: %f  avg = %f\n",db_input, db_z_grad, db_sum, db_sum/K);
         }
         // _mm256_cvtss_f32 extracts the lowest (first) float from a __m256 AVX register.
-        // It is commonly used to get a single float value out of a 256-bit SIMD register.
-        // Example: float val = _mm256_cvtss_f32(reg); // gets the first float from reg
 
         reg_tile_B_element = _mm256_broadcast_ss(&tile_B[idx_k * N + 1]);
 
@@ -737,8 +735,10 @@ void simd_matmul_backward(Layer * layer, size_t size_batch)
     float *B = calloc(size_batch * layer->size_neurons, sizeof(float));
     float *C = calloc(layer->size_inputs * layer->size_neurons, sizeof(float));
 
-    row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
-    col_to_row_major(layer->gradients_output, B, size_batch, layer->size_neurons);
+    // row_to_col_major(layer->activations_input, A, size_batch, layer->size_inputs);
+    // col_to_row_major(layer->gradients_output, B, size_batch, layer->size_neurons);
+    memcpy(A, layer->activations_input, size_batch * layer->size_inputs * sizeof(float));
+    memcpy(B, layer->gradients_output, size_batch * layer->size_neurons * sizeof(float));
     simd_matmul_b(A, B, C, layer->size_inputs, layer->size_neurons, size_batch);
     col_to_row_major(C, layer->gradients_weights, layer->size_inputs, layer->size_neurons);
     free(A);
