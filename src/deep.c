@@ -384,8 +384,8 @@ void simd_kernel_div(const float * tile_A, const float * tile_B, float * C, size
         {
             float db_sum = _mm256_cvtss_f32(reg_array_C[0][0]);
             float db_input = _mm256_cvtss_f32(reg_col_tile_A_1);
-            float db_weight = tile_B[idx_k * N];
-            printf("input = %f z grad = %f  wg sum[0][0]: %f  avg = %f\n",db_input, db_weight, db_sum, db_sum/K);
+            float db_z_grad = tile_B[idx_k * N];
+            printf("input = %f z grad = %f  wg sum[0][0]: %f  avg = %f\n",db_input, db_z_grad, db_sum, db_sum/K);
         }
         // _mm256_cvtss_f32 extracts the lowest (first) float from a __m256 AVX register.
         // It is commonly used to get a single float value out of a 256-bit SIMD register.
@@ -795,7 +795,7 @@ void model_backward(Model *model, Activations *activations, InputData *data)
         if (idx_layer == 1){
             for (int db_i=0; db_i < data->nImages; db_i++){
                 printf(" input %f   z grad %f\n", 
-                    layer->activations_input[db_i * data->nImages], layer->gradients_output[db_i * data->nImages]);
+                    layer->activations_input[db_i * layer-> size_inputs], layer->gradients_output[db_i * layer->size_neurons]);
             }
         }
         // matmul_backward(layer, data->nImages);
