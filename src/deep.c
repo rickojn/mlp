@@ -382,8 +382,10 @@ void simd_kernel_div(const float * tile_A, const float * tile_B, float * C, size
         reg_array_C[0][0] = _mm256_fmadd_ps(reg_col_tile_A_1, reg_tile_B_element, reg_array_C[0][0]);
         if (N == 10 && offset_tile_C == 0)
         {
-            float first_float = _mm256_cvtss_f32(reg_array_C[0][0]);
-            printf("wg sum[0][0]: %f  avg = %f\n", first_float, first_float/K);
+            float db_sum = _mm256_cvtss_f32(reg_array_C[0][0]);
+            float db_input = _mm256_cvtss_f32(reg_col_tile_A_1);
+            float db_weight = tile_B[idx_k * N];
+            printf("input = %f z grad = %f  wg sum[0][0]: %f  avg = %f\n",db_input, db_weight, db_sum, db_sum/K);
         }
         // _mm256_cvtss_f32 extracts the lowest (first) float from a __m256 AVX register.
         // It is commonly used to get a single float value out of a 256-bit SIMD register.
@@ -634,6 +636,11 @@ void matmul_backward_separate(Layer *layer, size_t size_batch)
                 size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
                 size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
                 layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
+                if (layer->size_inputs == 8 && idx_weight == 0 && idx_neuron == 0) {
+                    printf("input %f, z grad %f, gradient output sum %f, gradient output average: %f\n", 
+                        idx_weight, layer->activations_input[offset_input], layer->gradients_output[offset_grad_pre_act], 
+                        layer->gradients_weights[offset_weight], layer->gradients_weights[offset_weight] / size_batch);    
+                }
             }
         }
     }
@@ -785,6 +792,12 @@ void model_backward(Model *model, Activations *activations, InputData *data)
     for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
         Layer *layer = model->layers[idx_layer];
         layer->activation_backward(layer, data->labels, data->nImages);
+        if (idx_layer == 1){
+            for (int db_i=0; db_i < data->nImages; db_i++){
+                printf(" input %f   z grad %f\n", 
+                    layer->activations_input[db_i * data->nImages], layer->gradients_output[db_i * data->nImages]);
+            }
+        }
         // matmul_backward(layer, data->nImages);
         // matmul_backward_separate(layer, data->nImages);
         simd_matmul_backward(layer, data->nImages);
