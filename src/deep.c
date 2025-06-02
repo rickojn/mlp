@@ -675,12 +675,6 @@ void matmul_backward_separate(Layer *layer, size_t size_batch)
                 }
             }
         }
-        for (size_t idx_sample = 0; idx_sample < size_batch; idx_sample++) {
-            for (size_t idx_input = 0; idx_input < layer->size_inputs; idx_input++) {
-                size_t offset_input = idx_sample * layer->size_inputs + idx_input;
-                layer->gradients_input[offset_input] /= size_batch;
-            }
-        }
     }
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
@@ -805,8 +799,8 @@ void model_backward(Model *model, Activations *activations, InputData *data)
             }
         }
         // matmul_backward(layer, data->nImages);
-        // matmul_backward_separate(layer, data->nImages);
-        simd_matmul_backward(layer, data->nImages);
+        matmul_backward_separate(layer, data->nImages);
+        // simd_matmul_backward(layer, data->nImages);
         printf("Layer %d weight grad [0][0] = %f\n", idx_layer, layer->gradients_weights[0]);
         update_layer(layer, LEARNING_RATE);
     }

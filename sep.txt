@@ -12,11 +12,11 @@ No model files found in directory /home/rickojn/coding/deep/models/
 
 No model found, training from scratch
 matmul simd ....
-Time spent in matmul_simd_forward: 0.034351 seconds
+Time spent in matmul_simd_forward: 0.035588 seconds
 relu forward ...
-Time spent in relu_forward: 0.000161 seconds
+Time spent in relu_forward: 0.000157 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000671 seconds
+Time spent in matmul_simd_forward: 0.000925 seconds
 logit = 0.000000
 logit = 0.000000
 logit = 0.000000
@@ -28,7 +28,7 @@ logit = 0.000000
 logit = 0.000000
 logit = 0.000000
 softmax forward ...
-Time spent in softmax_forward: 0.000760 seconds
+Time spent in softmax_forward: 0.000674 seconds
 Test loss before training: 2.335670
 Test accuracy before training: 0.097500
 
@@ -37,11 +37,11 @@ training loop:
 
 epoch: 0
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000037 seconds
+Time spent in matmul_simd_forward: 0.000030 seconds
 relu forward ...
-Time spent in relu_forward: 0.000003 seconds
+Time spent in relu_forward: 0.000001 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000003 seconds
+Time spent in matmul_simd_forward: 0.000002 seconds
 logit = 0.126389
 logit = -0.190522
 logit = 0.000000
@@ -53,7 +53,7 @@ logit = 0.000000
 logit = 0.000000
 logit = 0.000000
 softmax forward ...
-Time spent in softmax_forward: 0.000004 seconds
+Time spent in softmax_forward: 0.000002 seconds
 loss softmax backward ...
 Time spent in loss_softmax_backward: 0.000001 seconds
  input 0.000000   z grad 0.108971  prob 0.108971
@@ -72,7 +72,7 @@ Time spent in loss_softmax_backward: 0.000001 seconds
  input 0.000000   z grad 0.100000  prob 0.100000
  input 0.000000   z grad 0.100000  prob 0.100000
  input 0.000000   z grad 0.100000  prob 0.100000
-    matmul backward (separate loops)...
+matmul backward (separate loops)...
 input 0.000000, z grad 0.108971, gradient output sum 0.000000, gradient output average: 0.000000
 input 0.992157, z grad 0.072773, gradient output sum 0.072202, gradient output average: 0.004513
 input 0.000000, z grad 0.100000, gradient output sum 0.072202, gradient output average: 0.004513
@@ -89,14 +89,14 @@ input 0.000000, z grad 0.100000, gradient output sum 0.072202, gradient output a
 input 0.000000, z grad 0.100000, gradient output sum 0.072202, gradient output average: 0.004513
 input 0.000000, z grad 0.100000, gradient output sum 0.072202, gradient output average: 0.004513
 input 0.000000, z grad 0.100000, gradient output sum 0.072202, gradient output average: 0.004513
-Time spent in matmul_backward (weights/biases): 0.000030 seconds
+Time spent in matmul_backward (weights/biases): 0.000014 seconds
 Time spent in matmul_backward (input gradients): 0.000001 seconds
 Layer 1 weight grad [0][0] = 0.004513
 relu backward ...
-Time spent in relu_backward: 0.000000 seconds
+Time spent in relu_backward: 0.000001 seconds
 matmul backward (separate loops)...
-Time spent in matmul_backward (weights/biases): 0.000133 seconds
-Time spent in matmul_backward (input gradients): 0.000001 seconds
+Time spent in matmul_backward (weights/biases): 0.000137 seconds
+Time spent in matmul_backward (input gradients): 0.000000 seconds
 Layer 0 weight grad [0][0] = 0.000000
 
 
@@ -105,9 +105,9 @@ Training accuracy: 0.125000
 
 epoch: 1
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000028 seconds
+Time spent in matmul_simd_forward: 0.000029 seconds
 relu forward ...
-Time spent in relu_forward: 0.000002 seconds
+Time spent in relu_forward: 0.000001 seconds
 matmul simd ....
 Time spent in matmul_simd_forward: 0.000002 seconds
 logit = 0.304777
@@ -157,13 +157,13 @@ input 0.000000, z grad 0.100260, gradient output sum 0.000000, gradient output a
 input 0.000000, z grad 0.100260, gradient output sum 0.000000, gradient output average: 0.000000
 input 0.000000, z grad 0.100260, gradient output sum 0.000000, gradient output average: 0.000000
 input 0.000000, z grad 0.100260, gradient output sum 0.000000, gradient output average: 0.000000
-Time spent in matmul_backward (weights/biases): 0.000015 seconds
+Time spent in matmul_backward (weights/biases): 0.000013 seconds
 Time spent in matmul_backward (input gradients): 0.000001 seconds
 Layer 1 weight grad [0][0] = 0.000000
 relu backward ...
 Time spent in relu_backward: 0.000001 seconds
 matmul backward (separate loops)...
-Time spent in matmul_backward (weights/biases): 0.000145 seconds
+Time spent in matmul_backward (weights/biases): 0.000158 seconds
 Time spent in matmul_backward (input gradients): 0.000000 seconds
 Layer 0 weight grad [0][0] = 0.000000
 
@@ -171,11 +171,11 @@ Layer 0 weight grad [0][0] = 0.000000
 Training loss: 2.323015
 Training accuracy: 0.062500
 matmul simd ....
-Time spent in matmul_simd_forward: 0.030803 seconds
+Time spent in matmul_simd_forward: 0.031466 seconds
 relu forward ...
-Time spent in relu_forward: 0.000165 seconds
+Time spent in relu_forward: 0.000170 seconds
 matmul simd ....
-Time spent in matmul_simd_forward: 0.000453 seconds
+Time spent in matmul_simd_forward: 0.000483 seconds
 logit = 0.011064
 logit = 0.011064
 logit = 0.011064
@@ -187,6 +187,6 @@ logit = 0.011064
 logit = 0.011064
 logit = 0.011064
 softmax forward ...
-Time spent in softmax_forward: 0.000633 seconds
+Time spent in softmax_forward: 0.000634 seconds
 Test loss after training: 2.336076
 Test accuracy after training: 0.097200
