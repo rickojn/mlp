@@ -1,1 +1,1 @@
-export DEEP_PATH=/home/rickojn/coding/deep/
+export DEEP_PATH=/home/rickojn/coding/mlp/

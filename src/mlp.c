@@ -816,7 +816,10 @@ void file_read(void *ptr, size_t size, size_t count, FILE *file) {
 
 void read_mnist_images(const char *filename, InputData *data) {
     FILE *file = fopen(filename, "rb");
-    if (!file) exit(1);
+    if (!file) {
+        printf("Could not open file %s\n", filename);
+        exit(1);
+    }
 
     int temp;
     file_read(&temp, sizeof(int), 1, file);
