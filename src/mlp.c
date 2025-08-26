@@ -14,7 +14,7 @@
 #define SIZE_MINI_BATCH 16
 #define SIZE_OUTPUT 10
 #define SIZE_HIDDEN 8
-#define NUMBER_EPOCHS 2
+#define NUMBER_EPOCHS 10
 #define PRINT_EVERY 1
 #define LEARNING_RATE 0.1f
 #define SIZE_TILE 256
@@ -571,12 +571,6 @@ void model_forward(Model *model, Activations *activations, InputData *data)
         // matmul_forward_tiling(layer, layer->activations_input, layer->activations_output, data->nImages);
         // matmul_forward_outer_product(layer, data->nImages);
         simd_matmul_forward(layer, data->nImages);
-        if (layer->size_inputs == 8)
-        {
-            for (size_t idx = 0; idx < layer->size_neurons; idx++){
-                printf("logit = %f\n", layer->activations_output[idx * layer->size_neurons]);
-            }
-        }
         layer->activation_forward(layer, data->nImages);
     }
 }
@@ -700,11 +694,6 @@ void matmul_backward(Layer * layer, size_t size_batch)
                 size_t offset_weight = idx_neuron * layer->size_inputs + idx_weight;
                 size_t offset_input = idx_sample * layer->size_inputs + idx_weight;
                 layer->gradients_weights[offset_weight] += layer->activations_input[offset_input] * layer->gradients_output[offset_grad_pre_act];
-                if (layer->size_inputs == 8 && idx_weight == 0 && idx_neuron == 0){
-                    printf("%zu activation input %f, weight %f, gradient output sum %f, gradient output average: %f\n", 
-                        idx_weight, layer->activations_input[offset_input], layer->gradients_output[offset_grad_pre_act], 
-                        layer->gradients_weights[offset_weight], layer->gradients_weights[offset_weight] / size_batch);    
-                }
                 if (layer->gradients_input){
                     layer->gradients_input[offset_input] += layer->weights[offset_weight] * layer->gradients_output[offset_grad_pre_act];
                 }
@@ -792,14 +781,8 @@ void model_backward(Model *model, Activations *activations, InputData *data)
     for (int idx_layer = model->size_layers - 1; idx_layer >= 0; idx_layer--) {
         Layer *layer = model->layers[idx_layer];
         layer->activation_backward(layer, data->labels, data->nImages);
-        if (idx_layer == 1){
-            for (int db_i=0; db_i < data->nImages; db_i++){
-                printf(" input %f   z grad %f  prob %f\n", 
-                    layer->activations_input[db_i * layer-> size_inputs], layer->gradients_output[db_i * layer->size_neurons], layer->activations_output[db_i * layer->size_neurons]);
-            }
-        }
-        // matmul_backward(layer, data->nImages);
-        matmul_backward_separate(layer, data->nImages);
+        matmul_backward(layer, data->nImages);
+        // matmul_backward_separate(layer, data->nImages);
         // simd_matmul_backward(layer, data->nImages);
         printf("Layer %d weight grad [0][0] = %f\n", idx_layer, layer->gradients_weights[0]);
         update_layer(layer, LEARNING_RATE);
@@ -1337,7 +1320,7 @@ int main() {
     free_activations(&activations);
 
     // save model
-    // save_model(&model, models_path);
+    save_model(&model, models_path);
 
     // test loss after training
     initialise_activations(&activations, &model, &data_test);
