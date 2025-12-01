@@ -1249,6 +1249,7 @@ int main() {
 
     const char * training_images_path = concatStrings(deep_path, "data/train-images.idx3-ubyte");
     const char *training_labels_path = concatStrings(deep_path, "data/train-labels.idx1-ubyte");
+    printf("Reading training data from %s and %s\n", training_images_path, training_labels_path);
     read_mnist_images(training_images_path, &data_training);
     read_mnist_labels(training_labels_path, &data_training.labels, &data_training.nImages);
     printf("Number of training images: %d\n", data_training.nImages);

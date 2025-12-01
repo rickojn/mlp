@@ -36,7 +36,7 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [{"name": "DEEP_PATH", "value": "/home/rickojn/coding/deep/"}],
+            "environment": [{"name": "DEEP_PATH", "value": "/home/rickojn/coding/mlp/"}],
             "externalConsole": false,
             "MIMode": "gdb",            
             "setupCommands": [
